@@ -38,7 +38,7 @@
             <h3>Cek Keanggotaan</h3>
           </div>
           <div class="quick-access-item">
-            <div class="quick-icon">
+            <div class="quick-icon">c
               <i class="fas fa-balance-scale"></i>
             </div>
             <h3>Bantuan Hukum</h3>

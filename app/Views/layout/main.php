@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/landing.css') ?>">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=clash-display@500,600,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="<?= base_url('assets/css/pages/berita.css') ?>">
+
 
 </head>
 

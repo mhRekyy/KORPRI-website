@@ -60,7 +60,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('wvisi-misi') ?>">
+        <a class="dropdown-item" href="<?= base_url('visi-misi') ?>">
           <span class="dd-ic"><i class="fas fa-bullseye"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Visi dan misi KORPRI</span>
@@ -134,7 +134,7 @@
 
     <ul class="dropdown-menu" aria-labelledby="ddGaleri">
       <li>
-        <a class="dropdown-item" href="<?= base_url('galeri/foto-kegiatan') ?>">
+        <a class="dropdown-item" href="<?= base_url('galeri') ?>">
           <span class="dd-ic"><i class="fas fa-image"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Foto kegiatan</span>
@@ -209,7 +209,7 @@
 
     <ul class="dropdown-menu" aria-labelledby="ddMedia">
       <li>
-        <a class="dropdown-item" href="<?= base_url('media-publik/berita-korpri') ?>">
+        <a class="dropdown-item" href="<?= base_url('berita') ?>">
           <span class="dd-ic"><i class="fas fa-newspaper"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Berita KORPRI</span>

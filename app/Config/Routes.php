@@ -9,4 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('visi-misi', 'Pages::visiMisi');
 $routes->get('kontak-kami', 'Pages::kontakKami');
+$routes->get('galeri', 'Pages::Galeri');
+$routes->get('berita', 'Pages::Berita');
 

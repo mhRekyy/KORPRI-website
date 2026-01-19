@@ -69,12 +69,16 @@
 /* =====================================================
    MENU — TENGAH (CENTER SEJATI)
 ===================================================== */
+
+.korpri-menu > *{
+  margin: 0 40px; /* karena sebelumnya gap 80px */
+}
+
 .korpri-menu {
     grid-area: menu;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 80px;
     white-space: nowrap;
     justify-self: center;
 }
@@ -90,6 +94,130 @@
     color: #d7c28a;
 }
 
+/* =====================================================
+   DROPDOWN (Bootstrap) — mega style
+===================================================== */
+
+/* Hilangkan caret/panah bawaan Bootstrap */
+.korpri-menu .dropdown-toggle::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* panel dropdown */
+.korpri-menu .dropdown-menu{
+  margin-top: 0;
+  padding: 10px 5px;
+  min-width: 300px;            /* lebih lebar seperti desain */
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  background: #fff;
+
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;                   /* panel muncul di tengah item menu */
+  transform: translateX(-50%);
+  z-index: 2000;
+
+  /* layout mega menu */
+  columns: 1;                  /* 2 kolom seperti desain */
+}
+
+.korpri-menu .dropdown-menu.dd-wide{
+  columns: 2;
+  column-gap: 20px;
+  min-width: 600px;
+}
+
+/* biar item tidak kepotong pindah kolom */
+.korpri-menu .dropdown-menu.dd-wide li{
+  break-inside: avoid;
+}
+
+/* supaya "list-style" tidak aneh */
+.korpri-menu .dropdown-menu li{
+  break-inside: avoid;
+}
+
+/* hover show */
+.korpri-menu .nav-item.dropdown{
+  position: relative;
+}
+
+.korpri-menu .nav-item.dropdown:hover > .dropdown-menu{
+  display: block;
+}
+
+/* pointer segitiga */
+.korpri-menu .dropdown-menu::before{
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: -10px -10px 22px rgba(0,0,0,.06);
+}
+
+/* item dropdown jadi "card row" */
+.korpri-menu .dropdown-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 12px 12px;
+  border-radius: 12px;
+  color: #1e2a3a !important;
+  text-decoration: none;
+
+  white-space: normal;
+}
+
+/* icon box */
+.korpri-menu .dropdown-item .dd-ic{
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #f3f5f8;
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  color: #0b2a5a;
+}
+
+/* judul + deskripsi */
+
+.korpri-menu .dropdown-item .dd-txt{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.korpri-menu .dropdown-item .dd-title{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  margin: 0;
+  display: block;
+}
+
+.korpri-menu .dropdown-item .dd-desc{
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #6f7680;
+  display: block;
+}
+
+/* hover */
+.korpri-menu .dropdown-item:hover{
+  background: #f2f4f7;
+  color: #0b2a5a !important;
+}
 /* =====================================================
    BUTTON — KANAN
 ===================================================== */

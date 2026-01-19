@@ -1,0 +1,221 @@
+:root{
+  --navy:#112759;
+  --bg:#f3f5f8;
+  --card:#ffffff;
+  --muted:#6f7680;
+  --shadow:0 10px 25px rgba(0,0,0,.12);
+  --radius:10px;
+}
+
+/* Atas lebih sempit (container bawaan Bootstrap), ini hanya spacing */
+.kontak-page{
+  margin-top: -20px;
+  position: relative;    /* wajib supaya z-index aktif */
+  z-index: 5;
+}
+
+/* Panel atas */
+.kontak-panel{
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.kontak-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.kontak-left, .kontak-right{
+  padding: 50px 80px;
+}
+
+.kontak-grid{
+  position: relative;
+}
+
+.kontak-grid::after{
+  content: "";
+  position: absolute;
+  top: 45px;
+  bottom: 45px;
+  left: 50%;
+  width: 2px;
+
+  /* efek mengecil/fade di ujung */
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 39, 89, 0) 0%,
+    rgba(17, 39, 89, .35) 12%,
+    rgba(17, 39, 89, .55) 50%,
+    rgba(17, 39, 89, .35) 88%,
+    rgba(17, 39, 89, 0) 100%
+  );
+
+  transform: translateX(-0.5px);
+  pointer-events: none;
+}
+
+.kontak-heading{
+  font-weight: 700;
+  font-family: 'Cinzel';
+  font-size: 32px;
+  letter-spacing: .3px;
+  margin: 4px 0 10px;
+  text-transform: uppercase;
+  color: #112759;
+}
+
+.kontak-sub{
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.kontak-list{
+  display: grid;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.kontak-item{
+  display: flex;
+  align-items: flex-start; /* atau center sesuai desain */
+  gap: 15px;
+}
+
+.kontak-ic{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #f0f3f7;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 55px;   /* WAJIB sama dengan width */
+  padding: 0;       /* pastikan tidak ada padding yang bikin oval */
+  box-sizing: border-box;
+  overflow: hidden; /* jaga-jaga kalau ada isi keluar */
+}
+
+.kontak-ic svg{ width: 20px; height: 20px; }
+
+.kontak-label{
+  font-size: 18px;
+  font-family: 'Cinzel';
+  font-weight: 700;
+  color: #112759;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.kontak-value{
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.25;
+}
+
+.kontak-sosmed{
+  margin-top: 50px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.sosmed-btn{
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #eef2f7;
+  color: #112759;
+  text-decoration: none;
+  transition: .15s ease;
+}
+
+.sosmed-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(.98);
+}
+
+/* optional warna brand */
+.sosmed-btn.fb:hover{ background:#e7f0ff; color:#1877F2; }
+.sosmed-btn.ig:hover{ background:#fff0f6; color:#E1306C; }
+.sosmed-btn.in:hover{ background:#e9f4ff; color:#0A66C2; }
+.sosmed-btn.yt:hover{ background:#ffefef; color:#FF0000; }
+.sosmed-btn.x:hover{  background:#eef2f7; color:#111; }
+
+/* Form */
+.kontak-form{
+  display: grid;
+  margin-top: 30px;
+  gap: 20px; 
+}
+
+.form-row.two{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-controlx{
+  width: 100%;
+  border: 1px solid #dbe3ee;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  outline: none;
+  background: #fff;
+}
+
+.form-controlx:focus{
+  border-color: #112759;
+  box-shadow: 0 0 0 3px rgba(76, 137, 255, .15);
+}
+
+textarea.form-controlx{
+  resize: vertical;
+  min-height: 110px;
+}
+
+.btn-kirim{
+  margin-top: 2px;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-weight: 700;
+  background: var(--navy);
+  color: #fff;
+}
+
+/* Map full-width */
+.kontak-map-fluid{
+  margin-top: 30px;  /* jarak dari form */
+}
+
+.map-wrap--fluid{
+  border-radius: 0;  /* karena full layar (opsional) */
+}
+
+.map-wrap--fluid .map-embed{
+  height: 400px;     /* sesuaikan */
+}
+
+.map-wrap--fluid iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 860px){
+  .kontak-grid{ grid-template-columns: 1fr; }
+  .kontak-left{ border-right: 0; border-bottom: 1px solid #e8edf3; }
+  .form-row.two{ grid-template-columns: 1fr; }
+  .map-embed{ height: 340px; }
+}

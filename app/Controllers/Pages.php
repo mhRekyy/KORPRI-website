@@ -10,4 +10,11 @@ class Pages extends BaseController
             'pageTitle' => 'VISI & MISI KORPRI',
         ]);
     }
+
+    public function kontakKami()
+    {
+        return view('pages/kontak_kami', [
+            'pageTitle' => 'KONTAK KAMI',
+        ]);
+    }
 }

@@ -8,4 +8,5 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Home::index');
 $routes->get('visi-misi', 'Pages::visiMisi');
+$routes->get('kontak-kami', 'Pages::kontakKami');
 

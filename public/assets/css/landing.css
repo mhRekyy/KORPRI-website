@@ -34,7 +34,7 @@ main {
    ========================= */
 
 .landing-wrap{
-  background: #FAF8F2;
+  background: #ffffff;
   height: auto;
   position: relative;
   margin: 0 !important;
@@ -178,7 +178,7 @@ main {
 .quick-access-grid {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
@@ -194,7 +194,7 @@ main {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  width: 300px;
+  width: 310px;
   height: 80px;
   box-sizing: border-box;
 }

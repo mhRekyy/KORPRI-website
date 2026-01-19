@@ -31,33 +31,31 @@
     <div class="quick-access-section">
       <div class="container">
         <div class="quick-access-grid">
-          <div class="quick-access-item">
-            <div class="quick-icon">
-              <i class="fas fa-search"></i>
-            </div>
+
+          <a class="quick-access-item" href="<?= base_url('cek-keanggotaan') ?>">
+            <div class="quick-icon"><i class="fas fa-search"></i></div>
             <h3>Cek Keanggotaan</h3>
-          </div>
-          <div class="quick-access-item">
-            <div class="quick-icon">
-              <i class="fas fa-balance-scale"></i>
-            </div>
+          </a>
+
+          <a class="quick-access-item" href="<?= base_url('bantuan-hukum') ?>">
+            <div class="quick-icon"><i class="fas fa-balance-scale"></i></div>
             <h3>Bantuan Hukum</h3>
-          </div>
-          <div class="quick-access-item">
-            <div class="quick-icon">
-              <i class="fas fa-users"></i>
-            </div>
+          </a>
+
+          <a class="quick-access-item" href="<?= base_url('koperasi') ?>">
+            <div class="quick-icon"><i class="fas fa-users"></i></div>
             <h3>Koperasi KORPRI</h3>
-          </div>
-          <div class="quick-access-item">
-            <div class="quick-icon">
-              <i class="fas fa-book"></i>
-            </div>
+          </a>
+
+          <a class="quick-access-item" href="<?= base_url('e-kinerja') ?>">
+            <div class="quick-icon"><i class="fas fa-book"></i></div>
             <h3>E-Kinerja</h3>
-          </div>
+          </a>
+
         </div>
       </div>
     </div>
+
 
     <!-- Latest News Section -->
     <div class="news-section">

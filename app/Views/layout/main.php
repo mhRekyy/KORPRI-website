@@ -14,7 +14,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=clash-display@500,600,700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="<?= base_url('assets/css/pages/berita.css') ?>">
+
+  <!-- CSS Footer -->
+  <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 
 </head>
@@ -33,5 +37,9 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script src="<?= base_url('assets/js/landing.js') ?>"></script>
+
+    <!-- Footer kamu -->
+  <?= view('layout/footer') ?>
+  
 </body>
 </html>

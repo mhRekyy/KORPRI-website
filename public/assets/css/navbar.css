@@ -91,7 +91,7 @@
 }
 
 .korpri-menu a:hover {
-    color: #d7c28a;
+    color: #C79A53;
 }
 
 /* =====================================================
@@ -127,8 +127,8 @@
 
 .korpri-menu .dropdown-menu.dd-wide{
   columns: 2;
-  column-gap: 20px;
-  min-width: 600px;
+  column-gap: 10px;
+  min-width: 500px;
 }
 
 /* biar item tidak kepotong pindah kolom */
@@ -224,7 +224,7 @@
 .btn-kontak {
     grid-area: button;
     justify-self: end;
-    background: #C7A561;
+    background: #C79A53;
     color: #112759;
     padding: 5px 20px;
     border-radius: 10px;

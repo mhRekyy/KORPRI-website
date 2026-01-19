@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/title_pages.css') ?>">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Footer -->
+  <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
 </head>
 
 <body class="has-fixed-navbar">
@@ -27,6 +34,9 @@
   <main>
     <?= $this->renderSection('content') ?>
   </main>
+
+  <!-- Footer kamu -->
+  <?= view('layout/footer') ?>
 
 </body>
 </html>

@@ -1,0 +1,201 @@
+/* Full width section, tapi isi tetap rapi di tengah */
+.vm-page{
+  width: 100%;
+  background: #FAF8F2;
+  padding: 50px 100px;
+}
+
+/* Konten utama (atur lebar sesuai selera) */
+.vm-inner{
+  max-width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e3e3e3;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+/* VISI */
+.vm-visi{
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 0 5px;
+}
+
+.vm-title-left{
+  margin: 0 0 20px;
+  font-size: 40px;
+  font-family: 'Cinzel';
+  font-weight: 700;
+  color: #0e2a5f;
+
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 10px;
+  text-decoration-color: #d7c28a;
+}
+
+.vm-visi__desc{
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: #1b1b1b;
+  max-width: 700px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.vm-visi__mark{
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Kalau kamu punya watermark png */
+.vm-watermark{
+  width: 250px;
+}
+
+/* JUDUL SECTION + GARIS */
+.vm-section-head{
+  margin: 60px 0 60px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vm-section-head--mt{ margin-top: 38px; }
+
+.vm-section-head__line{
+  height: 3px;
+  background: #d7c28a;
+  flex: 1;
+}
+
+.vm-section-head__title{
+  margin: 10px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Cinzel';
+  font-weight: 700;
+  color: #0e2a5f;
+  line-height: 0.9;
+}
+
+/* GRID */
+.vm-grid{
+  display: grid;
+  gap: 30px;
+}
+
+.vm-grid--3{ grid-template-columns: repeat(3, 1fr); }
+.vm-grid--4{ grid-template-columns: repeat(4, 1fr); }
+
+/* CARD MISI */
+.vm-card{
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.07);
+  min-height: 120px;
+}
+
+.vm-card__top{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vm-badge{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0e2a5f;
+  color: #d0a84b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+/* Icon kanan atas (Font Awesome) */
+.vm-card__icon{
+  font-size: 40px;
+  color: #d0a84b;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.vm-card__desc{
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.55;
+  font-style: italic;
+  color: #2c2c2c;
+}
+
+/* CARD NILAI (BIRU) - gradient seperti desain */
+.vm-card--nilai{
+  border: none;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 12px 20px rgba(0,0,0,.14);
+
+  /* multi-layer background: highlight + gradient utama */
+  background:
+    /* highlight dari kanan */
+    radial-gradient(circle at top left,
+      rgba(255,255,255,.18) 0%,
+      rgba(255,255,255,0) 55%),
+    /* gradient utama dari kanan ke kiri */
+    linear-gradient(to right,
+      #0b2f63 0%,
+      #153e86 45%,
+      #1f5aa5 100%);
+}
+
+
+.vm-nilai__icon{
+  font-size: 36px;
+  color: #f2d27a;
+  margin: 2px auto 20px;
+  display: block;
+}
+
+.vm-nilai__title{
+  margin: 0 0 8px;
+  font-family: 'Cinzel';
+  font-size: 32px;
+}
+
+.vm-nilai__desc{
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  font-style: italic;
+  opacity: .9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px){
+  .vm-grid--4{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px){
+  .vm-visi{ grid-template-columns: 1fr; }
+  .vm-grid--3{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px){
+  .vm-grid--3,
+  .vm-grid--4{ grid-template-columns: 1fr; }
+}

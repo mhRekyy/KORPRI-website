@@ -4,8 +4,89 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        return view('welcome_message');
+        $data = [
+            'title' => 'Beranda - KORPRI Aceh',
+            'slides' => [
+            [
+                'image' => base_url('assets/img/slide-1.JPG'),
+                'caption' => 'Upacara KORPRI Aceh',
+            ],
+            [
+                'image' => base_url('assets/img/slide-2.JPG'),
+                'caption' => 'MUSPROF KORPRI ACEH 2025',
+            ],
+            [
+                'image' => base_url('assets/img/slide-3.JPG'),
+                'caption' => 'Pornas KORPRI XVII',
+            ],
+        ],
+
+        'news' => [
+                [
+                    'image' => base_url('assets/img/slide-1.JPG'),
+                    'title' => 'Berita 1',
+                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'date' => '14 Januari 2025'
+                ],
+                [
+                    'image' => base_url('assets/img/slide-2.JPG'),
+                    'title' => 'Berita 2',
+                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'date' => '14 Januari 2025'
+                ],
+                [
+                    'image' => base_url('assets/img/slide-3.JPG'),
+                    'title' => 'Berita 3',
+                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'date' => '14 Januari 2025'
+                ],
+            ],
+
+        'pengumuman' => [
+                ['title' => 'Pengumuman 1', 'link' => '/pengumuman/1'],
+                ['title' => 'Pengumuman 2', 'link' => '/pengumuman/2'],
+                ['title' => 'Pengumuman 3', 'link' => '/pengumuman/3'],
+            ],
+            'tentang_korpri' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            'programs' => [
+                [
+                    'icon' => 'fas fa-gavel',
+                    'title' => 'LAYANAN BANTUAN HUKUM',
+                    'description' => 'Layanan konsultasi dan bantuan hukum untuk anggota KORPRI',
+                    'link' => '/program/bantuan-hukum'
+                ],
+                [
+                    'icon' => 'fas fa-hand-holding-usd',
+                    'title' => 'KOPERASI DIGITAL & INVESTASI',
+                    'description' => 'Program peningkatan kesejahteraan anggota KORPRI',
+                    'link' => '/program/kesejahteraan'
+                ],
+                [
+                    'icon' => 'fas fa-building',
+                    'title' => 'DIKLAT & PENGEMBANGAN KARIR',
+                    'description' => 'Koperasi KORPRI untuk kemajuan ekonomi anggota',
+                    'link' => '/program/koperasi'
+                ],
+                [
+                    'icon' => 'fas fa-store',
+                    'title' => 'KORPRI MART & NIAGA',
+                    'description' => 'Pemberdayaan UMKM untuk anggota KORPRI',
+                    'link' => '/program/umkm'
+                ],
+            ],
+
+        'gallery' => [
+            ['image' => base_url('assets/img/slide-1.JPG'), 'title' => 'Kegiatan 1'],
+            ['image' => base_url('assets/img/slide-2.JPG'), 'title' => 'Kegiatan 2'],
+            ['image' => base_url('assets/img/slide-3.JPG'), 'title' => 'Kegiatan 3'],
+            ['image' => base_url('assets/img/slide-4.JPG'), 'title' => 'Kegiatan 4'],
+            ['image' => base_url('assets/img/slide-5.JPG'), 'title' => 'Kegiatan 5'],
+        ]
+
+        ];
+
+        return view('home', $data);
     }
 }

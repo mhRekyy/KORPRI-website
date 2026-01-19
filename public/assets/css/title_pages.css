@@ -1,0 +1,53 @@
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+
+.has-fixed-navbar { padding-top: 80px; } /* navbar kamu 80px */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
+.title-pages{
+  width: 100%;
+  margin: 0;           /* pastikan tidak ada margin luar */
+  border: 0;
+  border-radius: 0;
+  position: relative;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url("../img/bg.png") center/cover no-repeat;
+}
+
+.title-pages__inner{
+  position: relative;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.title-pages__logo{
+  height: 180px;
+  width: auto;
+  display: inline-block;
+}
+
+.title-pages__title{
+  margin: 0;
+  color: #fff;
+  font-size: 50px;
+  font-family: 'Cinzel';
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+@media (max-width: 576px){
+  .title-pages{ min-height: 180px; }
+  .title-pages__logo{ height: 60px; }
+  .title-pages__title{ font-size: 28px; }
+}

@@ -1,0 +1,180 @@
+/* =========================
+   BASE
+========================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    background: #f5f7fb;
+    color: #333;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* =========================
+   COLORS
+========================= */
+:root {
+    --primary: #0D76FF;
+    --primary-light: #CEE3FF;
+    --success: #00BE7D;
+    --warning: #FFC400;
+    --danger: #FF0068;
+    --dark: #333;
+}
+
+.bg-primary { background: var(--primary) !important; }
+.bg-primary-light { background: var(--primary-light) !important; }
+.text-primary { color: var(--primary) !important; }
+.text-success { color: var(--success) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-danger { color: var(--danger) !important; }
+
+/* =========================
+   HEADER / NAVBAR
+========================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 100;
+    transition: 0.3s ease;
+}
+
+.header.active {
+    box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.header-logo {
+    max-height: 40px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+}
+
+.header + .page-content {
+    padding-top: 90px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+    border: none;
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #085bd6;
+}
+
+.btn-light {
+    background: #fff;
+    color: #333;
+}
+
+/* =========================
+   CARD & SECTION
+========================= */
+section {
+    padding: 80px 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* MOBILE */
+@media (max-width: 991px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 15px;
+    }
+
+}

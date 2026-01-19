@@ -17,7 +17,7 @@
             <!-- MENU -->
             <nav class="korpri-menu d-none d-md-flex">
                 <a href="<?= base_url('tentang-kami') ?>">Tentang kami</a>
-                <a href="<?= base_url('galeri') ?>">Galeri</a>
+                <a href="<?= base_url('galeri') ?>" class="nav-link">Galeri</a>
                 <a href="<?= base_url('kebijakan') ?>">Kebijakan</a>
                 <a href="<?= base_url('media-publik') ?>">Media Publik</a>
             </nav>

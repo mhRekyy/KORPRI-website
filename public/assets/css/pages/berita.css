@@ -1,0 +1,264 @@
+:root{
+  --bg:#f4f4f4;
+
+  --card:#ffffff;
+  --stroke:#e8e8e8;
+
+  --shadow: 0 16px 28px rgba(0,0,0,.12);
+  --shadowInner: 0 12px 22px rgba(0,0,0,.10);
+
+  --gold:#c8a24b;
+  --gold2:#b7923d;
+
+  --dash:#d7d7d7;
+}
+
+/* page */
+.berita-wrap{ padding: 26px 0 56px; background: var(--bg); }
+.berita-container{
+  width: min(1500px, calc(100% - 28px));
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+/* filter tetap (boleh pakai punyamu) */
+.berita-filter{
+  display: grid;
+  grid-template-columns: 280px 1fr 88px;
+  gap: 16px;
+  align-items: center;
+  margin-top: -45px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 5;
+}
+
+/* ===== FIX: styling input/select filter agar kembali seperti desain ===== */
+.bf-select,
+.bf-input{
+  height: 58px;
+  border-radius: 14px;                 /* lebih halus */
+  border: 1px solid rgba(0,0,0,.10);
+  background: #fff;                    /* ini yang hilang */
+  padding: 0 18px;
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 14px 26px rgba(0,0,0,.10);
+}
+
+/* biar select keliatan seperti desain (ada panah, rapi) */
+.bf-select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #666 50%),
+    linear-gradient(135deg, #666 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 50%,
+    calc(100% - 16px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* placeholder input (opsional, biar lembut) */
+.bf-input::placeholder{
+  color: #9a9a9a;
+}
+
+/* tombol search (sudah oke, tapi samakan radius) */
+.bf-btn{
+  border-radius: 14px;
+}
+
+
+/* ===== LIST + TIMELINE GLOBAL ===== */
+.berita-list--timeline{
+  position: relative;
+  display: grid;
+  gap: 28px;
+  padding: 6px 0;
+}
+
+/* ini garis emas NYAMBUNG dari atas ke bawah */
+.berita-list--timeline::before{
+  content:"";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 65px); /* pusat kolom tengah (54px/2) */
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(200,162,75,.95) 0 7px,
+    transparent 7px 14px
+  );
+  opacity: .85;
+  border-radius: 2px;
+}
+
+/* ===== ROW (1 berita) ===== */
+.brow{
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(340px, 1fr) 54px minmax(420px, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* kolom tengah hanya untuk badge */
+.bmid{
+  position: relative;
+  width: 54px;              /* samakan dengan lebar kolom tengah */
+  display: grid;
+  justify-content: center;  /* center horizontal */
+  align-items: flex-start;  
+}
+
+
+/* badge tanggal */
+/* badge tanggal (lebih besar tapi tetap center di garis) */
+.bdate{
+  margin-top: 8px;
+
+  width: 140px;        /* dari 120 -> 140 (lebih besar) */
+  padding: 12px 10px;  /* lebih tinggi */
+  border-radius: 8px;  /* sedikit lebih bulat */
+
+  background: var(--gold);
+  color: #fff;
+
+  font-size: 12px;     /* dari 11 -> 12 */
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+
+  box-shadow: 0 14px 24px rgba(0,0,0,.16);
+  z-index: 2;
+
+  /* kunci agar selalu pas di tengah kolom (dan garis) */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* ===== CARD base ===== */
+.bcard{
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+/* kiri: media */
+.bcard--media{ }
+.bmedia{
+  position: relative;
+  height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ececec;
+  box-shadow: var(--shadowInner);
+}
+
+.bmedia__img{ width:100%; height:100%; object-fit:cover; display:block; }
+.bmedia__ph{ height:100%; display:grid; place-items:center; background:#e9e9e9; }
+.bmedia__icon{ font-size: 46px; opacity:.55; }
+.bmedia__gold{
+  position:absolute; left:0; right:0; bottom:0;
+  height: 22px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+}
+
+/* ===== kanan: 2 box ===== */
+.bright{
+  display: grid;
+  grid-template-rows: 86px 1fr; /* box atas tipis, bawah besar */
+  gap: 14px;
+}
+
+/* box atas kosong */
+.bcard--top{
+  padding: 0;              /* kosong, seperti desain */
+  min-height: 86px;
+}
+
+/* box bawah isi */
+.bcard--text{ padding: 14px; }
+
+.btext{
+  position: relative;
+  height: 280px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: var(--shadowInner);
+  padding: 20px 20px 20px 40px;
+  overflow: hidden;
+}
+
+/* dash abu di dalam box teks */
+.btext__dash{
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+  width: 2px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--dash) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+.btext__p{
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #3f3f3f;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px){
+  .berita-filter{ grid-template-columns: 1fr; }
+  .berita-list--timeline::before{ display:none; }
+
+  .brow{
+    grid-template-columns: 1fr;
+  }
+  .bmid{
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .bright{
+    grid-template-rows: 70px 1fr;
+  }
+  .bmedia{ height: 200px; }
+  .btext{ height: auto; min-height: 160px; }
+}
+
+
+/* ===== FIX tombol search (ikon & style) ===== */
+.bf-btn{
+  width: 88px;
+  height: 58px;
+  border-radius: 12px;
+  background: var(--gold);
+  border: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 26px rgba(0,0,0,.12);
+}
+
+.bf-btn__icon{
+  display: inline-block;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-1px); /* biar pas tengah */
+}

@@ -59,4 +59,18 @@ class Pages extends BaseController
 
         return view('pages/Berita', $data); // karena file view kamu taruh di app/Views/Berita.php
     }
+
+    public function Sejarah()
+    {
+        return view('pages/sejarah', [
+            'pageTitle' => 'SEJARAH KORPRI',
+        ]);
+    }
+
+    public function TujuanFungsi()
+    {
+        return view('pages/tujuan_fungsi', [
+            'pageTitle' => 'TUJUAN & FUNGSI KORPRI',
+        ]);
+    }
 }

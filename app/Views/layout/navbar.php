@@ -70,7 +70,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/sejarah') ?>">
+        <a class="dropdown-item" href="<?= base_url('sejarah') ?>">
           <span class="dd-ic"><i class="fas fa-landmark"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Sejarah KORPRI</span>
@@ -80,7 +80,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/tujuan-fungsi') ?>">
+        <a class="dropdown-item" href="<?= base_url('tujuan_fungsi') ?>">
           <span class="dd-ic"><i class="fas fa-clipboard-list"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Tujuan dan Fungsi</span>

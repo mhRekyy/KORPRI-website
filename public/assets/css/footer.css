@@ -12,7 +12,7 @@
 .korpri-footer__heading{
   color: #C79A53;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .2px;
   margin-bottom: 16px;
 }
@@ -70,7 +70,7 @@
   align-items: center;
 }
 
-.sosmed-btn{
+.footer_sosmed-btn{
   width: 25px;
   height: 25px;
   border-radius: 6px;
@@ -81,17 +81,17 @@
   transition: .15s ease;
 }
 
-.sosmed-btn:hover{
+.footer_sosmed-btn:hover{
   transform: translateY(-1px);
   filter: brightness(.98);
 }
 
 /* optional warna brand */
-.sosmed-btn.fb:hover{ background:#e7f0ff; color:#1877F2; }
-.sosmed-btn.ig:hover{ background:#fff0f6; color:#E1306C; }
-.sosmed-btn.in:hover{ background:#e9f4ff; color:#0A66C2; }
-.sosmed-btn.yt:hover{ background:#ffefef; color:#FF0000; }
-.sosmed-btn.x:hover{  background:#eef2f7; color:#111; }
+.footer_sosmed-btn.fb:hover{ background:#e7f0ff; color:#1877F2; }
+.footer_sosmed-btn.ig:hover{ background:#fff0f6; color:#E1306C; }
+.footer_sosmed-btn.in:hover{ background:#e9f4ff; color:#0A66C2; }
+.footer_sosmed-btn.yt:hover{ background:#ffefef; color:#FF0000; }
+.footer_sosmed-btn.x:hover{  background:#eef2f7; color:#111; }
 
 /* Statistik */
 .korpri-footer__list{

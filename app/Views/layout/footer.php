@@ -20,19 +20,19 @@
         </p>
 
         <div class="korpri-footer__sosmed">
-          <a class="sosmed-btn fb" href="https://facebook.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <a class="footer_sosmed-btn fb" href="https://facebook.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <i class="fab fa-facebook-f" aria-hidden="true"></i>
           </a>
-          <a class="sosmed-btn x" href="https://x.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <a class="footer_sosmed-btn x" href="https://x.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
             <i class="fab fa-x-twitter" aria-hidden="true"></i>
           </a>
-          <a class="sosmed-btn ig" href="https://instagram.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a class="footer_sosmed-btn ig" href="https://instagram.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <i class="fab fa-instagram" aria-hidden="true"></i>
           </a>
-          <a class="sosmed-btn in" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a class="footer_sosmed-btn in" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
           </a>
-          <a class="sosmed-btn yt" href="https://youtube.com/@USERNAME" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <a class="footer_sosmed-btn yt" href="https://youtube.com/@USERNAME" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <i class="fab fa-youtube" aria-hidden="true"></i>
           </a>
         </div>

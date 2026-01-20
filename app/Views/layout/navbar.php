@@ -114,7 +114,7 @@
           <span class="dd-ic"><i class="fas fa-user-edit"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Sekretaris jenderal dari masa ke masa</span>
-            <small class="dd-desc">Daftar sekretaris jenderal.</small>
+            <small class="dd-desc">Daftar sekretaris Jenderal.</small>
           </span>
         </a>
       </li>

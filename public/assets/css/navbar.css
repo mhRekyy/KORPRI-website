@@ -263,3 +263,94 @@ body {
         display: none;
     }
 }
+
+
+/* ===== Smooth hover enhancement (ADD-ON) ===== */
+
+/* Navbar halus saat berubah (kalau nanti kamu tambahkan efek hover/scroll) */
+.korpri-navbar{
+  transition: background-color .35s cubic-bezier(.22,.61,.36,1),
+              box-shadow .35s cubic-bezier(.22,.61,.36,1),
+              backdrop-filter .35s cubic-bezier(.22,.61,.36,1);
+}
+
+/* Link menu lebih halus + sedikit “lift” */
+.korpri-menu a{
+  transition: color .22s ease,
+              opacity .22s ease,
+              transform .22s cubic-bezier(.22,.61,.36,1);
+}
+.korpri-menu a:hover{
+  transform: translateY(-1px);
+}
+
+/* Dropdown item halus */
+.korpri-menu .dropdown-item{
+  transition: background-color .22s ease,
+              color .22s ease,
+              transform .22s cubic-bezier(.22,.61,.36,1);
+}
+.korpri-menu .dropdown-item:hover{
+  transform: translateX(2px);
+}
+
+/* Tombol kontak: smooth + sedikit lift */
+.btn-kontak{
+  transition: background-color .25s ease,
+              color .25s ease,
+              transform .25s cubic-bezier(.22,.61,.36,1),
+              box-shadow .25s cubic-bezier(.22,.61,.36,1);
+}
+.btn-kontak:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(0,0,0,.18);
+}
+
+/* Logo: halus saat di-hover (opsional) */
+.korpri-logo img{
+  transition: transform .25s cubic-bezier(.22,.61,.36,1),
+              filter .25s ease;
+}
+.korpri-logo:hover img{
+  transform: translateY(-1px);
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.25));
+}
+
+/* ===== Smooth dropdown open/close (ADD-ON) ===== */
+
+/* default: hidden tapi tetap "ada" untuk bisa ditransisi */
+.korpri-menu .dropdown-menu{
+  display: block !important;              /* override display:none */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(-50%) translateY(10px) scale(.98);
+  transition: opacity .22s ease,
+              transform .22s cubic-bezier(.22,.61,.36,1),
+              visibility 0s linear .22s;  /* visibility nyala setelah anim selesai */
+  will-change: opacity, transform;
+}
+
+/* saat hover: muncul halus */
+.korpri-menu .nav-item.dropdown:hover > .dropdown-menu{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateX(-50%) translateY(0) scale(1);
+  transition-delay: 0s, 0s, 0s;
+}
+
+/* opsional: biar segitiga ikut smooth juga */
+.korpri-menu .dropdown-menu::before{
+  opacity: 0;
+  transform: translateX(-50%) rotate(45deg) translateY(6px);
+  transition: opacity .22s ease, transform .22s cubic-bezier(.22,.61,.36,1);
+}
+
+.korpri-menu .nav-item.dropdown:hover > .dropdown-menu::before{
+  opacity: 1;
+  transform: translateX(-50%) rotate(45deg) translateY(0);
+}
+

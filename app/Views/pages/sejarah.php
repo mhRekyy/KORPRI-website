@@ -47,7 +47,7 @@
         </button>
 
         <button class="sejarah__tab" type="button">
-          <span class="sejarah__tab-ico"><i class="bi bi-scales"></i></span>
+          <span class="sejarah__tab-ico"><i class="bi bi-receipt"></i></span>
           <span class="sejarah__tab-text">
             <strong>1971</strong>
             <small>Lahirnya KORPRI</small>

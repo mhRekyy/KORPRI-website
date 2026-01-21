@@ -1,293 +1,126 @@
 :root{
-  --navy:#0e254a;
-  --navy2:#0a1c38;
-  --gold:#c8a24b;
-  --gold2:#b7923d;
-
-  --bg:#f4efe9;
-  --paper:#f7f2ec;
-
-  --ink:#1f2a37;
-  --muted:#4b5563;
-
-  --line: rgba(0,0,0,.12);
-  --shadow: 0 18px 34px rgba(0,0,0,.16);
+  --tf-ink: #112759;     /* navy */
+  --tf-soft: #FAF8F2;    /* krem card */
+  --tf-gold: #c7a25a;    /* aksen emas */
+  --tf-border: rgba(31, 42, 68, .18);
+  --tf-shadow: 0 8px 15px rgba(17, 39, 89, .12);
 }
 
-.tf2{
-  background: linear-gradient(#f7f2ec, var(--bg));
+.tf{
+  background: var(--tf-soft);
+  padding: 52px 0 64px;
 }
 
-/* ===== HERO mirip nuansa gambar (navy + motif + glow) ===== */
-.tf2Hero{
-  position: relative;
-  padding: 44px 0 34px;
-  background:
-    radial-gradient(900px 420px at 50% 30%, rgba(200,162,75,.26), transparent 62%),
-    linear-gradient(180deg, rgba(14,37,74,.92), rgba(10,28,56,.96));
-  overflow: hidden;
-  border-bottom: 1px solid rgba(200,162,75,.35);
+.tf__container{
+  width: min(1200px, calc(100% - 36px));
+  margin-inline: auto;
 }
 
-/* Opsional: kalau punya motif navy */
-.tf2Hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("../../img/bg/pattern-navy.png");
-  background-size: cover;
-  background-position: center;
-  opacity: .25;
-  pointer-events:none;
-}
-
-/* Ornamen emas (opsional) */
-.tf2Hero::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  top: 72px;
-  height: 10px;
-  background-image: url("../../img/bg/ornament-gold.png");
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: auto 10px;
-  opacity: .9;
-  pointer-events:none;
-}
-
-.tf2Hero__inner{
-  width: min(980px, calc(100% - 28px));
-  margin: 0 auto;
+.tf__header{
   text-align: center;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 20px;
 }
 
-.tf2Hero__seal{
-  width: 118px;
-  height: 118px;
-  margin: 0 auto 14px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 50% 35%, rgba(255,255,255,.25), rgba(255,255,255,.06));
-  border: 1px solid rgba(200,162,75,.55);
-  box-shadow:
-    0 0 0 6px rgba(200,162,75,.12),
-    0 22px 44px rgba(0,0,0,.35);
+.tf__header--spaced{
+  margin-top: 50px;
 }
 
-.tf2Hero__sealImg{
-  width: 72%;
-  height: 72%;
-  object-fit: contain;
-  filter: drop-shadow(0 14px 16px rgba(0,0,0,.35));
-}
-
-.tf2Hero__title{
+.tf__title{
+  font-family: "Cinzel";
+  font-size: clamp(32px, 3.2vw, 46px);
+  color: var(--tf-ink);
+  letter-spacing: .5px;
   margin: 0;
-  font-family: "Georgia","Times New Roman",serif;
-  font-size: clamp(34px, 4vw, 54px);
-  letter-spacing: 1.2px;
-  color: #fff;
-  text-shadow: 0 10px 26px rgba(0,0,0,.35);
 }
 
-.tf2Hero__divider{
-  width: 140px;
+.tf__title-line{
+  width: 280px;
   height: 2px;
-  margin: 16px auto 0;
-  background: linear-gradient(90deg, transparent, rgba(200,162,75,.95), transparent);
+  background: linear-gradient(90deg, transparent, var(--tf-ink), transparent);
+  margin: 10px auto 0;
+  opacity: .75;
 }
 
-.tf2Wrap{
-  width: min(980px, calc(100% - 28px));
-  margin: 0 auto;
-  padding: 22px 0 56px;
+/* Card Tujuan */
+.tfCard{
+  background: #ffffff;
+  border: 1px solid var(--tf-border);
+  border-radius: 14px;
+  box-shadow: var(--tf-shadow);
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.tf2Heading{
-  margin: 18px 0 14px;
-  text-align: center;
-  font-family: "Georgia","Times New Roman",serif;
-  font-size: clamp(26px, 3vw, 40px);
-  color: #22304a;
-}
-
-.tf2Heading--mt{ margin-top: 26px; }
-
-/* ===== CARD umum ===== */
-.tf2Card{
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-}
-
-/* ===== Tujuan card: konten kiri + logo kanan + gelombang halus ===== */
-.tf2Card--goal{
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1.35fr .65fr;
-  gap: 18px;
-  padding: 18px;
-}
-
-.tf2Card--goal::before{
-  content:"";
-  position:absolute;
-  right:-120px;
-  top:-40px;
-  width: 520px;
-  height: 320px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(200,162,75,.22), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(14,37,74,.10), transparent 62%);
-  transform: rotate(-8deg);
-  opacity: .9;
-}
-
-.tf2Card__content{
-  position: relative;
-  z-index: 1;
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-.tf2Card__kicker{
-  margin: 0 0 8px;
+.tfCard__text p{
+  max-width: 900px;
+  margin: 10px 10px;
+  color: rgba(0, 0, 0, 0.78);
+  line-height: 1.5;
   font-size: 16px;
-  font-weight: 800;
-  color: #22304a;
+  font-style: italic; /* efek mirip desain */
 }
 
-.tf2Card__lead{
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--muted);
+.tfCard__text p:last-child{ margin-bottom: 0; }
+
+.tfCard__logo{
+  text-align: center;
+  justify-items: center;
 }
 
-.tf2List{
-  margin: 0;
-  padding-left: 18px;
-  font-size: 13px;
-  line-height: 1.95;
-  color: #2f3a48;
+.tfCard__logo img{
+  width: min(200px, 100%);
+  height: auto;
 }
 
-.tf2List li{ margin: 6px 0; }
+/* Grid Fungsi */
+.tfGrid{
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 28px;
+  align-items: center;
+  margin-top: 8px;
+}
 
-.tf2Card__media{
-  position: relative;
-  z-index: 1;
+.tfGrid__art{
   display: grid;
   place-items: center;
-  padding-top: 6px;
 }
 
-.tf2LogoBig{
-  width: min(260px, 100%);
+.tfGrid__art img{
+  width: min(400px, 100%);
   height: auto;
-  object-fit: contain;
-  opacity: .95;
   filter: drop-shadow(0 18px 22px rgba(0,0,0,.12));
 }
 
-.tf2Tag{
-  margin-top: 10px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: .8px;
-  color: #1b1b1b;
-  background: linear-gradient(90deg, var(--gold), var(--gold2));
-  box-shadow: 0 14px 22px rgba(200,162,75,.25);
-}
-
-/* ===== Fungsi: media kiri + list kanan ===== */
-.tf2Grid{
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.tf2Media{
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 14px;
-  min-height: 340px;
-  display: grid;
-  place-items: center;
-}
-
-.tf2Illu{
-  width: 100%;
-  max-width: 380px;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 18px 22px rgba(0,0,0,.14));
-}
-
-.tf2Card--func{
-  padding: 16px;
-}
-
-.tf2List--func{
-  padding-left: 20px;
-}
-
-.tf2Source{
-  margin-top: 12px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(200,162,75,.10);
-  border: 1px solid rgba(200,162,75,.22);
-  font-size: 12px;
-  color: #4b5563;
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-.tf2Source a{
-  color: #7a5a14;
-  font-weight: 900;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(122,90,20,.35);
-}
-
-/* ===== Quote ===== */
-.tf2Quote{
-  margin: 16px auto 0;
-  text-align: center;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 12px 22px rgba(0,0,0,.10);
-
-  font-family: "Georgia","Times New Roman",serif;
-  font-style: italic;
+.tfList{
+  margin: 0;
+  color: rgba(0, 0, 0, 0.86);
+  line-height: 1.75;
   font-size: 16px;
-  line-height: 1.8;
-  color: #2b3442;
 }
 
-.tf2Quote__mark{
-  color: rgba(200,162,75,.95);
-  font-weight: 900;
-  font-size: 22px;
-  margin: 0 6px;
+.tfList li{
+  margin: 8px 0;
 }
 
-/* ===== responsive ===== */
-@media (max-width: 940px){
-  .tf2Card--goal{ grid-template-columns: 1fr; }
-  .tf2Card__media{ order: -1; }
-  .tf2Grid{ grid-template-columns: 1fr; }
-  .tf2Media{ min-height: 240px; }
+.tfList li::marker{
+  font-weight: 800;
+  color: var(--tf-ink);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .tfCard{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .tfGrid{
+    grid-template-columns: 1fr;
+  }
+  .tfGrid__art{
+    order: 2;
+    margin-top: 6px;
+  }
 }

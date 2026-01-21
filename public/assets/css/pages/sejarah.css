@@ -1,11 +1,11 @@
 .sejarah{
   background: #fbfaf6;
   color: #1f2430;
-  padding: 44px 0 72px;
+  padding: 40px 0 80px;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-.sejarah__container{ max-width: 980px; }
+.sejarah__container{ max-width: 1200px; }
 
 /* Header */
 .sejarah__header{
@@ -18,7 +18,7 @@
 .sejarah__header-left{ flex: 1; }
 
 .sejarah__title{
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Cinzel';
   font-weight: 900;
   letter-spacing: .6px;
   color: #1f3a63;
@@ -31,7 +31,7 @@
   max-width: 680px;
   color: rgba(31,36,48,.72);
   line-height: 1.7;
-  font-size: 14.5px;
+  font-size: 16px;
 }
 
 .sejarah__line{
@@ -50,19 +50,11 @@
 }
 
 /* Tabs wrapper (bayangan + radius seperti desain) */
-.sejarah__tabs-wrap{
-  margin-top: 18px;
-  background: #ffffff;
-  border: 1px solid rgba(31,36,48,.10);
-  border-radius: 14px;
-  box-shadow: 0 14px 30px rgba(0,0,0,.08);
-  padding: 14px;
-}
-
 .sejarah__tabs{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 15px;
+  padding: 20px 0 20px;
 }
 
 .sejarah__tab{
@@ -143,16 +135,16 @@
 
 .sejarah__heading{
   margin: 0 0 10px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Cinzel';
   font-weight: 900;
   color: #1f2430;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .sejarah__grid{
   display: grid;
   grid-template-columns: 1.35fr .65fr;
-  gap: 18px;
+  gap: 100px;
   align-items: start;
 }
 
@@ -160,7 +152,7 @@
   margin: 0 0 10px;
   color: rgba(31,36,48,.82);
   line-height: 1.65;
-  font-size: 14.5px;
+  font-size: 14px;
 }
 
 /* Card kanan */
@@ -168,7 +160,7 @@
   background: #f6efe1;
   border: 1px solid rgba(31,36,48,.08);
   border-radius: 10px;
-  padding: 12px 12px;
+  padding: 20px;
 }
 
 .sejarah__card-head{
@@ -194,18 +186,18 @@
 .sejarah__card-title{
   font-weight: 900;
   color: #7a5b1c;
-  font-size: 12.5px;
+  font-size: 16px;
   margin-bottom: 2px;
 }
 
 .sejarah__card-sub{
   font-weight: 800;
-  font-size: 12.5px;
+  font-size: 14.5px;
   color: rgba(31,36,48,.86);
 }
 
 .sejarah__card-subtext{
-  font-size: 12.5px;
+  font-size: 14px;
   color: rgba(31,36,48,.75);
   line-height: 1.55;
 }
@@ -215,7 +207,7 @@
   padding: 0;
   margin: 0;
   color: rgba(31,36,48,.80);
-  font-size: 12.5px;
+  font-size: 14px;
   line-height: 1.7;
 }
 

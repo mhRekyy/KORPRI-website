@@ -73,4 +73,72 @@ class Pages extends BaseController
             'pageTitle' => 'TUJUAN & FUNGSI KORPRI',
         ]);
     }
+    public function Profile()
+    {
+        return view('pages/Profile', [
+            'pageTitle' => 'PROFILE KORPRI',
+        ]);
+    }
+    public function Struktur()
+    {
+        return view('pages/Struktur', [
+            'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN',
+        ]);
+    }
+    public function Kepengurusan()
+    {
+        return view('pages/Kepengurusan', [
+            'pageTitle' => 'Kepengurusan KORPRI',
+        ]);
+    }
+    public function Program()
+    {
+        return view('pages/Program', [
+            'pageTitle' => 'PROGRAM UTAMA KORPRI',
+        ]);
+    }
+    public function KetuaUmum()
+    {
+        return view('pages/KetuaUmum', [
+            'pageTitle' => 'KETUA UMUM KORPRI',
+        ]);
+    }
+    public function Sekjen()
+    {
+        return view('pages/Sekjen', [
+            'pageTitle' => 'SEKRETARIS JENDRAL KORPRI',
+        ]);
+    }
+    public function Peraturan()
+    {
+        return view('pages/Peraturan', [
+            'pageTitle' => 'PERATURAN KORPRI',
+        ]);
+    }
+    public function Keputusan()
+    {
+        return view('pages/Keputusan', [
+            'pageTitle' => 'KEPUTUSAN KORPRI',
+        ]);
+    }
+
+    public function SuratEdaran()
+    {
+        return view('pages/SuratEdaran', [
+            'pageTitle' => 'SURAT EDARAN KORPRI',
+        ]);
+    }
+
+    public function Artikel()
+    {
+        return view('pages/Artikel', [
+            'pageTitle' => 'ARTIKEL KORPRI',
+        ]);
+    }
+    public function Pengumuman()
+    {
+        return view('pages/Pengumuman', [
+            'pageTitle' => 'PENGUMUMAN KORPRI',
+        ]);
+    }
 }

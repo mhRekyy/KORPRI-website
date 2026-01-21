@@ -30,7 +30,7 @@
 
     <ul class="dropdown-menu dd-wide" aria-labelledby="ddTentang">
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/profil-pengurus-dpkn') ?>">
+        <a class="dropdown-item" href="<?= base_url('profile') ?>">
           <span class="dd-ic"><i class="fas fa-user-tie"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Profil pengurus DPKN</span>
@@ -40,7 +40,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/struktur-kelembagaan-dpkn') ?>">
+        <a class="dropdown-item" href="<?= base_url('struktur') ?>">
           <span class="dd-ic"><i class="fas fa-sitemap"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Struktur kelembagaan DPKN</span>
@@ -50,7 +50,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/kepengurusan-korpri') ?>">
+        <a class="dropdown-item" href="<?= base_url('kepengurusan') ?>">
           <span class="dd-ic"><i class="fas fa-users"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Kepengurusan KORPRI</span>
@@ -90,7 +90,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/program-utama') ?>">
+        <a class="dropdown-item" href="<?= base_url('Program') ?>">
           <span class="dd-ic"><i class="fas fa-tasks"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Program Utama</span>
@@ -100,7 +100,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/ketua-umum-dari-masa-ke-masa') ?>">
+        <a class="dropdown-item" href="<?= base_url('KetuaUmum') ?>">
           <span class="dd-ic"><i class="fas fa-user-check"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Ketua umum dari masa ke masa</span>
@@ -110,7 +110,7 @@
       </li>
 
       <li>
-        <a class="dropdown-item" href="<?= base_url('tentang-kami/sekjen-dari-masa-ke-masa') ?>">
+        <a class="dropdown-item" href="<?= base_url('Sekjen') ?>">
           <span class="dd-ic"><i class="fas fa-user-edit"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Sekretaris jenderal dari masa ke masa</span>
@@ -167,7 +167,7 @@
 
     <ul class="dropdown-menu" aria-labelledby="ddKebijakan">
       <li>
-        <a class="dropdown-item" href="<?= base_url('kebijakan/peraturan') ?>">
+        <a class="dropdown-item" href="<?= base_url('Peraturan') ?>">
           <span class="dd-ic"><i class="fas fa-scale-balanced"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Peraturan</span>
@@ -176,7 +176,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('kebijakan/keputusan') ?>">
+        <a class="dropdown-item" href="<?= base_url('Keputusan') ?>">
           <span class="dd-ic"><i class="fas fa-gavel"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Keputusan</span>
@@ -185,7 +185,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('kebijakan/surat-edaran') ?>">
+        <a class="dropdown-item" href="<?= base_url('SuratEdaran') ?>">
           <span class="dd-ic"><i class="fas fa-envelope-open-text"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Surat edaran</span>
@@ -218,7 +218,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('media-publik/artikel-korpri') ?>">
+        <a class="dropdown-item" href="<?= base_url('Artikel') ?>">
           <span class="dd-ic"><i class="fas fa-file-alt"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Artikel KORPRI</span>
@@ -227,7 +227,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('media-publik/pengumuman') ?>">
+        <a class="dropdown-item" href="<?= base_url('Pengumuman') ?>">
           <span class="dd-ic"><i class="fas fa-bullhorn"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Pengumuman</span>
@@ -245,7 +245,6 @@
             <a href="<?= base_url('kontak-kami') ?>" class="btn-kontak">
                 Kontak Kami
             </a>
-
         </div>
     </div>
 </header>

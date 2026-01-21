@@ -7,15 +7,15 @@
 
   <!-- HERO -->
   <!-- <header class="tf2Hero">
-    <!-- <div class="tf2Hero__inner">
+    <div class="tf2Hero__inner">
       <div class="tf2Hero__seal" aria-hidden="true">
         <img src="<?= base_url('assets/img/logo-korpri.png') ?>" alt="" class="tf2Hero__sealImg">
       </div>
-<!-- 
+
       <h1 class="tf2Hero__title">TUJUAN &amp;<br>FUNGSI KORPRI</h1>
       <div class="tf2Hero__divider" aria-hidden="true"></div> -->
-    </div> -->
-  </header> -->
+    <!-- </div> 
+  </header>  --> 
 
   <main class="tf2Wrap">
 

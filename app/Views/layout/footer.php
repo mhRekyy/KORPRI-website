@@ -11,7 +11,7 @@
 
           <div class="korpri-footer__brand-text">
             <h5 class="korpri-footer__title">KORPRI</h5>
-            <div class="korpri-footer__subtitle">Korps Pegawai<br>Republik Indonesia</div>
+            <div class="korpri-footer__subtitle">Dewan Pengurus<br>Provinsi Aceh</div>
           </div>
         </div>
 

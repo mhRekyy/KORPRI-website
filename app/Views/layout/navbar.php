@@ -9,8 +9,8 @@
                 <img src="<?= base_url('assets/img/logo-korpri.png') ?>" alt="KORPRI">
                 <span class="logo-text">
                     KORPRI<br>
-                    <small>Korps Pegawai<br>
-                        Republik Indonesia</small>
+                    <small>Dewan Pengurus<br>
+                        Provinsi Aceh</small>
                 </span>
             </a>
 

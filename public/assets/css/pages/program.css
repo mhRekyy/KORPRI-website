@@ -1,0 +1,195 @@
+:root{
+  --prog-bg: #FBF5F2;
+  --prog-ink: #112759;         /* navy */
+  --prog-soft: #f3ece2;        /* krem */
+  --prog-card: #FDF6F1;        /* card */
+  --prog-border: rgba(31, 42, 68, .18);
+  --prog-shadow: 0 16px 26px rgba(17, 39, 89, .10);
+  --prog-accent: #c7a25a;      /* emas */
+}
+
+/* =========================
+   SECTION + WATERMARK
+========================= */
+.prog{
+  background: var(--prog-bg);
+  padding: 54px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   SECTION + WATERMARK
+========================= */
+.prog{
+  background-color: #FBF5F2;
+  padding: 54px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* watermark logo (image) */
+.prog::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../img/korpri-watermark.png");
+  background-repeat: no-repeat;
+  background-position: center 82%;      /* turun ke bawah, dekat grid card */
+  background-size: 520px auto;          /* lebih kecil, proporsional */
+  opacity: .35;                         /* subtle seperti desain */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* glow halus (hapus content: none) */
+.prog::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(199,162,90,.10), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prog__container{
+  width: min(1200px, calc(100% - 36px));
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.prog__header{
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.prog__title{
+  font-family: "Cinzel";
+  font-size: clamp(32px, 3.2vw, 46px);
+  color: var(--prog-ink);
+  margin: 0;
+  letter-spacing: .5px;
+}
+
+.prog__line{
+  width: 380px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--prog-ink), transparent);
+  margin: 10px auto 0;
+  opacity: .75;
+}
+
+/* =========================
+   CARD (STACKED 2 LAPIS)
+========================= */
+
+/* Card luar */
+.progCard{
+  background: var(--prog-card);
+  border: 1px solid var(--prog-border);
+  border-radius: 14px;
+  box-shadow: var(--prog-shadow);
+  padding: 15px;
+  position: relative;
+  display: flex;              /* tambahan 1 baris */
+  flex-direction: column;
+  height: 100%;               /* tambahan 1 baris */
+}
+
+/* Lapisan dalam (inner card) */
+.progCard__inner{
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 10px 16px rgba(17,39,89,.06);
+  padding: 22px 18px 20px;
+  height: 100%;               /* ubah min-height jadi height */
+  position: relative;
+  display: flex;              /* ubah grid jadi flex */
+  flex-direction: column;
+  justify-content: center;    /* tambahan */
+  gap: 20px;
+  align-items: center;        /* ubah align-content jadi align-items */
+  text-align: center;
+}
+
+/* Garis tipis kiri/kanan */
+.progCard__lines{
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  pointer-events: none;
+}
+
+.progCard__lines::before,
+.progCard__lines::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 2px;
+  width: 32%;
+  background: linear-gradient(90deg, transparent, rgba(199,162,90,.75));
+  opacity: .9;
+}
+
+.progCard__lines::before{ left: 0; }
+.progCard__lines::after{
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* Badge nomor (posisi relatif ke inner card) */
+.progBadge{
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #13275B;
+  border-radius: 999px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.08);
+}
+
+.progBadge::before,
+.progBadge::after{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #E3C88B;
+}
+
+.progBadge span{
+  font-weight: 800;
+  color: #E3C88B;
+  letter-spacing: .8px;
+}
+
+/* Judul + teks */
+.progCard__title{
+  margin: 30px 0 0;
+  font-weight: 700;
+  color: var(--prog-ink);
+  font-size: 28px;
+}
+
+.progCard__text{
+  margin: 0;
+  color: var(--prog-ink);
+  font-size: 24px;
+  line-height: 1.55;
+}
+
+/* Responsive */
+@media (max-width: 576px){
+  .progCard{ min-height: 132px; }
+  .progCard .progCard__lines::before,
+  .progCard .progCard__lines::after{ width: 28%; }
+  .prog::before{ background-size: min(620px, 92vw); opacity: .12; }
+}

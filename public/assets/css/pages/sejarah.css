@@ -2,7 +2,7 @@
   background: #fbfaf6;
   color: #1f2430;
   padding: 40px 0 80px;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: 'poppins';
 }
 
 .sejarah__container{ max-width: 1200px; }
@@ -23,7 +23,7 @@
   letter-spacing: .6px;
   color: #1f3a63;
   margin: 0 0 8px;
-  font-size: 46px;
+  font-size: 40px;
 }
 
 .sejarah__lead{
@@ -31,7 +31,7 @@
   max-width: 680px;
   color: rgba(31,36,48,.72);
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .sejarah__line{
@@ -85,18 +85,18 @@
   flex: 0 0 auto;
 }
 
-.sejarah__tab-ico i{ font-size: 18px; }
+.sejarah__tab-ico i{ font-size: 20px; }
 
 .sejarah__tab-text strong{
   display: block;
-  font-size: 14px;
+  font-size: 20px;
   color: rgba(31,36,48,.9);
 }
 
 .sejarah__tab-text small{
   display: block;
   margin-top: 3px;
-  font-size: 12px;
+  font-size: 16px;
   color: rgba(31,36,48,.62);
   font-weight: 600;
 }
@@ -138,7 +138,7 @@
   font-family: 'Cinzel';
   font-weight: 900;
   color: #1f2430;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .sejarah__grid{
@@ -152,7 +152,7 @@
   margin: 0 0 10px;
   color: rgba(31,36,48,.82);
   line-height: 1.65;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Card kanan */
@@ -181,23 +181,23 @@
   flex: 0 0 auto;
 }
 
-.sejarah__card-ico i{ font-size: 16px; }
+.sejarah__card-ico i{ font-size: 20px; }
 
 .sejarah__card-title{
-  font-weight: 900;
+  font-weight: 800;
   color: #7a5b1c;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 2px;
 }
 
 .sejarah__card-sub{
   font-weight: 800;
-  font-size: 14.5px;
+  font-size: 16.5px;
   color: rgba(31,36,48,.86);
 }
 
 .sejarah__card-subtext{
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(31,36,48,.75);
   line-height: 1.55;
 }

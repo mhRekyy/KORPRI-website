@@ -32,22 +32,22 @@
       <div class="container">
         <div class="quick-access-grid">
 
-          <a class="quick-access-item" href="<?= base_url('cek-keanggotaan') ?>">
+          <a class="quick-access-item" href="<?= base_url('profile') ?>">
             <div class="quick-icon"><i class="fas fa-search"></i></div>
             <h3>Cek Keanggotaan</h3>
           </a>
 
-          <a class="quick-access-item" href="<?= base_url('bantuan-hukum') ?>">
+          <a class="quick-access-item" href="<?= base_url('Peraturan') ?>">
             <div class="quick-icon"><i class="fas fa-balance-scale"></i></div>
-            <h3>Bantuan Hukum</h3>
+            <h3>Peraturan</h3>
           </a>
 
-          <a class="quick-access-item" href="<?= base_url('koperasi') ?>">
-            <div class="quick-icon"><i class="fas fa-users"></i></div>
-            <h3>Koperasi KORPRI</h3>
+          <a class="quick-access-item" href="<?= base_url('Program') ?>">
+            <div class="quick-icon"><i class="fas fa-tasks"></i></div>
+            <h3>Program Utama</h3>
           </a>
 
-          <a class="quick-access-item" href="<?= base_url('e-kinerja') ?>">
+          <a class="quick-access-item" href=https://kinerja.bkn.go.id/login>
             <div class="quick-icon"><i class="fas fa-book"></i></div>
             <h3>E-Kinerja</h3>
           </a>
@@ -130,7 +130,7 @@
         <div class="program-grid">
           <?php if (!empty($programs)): ?>
             <?php foreach ($programs as $program): ?>
-              <a href="<?= esc($program['link']) ?>" class="program-card">
+              <a class="program-card">
                 <div class="program-icon">
                   <i class="<?= esc($program['icon']) ?>"></i>
                 </div>

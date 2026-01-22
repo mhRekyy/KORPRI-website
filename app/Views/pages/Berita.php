@@ -2,62 +2,69 @@
 <?= $this->section('content') ?>
 
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/berita.css') ?>">
+
 <section class="berita-wrap">
   <div class="berita-container">
 
+    <!-- Filter (tetap) -->
     <div class="berita-filter">
       <select class="bf-select">
         <option selected>Pengumuman</option>
         <option>Semua</option>
         <option>Kegiatan</option>
       </select>
-
-      <input class="bf-input" type="text" placeholder="" />
-
+      <input class="bf-input" type="text" placeholder="Cari berita..." />
       <button class="bf-btn" type="button" aria-label="Search">
-        <span class="bf-btn__icon">⌕</span>
+        <i class="fas fa-search bf-btn__icon"></i>
       </button>
     </div>
 
+    <!-- List Timeline -->
     <div class="berita-list berita-list--timeline">
-  <?php foreach ($posts as $p): ?>
-    <div class="brow">
-
-      <!-- kiri: media -->
-      <article class="bcard bcard--media">
-        <div class="bmedia">
-          <?php if (!empty($p['image'])): ?>
-            <img class="bmedia__img" src="<?= esc($p['image']) ?>" alt="Gambar berita">
-          <?php else: ?>
-            <div class="bmedia__ph">
-              <div class="bmedia__icon">🖼</div>
-            </div>
-          <?php endif; ?>
-          <div class="bmedia__gold"></div>
-        </div>
-      </article>
-
-      <!-- tengah: badge tanggal -->
-      <div class="bmid">
-        <div class="bdate"><?= esc($p['date']) ?></div>
-      </div>
-
-      <!-- kanan: 2 box (atas kosong, bawah isi) -->
-      <div class="bright">
-        <div class="bcard bcard--top"></div>
-
-        <article class="bcard bcard--text">
-          <div class="btext">
-            <div class="btext__dash"></div>
-            <p class="btext__p"><?= esc($p['excerpt']) ?></p>
+      <?php foreach ($berita as $b): ?>
+      <div class="brow">
+        
+        <!-- Kolom 1: SATU CONTAINER PUTIH Gambar + Tombol -->
+        <div class="media-card">
+          <div class="bmedia">
+            <?php if (!empty($b['gambar'])): ?>
+              <img class="bmedia__img" src="<?= $b['gambar'] ?>" alt="<?= esc($b['judul']) ?>">
+            <?php else: ?>
+              <div class="bmedia__ph">
+                <svg class="ph-icon" viewBox="0 0 48 48">
+                  <rect x="4" y="4" width="40" height="30" rx="4" fill="#f3f4f6"/>
+                  <circle cx="32" cy="36" r="6" fill="#d1d5db"/>
+                </svg>
+                <span class="ph-plus">+</span>
+              </div>
+            <?php endif; ?>
           </div>
-        </article>
+          <div class="btn-wrapper">
+            <a href="<?= site_url('berita/' . $b['slug']) ?>" class="bmedia__btn">SELENGKAPNYA</a>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Tanggal Tengah (posisi lebih tinggi) -->
+        <div class="bmid">
+          <div class="bdate"><?= esc($b['tanggal']) ?></div>
+        </div>
+
+        <!-- Kolom 3: Judul Container + Deskripsi Container Terpisah -->
+        <div class="b-right">
+          <!-- Judul: Container Putih Sendiri -->
+          <div class="title-card">
+            <h3 class="btitle"><?= esc($b['judul']) ?></h3>
+          </div>
+          
+          <!-- Deskripsi: Container Putih Sendiri + Border Emas Kiri -->
+          <div class="desc-card">
+            <p class="bdesc"><?= esc($b['deskripsi']) ?></p>
+          </div>
+        </div>
+
       </div>
-
+      <?php endforeach; ?>
     </div>
-  <?php endforeach; ?>
-</div>
-
 
   </div>
 </section>

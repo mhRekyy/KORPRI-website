@@ -26,13 +26,3 @@ $routes->get('Keputusan', 'Pages::Keputusan');
 $routes->get('SuratEdaran', 'Pages::SuratEdaran');
 $routes->get('Artikel', 'Pages::Artikel');
 $routes->get('Pengumuman', 'Pages::Pengumuman');
-
-
-$routes->get('visi-misi', 'Pages::visiMisi');
-$routes->get('kontak-kami', 'Pages::kontakKami');
-$routes->get('galeri', 'Pages::Galeri');
-$routes->get('berita', 'Pages::Berita');
-$routes->get('sejarah', 'Pages::Sejarah');
-$routes->get('sejarah', 'Pages::Sejarah');
-$routes->get('sejarah', 'Pages::Sejarah');
-

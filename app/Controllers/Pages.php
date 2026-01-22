@@ -11,13 +11,20 @@ class Pages extends BaseController
         ]);
     }
 
+
+
     public function kontakKami()
     {
         return view('pages/kontak_kami', [
             'pageTitle' => 'KONTAK KAMI',
         ]);
 
+
+
     }
+
+
+
     public function Galeri()
     {
         $data = [
@@ -34,31 +41,52 @@ class Pages extends BaseController
         return view('pages/Galeri', $data);
     }
 
+
+
     public function Berita()
     {
         $data = [
-            'pageTitle' => 'BERITA KORPRI',
-            'posts' => [
+            'pageTitle' => 'BERITA KORPRI ACEH',
+            'berita' => [
                 [
-                    'date' => 'Kamis, 12 September 2024',
-                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',
-                    'image' => null, // isi nanti: base_url('assets/images/berita1.jpg')
+                    'id' => 1,
+                    'judul' => 'Rapat Koordinasi Pengurus DP KORPRI Aceh',
+                    'deskripsi' => 'Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan. Rapat rutin pengurus Daerah Pemda KORPRI Aceh membahas program pengembangan anggota dan kesejahteraan ASN di wilayah Aceh Utara hingga Selatan.',
+                    'gambar' => 'assets/img/slide-1.jpg',
+                    'slug' => 'rapat-koordinasi-korpri-aceh',
+                    'tanggal' => '20 Januari 2026'
                 ],
                 [
-                    'date' => 'Kamis, 12 September 2024',
-                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',
-                    'image' => null,
+                    'id' => 2,
+                    'judul' => 'Pelatihan Digitalisasi Birokrasi ASN Aceh',
+                    'deskripsi' => 'KORPRI Aceh bekerja sama dengan BKA Aceh menggelar pelatihan teknologi informasi untuk meningkatkan kompetensi pegawai negeri sipil.',
+                    'gambar' => 'assets/img/berita/2.jpg',
+                    'slug' => 'pelatihan-digitalisasi-asn',
+                    'tanggal' => '20 Januari 2026'
                 ],
                 [
-                    'date' => 'Kamis, 12 September 2024',
-                    'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',
-                    'image' => null,
+                    'id' => 3,
+                    'judul' => 'Perayaan HUT KORPRI ke-52 Banda Aceh',
+                    'deskripsi' => 'Suksesnya peringatan Hari Ulang Tahun Korps Pegawai Republik Indonesia dengan berbagai kegiatan sosial, olahraga, dan keagamaan.',
+                    'gambar' => 'assets/img/berita/3.jpg',
+                    'slug' => 'hut-korpri-52-banda-aceh',
+                    'tanggal' => '20 Januari 2026'
                 ],
-            ],
+                [
+                    'id' => 4,
+                    'judul' => 'Penguatan Ideologi ASN oleh KORPRI Aceh',
+                    'deskripsi' => 'Program penguatan nilai-nilai Pancasila dan karakter ASN melalui seminar dan workshop di seluruh kabupaten/kota Aceh.',
+                    'gambar' => 'assets/img/berita/4.jpg',
+                    'slug' => 'penguatan-ideologi-asn',
+                    'tanggal' => '20 Januari 2026'
+                ]
+            ]
         ];
 
-        return view('pages/Berita', $data); // karena file view kamu taruh di app/Views/Berita.php
+        return view('pages/Berita', $data);
     }
+
+
 
     public function Sejarah()
     {
@@ -67,60 +95,88 @@ class Pages extends BaseController
         ]);
     }
 
+
+
     public function TujuanFungsi()
     {
         return view('pages/tujuan_fungsi', [
             'pageTitle' => 'TUJUAN & FUNGSI KORPRI',
         ]);
     }
+
+
+
     public function Profile()
     {
         return view('pages/Profile', [
             'pageTitle' => 'PROFILE KORPRI',
         ]);
     }
+
+
+
     public function Struktur()
     {
         return view('pages/Struktur', [
             'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN',
         ]);
     }
+
+
+
     public function Kepengurusan()
     {
         return view('pages/Kepengurusan', [
             'pageTitle' => 'Kepengurusan KORPRI',
         ]);
     }
+
+
+
     public function Program()
     {
         return view('pages/Program', [
             'pageTitle' => 'PROGRAM UTAMA KORPRI',
         ]);
     }
+
+
+
     public function KetuaUmum()
     {
         return view('pages/KetuaUmum', [
             'pageTitle' => 'KETUA UMUM KORPRI',
         ]);
     }
+
+
+
     public function Sekjen()
     {
         return view('pages/Sekjen', [
             'pageTitle' => 'SEKRETARIS JENDRAL KORPRI',
         ]);
     }
+
+
+
     public function Peraturan()
     {
         return view('pages/Peraturan', [
             'pageTitle' => 'PERATURAN KORPRI',
         ]);
     }
+
+
+
     public function Keputusan()
     {
         return view('pages/Keputusan', [
             'pageTitle' => 'KEPUTUSAN KORPRI',
         ]);
     }
+
+
 
     public function SuratEdaran()
     {
@@ -129,12 +185,17 @@ class Pages extends BaseController
         ]);
     }
 
+
+
     public function Artikel()
     {
         return view('pages/Artikel', [
             'pageTitle' => 'ARTIKEL KORPRI',
         ]);
     }
+
+
+
     public function Pengumuman()
     {
         return view('pages/Pengumuman', [

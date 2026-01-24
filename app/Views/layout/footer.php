@@ -56,7 +56,7 @@
               <i class="bi bi-people-fill korpri-footer__icon"></i>
               Pengunjung Kemarin
             </span>
-            <span class="korpri-footer__value">332 <span class="korpri-footer__unit">USER</span></span>
+            <span class="korpri-footer__value">332 <span   class="korpri-footer__unit">USER</span></span>
           </li>
 
           <li class="korpri-footer__item">

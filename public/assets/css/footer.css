@@ -1,6 +1,7 @@
 .korpri-footer{
   background: #112759; /* biru tua mirip desain */
   color: rgba(255,255,255,.85);
+  font-family: 'Poppins';
 }
 
 .korpri-footer__inner{
@@ -47,9 +48,10 @@
 }
 
 .korpri-footer__subtitle{
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Cinzel';
   color: #b9b9b9;
+  font-weight: 700;
   line-height: 1.2;
   margin-top: 2px;
 }
@@ -204,7 +206,8 @@
   .korpri-footer__desc{
     max-width: 100%;
   }
-  .korpri-footer__bottom{
-    flex-direction: column;
+
+  .korpri-footer__contact-col{
+    justify-content: flex-start;
   }
 }

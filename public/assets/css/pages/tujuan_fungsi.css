@@ -9,6 +9,7 @@
 .tf{
   background: var(--tf-soft);
   padding: 52px 0 64px;
+  font-family: 'Poppins';
 }
 
 .tf__container{

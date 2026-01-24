@@ -12,6 +12,7 @@
   margin-top: -20px;
   position: relative;    /* wajib supaya z-index aktif */
   z-index: 5;
+  font-family: 'Poppins';
 }
 
 /* Panel atas */

@@ -24,7 +24,7 @@
   <div class="pf-search">
     <input class="pf-input" type="text" placeholder="Cari peraturan..." aria-label="Cari peraturan">
     <button class="pf-btn" type="button" aria-label="Search">
-      <i class="bi bi-search pf-btn__icon"></i>
+      <i class="fas fa-search pf-btn__icon"></i>
     </button>
   </div>
 </div>

@@ -1,8 +1,8 @@
 :root{
-  --prog-bg: #FBF5F2;
+  --prog-bg: #FAF8F2;
   --prog-ink: #112759;         /* navy */
   --prog-soft: #f3ece2;        /* krem */
-  --prog-card: #FDF6F1;        /* card */
+  --prog-card: #FAF8F2;        /* card */
   --prog-border: rgba(31, 42, 68, .18);
   --prog-shadow: 0 16px 26px rgba(17, 39, 89, .10);
   --prog-accent: #c7a25a;      /* emas */
@@ -13,20 +13,10 @@
 ========================= */
 .prog{
   background: var(--prog-bg);
-  padding: 54px 0 70px;
+  padding: 50px 0 100px;
   position: relative;
   overflow: hidden;
   font-family: 'Poppins';
-}
-
-/* =========================
-   SECTION + WATERMARK
-========================= */
-.prog{
-  background-color: #FBF5F2;
-  padding: 54px 0 70px;
-  position: relative;
-  overflow: hidden;
 }
 
 /* watermark logo (image) */
@@ -37,7 +27,7 @@
   background-image: url("../../img/korpri-watermark.png");
   background-repeat: no-repeat;
   background-position: center 82%;      /* turun ke bawah, dekat grid card */
-  background-size: 520px auto;          /* lebih kecil, proporsional */
+  background-size: 600px auto;          /* lebih kecil, proporsional */
   opacity: .35;                         /* subtle seperti desain */
   pointer-events: none;
   z-index: 0;
@@ -72,6 +62,7 @@
   color: var(--prog-ink);
   margin: 0;
   letter-spacing: .5px;
+  font-weight: 500;
 }
 
 .prog__line{

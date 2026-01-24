@@ -38,12 +38,13 @@ html, body {
 }
 
 .title-pages__title{
-  margin: 0;
+  max-width: 800PX;
+  margin-top: 20PX;
   color: #fff;
   font-size: 50px;
   font-family: 'Cinzel';
   font-weight: 700;
-  line-height: 1.9;
+  line-height: 1.1;
 }
 
 @media (max-width: 576px){

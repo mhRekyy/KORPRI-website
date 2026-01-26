@@ -64,7 +64,12 @@
         <!-- Kolom 2: Tanggal Tengah (posisi lebih tinggi) -->
         <div class="bmid">
         <div class="bdate">
-  <?= esc(date('d M Y', strtotime($b['created_at']))) ?>
+<?php
+setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'Indonesian_indonesia.1252');
+
+echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
+?>
+
 </div>
 
         </div>

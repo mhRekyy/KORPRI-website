@@ -29,6 +29,7 @@ $routes->get('Artikel', 'Pages::Artikel');
 $routes->get('Pengumuman', 'Pages::Pengumuman');
 // $routes->get('test-berita', 'Pages::testBerita');
 $routes->get('berita', 'Pages::Berita');
+$routes->get('berita/(:num)', 'Pages::detailBerita/$1');
 
 
 

@@ -90,7 +90,7 @@
   display: grid;
   grid-template-columns: 500px 60px 1fr;
   gap: 20px;
-  align-items: stretch; /* TAMBAH: SAMA TINGGI */
+  align-items: start; /* TAMBAH: SAMA TINGGI */
 }
 
 /* TANGGAL - naikkan posisi 4px ke atas */

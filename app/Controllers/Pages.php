@@ -211,6 +211,51 @@ public function Berita()
     ]);
 }
 
+ public function detailBerita($id)
+    {
+        $beritaModel = new \App\Models\BeritaModel();
+
+        // Ambil berita utama
+        $berita = $beritaModel
+            ->where('id', $id)
+            ->where('is_active', 1)
+            ->first();
+
+        if (!$berita) {
+            throw PageNotFoundException::forPageNotFound('Berita tidak ditemukan');
+        }
+
+        // Berita terkini (sidebar)
+        $beritaTerkini = $beritaModel
+            ->where('is_active', 1)
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->find();
+
+        // Kategori (distinct)
+        $kategori = $beritaModel
+            ->select('kategori')
+            ->distinct()
+            ->where('is_active', 1)
+            ->find();
+
+        // Berita terkait (kategori sama, selain dirinya)
+        $beritaTerkait = $beritaModel
+            ->where('kategori', $berita['kategori'])
+            ->where('id !=', $berita['id'])
+            ->where('is_active', 1)
+            ->orderBy('created_at', 'DESC')
+            ->limit(3)
+            ->find();
+
+        return view('pages/berita_detail', [
+            'pageTitle'      => 'DETAIL BERITA',
+            'berita'         => $berita,
+            'beritaTerkini'  => $beritaTerkini,
+            'kategoriList'   => $kategori,
+            'beritaTerkait'  => $beritaTerkait,
+        ]);
+    }
 
 
     public function Artikel()

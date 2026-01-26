@@ -227,3 +227,45 @@
   .bmid{ width: 100%; justify-content: flex-start; }
   .bmedia{ height: 220px; }
 }
+
+/* FIX layout filter setelah pakai form */
+.berita-filter {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* atur jarak antar elemen */
+}
+
+.berita-filter form {
+  margin: 0;
+}
+
+.berita-filter form,
+.berita-filter .bf-select {
+  display: flex;
+  align-items: center;
+}
+
+.berita-filter .bf-input {
+  flex: 1;
+}
+
+.berita-filter-inner {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.bf-form {
+  display: flex;
+  gap: 16px;
+}
+
+.berita-filter-form {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.berita-filter-form > * {
+  flex-shrink: 0;
+}

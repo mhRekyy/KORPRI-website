@@ -21,9 +21,14 @@ $routes->get('KetuaUmum', 'Pages::KetuaUmum');
 $routes->get('Sekjen', 'Pages::Sekjen');
 
 $routes->get('galeri', 'Pages::Galeri');
-$routes->get('berita', 'Pages::Berita');
+// $routes->get('berita', 'Pages::Berita');
 $routes->get('Peraturan', 'Pages::Peraturan');
 $routes->get('Keputusan', 'Pages::Keputusan');
 $routes->get('SuratEdaran', 'Pages::SuratEdaran');
 $routes->get('Artikel', 'Pages::Artikel');
 $routes->get('Pengumuman', 'Pages::Pengumuman');
+// $routes->get('test-berita', 'Pages::testBerita');
+$routes->get('berita', 'Pages::Berita');
+
+
+

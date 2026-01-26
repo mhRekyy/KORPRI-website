@@ -1,0 +1,138 @@
+.section-detail-berita {
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+
+.berita-image img {
+    border-radius: 6px;
+    width: 100%;
+}
+
+.berita-meta {
+    font-size: 14px;
+}
+
+.berita-meta .badge {
+    background-color: #0d2b5b;
+    color: #fff;
+    padding: 6px 12px;
+    font-weight: 500;
+}
+
+.berita-judul {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+.berita-konten {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.berita-konten p {
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.berita-konten img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sidebar-box {
+    background: #f3f3f3;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.sidebar-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #0d2b5b;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.sidebar-item {
+    margin-bottom: 12px;
+}
+
+.sidebar-item a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.sidebar-item a:hover {
+    color: #0d2b5b;
+}
+
+.sidebar-box ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar-box ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.sidebar-box ul li a:hover {
+    text-decoration: underline;
+}
+
+.section-berita-terkait {
+    background: #f7f7f7;
+    padding: 50px 0;
+    border-top: 1px solid #ddd;
+}
+
+.section-berita-terkait h4 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+.berita-terkait-item {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 6px;
+    height: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.berita-terkait-item img {
+    border-radius: 4px;
+}
+
+.berita-terkait-item a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.berita-terkait-item a:hover {
+    color: #0d2b5b;
+}
+
+@media (max-width: 768px) {
+    .hero-detail-berita {
+        padding: 50px 0;
+    }
+
+    .hero-detail-berita .title-hero {
+        font-size: 24px;
+    }
+
+    .berita-judul {
+        font-size: 22px;
+    }
+
+    .sidebar-box {
+        margin-top: 30px;
+    }
+}

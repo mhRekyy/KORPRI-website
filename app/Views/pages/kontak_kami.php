@@ -102,7 +102,7 @@
             </div>
 
             <div class="form-row two">
-              <input class="form-controlx" type="text" name="nomor" placeholder="Nomorhandphone">
+              <input class="form-controlx" type="text" name="nomor" placeholder="Nomor handphone">
               <input class="form-controlx" type="email" name="email" placeholder="Email">
             </div>
 

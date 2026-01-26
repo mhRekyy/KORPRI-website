@@ -10,11 +10,22 @@
 <div class="berita-filter">
   <form method="get" class="berita-filter-form">
 
-    <select class="bf-select" name="kategori">
-      <option value="Semua">Semua</option>
-      <option value="Pengumuman">Pengumuman</option>
-      <option value="Kegiatan">Kegiatan</option>
-    </select>
+<select
+  class="bf-select"
+  name="kategori"
+  onchange="this.form.submit()"
+>
+  <option value="Semua" <?= ($kategori_aktif ?? 'Semua') === 'Semua' ? 'selected' : '' ?>>
+    Semua
+  </option>
+  <option value="Pengumuman" <?= ($kategori_aktif ?? '') === 'Pengumuman' ? 'selected' : '' ?>>
+    Pengumuman
+  </option>
+  <option value="Kegiatan" <?= ($kategori_aktif ?? '') === 'Kegiatan' ? 'selected' : '' ?>>
+    Kegiatan
+  </option>
+</select>
+
 
     <input
       class="bf-input"

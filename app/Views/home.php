@@ -142,7 +142,73 @@
         </div>
       </div>
     </div>
+
+    <div class="gallery-section">
+    <div class="container">
+
+
+    <!-- Galeri Kegiatan -->
+        <div class="gallery-header">
+            <h2>GALERI KEGIATAN</h2>
+            <p>Dokumentasi aktivitas terbaru KORPRI Provinsi Aceh</p>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper gallerySwiper">
+            <div class="swiper-wrapper">
+                
+                <?php 
+                // 1. Ambil Data dari Controller (Nama variabel: $gallery)
+                $slides = $gallery ?? []; 
+                
+                // 2. Logic Duplikasi (Supaya Infinite Loop Mulus minimal 6 slide)
+                if (!empty($slides)) {
+                    while (count($slides) < 6) {
+                        $slides = array_merge($slides, $slides);
+                    }
+                } else {
+                    // Dummy jika data kosong
+                    $slides = array_fill(0, 5, ['image' => 'https://via.placeholder.com/300', 'title' => 'Kegiatan']);
+                }
+                ?>
+
+                <!-- 3. Loop Slide -->
+                <?php foreach($slides as $index => $g): ?>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+
+                            <img src="<?= esc($g['image']) ?>" alt="<?= esc($g['title']) ?>">
+                            
+                            <!-- Icon Overlay -->
+                            <div class="gallery-overlay">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-plus-circle mb-2" style="font-size: 2.5rem;"></i>
+                                    <!-- Tampilkan Judul Saat Hover -->
+                                    <h6 class="m-0 px-2"><?= esc($g['title']) ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+            
+        </div>
+
+        <!-- Tombol Selengkapnya -->
+        <div class="text-center mt-4">
+            <a href="<?= base_url('galeri') ?>" class="btn-selengkapnya">
+                Lihat Selengkapnya &rarr;
+            </a>
+        </div>
+
+    </div>
+</div>
+
       
+
+
   </div>
 </section>
 <?= $this->endSection() ?>
+ 

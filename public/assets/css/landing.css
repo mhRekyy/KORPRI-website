@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+    font-family: 'poppins';
 }
 
 body {
@@ -13,7 +14,6 @@ body {
   padding: 0 !important; 
   padding-top: 80px !important;
   overflow-x: hidden;
-  font-family: 'poppins';
 }
 
 main {
@@ -443,7 +443,7 @@ main {
 }
 
 .about-content p {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   color: #000000;
   line-height: 1.8;
@@ -553,3 +553,85 @@ main {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Container Section */
+    .gallery-section {
+        position: relative;
+        background-color: #ffffff; /* Bisa ganti #f8f9fa jika mau agak abu */
+        padding: 20px 0 60px;
+        overflow: hidden; /* Penting! */
+    }
+
+    /* Judul Header */
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .gallery-header h2 {
+        font-family: 'Cinzel';
+        font-size: 38px; 
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .gallery-header p {
+        color: #000000;
+        font-size: 18px;
+    }
+
+    /* Wrapper Swiper */
+    .gallerySwiper {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px; /* Space untuk pagination */
+        overflow: visible; /* Biar efek 3D tidak terpotong kasar */
+    }
+
+    /* ITEM SLIDE */
+    .gallerySwiper .swiper-slide {
+        width: 380px;  /* Lebar FIX */
+        height: 300px; /* Tinggi FIX */
+        
+        /* Default: Slide Sembunyi Dulu (Biar rapi, JS yang akan munculkan) */
+        opacity: 0;
+        visibility: hidden;
+        
+        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    /* KARTU DALAM SLIDE */
+    .gallery-card {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: #eee; /* Placeholder warna sebelum gambar load */
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        position: relative;
+    }
+
+    .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* EFEK HOVER OVERLAY ICON */
+    .gallery-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+    }
+    .gallery-overlay i {
+        color: #fff;
+        font-size: 2.5rem;
+    }

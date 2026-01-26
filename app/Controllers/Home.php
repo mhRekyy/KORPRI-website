@@ -49,34 +49,40 @@ class Home extends BaseController
                 ['title' => 'Pengumuman 2', 'link' => '/pengumuman/2'],
                 ['title' => 'Pengumuman 3', 'link' => '/pengumuman/3'],
             ],
-            'tentang_korpri' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
+
+            'tentang_korpri' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
             'programs' => [
                 [
                     'icon' => 'fas fa-gavel',
-                    'title' => 'LAYANAN BANTUAN HUKUM',
+                    'title' => 'DIGITALISAI BIROKRASI',
                     'description' => 'Layanan konsultasi dan bantuan hukum untuk anggota KORPRI',
                     'link' => '/program/bantuan-hukum'
                 ],
                 [
                     'icon' => 'fas fa-hand-holding-usd',
-                    'title' => 'KOPERASI DIGITAL & INVESTASI',
+                    'title' => 'PENGUATAN NILAI ASN',
                     'description' => 'Program peningkatan kesejahteraan anggota KORPRI',
                     'link' => '/program/kesejahteraan'
                 ],
                 [
                     'icon' => 'fas fa-building',
-                    'title' => 'DIKLAT & PENGEMBANGAN KARIR',
+                    'title' => 'PERLINDUNGAN KARIR',
                     'description' => 'Koperasi KORPRI untuk kemajuan ekonomi anggota',
                     'link' => '/program/koperasi'
                 ],
                 [
                     'icon' => 'fas fa-store',
-                    'title' => 'KORPRI MART & NIAGA',
+                    'title' => 'KESEJAHTERAAN ASN',
                     'description' => 'Pemberdayaan UMKM untuk anggota KORPRI',
                     'link' => '/program/umkm'
                 ],
             ],
 
+            
+            
         'gallery' => [
             ['image' => base_url('assets/img/slide-1.JPG'), 'title' => 'Kegiatan 1'],
             ['image' => base_url('assets/img/slide-2.JPG'), 'title' => 'Kegiatan 2'],

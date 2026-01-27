@@ -143,7 +143,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('galeri/video-kegiatan') ?>">
+        <a class="dropdown-item" href="<?= base_url('galeri_video') ?>">
           <span class="dd-ic"><i class="fas fa-video"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Video kegiatan</span>

@@ -191,7 +191,7 @@ class Database extends Config
     ];
 
     public function __construct()
-    {
+    {   
         parent::__construct();
 
         // Ensure that we always set the database group to 'tests' if

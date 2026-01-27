@@ -1,0 +1,332 @@
+:root{
+  --bg:#faf5f1;
+  --line:#1f1f1f;
+  --lw:2px;
+  --shadow:0 10px 18px rgba(0,0,0,.16);
+  --bar1:#3a79ad;
+  --bar2:#2a567f;
+
+  --gap:34px;
+  --cardw:260px;
+
+  --gap-ketua-wakil:34px;
+  --gap-wakil-l3:90px;
+  --gap-l3-l4:120px;
+
+  --wkbar-top:14px; /* posisi garis horizontal (row wakil) */
+  --l3bar-top:18px; /* posisi bracket bawah */
+}
+
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:#111;}
+
+.chart{
+  max-width:1200px;
+  margin:0 auto;
+
+:root{
+  --bg:#faf5f1;
+  --line:#1f1f1f;
+  --lw:2px;
+  --shadow:0 10px 18px rgba(0,0,0,.16);
+  --bar1:#3a79ad;
+  --bar2:#2a567f;
+
+  --gap:34px;
+  --cardw:260px;
+
+  --gap-ketua-wakil:34px;
+  --gap-wakil-l3:90px;
+  --gap-l3-l4:120px;
+
+  --wkbar-top:14px; /* posisi garis horizontal (row wakil) */
+  --l3bar-top:18px; /* posisi bracket bawah */
+
+  --connector-h: 2px;
+  --connector-v: 2px;
+}
+  padding:36px 16px 70px;
+}
+
+.row{position:relative;}
+.row--ketua{display:flex;justify-content:center;}
+.row--wakil{margin-top:var(--gap-ketua-wakil);padding-bottom:var(--gap-wakil-l3);}
+.row--l3{margin-top:0;padding-bottom:var(--gap-l3-l4);}
+.row--l4{margin-top:0;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:var(--gap);
+  align-items:start;
+}
+
+.col{position:relative;} /* kunci untuk garis presisi */
+
+/* ===== CARD (punyamu boleh dipakai) ===== */
+.card{background:#fff;border-radius:4px;border:1px solid rgba(0,0,0,.08);box-shadow:var(--shadow);overflow:visible;}
+.card--small{width:var(--cardw);margin:0 auto;}
+.card--big{width:var(--cardw);margin:0 auto;min-height:230px;padding-bottom:14px;}
+.card__top{height:54px;background:linear-gradient(90deg,var(--bar1),var(--bar2));border-radius:4px 4px 0 0;position:relative;}
+.card__avatar{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffe59a,#d6a93e);
+  border:4px solid #fff;position:absolute;left:50%;top:18px;transform:translateX(-50%);
+
+.connector--ketua-wakil {
+  position: relative;
+  height: 54px;
+  margin: 0 0 10px 0;
+  pointer-events: none;
+}
+.connector--ketua-wakil::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--connector-v);
+  height: 32px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+.connector--ketua-wakil::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 32px;
+  height: var(--connector-h);
+  background: var(--line);
+}
+  box-shadow:0 10px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.card__avatar img{width:85%;height:85%;object-fit:contain;display:block;}
+.card__body{padding:26px 14px 10px;text-align:center;}
+.card__title{font-weight:800;font-size:18px;line-height:1.08;}
+.card__sub{margin-top:4px;font-size:13px;color:#6d6d6d;}
+
+/* pastikan row wakil jadi acuan posisi garis turun */
+.row--wakil{ position: relative; }
+
+/* Koneksi Ketua -> 4 Wakil (vertikal + horizontal + 4 drop) */
+
+.row--wakil .col::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -32px;
+  width: var(--connector-v);
+  height: 32px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+.connector--ketua-wakil{
+  position: relative;
+  height: 54px;
+  margin: 8px 0 14px;
+  pointer-events: none;
+}
+
+/* vertikal dari Ketua ke garis horizontal */
+.connector--ketua-wakil::before{
+  content:"";
+
+.row--wakil .col::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: var(--connector-v);
+  height: var(--gap-wakil-l3);
+  background: var(--line);
+  transform: translateX(-50%);
+}
+  position:absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 26px;
+  background: var(--line);
+  transform: translateX(-1px);
+}
+
+/* garis horizontal menuju 4 wakil */
+
+
+.row--wakil .col--2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: var(--connector-v);
+  height: calc(var(--gap-wakil-l3) + var(--gap-l3-l4) + 28px);
+  background: var(--line);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+/* garis horizontal dari Ketua ke 4 Wakil, presisi tengah dan benar-benar menyambung */
+.connector--ketua-wakil::after{
+  content: "";
+  position: absolute;
+  left: 12.5%;
+  width: 75%;
+  top: 26px;
+
+.connector--wk-to-l3{
+  position:absolute;
+  left:0; right:0;
+  bottom:0;
+  height:0;
+  pointer-events:none;
+}
+.connector--wk-to-l3::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:0;
+  height:var(--connector-h);
+  background:var(--line);
+}
+  height: 2px;
+  background: var(--line);
+}
+
+/* 4 drop ke masing-masing Wakil (dipasang pada kolom row--wakil agar center presisi) */
+.row--wakil{ position: relative; }
+.row--wakil .col{ position: relative; }
+
+
+/* Garis vertikal dari garis horizontal ke masing-masing Wakil, benar-benar menyambung */
+.row--wakil .col::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+.connector--bracket-l4 {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(-1 * (var(--gap-l3-l4) - 10px));
+  height: 40px;
+  pointer-events: none;
+}
+.connector--bracket-l4::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  height: var(--connector-h);
+  background: var(--line);
+}
+  top: -26px;
+  width: 2px;
+  height: 26px;
+  background: var(--line);
+}
+
+
+/* ==========================================================
+   CONNECTOR A: Row Wakil (garis horizontal + drop ke L3)
+   Dibuat sebagai overlay di row--wakil, tapi drop-nya dipasang
+   di tiap .col agar tepat di tengah kartu (tanpa %).
+
+.row--l4 .col::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  width: var(--connector-v);
+  height: 40px;
+  background: var(--line);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+   ========================================================== */
+.connector--wk-to-l3{
+  position:absolute;
+  left:0; right:0;
+  bottom:12px;
+  height:var(--gap-wakil-l3);
+  pointer-events:none;
+}
+
+/* garis horizontal row wakil */
+.connector--wk-to-l3::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:var(--wkbar-top);
+  height:var(--lw);
+  background:var(--line);
+}
+
+/* drop dari tiap wakil ke anak langsungnya (L3)
+   dipasang di masing-masing kolom row wakil */
+
+/* Garis vertikal dari bawah Wakil ke L3 (anak langsung), benar-benar menyambung */
+.row--wakil .col::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  width: var(--lw);
+  height: var(--gap-wakil-l3);
+  background: var(--line);
+}
+
+/* ==========================================================
+   CONNECTOR B: Garis panjang khusus WK II
+   Dipasang di kolom wk2 (col--2) agar pasti center.
+   ========================================================== */
+
+/* Garis panjang khusus Wakil II (menembus ke bawah, benar-benar menyambung) */
+.row--wakil .col--2::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  width: var(--lw);
+  height: calc(var(--gap-wakil-l3) + var(--gap-l3-l4) + 28px);
+  background: var(--line);
+  pointer-events: none;
+}
+
+/* ==========================================================
+   CONNECTOR C: Bracket Level 4 (garis horizontal + 4 drop)
+   Dibuat di row--l4 agar rapih.
+   ========================================================== */
+
+/* Bracket bawah benar-benar menyambung dan proporsional */
+/* Bracket bawah benar-benar menyambung dan proporsional */
+.connector--bracket-l4 {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(-1 * (var(--gap-l3-l4) - 10px));
+  height: 40px;
+  pointer-events: none;
+}
+
+/* garis horizontal bracket bawah */
+
+.connector--bracket-l4::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: var(--l3bar-top);
+  height: 2px;
+  background: var(--line);
+}
+
+/* drop kecil ke masing-masing card bawah (pasang di kolom row l4) */
+
+/* Garis vertikal dari bracket ke bawah, benar-benar menyambung */
+.row--l4 .col::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(-1 * (var(--gap-l3-l4) - 10px) + var(--l3bar-top));
+  width: 2px;
+  height: 40px;
+  background: var(--line);
+  transform: translateX(-50%);
+  pointer-events: none;
+}

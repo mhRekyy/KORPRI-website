@@ -218,19 +218,20 @@ class Pages extends BaseController
     }
 
     public function galeri_video()
-    {
-        $data = [
-            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
-            'videos' => [
-                ['video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'title' => 'Video Kegiatan 1'],
-                ['video_url' => 'https://www.youtube.com/embed/3JZ_D3ELwOQ', 'title' => 'Video Kegiatan 2'],
-                ['video_url' => 'https://www.youtube.com/embed/L_jWHffIx5E', 'title' => 'Video Kegiatan 3'],
-                ['video_url' => 'https://www.youtube.com/embed/eY52Zsg-KVI', 'title' => 'Video Kegiatan 4'],
-            ]
-        ];
+{
+    $data['videos'] = [
+        [
+        'title' => 'Lorem Ipsum Dolor',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+        'date' => '27 Januari 2026',
+        'thumbnail' => base_url('assets/images/video-1.jpg'),
+        'youtube_url' => 'https://www.youtube.com/watch?v=2d1D7ScTOuA'
+        ],
+    ];
 
-        return view('pages/galeri_video', $data);
-    }
+
+    return view('pages/galeri_video', $data);
+}
 
     /**
      * ===============================

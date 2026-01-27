@@ -1,119 +1,117 @@
-<?= $this->extend('layout/main_inner') ?>
+.video-kegiatan-page {
+    background: #fbf8f2;
+    padding: 60px 80px;
+    font-family: 'Poppins', sans-serif;
+}
 
-<?= $this->section('content') ?>
+/* ROW */
+.video-row {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    margin-bottom: 120px;
+}
 
-<link rel="stylesheet" href="<?= base_url('assets/css/pages/galeri.css') ?>">
+.video-row.right {
+    flex-direction: row-reverse;
+}
 
-<section class="galeri-wrap">
-  <div class="container-galeri">
+/* ======================
+   VIDEO FRAME (LAYERED)
+====================== */
+.video-frame-wrapper {
+    position: relative;
+    width: 50%;
+    min-width: 520px;
+    height: 360px;
+}
 
-    <!-- FILTER -->
-    <div class="galeri-filter">
-      <div class="gf-col">
-        <select class="gf-select">
-          <option selected disabled>Cari Kegiatan</option>
-          <option>Rapat Koordinasi</option>
-          <option>Upacara</option>
-          <option>Pelatihan</option>
-        </select>
-      </div>
+.video-layer {
+    position: absolute;
+    border-radius: 22px;
+    overflow: hidden;
+}
 
-      <div class="gf-col">
-        <select class="gf-select">
-          <option selected disabled>Tahun</option>
-          <option>2025</option>
-          <option>2024</option>
-          <option>2023</option>
-        </select>
-      </div>
+/* BACK LAYER */
+.video-layer.back {
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    top: 18px;
+    left: 18px;
+    opacity: 0.6;
+}
 
-      <div class="gf-col gf-col--btn">
-        <button class="gf-btn" type="button">Search</button>
-      </div>
-    </div>
+/* FRONT LAYER */
+.video-layer.front {
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    z-index: 2;
+    text-decoration: none;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+}
 
-    <!-- CARD 1 -->
-    <article class="gcard gcard--big">
-      <div class="gcard__pad gcard__pad--left">
-        <h3 class="gcard__title">Lorem Ipsum Dolor Sit Amet consectetur adipisicing elit</h3>
-        <p class="gcard__desc">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
-      </div>
+.video-layer.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-      <div class="gcard__pad gcard__pad--right">
-        <div class="gcard__split"></div>
+/* PLAY ICON */
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 68px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #000;
+}
 
-        <div class="gpanel">
-          <div class="gpanel__year">2025</div>
-          <div class="gpanel__shape"></div>
+/* FOOTER VIDEO */
+.video-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    padding: 14px;
+    text-align: center;
+}
 
-          <div class="gpanel__action">
-            <a class="gbtn" href="#">dokumentasi lainnya</a>
-            <span class="gdot" aria-hidden="true"></span>
-          </div>
-        </div>
-      </div>
-    </article>
+.video-footer h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
 
-    <!-- CARD 2 -->
-    <article class="gcard gcard--mid">
-      <div class="gmedia"></div>
+.video-footer span {
+    font-size: 12px;
+    color: #555;
+}
 
-      <div class="gmid">
-        <div class="gmid__split"></div>
-        <div class="gmid__year">2024</div>
+/* ======================
+   DESCRIPTION
+====================== */
+.video-info {
+    width: 50%;
+}
 
-        <div class="gmid__text">
-          <h3 class="gcard__title">Lorem Ipsum Dolor Sit Amet consectetur adipisicing elit</h3>
-          <p class="gcard__desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+.video-info h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
 
-          <div class="gmid__action">
-            <a class="gbtn" href="#">dokumentasi lainnya</a>
-            <span class="gdot" aria-hidden="true"></span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- CARD 3 -->
-    <article class="gcard gcard--stack">
-      <div class="gstack__top">
-        <div class="gstack__left">
-          <h3 class="gcard__title">Lorem Ipsum Dolor Sit Amet consectetur adipisicing elit</h3>
-          <p class="gcard__desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-
-          <div class="gstack__action">
-            <a class="gbtn" href="#">dokumentasi lainnya</a>
-            <span class="gdot" aria-hidden="true"></span>
-          </div>
-        </div>
-
-        <div class="gstack__right">
-          <div class="gstack__split"></div>
-          <div class="gstack__year">2023</div>
-          <div class="gstack__shape"></div>
-        </div>
-      </div>
-
-      <div class="gstack__thumbs">
-        <div class="gthumb"></div>
-        <div class="gthumb"></div>
-        <div class="gthumb"></div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-
-
-<?= $this->endSection() ?>
+.video-info p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #333;
+    max-width: 520px;
+}

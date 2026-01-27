@@ -33,3 +33,5 @@ $routes->get('berita/(:num)', 'Pages::detailBerita/$1');
 
 
 
+
+

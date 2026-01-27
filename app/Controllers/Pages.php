@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\PageModel;
+use App\Models\GaleriModel;
+use App\Models\GaleriImageModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController

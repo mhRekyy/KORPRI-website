@@ -1,19 +1,12 @@
 /* =========================
    LANDING SECTION (FULL LAYOUT)
    ========================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-    font-family: 'poppins';
-}
-
 body {
   margin: 0 !important;
   padding: 0 !important; 
   padding-top: 80px !important;
   overflow-x: hidden;
+  font-family: 'poppins';
 }
 
 main {
@@ -277,7 +270,7 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Pengumuman Box - Hapus h3 karena sudah di header */
@@ -313,6 +306,11 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.news-card-link{
+  text-decoration: none;
+  color: inherit;
 }
 
 .news-card:hover {

@@ -38,10 +38,30 @@ class Home extends BaseController
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 
             'programs' => [
-                ['icon' => 'fas fa-gavel', 'title' => 'DIGITALISAI BIROKRASI', 'description' => '...', 'link' => '/program/bantuan-hukum'],
-                ['icon' => 'fas fa-hand-holding-usd', 'title' => 'PENGUATAN NILAI ASN', 'description' => '...', 'link' => '/program/kesejahteraan'],
-                ['icon' => 'fas fa-building', 'title' => 'PERLINDUNGAN KARIR', 'description' => '...', 'link' => '/program/koperasi'],
-                ['icon' => 'fas fa-store', 'title' => 'KESEJAHTERAAN ASN', 'description' => '...', 'link' => '/program/umkm'],
+                [
+                    'icon' => 'fas fa-gavel',
+                    'title' => 'DIGITALISAI BIROKRASI',
+                    'description' => 'Layanan konsultasi dan bantuan hukum untuk anggota KORPRI',
+                    'link' => '/program/bantuan-hukum'
+                ],
+                [
+                    'icon' => 'fas fa-hand-holding-usd',
+                    'title' => 'PENGUATAN NILAI ASN',
+                    'description' => 'Program peningkatan kesejahteraan anggota KORPRI',
+                    'link' => '/program/kesejahteraan'
+                ],
+                [
+                    'icon' => 'fas fa-building',
+                    'title' => 'PERLINDUNGAN KARIR',
+                    'description' => 'Koperasi KORPRI untuk kemajuan ekonomi anggota',
+                    'link' => '/program/koperasi'
+                ],
+                [
+                    'icon' => 'fas fa-store',
+                    'title' => 'KESEJAHTERAAN ASN',
+                    'description' => 'Pemberdayaan UMKM untuk anggota KORPRI',
+                    'link' => '/program/umkm'
+                ],
             ],
 
             'gallery' => [

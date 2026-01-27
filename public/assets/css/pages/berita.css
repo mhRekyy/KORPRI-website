@@ -90,7 +90,6 @@
   display: grid;
   grid-template-columns: 500px 60px 1fr;
   gap: 20px;
-  align-items: start; /* TAMBAH: SAMA TINGGI */
 }
 
 /* TANGGAL - naikkan posisi 4px ke atas */
@@ -178,7 +177,7 @@
   flex-direction: column;
   gap: 30px; /* gap antar container exact desain */
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* CONTAINER JUDUL PUTIH */
@@ -192,10 +191,11 @@
 .desc-card {
   background: var(--card);
   border-radius: 14px;
-  padding: 24px; 
-  flex-grow: 1;
+  padding: 24px;
 
-  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -206,6 +206,12 @@
   font-size: 22px;
   font-weight: 700;
   line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 .bdesc {
   margin: 0;
@@ -213,10 +219,11 @@
   line-height: 1.7;
 
   display: -webkit-box;
-  -webkit-line-clamp: 6;
-  line-clamp: 6; /* Sesuaikan jumlah baris yang muat */
+  -webkit-line-clamp: 7;
+  line-clamp: 7; /* Sesuaikan jumlah baris yang muat */
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
 }
 
 /* RESPONSIVE */

@@ -68,6 +68,7 @@
         <div class="news-pengumuman-wrapper">
           <?php if (!empty($news)): ?>
   <?php foreach ($news as $b): ?>
+    <a href="<?= site_url('berita/' . $b['id']) ?>" class="news-card-link">
     <div class="news-card">
       <div class="news-image">
         <?php if (!empty($b['gambar'])): ?>

@@ -95,7 +95,7 @@ echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
           <!-- Deskripsi: Container Putih Sendiri + Border Emas Kiri -->
           <div class="desc-card">
           <p class="bdesc">
-    <?= esc(strip_tags(substr($b['konten'], 0, 120))) ?>...
+    <?= esc(strip_tags($b['konten'])) ?>
   </p>
 
           </div>

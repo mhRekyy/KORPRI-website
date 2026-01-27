@@ -217,6 +217,21 @@ class Pages extends BaseController
         return view('pages/Galeri', $data);
     }
 
+    public function galeri_video()
+    {
+        $data = [
+            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
+            'videos' => [
+                ['video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'title' => 'Video Kegiatan 1'],
+                ['video_url' => 'https://www.youtube.com/embed/3JZ_D3ELwOQ', 'title' => 'Video Kegiatan 2'],
+                ['video_url' => 'https://www.youtube.com/embed/L_jWHffIx5E', 'title' => 'Video Kegiatan 3'],
+                ['video_url' => 'https://www.youtube.com/embed/eY52Zsg-KVI', 'title' => 'Video Kegiatan 4'],
+            ]
+        ];
+
+        return view('pages/galeri_video', $data);
+    }
+
     /**
      * ===============================
      * PLACEHOLDER (NANTI PAKAI DB SENDIRI)

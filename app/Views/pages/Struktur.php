@@ -140,13 +140,13 @@ $l4_wk2 = array_slice($wk2['children'], 1);
 
 <div class="chart">
 
+
   <!-- Level 1 -->
   <div class="row row--ketua">
     <?php renderCard($org['ketua']['title'], $org['ketua']['subtitle'], $org['ketua']['image'], 'small'); ?>
   </div>
-
-  <!-- connector: ketua -> bar wakil -->
-  <div class="line line--ketua-to-wakil"></div>
+  <!-- connector: ketua -> bar wakil (pakai connector khusus) -->
+  <div class="connector connector--ketua-wakil"></div>
 
   <!-- Level 2 (4 wakil) -->
   <div class="row row--wakil">
@@ -156,8 +156,7 @@ $l4_wk2 = array_slice($wk2['children'], 1);
       <div class="col col--3"><?php renderCard($wk3['title'], $wk3['subtitle'], $wk3['image'], 'small'); ?></div>
       <div class="col col--4"><?php renderCard($wk4['title'], $wk4['subtitle'], $wk4['image'], 'small'); ?></div>
     </div>
-
-    <!-- garis horizontal di bawah wk + 4 garis turun ke level 3 -->
+    <!-- connector horizontal + drop ke bawah -->
     <div class="connector connector--wk-to-l3"></div>
   </div>
 
@@ -169,8 +168,7 @@ $l4_wk2 = array_slice($wk2['children'], 1);
       <div class="col col--3"><?php renderCard($l3_wk3['title'], $l3_wk3['subtitle'], $l3_wk3['image'], 'big'); ?></div>
       <div class="col col--4"><?php renderCard($l3_wk4['title'], $l3_wk4['subtitle'], $l3_wk4['image'], 'big'); ?></div>
     </div>
-
-    <!-- garis vertikal panjang KHUSUS dari kolom WK II menuju bracket bawah -->
+    <!-- connector vertikal panjang khusus dari WK II ke bawah -->
     <div class="connector connector--wk2-down"></div>
   </div>
 
@@ -183,7 +181,6 @@ $l4_wk2 = array_slice($wk2['children'], 1);
         </div>
       <?php endforeach; ?>
     </div>
-
     <!-- bracket (garis horizontal) + 4 garis turun kecil ke tiap card bawah -->
     <div class="connector connector--bracket-l4"></div>
   </div>

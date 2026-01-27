@@ -298,6 +298,7 @@ public function Berita()
     }
 
 
+
     public function Artikel()
     {
         return view('pages/Artikel', [

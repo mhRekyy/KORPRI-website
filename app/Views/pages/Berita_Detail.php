@@ -51,23 +51,37 @@
 
                 <!-- Berita Terkini -->
                 <div class="sidebar-box mb-4">
-                    <h5 class="sidebar-title">Berita Terkini</h5>
+                <h5 class="sidebar-title">Berita Terkini</h5>
 
-                    <?php foreach ($beritaTerkini as $item): ?>
-                        <div class="sidebar-item">
-                            <a href="<?= base_url('berita/' . $item['id']) ?>">
-                                <?= esc($item['judul']) ?>
-                            </a>
-                            <div class="small text-muted">
-                                <?= date('d M Y', strtotime($item['created_at'])) ?>
+                <?php foreach ($beritaTerkini as $item): ?>
+                    <?php
+                    $thumb = !empty($item['gambar'])
+                        ? base_url('uploads/berita/' . $item['gambar'])
+                        : base_url('uploads/berita/default.jpg');
+                    ?>
+
+                    <div class="sidebar-item sidebar-news-item d-flex">
+                    <a class="sidebar-news-thumb flex-shrink-0" href="<?= base_url('berita/' . $item['id']) ?>">
+                        <img src="<?= esc($thumb) ?>" alt="<?= esc($item['judul']) ?>">
+                    </a>
+
+                    <div class="sidebar-news-content flex-grow-1">
+                        <a class="sidebar-news-title" href="<?= base_url('berita/' . $item['id']) ?>">
+                        <?= esc($item['judul']) ?>
+                        </a>
+                        <div class="sidebar-news-date">
+                            <i class="bi bi-calendar me-1"></i>
+                            <?= date('d M Y', strtotime($item['created_at'])) ?>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                    </div>
+                    </div>
+                <?php endforeach; ?>
                 </div>
 
+
                 <!-- Kategori -->
-                <div class="sidebar-box">
-                    <h5 class="sidebar-title">Kategori Berita</h5>
+                <div class="sidebar-box-kategori">
+                    <h5 class="sidebar-title-kategori">Kategori Berita</h5>
                     <ul class="list-unstyled">
                         <?php foreach ($kategoriList as $kat): ?>
                             <li>

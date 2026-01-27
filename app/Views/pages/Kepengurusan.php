@@ -72,36 +72,43 @@
             </button>
         </div>
 
+
         <!-- Kolom Kanan: PDF Viewer -->
         <div class="pdf-viewer-box">
+
             <!-- Object tag untuk embed PDF -->
-            <object id="pdfDoc" data="<?= base_url('assets/pdf/' . $dokumen['file_pdf']) ?>" type="application/pdf" class="pdf-frame">
-                <div style="text-align: center; padding-top: 100px;">
-                    <p>Browser Anda tidak mendukung preview PDF.</p>
-                    <a href="<?= base_url('assets/pdf/' . $dokumen['file_pdf']) ?>" class="btn-gold">Download File</a>
-                </div>
-            </object>
+            <iframe
+            id="pdfDoc"
+            src="<?= esc($dokumen['pdf_viewer_url']) ?>"
+            class="pdf-frame"
+            style="width:100%; height:80vh; border:0;"
+            onload="window.__pdfReady = true"
+            ></iframe>
         </div>
 
     </div>
 </div>
 
 <script>
-    // Fungsi Cetak PDF
-    function printPdf() {
-        const pdfFrame = document.getElementById('pdfDoc');
-        if (pdfFrame && typeof pdfFrame.print === 'function') {
-            pdfFrame.print();
-        } else {
-            // Fallback: Buka PDF di tab baru lalu print manual
-            window.open("<?= base_url('assets/pdf/' . $dokumen['file_pdf']) ?>", '_blank').print();
-        }
-    }
+function openFullscreen() {
+    window.open("<?= esc($dokumen['pdf_viewer_url']) ?>", "_blank");
+  }
 
-    // Fungsi Buka Fullscreen PDF
-    function openFullscreen() {
-        window.open("<?= base_url('assets/pdf/' . $dokumen['file_pdf']) ?>", '_blank');
+  function printPdf() {
+    const iframe = document.getElementById('pdfDoc');
+    if (!iframe) return;
+
+    try {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print(); // dialog print [web:242]
+    } catch (e) {
+      // fallback terakhir: buka viewer di tab baru lalu print
+      const w = window.open("<?= esc($dokumen['pdf_viewer_url']) ?>", "_blank");
+      if (w) setTimeout(() => { try { w.print(); } catch(e) {} }, 2000);
     }
+  }
 </script>
+
+
 
 <?= $this->endSection() ?>

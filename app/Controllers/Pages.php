@@ -98,23 +98,30 @@ class Pages extends BaseController
     }
 
     public function Kepengurusan()
-    {
-        $data = [
-            'pageTitle' => 'Kepengurusan KORPRI',
-            'dokumen' => [
-                'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
-                'nomor_sk' => 'KEP-37/KU-IX/2026',
-                'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
-                'tanggal' => '01 Januari 2026',
-                'status' => 'Aktif / Berlaku',
-                'periode' => '2025 - 2026',
-                'file_pdf' => 'sk_kepengurusan.pdf', // Pastikan file ini ada di public/assets/pdf/
-                'kategori' => 'Keputusan Resmi'
-            ],
-        ];
+{
+    $dokumen = [
+        'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
+        'nomor_sk' => 'KEP-37/KU-IX/2026',
+        'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
+        'tanggal' => '01 Januari 2026',
+        'status' => 'Aktif / Berlaku',
+        'periode' => '2025 - 2026',
+        'file_pdf' => 'sk_keputusan.pdf',
+        'kategori' => 'Keputusan Resmi',
+    ];
 
-        return view('pages/Kepengurusan', $data);
-    }
+    // ini path PDF relatif (tanpa http://localhost...)
+    $dokumen['pdf_path'] = base_url('assets/pdf/' . $dokumen['file_pdf']); // tetap untuk download button
+    $dokumen['pdfjs_file_param'] = '/assets/pdf/' . $dokumen['file_pdf'];  // relatif untuk viewer (paling aman)
+
+    $dokumen['pdf_viewer_url'] =
+        base_url('assets/pdfjs/web/viewer.html?file=') . rawurlencode($dokumen['pdfjs_file_param']); // file param [web:190]
+
+    return view('pages/Kepengurusan', [
+        'pageTitle' => 'Kepengurusan KORPRI',
+        'dokumen'   => $dokumen,
+    ]);
+}
 
 
 

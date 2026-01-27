@@ -5,6 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('pdf/(:any)', 'Files::show/$1');
 
 $routes->get('/', 'Home::index');
 

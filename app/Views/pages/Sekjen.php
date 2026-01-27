@@ -23,7 +23,7 @@
                         <!-- Logika: Tampilkan foto jika ada, jika kosong biarkan abu-abu -->
                         <?php if (!empty($Sekjen['foto']) && !empty($Sekjen['nama'])) : ?>
                             <!-- Pastikan path gambarnya benar -->
-                            <img src="<?= base_url('assets/img/ketua/' . $Sekjen['foto']) ?>" alt="<?= $Sekjen['nama'] ?>" onerror="this.style.display='none'">
+                            <img src="<?= base_url('assets/img/sekjen/' . $Sekjen['foto']) ?>" alt="<?= $Sekjen['nama'] ?>" onerror="this.style.display='none'">
                         <?php endif; ?>
                     </div>
                     

@@ -41,39 +41,43 @@ class Pages extends BaseController
 
     public function Profile()
     {
-        return $this->renderPage('profile');
+        return view('pages/profile', [
+            'pageTitle' => 'PROFILE KORPRI',
+        ]);
     }
 
     public function Struktur()
     {
-        return $this->renderPage('struktur');
+        return view('pages/struktur',[
+            'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN'
+        ]);
     }
 
     public function Sejarah()
-{
+    {
     return view('pages/sejarah', [
-        'title' => 'SEJARAH KORPRI ACEH',
+        'pageTitle' => 'SEJARAH KORPRI ACEH',
     ]);
-}
+    }
 
     public function TujuanFungsi()
-{
+    {
     return view('pages/tujuan_fungsi', [
-        'title' => 'TUJUAN DAN FUNGSI KORPRI',
+        'pageTitle' => 'TUJUAN DAN FUNGSI KORPRI',
     ]);
 }
 
     public function visiMisi()
 {
     return view('pages/visi_misi', [
-        'title' => 'VISI DAN MISI'
+        'pageTitle' => 'VISI DAN MISI'
     ]);
 }
 
     public function Program()
 {
     return view('pages/program', [
-        'title' => 'PROGRAM KORPRI ACEH',
+        'pageTitle' => 'PROGRAM KORPRI ACEH',
     ]);
 }
 
@@ -93,67 +97,101 @@ class Pages extends BaseController
 
     public function Kepengurusan()
     {
-        return view('pages/Kepengurusan', [
-            'pageTitle' => 'KEPENGURUSAN KORPRI',
-        ]);
+        $data = [
+            'pageTitle' => 'Kepengurusan KORPRI',
+            'dokumen' => [
+                'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
+                'nomor_sk' => 'KEP-37/KU-IX/2026',
+                'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
+                'tanggal' => '01 Januari 2026',
+                'status' => 'Aktif / Berlaku',
+                'periode' => '2025 - 2026',
+                'file_pdf' => 'sk_kepengurusan.pdf', // Pastikan file ini ada di public/assets/pdf/
+                'kategori' => 'Keputusan Resmi'
+            ],
+        ];
+
+        return view('pages/Kepengurusan', $data);
     }
+
+
+
+
 
     public function KetuaUmum()
     {
         $dataKetua = [
             [
-                'nama' => 'Dr. H. M. Zaini Abdullah',
-                'foto' => 'ketua_1.jpg',
+                'nama' => 'Dr. H. M. Zaini Abdullah', 
+                'foto' => 'ketua_1.jpg', // Ganti dengan nama file aslimu nanti
                 'periode' => '2012 - 2017'
             ],
             [
-                'nama' => 'Ir. Nova Iriansyah, M.T.',
+                'nama' => 'Ir. Nova Iriansyah, M.T.', 
                 'foto' => 'ketua_2.jpg',
                 'periode' => '2017 - 2022'
             ],
             [
-                'nama' => 'Achmad Marzuki',
+                'nama' => 'Achmad Marzuki', 
                 'foto' => 'ketua_3.jpg',
                 'periode' => '2022 - 2023'
             ],
             [
-                'nama' => 'Bustami Hamzah, S.E., M.Si.',
+                'nama' => 'Bustami Hamzah, S.E., M.Si.', 
                 'foto' => 'ketua_4.jpg',
                 'periode' => '2023 - Sekarang'
             ],
+            // Data kosong untuk placeholder (kotak abu-abu) sesuai gambar
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
         ];
 
         return view('pages/KetuaUmum', [
             'pageTitle'  => 'PROFIL KETUA UMUM KORPRI MASA KE MASA',
-            'ketua_list' => $dataKetua,
+            'ketua_list' => $dataKetua // Data ini akan dipanggil di foreach View
         ]);
     }
+
+
 
     public function Sekjen()
     {
         $dataSekjen = [
             [
-                'nama' => 'Dr. H. M. Zaini Abdullah',
-                'foto' => 'sekjen_1.jpg',
+                'nama' => 'Dr. H. M. Zaini Abdullah', 
+                'foto' => 'ketua_1.jpg', // Ganti dengan nama file aslimu nanti
                 'periode' => '2012 - 2017'
             ],
             [
-                'nama' => 'Ir. Nova Iriansyah, M.T.',
-                'foto' => 'sekjen_2.jpg',
+                'nama' => 'Ir. Nova Iriansyah, M.T.', 
+                'foto' => 'ketua_2.jpg',
                 'periode' => '2017 - 2022'
             ],
             [
-                'nama' => 'Achmad Marzuki',
-                'foto' => 'sekjen_3.jpg',
+                'nama' => 'Achmad Marzuki', 
+                'foto' => 'ketua_3.jpg',
                 'periode' => '2022 - 2023'
             ],
+            [
+                'nama' => 'Bustami Hamzah, S.E., M.Si.', 
+                'foto' => 'ketua_4.jpg',
+                'periode' => '2023 - Sekarang'
+            ],
+            // Data kosong untuk placeholder (kotak abu-abu) sesuai gambar
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
+            ['nama' => '', 'foto' => '', 'periode' => ''],
         ];
 
         return view('pages/Sekjen', [
-            'pageTitle'   => 'PROFIL SEKRETARIS JENDERAL KORPRI MASA KE MASA',
-            'sekjen_list' => $dataSekjen,
+            'pageTitle'  => 'PROFIL SEKRETARIS JENDERAL KORPRI MASA KE MASA',
+            'Sekjen_list' => $dataSekjen // Data ini akan dipanggil di foreach View
         ]);
     }
+
 
     /**
      * ===============================

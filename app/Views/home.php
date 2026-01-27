@@ -67,19 +67,32 @@
         
         <div class="news-pengumuman-wrapper">
           <?php if (!empty($news)): ?>
-            <?php foreach (array_slice($news, 0, 3) as $item): ?>
-              <div class="news-card">
-                <div class="news-image">
-                  <img src="<?= esc($item['image']) ?>" alt="<?= esc($item['title']) ?>">
-                </div>
-                <div class="news-content">
-                  <p class="news-excerpt"><?= esc($item['excerpt']) ?></p>
-                  <span class="news-date"><?= esc($item['date']) ?></span>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          <?php endif; ?>
-          
+  <?php foreach ($news as $b): ?>
+    <div class="news-card">
+      <div class="news-image">
+        <?php if (!empty($b['gambar'])): ?>
+          <img src="<?= base_url('uploads/berita/' . $b['gambar']) ?>" alt="<?= esc($b['judul']) ?>">
+        <?php else: ?>
+          <img src="<?= base_url('assets/img/default-news.jpg') ?>" alt="<?= esc($b['judul'] ?? 'Berita') ?>">
+        <?php endif; ?>
+      </div>
+
+      <div class="news-content">
+        <h3 class="news-title"><?= esc($b['judul']) ?></h3>
+
+        <span class="news-date">
+          <?php
+            setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'INDONESIA');
+            echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
+          ?>
+        </span>
+      </div>
+    </div>
+  <?php endforeach; ?>
+<?php else: ?>
+  <p style="color:#9ca3af;">Tidak ada berita</p>
+<?php endif; ?>
+
           <div class="pengumuman-box">
             <div class="pengumuman-content">
               <?php if (!empty($pengumuman)): ?>

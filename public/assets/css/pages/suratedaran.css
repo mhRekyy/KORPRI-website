@@ -259,7 +259,7 @@
 
 .pdf-badge::before{
   content: "";
-  positi on: absolute;
+  position: absolute;
   inset: 12px 14px 28px 14px;
   border-radius: 10px;
   background: rgba(255,255,255,.06);

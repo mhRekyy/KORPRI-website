@@ -5,17 +5,16 @@
   --shadow: 0 10px 24px rgba(0,0,0,.10);
 }
 
+/* container judul boleh tetap max-width */
 .galeri-wrap{
   padding: 46px 0 70px;
   background: var(--bg);
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
-
 .galeri-container{
   width: min(1100px, calc(100% - 36px));
   margin: 0 auto;
 }
-
 .galeri-title{
   margin: 0 0 18px;
   font-size: 28px;
@@ -24,11 +23,46 @@
   color: #111;
 }
 
-/* ==== Bento Grid ==== */
+/* === ini yang bikin bento nempel kiri-kanan layar === */
+.galeri-fullbleed{
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  padding: 0;            /* tidak ada padding kiri kanan */
+  overflow: hidden;      /* penting untuk marquee */
+}
+
+/* === marquee wrapper === */
+.bento-marquee{
+  width: 100%;
+  overflow: hidden;
+}
+
+/* track berisi 2 bento-grid (set 1 & set 2) */
+.bento-marquee__track{
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: bento-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+/* pause saat user hover (sesuai request) */
+.bento-marquee:hover .bento-marquee__track{
+  animation-play-state: paused;
+}
+
+/* Animasi marquee (looping) */
+@keyframes bento-scroll{
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* === Bento grid (satu set) === */
 .bento-grid{
   display: grid;
   gap: var(--gap);
-  grid-template-columns: 1.05fr 1.55fr 1.05fr;
+  grid-template-columns: 240px 380px 240px;
   grid-auto-rows: 160px;
   grid-template-areas:
     "a b c"
@@ -36,68 +70,43 @@
     "f g h";
 }
 
-/* mapping tile ke area */
+/* mapping area */
 .tile-1{ grid-area: a; }
-.tile-2{ grid-area: b; } /* besar di tengah */
+.tile-2{ grid-area: b; }
 .tile-3{ grid-area: c; }
 .tile-4{ grid-area: d; }
 .tile-5{ grid-area: e; }
 .tile-6{ grid-area: f; }
-.tile-7{ grid-area: g; } /* tile bawah tengah */
+.tile-7{ grid-area: g; }
 .tile-8{ grid-area: h; }
 
-/* ==== Tile ==== */
+/* tile */
 .bento-tile{
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
   background: #d9d9d9;
   box-shadow: var(--shadow);
-  display: block;
 }
 
-/* area yang bergerak (marquee) */
-.tile-marquee{
-  position: absolute;
-  inset: 0;
-}
-
-.tile-track{
+.tile-img{
+  width: 100%;
   height: 100%;
-  display: flex;
-  width: max-content;
-  animation: tile-scroll 18s linear infinite;
-}
-
-.bento-tile:nth-child(2n) .tile-track{
-  animation-direction: reverse;
-  animation-duration: 22s;
-}
-
-.tile-track img{
-  height: 100%;
-  width: auto;
   display: block;
   object-fit: cover;
 }
 
-/* Hover: pause biar enak dibaca */
-.bento-tile:hover .tile-track{
-  animation-play-state: paused;
-}
-
-/* overlay teks */
+/* overlay teks hover (muncul nama kegiatan) */
 .tile-overlay{
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.38);
+  background: rgba(0,0,0,.40);
   opacity: 0;
   transition: opacity .25s ease;
   display: grid;
   place-items: center;
   padding: 12px;
 }
-
 .tile-label{
   color: #fff;
   font-weight: 700;
@@ -108,41 +117,6 @@
   background: rgba(0,0,0,.25);
   backdrop-filter: blur(2px);
 }
-
 .bento-tile:hover .tile-overlay{
   opacity: 1;
-}
-
-/* Animasi scroll horizontal */
-@keyframes tile-scroll{
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Responsive */
-@media (max-width: 900px){
-  .bento-grid{
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 160px;
-    grid-template-areas:
-      "b b"
-      "a c"
-      "d e"
-      "f g"
-      "h h";
-  }
-}
-@media (max-width: 520px){
-  .bento-grid{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "b"
-      "a"
-      "c"
-      "d"
-      "e"
-      "f"
-      "g"
-      "h";
-  }
 }

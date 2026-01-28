@@ -256,14 +256,16 @@ public function struktur()
     {
         $data = [
             'pageTitle' => 'GALERI KORPRI ACEH',
-            'gallery' => [
-                ['image' => base_url('assets/images/galeri1.jpg'), 'title' => 'Kegiatan 1'],
-                ['image' => base_url('assets/images/galeri2.jpg'), 'title' => 'Kegiatan 2'],
-                ['image' => base_url('assets/images/galeri3.jpg'), 'title' => 'Kegiatan 3'],
-                ['image' => base_url('assets/images/galeri4.jpg'), 'title' => 'Kegiatan 4'],
-                ['image' => base_url('assets/images/galeri5.jpg'), 'title' => 'Kegiatan 5'],
-                ['image' => base_url('assets/images/galeri6.jpg'), 'title' => 'Kegiatan 6'],
-            ]
+            'galeri' => [
+                ['image' => 'galeri1.jpg', 'title' => 'Kegiatan 1'],
+                ['image' => 'galeri2.jpg', 'title' => 'Kegiatan 2'],
+                ['image' => 'galeri3.jpg', 'title' => 'Kegiatan 3'],
+                ['image' => 'galeri4.jpg', 'title' => 'Kegiatan 4'],
+                ['image' => 'galeri5.jpg', 'title' => 'Kegiatan 5'],
+                ['image' => 'galeri6.jpg', 'title' => 'Kegiatan 6'],
+                ['image' => 'galeri7.jpg', 'title' => 'Kegiatan 7'],
+                ['image' => 'galeri8.jpg', 'title' => 'Kegiatan 8'],
+            ],
         ];
 
         return view('pages/Galeri', $data);

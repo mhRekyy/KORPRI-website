@@ -128,23 +128,30 @@ public function struktur()
     }
 
     public function Kepengurusan()
-    {
-        $data = [
-            'pageTitle' => 'Kepengurusan KORPRI',
-            'dokumen' => [
-                'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
-                'nomor_sk' => 'KEP-37/KU-IX/2026',
-                'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
-                'tanggal' => '01 Januari 2026',
-                'status' => 'Aktif / Berlaku',
-                'periode' => '2025 - 2026',
-                'file_pdf' => 'sk_kepengurusan.pdf', // Pastikan file ini ada di public/assets/pdf/
-                'kategori' => 'Keputusan Resmi'
-            ],
-        ];
+{
+    $dokumen = [
+        'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
+        'nomor_sk' => 'KEP-37/KU-IX/2026',
+        'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
+        'tanggal' => '01 Januari 2026',
+        'status' => 'Aktif / Berlaku',
+        'periode' => '2025 - 2026',
+        'file_pdf' => 'sk_keputusan.pdf',
+        'kategori' => 'Keputusan Resmi',
+    ];
 
-        return view('pages/Kepengurusan', $data);
-    }
+    // ini path PDF relatif (tanpa http://localhost...)
+    $dokumen['pdf_path'] = base_url('assets/pdf/' . $dokumen['file_pdf']); // tetap untuk download button
+    $dokumen['pdfjs_file_param'] = '/assets/pdf/' . $dokumen['file_pdf'];  // relatif untuk viewer (paling aman)
+
+    $dokumen['pdf_viewer_url'] =
+        base_url('assets/pdfjs/web/viewer.html?file=') . rawurlencode($dokumen['pdfjs_file_param']); // file param [web:190]
+
+    return view('pages/Kepengurusan', [
+        'pageTitle' => 'Kepengurusan KORPRI',
+        'dokumen'   => $dokumen,
+    ]);
+}
 
 
 
@@ -248,19 +255,25 @@ public function struktur()
     }
 
     public function galeri_video()
-    {
-        $data = [
-            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
-            'videos' => [
-                ['video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'title' => 'Video Kegiatan 1'],
-                ['video_url' => 'https://www.youtube.com/embed/3JZ_D3ELwOQ', 'title' => 'Video Kegiatan 2'],
-                ['video_url' => 'https://www.youtube.com/embed/L_jWHffIx5E', 'title' => 'Video Kegiatan 3'],
-                ['video_url' => 'https://www.youtube.com/embed/eY52Zsg-KVI', 'title' => 'Video Kegiatan 4'],
-            ]
+{
+    $data = [
+            [
+                'youtube_url' => 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
+                'tanggal' => '2026-01-27',
+                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+            ],
+            [
+                'youtube_url' => 'https://youtu.be/dQw4w9WgXcQ',
+                'tanggal' => '2026-01-26',
+                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+            ],
         ];
 
-        return view('pages/galeri_video', $data);
-    }
+        return view('pages/galeri_video', [
+            'videos' => $data,
+            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
+        ]);
+}
 
     /**
      * ===============================

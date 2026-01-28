@@ -6,6 +6,7 @@ use App\Models\PageModel;
 use App\Models\GaleriModel;
 use App\Models\GaleriImageModel;
 use App\Models\StrukturDPKModel;
+use App\Models\ProfilKorpriModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
@@ -42,12 +43,26 @@ class Pages extends BaseController
      * ===============================
      */
 
-    public function Profile()
-    {
-        return view('pages/profile', [
-            'pageTitle' => 'PROFILE KORPRI',
-        ]);
-    }
+public function profile()
+{
+    $model = new ProfilKorpriModel();
+
+    $masaBakti = $this->request->getGet('masa_bakti');
+    $struktur  = $this->request->getGet('struktur');
+    $keyword   = $this->request->getGet('q'); // 🔑 TAMBAH INI
+
+    return view('pages/Profile', [
+        'pageTitle' => 'Profil KORPRI',
+        'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
+        'listMasaBakti' => $model->select('masa_bakti')->distinct()->findAll(),
+        'listStruktur'  => $model->select('struktur')->distinct()->findAll(),
+        'masaBaktiAktif' => $masaBakti,
+        'strukturAktif'  => $struktur,
+        'keyword'        => $keyword, // 🔑 TAMBAH INI
+    ]);
+}
+
+
 
 public function struktur()
 {

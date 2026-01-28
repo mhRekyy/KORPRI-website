@@ -11,6 +11,7 @@ $routes->get('/', 'Home::index');
 
 $routes->get('kontak-kami', 'Pages::kontakKami');
 
+// $routes->get('profil-korpri', 'Pages::profilKorpri');
 $routes->get('profile', 'Pages::Profile');
 $routes->get('struktur', 'Pages::Struktur');
 $routes->get('sejarah', 'Pages::Sejarah');
@@ -32,8 +33,6 @@ $routes->get('Pengumuman', 'Pages::Pengumuman');
 // $routes->get('test-berita', 'Pages::testBerita');
 $routes->get('berita', 'Pages::Berita');
 $routes->get('berita/(:num)', 'Pages::detailBerita/$1');
-
-
 
 
 

@@ -52,7 +52,7 @@ public function profile()
     $keyword   = $this->request->getGet('q'); // 🔑 TAMBAH INI
 
     return view('pages/Profile', [
-        'pageTitle' => 'Profil KORPRI',
+        'pageTitle' => 'PROFIL KORPRI',
         'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
         'listMasaBakti' => $model->select('masa_bakti')->distinct()->findAll(),
         'listStruktur'  => $model->select('struktur')->distinct()->findAll(),
@@ -97,6 +97,7 @@ public function struktur()
         'ketua'    => $ketua,
         'wakil'    => $wakil,
         'children' => $children,
+        'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN'
     ]);
 }
 

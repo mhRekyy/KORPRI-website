@@ -34,8 +34,9 @@ class Home extends BaseController
                 ['title' => 'Pengumuman 3', 'link' => '/pengumuman/3'],
             ],
 
-             'tentang_korpri' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+             'tentang_korpri' => 'Korps Pegawai Republik Indonesia (KORPRI) adalah wadah tunggal untuk menghimpun seluruh Pegawai Republik Indonesia demi meningkatkan perjuangan, pengabdian, serta kesetiaan kepada cita-cita perjuangan Bangsa dan Negara Kesatuan Republik Indonesia.
+
+                                Berdiri sejak 29 November 1971 berdasarkan Keputusan Presiden Nomor 82 Tahun 1971, KORPRI berfungsi sebagai perekat dan pemersatu bangsa, menjaga netralitas, serta berkomitmen teguh untuk melayani masyarakat dengan profesionalisme dan integritas tinggi berlandaskan Panca Prasetya KORPRI.',
 
             'programs' => [
                 [

@@ -226,18 +226,23 @@ class Pages extends BaseController
 
     public function galeri_video()
 {
-    $data['videos'] = [
-        [
-        'title' => 'Lorem Ipsum Dolor',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-        'date' => '27 Januari 2026',
-        'thumbnail' => base_url('assets/images/video-1.jpg'),
-        'youtube_url' => 'https://www.youtube.com/watch?v=2d1D7ScTOuA'
-        ],
-    ];
+    $data = [
+            [
+                'youtube_url' => 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
+                'tanggal' => '2026-01-27',
+                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+            ],
+            [
+                'youtube_url' => 'https://youtu.be/dQw4w9WgXcQ',
+                'tanggal' => '2026-01-26',
+                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+            ],
+        ];
 
-
-    return view('pages/galeri_video', $data);
+        return view('pages/galeri_video', [
+            'videos' => $data,
+            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
+        ]);
 }
 
     /**

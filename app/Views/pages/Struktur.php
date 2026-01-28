@@ -22,7 +22,10 @@ function renderCard($title, $subtitle, $image, $variant = 'small') {
     </div>
     <div class="card__body">
       <div class="card__title"><?= $titleEsc ?></div>
-      <div class="card__sub"><?= $subEsc ?></div>
+      <div class="card__sub">
+  <?= nl2br($subEsc) ?>
+</div>
+
     </div>
   </div>
 <?php } ?>

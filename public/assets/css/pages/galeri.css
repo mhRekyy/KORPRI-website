@@ -5,61 +5,32 @@
   --shadow: 0 10px 24px rgba(0,0,0,.10);
 }
 
-/* container judul boleh tetap max-width */
 .galeri-wrap{
   padding: 46px 0 70px;
   background: var(--bg);
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
-.galeri-container{
-  width: min(1100px, calc(100% - 36px));
-  margin: 0 auto;
-}
-.galeri-title{
-  margin: 0 0 18px;
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: .5px;
-  color: #111;
-}
 
-/* === ini yang bikin bento nempel kiri-kanan layar === */
 .galeri-fullbleed{
   width: 100vw;
   position: relative;
   left: calc(-50vw + 50%);
-  padding: 0;            /* tidak ada padding kiri kanan */
-  overflow: hidden;      /* penting untuk marquee */
-}
-
-/* === marquee wrapper === */
-.bento-marquee{
-  width: 100%;
   overflow: hidden;
 }
 
-/* track berisi 2 bento-grid (set 1 & set 2) */
+.bento-marquee{ overflow: hidden; width: 100%; }
+
 .bento-marquee__track{
   display: flex;
   gap: var(--gap);
   width: max-content;
-  animation: bento-scroll 28s linear infinite;
   will-change: transform;
+  transform: translate3d(0,0,0);
 }
 
-/* pause saat user hover (sesuai request) */
-.bento-marquee:hover .bento-marquee__track{
-  animation-play-state: paused;
-}
-
-/* Animasi marquee (looping) */
-@keyframes bento-scroll{
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* === Bento grid (satu set) === */
+/* bento grid set */
 .bento-grid{
+  flex: 0 0 auto;
   display: grid;
   gap: var(--gap);
   grid-template-columns: 240px 380px 240px;
@@ -70,17 +41,10 @@
     "f g h";
 }
 
-/* mapping area */
-.tile-1{ grid-area: a; }
-.tile-2{ grid-area: b; }
-.tile-3{ grid-area: c; }
-.tile-4{ grid-area: d; }
-.tile-5{ grid-area: e; }
-.tile-6{ grid-area: f; }
-.tile-7{ grid-area: g; }
-.tile-8{ grid-area: h; }
+.tile-1{ grid-area: a; } .tile-2{ grid-area: b; } .tile-3{ grid-area: c; }
+.tile-4{ grid-area: d; } .tile-5{ grid-area: e; } .tile-6{ grid-area: f; }
+.tile-7{ grid-area: g; } .tile-8{ grid-area: h; }
 
-/* tile */
 .bento-tile{
   position: relative;
   overflow: hidden;
@@ -96,7 +60,6 @@
   object-fit: cover;
 }
 
-/* overlay teks hover (muncul nama kegiatan) */
 .tile-overlay{
   position: absolute;
   inset: 0;
@@ -107,6 +70,8 @@
   place-items: center;
   padding: 12px;
 }
+.bento-tile:hover .tile-overlay{ opacity: 1; }
+
 .tile-label{
   color: #fff;
   font-weight: 700;
@@ -116,7 +81,4 @@
   border-radius: 10px;
   background: rgba(0,0,0,.25);
   backdrop-filter: blur(2px);
-}
-.bento-tile:hover .tile-overlay{
-  opacity: 1;
 }

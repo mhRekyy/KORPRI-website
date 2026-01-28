@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PageModel;
 use App\Models\GaleriModel;
 use App\Models\GaleriImageModel;
+use App\Models\StrukturDPKModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
@@ -48,12 +49,41 @@ class Pages extends BaseController
         ]);
     }
 
-    public function Struktur()
-    {
-        return view('pages/struktur',[
-            'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN'
-        ]);
+public function struktur()
+{
+    $model = new StrukturDPKModel();
+
+    // Ketua
+    $ketua = $model->where('level', 1)
+                   ->where('is_active', 1)
+                   ->first();
+
+    // Wakil Ketua
+    $wakil = $model->where('level', 2)
+                   ->where('is_active', 1)
+                   ->orderBy('urutan', 'ASC')
+                   ->findAll();
+
+    // Semua anak (level 3 & 4)
+    $rows = $model->whereIn('level', [3,4])
+                  ->where('is_active', 1)
+                  ->orderBy('urutan', 'ASC')
+                  ->findAll();
+
+    // 🔑 KELOMPOKKAN BERDASARKAN parent_id
+    $children = [];
+    foreach ($rows as $row) {
+        if ($row['parent_id']) {
+            $children[$row['parent_id']][] = $row;
+        }
     }
+
+    return view('pages/struktur', [
+        'ketua'    => $ketua,
+        'wakil'    => $wakil,
+        'children' => $children,
+    ]);
+}
 
     public function Sejarah()
     {

@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/ketua_umum.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pages/ketua_umum.css') ?>">
 
 <div class="page-container">
     <!-- Watermark Background -->

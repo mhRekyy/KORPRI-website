@@ -7,8 +7,6 @@
   <div class="vk-container">
 
     <div class="vk-hero">
-      <h2 class="vk-hero__title">VIDEO KEGIATAN</h2>
-
       <div class="vk-filter">
         <input class="vk-input" type="text" placeholder="Tahun">
         <input class="vk-input" type="text" placeholder="Kategori Acara">

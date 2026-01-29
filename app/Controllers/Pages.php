@@ -41,53 +41,6 @@ class Pages extends BaseController
         $struktur  = $this->request->getGet('struktur');
         $keyword   = $this->request->getGet('q'); // 🔑 TAMBAH INI
 
-<<<<<<< HEAD
-    return view('pages/Profile', [
-        'pageTitle' => 'PROFIL KORPRI',
-        'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
-        'listMasaBakti' => $model->select('masa_bakti')->distinct()->findAll(),
-        'listStruktur'  => $model->select('struktur')->distinct()->findAll(),
-        'masaBaktiAktif' => $masaBakti,
-        'strukturAktif'  => $struktur,
-        'keyword'        => $keyword, // 🔑 TAMBAH INI
-    ]);
-}
-
-public function testGaleri()
-{
-    $galeriModel = new \App\Models\GaleriModel();
-    dd($galeriModel->findAll());
-}
-
-
-public function struktur()
-{
-    $model = new StrukturDPKModel();
-
-    // Ketua
-    $ketua = $model->where('level', 1)
-                   ->where('is_active', 1)
-                   ->first();
-
-    // Wakil Ketua
-    $wakil = $model->where('level', 2)
-                   ->where('is_active', 1)
-                   ->orderBy('urutan', 'ASC')
-                   ->findAll();
-
-    // Semua anak (level 3 & 4)
-    $rows = $model->whereIn('level', [3,4])
-                  ->where('is_active', 1)
-                  ->orderBy('urutan', 'ASC')
-                  ->findAll();
-
-    // 🔑 KELOMPOKKAN BERDASARKAN parent_id
-    $children = [];
-    foreach ($rows as $row) {
-        if ($row['parent_id']) {
-            $children[$row['parent_id']][] = $row;
-        }
-=======
         return view('pages/Profile', [
             'pageTitle' => 'PROFIL KORPRI',
             'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
@@ -97,7 +50,6 @@ public function struktur()
             'strukturAktif'  => $struktur,
             'keyword'        => $keyword, // 🔑 TAMBAH INI
         ]);
->>>>>>> f931c7c1ed36a8eb84b044f6bd989df1d61df9d1
     }
 
 
@@ -467,7 +419,7 @@ public function Galeri()
         ]);
     }
 
-    
+
     public function SuratEdaran()
     {
         return view('pages/SuratEdaran', [

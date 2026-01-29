@@ -169,16 +169,16 @@ function getIconByJabatan(string $jabatan): string
 
   const CFG = {
     // Ketua -> Wakil (group connector)
-    trunkFromKetua: 50,   // turun dari ketua sebelum bar
+    trunkFromKetua: 30,   // turun dari ketua sebelum bar
     dropToWakil: 5,      // jarak bar ke top wakil
 
     // Wakil biasa (1,3,4) -> anak level-3
     gapToChildTop: 0,     // kalau mau stop sebelum card anak, isi mis: 6
 
     // Wakil II (keluar dari kanan)
-    wk2SideOut: 18,       // seberapa jauh keluar dari sisi kanan wakil II
+    wk2SideOut: 20,       // seberapa jauh keluar dari sisi kanan wakil II
     wk2TrunkMin: 30,      // minimal turun dulu sebelum bar (biar mirip desain)
-    wk2DropToChild: 50,   // jarak bar ke top anak-anak (wk2)
+    wk2DropToChild: 30,   // jarak bar ke top anak-anak (wk2)
 
     stroke: '#1f1f1f',
     strokeWidth: 3,

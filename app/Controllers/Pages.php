@@ -18,11 +18,6 @@ class Pages extends BaseController
         $this->pageModel = new PageModel();
     }
 
-    /**
-     * ===============================
-     * HELPER UNTUK HALAMAN DATABASE
-     * ===============================
-     */
     protected function renderPage(string $slug)
     {
         $page = $this->pageModel->getPageBySlug($slug);
@@ -37,97 +32,93 @@ class Pages extends BaseController
         ]);
     }
 
-    /**
-     * ===============================
-     * HALAMAN DARI DATABASE (pages)
-     * ===============================
-     */
 
-public function profile()
-{
-    $model = new ProfilKorpriModel();
+    public function profile()
+    {
+        $model = new ProfilKorpriModel();
 
-    $masaBakti = $this->request->getGet('masa_bakti');
-    $struktur  = $this->request->getGet('struktur');
-    $keyword   = $this->request->getGet('q'); // 🔑 TAMBAH INI
+        $masaBakti = $this->request->getGet('masa_bakti');
+        $struktur  = $this->request->getGet('struktur');
+        $keyword   = $this->request->getGet('q'); // 🔑 TAMBAH INI
 
-    return view('pages/Profile', [
-        'pageTitle' => 'PROFIL KORPRI',
-        'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
-        'listMasaBakti' => $model->select('masa_bakti')->distinct()->findAll(),
-        'listStruktur'  => $model->select('struktur')->distinct()->findAll(),
-        'masaBaktiAktif' => $masaBakti,
-        'strukturAktif'  => $struktur,
-        'keyword'        => $keyword, // 🔑 TAMBAH INI
-    ]);
-}
-
-
-
-public function struktur()
-{
-    $model = new StrukturDPKModel();
-
-    // Ketua
-    $ketua = $model->where('level', 1)
-                   ->where('is_active', 1)
-                   ->first();
-
-    // Wakil Ketua
-    $wakil = $model->where('level', 2)
-                   ->where('is_active', 1)
-                   ->orderBy('urutan', 'ASC')
-                   ->findAll();
-
-    // Semua anak (level 3 & 4)
-    $rows = $model->whereIn('level', [3,4])
-                  ->where('is_active', 1)
-                  ->orderBy('urutan', 'ASC')
-                  ->findAll();
-
-    // 🔑 KELOMPOKKAN BERDASARKAN parent_id
-    $children = [];
-    foreach ($rows as $row) {
-        if ($row['parent_id']) {
-            $children[$row['parent_id']][] = $row;
-        }
+        return view('pages/Profile', [
+            'pageTitle' => 'PROFIL KORPRI',
+            'dataProfil' => $model->getFiltered($masaBakti, $struktur, $keyword),
+            'listMasaBakti' => $model->select('masa_bakti')->distinct()->findAll(),
+            'listStruktur'  => $model->select('struktur')->distinct()->findAll(),
+            'masaBaktiAktif' => $masaBakti,
+            'strukturAktif'  => $struktur,
+            'keyword'        => $keyword, // 🔑 TAMBAH INI
+        ]);
     }
 
-    return view('pages/struktur', [
-        'ketua'    => $ketua,
-        'wakil'    => $wakil,
-        'children' => $children,
-        'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN'
-    ]);
-}
+
+
+    public function struktur()
+    {
+        $model = new StrukturDPKModel();
+
+        // Ketua
+        $ketua = $model->where('level', 1)
+                    ->where('is_active', 1)
+                    ->first();
+
+        // Wakil Ketua
+        $wakil = $model->where('level', 2)
+                    ->where('is_active', 1)
+                    ->orderBy('urutan', 'ASC')
+                    ->findAll();
+
+        // Semua anak (level 3 & 4)
+        $rows = $model->whereIn('level', [3,4])
+                    ->where('is_active', 1)
+                    ->orderBy('urutan', 'ASC')
+                    ->findAll();
+
+        // 🔑 KELOMPOKKAN BERDASARKAN parent_id
+        $children = [];
+        foreach ($rows as $row) {
+            if ($row['parent_id']) {
+                $children[$row['parent_id']][] = $row;
+            }
+        }
+
+        return view('pages/struktur', [
+            'ketua'    => $ketua,
+            'wakil'    => $wakil,
+            'children' => $children,
+            'pageTitle' => 'STRUKTUR KELEMBAGAAN DPKN'
+        ]);
+    }
 
     public function Sejarah()
     {
-    return view('pages/sejarah', [
-        'pageTitle' => 'SEJARAH KORPRI ACEH',
-    ]);
+        
+        return view('pages/sejarah', [
+            'pageTitle' => 'SEJARAH KORPRI ACEH',
+        ]);
+        }
+
+        public function TujuanFungsi()
+        {
+        return view('pages/tujuan_fungsi', [
+            'pageTitle' => 'TUJUAN DAN FUNGSI KORPRI',
+        ]);
     }
 
-    public function TujuanFungsi()
-    {
-    return view('pages/tujuan_fungsi', [
-        'pageTitle' => 'TUJUAN DAN FUNGSI KORPRI',
-    ]);
-}
-
     public function visiMisi()
-{
-    return view('pages/visi_misi', [
-        'pageTitle' => 'VISI DAN MISI'
-    ]);
-}
+    {
+        return view('pages/visi_misi', [
+            'pageTitle' => 'VISI DAN MISI'
+        ]);
+    }
 
     public function Program()
-{
-    return view('pages/program', [
-        'pageTitle' => 'PROGRAM KORPRI ACEH',
-    ]);
-}
+    {
+        return view('pages/program', [
+            'pageTitle' => 'PROGRAM KORPRI ACEH',
+        ]);
+    }
 
 
     /**
@@ -144,30 +135,30 @@ public function struktur()
     }
 
     public function Kepengurusan()
-{
-    $dokumen = [
-        'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
-        'nomor_sk' => 'KEP-37/KU-IX/2026',
-        'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
-        'tanggal' => '01 Januari 2026',
-        'status' => 'Aktif / Berlaku',
-        'periode' => '2025 - 2026',
-        'file_pdf' => 'sk_keputusan.pdf',
-        'kategori' => 'Keputusan Resmi',
-    ];
+    {
+        $dokumen = [
+            'judul' => 'Susunan Personalia Dewan Pengurus KORPRI Provinsi ACEH',
+            'nomor_sk' => 'KEP-37/KU-IX/2026',
+            'ditetapkan_oleh' => 'Dewan Pengurus KORPRI Nasional',
+            'tanggal' => '01 Januari 2026',
+            'status' => 'Aktif / Berlaku',
+            'periode' => '2025 - 2026',
+            'file_pdf' => 'sk_keputusan.pdf',
+            'kategori' => 'Keputusan Resmi',
+        ];
 
-    // ini path PDF relatif (tanpa http://localhost...)
-    $dokumen['pdf_path'] = base_url('assets/pdf/' . $dokumen['file_pdf']); // tetap untuk download button
-    $dokumen['pdfjs_file_param'] = '/assets/pdf/' . $dokumen['file_pdf'];  // relatif untuk viewer (paling aman)
+        // ini path PDF relatif (tanpa http://localhost...)
+        $dokumen['pdf_path'] = base_url('assets/pdf/' . $dokumen['file_pdf']); // tetap untuk download button
+        $dokumen['pdfjs_file_param'] = '/assets/pdf/' . $dokumen['file_pdf'];  // relatif untuk viewer (paling aman)
 
-    $dokumen['pdf_viewer_url'] =
-        base_url('assets/pdfjs/web/viewer.html?file=') . rawurlencode($dokumen['pdfjs_file_param']); // file param [web:190]
+        $dokumen['pdf_viewer_url'] =
+            base_url('assets/pdfjs/web/viewer.html?file=') . rawurlencode($dokumen['pdfjs_file_param']); // file param [web:190]
 
-    return view('pages/Kepengurusan', [
-        'pageTitle' => 'Kepengurusan KORPRI',
-        'dokumen'   => $dokumen,
-    ]);
-}
+        return view('pages/Kepengurusan', [
+            'pageTitle' => 'Kepengurusan KORPRI',
+            'dokumen'   => $dokumen,
+        ]);
+    }
 
 
 
@@ -273,25 +264,25 @@ public function struktur()
     }
 
     public function galeri_video()
-{
-    $data = [
-            [
-                'youtube_url' => 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
-                'tanggal' => '2026-01-27',
-                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
-            ],
-            [
-                'youtube_url' => 'https://youtu.be/dQw4w9WgXcQ',
-                'tanggal' => '2026-01-26',
-                'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
-            ],
-        ];
+    {
+        $data = [
+                [
+                    'youtube_url' => 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
+                    'tanggal' => '2026-01-27',
+                    'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+                ],
+                [
+                    'youtube_url' => 'https://youtu.be/dQw4w9WgXcQ',
+                    'tanggal' => '2026-01-26',
+                    'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
+                ],
+            ];
 
-        return view('pages/galeri_video', [
-            'videos' => $data,
-            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
-        ]);
-}
+            return view('pages/galeri_video', [
+                'videos' => $data,
+                'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
+            ]);
+    }
 
     /**
      * ===============================
@@ -299,35 +290,35 @@ public function struktur()
      * ===============================
      */
 
-public function Berita()
-{
-    $model = new \App\Models\BeritaModel();
+    public function Berita()
+    {
+        $model = new \App\Models\BeritaModel();
 
-    $kategori = $this->request->getGet('kategori') ?? 'Semua';
-    $keyword  = $this->request->getGet('q');
+        $kategori = $this->request->getGet('kategori') ?? 'Semua';
+        $keyword  = $this->request->getGet('q');
 
-    $builder = $model->where('is_active', 1);
+        $builder = $model->where('is_active', 1);
 
-    if ($kategori !== 'Semua') {
-        $builder->where('kategori', $kategori);
+        if ($kategori !== 'Semua') {
+            $builder->where('kategori', $kategori);
+        }
+
+        if (!empty($keyword)) {
+            $builder->groupStart()
+                ->like('judul', $keyword)
+                ->orLike('konten', $keyword)
+                ->groupEnd();
+        }
+
+        return view('pages/Berita', [
+            'pageTitle'      => 'BERITA KORPRI ACEH',
+            'berita'         => $builder->orderBy('created_at', 'DESC')->findAll(),
+            'kategori_aktif' => $kategori,
+            'keyword'        => $keyword,
+        ]);
     }
 
-    if (!empty($keyword)) {
-        $builder->groupStart()
-            ->like('judul', $keyword)
-            ->orLike('konten', $keyword)
-            ->groupEnd();
-    }
-
-    return view('pages/Berita', [
-        'pageTitle'      => 'BERITA KORPRI ACEH',
-        'berita'         => $builder->orderBy('created_at', 'DESC')->findAll(),
-        'kategori_aktif' => $kategori,
-        'keyword'        => $keyword,
-    ]);
-}
-
- public function detailBerita($id)
+    public function detailBerita($id)
     {
         $beritaModel = new \App\Models\BeritaModel();
 
@@ -374,13 +365,13 @@ public function Berita()
     }
 
 
-
     public function Artikel()
     {
         return view('pages/Artikel', [
             'pageTitle' => 'ARTIKEL KORPRI',
         ]);
     }
+
 
     public function Pengumuman()
     {
@@ -389,12 +380,14 @@ public function Berita()
         ]);
     }
 
+
     public function Peraturan()
     {
         return view('pages/Peraturan', [
             'pageTitle' => 'PERATURAN KORPRI',
         ]);
     }
+
 
     public function Keputusan()
     {
@@ -403,17 +396,12 @@ public function Berita()
         ]);
     }
 
+    
     public function SuratEdaran()
     {
         return view('pages/SuratEdaran', [
             'pageTitle' => 'SURAT EDARAN KORPRI',
         ]);
     }
-
-//     public function testBerita()
-// {
-//     $model = new \App\Models\BeritaModel();
-//     dd($model->findAll());
-// }
 
 }

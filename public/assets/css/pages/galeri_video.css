@@ -1,5 +1,5 @@
 :root{
-  --bg: #f6f2e8;
+  --bg: #FAF8F2;
   --card: #fff;
   --stroke:#e8e8e8;
   --shadow: 0 12px 22px rgba(0,0,0,.12);
@@ -7,79 +7,57 @@
   --navy:#112759;
 }
 
+body {
+    background-color: var(--bg);    
+    font-family: 'Poppins';
+}
+
 .vk-wrap{
   padding: 36px 0 70px;
   background: var(--bg);
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* --- Watermark Background --- */
+.watermark-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    width: 800px;
+    height: 800px;
+    /* Ganti url ini dengan path logo korpri kamu jika ada */
+    background-image: url('../../img/korpri-watermark.png'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: .35;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .vk-container{
-  width: min(1100px, calc(100% - 36px));
+  width: min(1200px, calc(100% - 60px));
   margin: 0 auto;
-}
-
-.vk-hero{
-  text-align: center;
-  padding: 10px 0 20px;
-}
-
-.vk-hero__title{
-  margin: 0 0 16px;
-  font-size: 34px;
-  font-weight: 900;
-  letter-spacing: .5px;
-  color: #ffffff;
-  text-shadow: 0 4px 18px rgba(0,0,0,.25);
-}
-
-/* filter */
-.vk-filter{
-  width: min(980px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 86px;
-  gap: 16px;
-  align-items: center;
-}
-
-.vk-input{
-  height: 56px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,.12);
-  padding: 0 16px;
-  background: #fff;
-  outline: none;
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
-}
-
-.vk-btn{
-  height: 56px;
-  border-radius: 12px;
-  border: 0;
-  background: var(--gold);
-  color: #fff;
-  font-size: 20px;
-  font-weight: 900;
-  box-shadow: 0 14px 26px rgba(0,0,0,.12);
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 /* list zig-zag */
 .vk-list{
   margin-top: 26px;
   display: grid;
-  gap: 34px;
+  gap: 60px;
 }
 
 .vk-item{
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 28px;
+  grid-template-columns: 600px 1fr;
+  gap: 40px;
   align-items: start;
 }
 
 .vk-item.is-right{
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 600px;
 }
 
 .vk-item.is-right .vk-card{ order: 2; }
@@ -87,6 +65,7 @@
 
 /* card */
 .vk-card{
+  height: auto;
   background: var(--card);
   border-radius: 18px;
   box-shadow: var(--shadow);
@@ -102,7 +81,7 @@
   cursor: pointer;
   position: relative;
   display: block;
-  aspect-ratio: 1 / 1; /* mirip kotak di gambar */
+  aspect-ratio: 16 / 9; 
 }
 
 .vk-thumb__img{
@@ -134,12 +113,12 @@
 }
 
 .vk-card__meta{
-  padding: 14px 16px 16px;
+  padding: 16px 20px;
   text-align: center;
 }
 
 .vk-card__title{
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 900;
   text-transform: uppercase;
   color: #111;
@@ -153,22 +132,23 @@
 
 /* desc */
 .vk-desc{
-  padding: 10px 4px;
+  padding: 20px 5px;
 }
 
 .vk-desc__title{
   margin: 0 0 10px;
   font-weight: 900;
-  font-size: 13px;
-  letter-spacing: .4px;
+  font-size: 20px;
+  letter-spacing: .4px; 
+  line-height: 1.5;
   text-transform: uppercase;
   color: #111;
 }
 
 .vk-desc__text{
   margin: 0;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.4;
   color: #222;
   text-align: justify;
 }
@@ -176,7 +156,7 @@
 /* iframe (replace thumbnail) */
 .vk-iframe{
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   border: 0;
   display: block;
 }

@@ -62,6 +62,11 @@ public function profile()
     ]);
 }
 
+public function testGaleri()
+{
+    $galeriModel = new \App\Models\GaleriModel();
+    dd($galeriModel->findAll());
+}
 
 
 public function struktur()
@@ -253,24 +258,47 @@ public function struktur()
      * HALAMAN GALERI (STATIS)
      * ===============================
      */
-    public function Galeri()
-    {
-        $data = [
-            'pageTitle' => 'GALERI KORPRI ACEH',
-            'galeri' => [
-                ['image' => 'galeri1.jpg', 'title' => 'Kegiatan 1'],
-                ['image' => 'galeri2.jpg', 'title' => 'Kegiatan 2'],
-                ['image' => 'galeri3.jpg', 'title' => 'Kegiatan 3'],
-                ['image' => 'galeri4.jpg', 'title' => 'Kegiatan 4'],
-                ['image' => 'galeri5.jpg', 'title' => 'Kegiatan 5'],
-                ['image' => 'galeri6.jpg', 'title' => 'Kegiatan 6'],
-                ['image' => 'galeri7.jpg', 'title' => 'Kegiatan 7'],
-                ['image' => 'galeri8.jpg', 'title' => 'Kegiatan 8'],
-            ],
-        ];
+public function Galeri()
+{
+    $galeriModel = new \App\Models\GaleriModel();
+    $imageModel  = new \App\Models\GaleriImageModel();
 
-        return view('pages/Galeri', $data);
+    $galeri = $galeriModel
+        ->where('is_active', 1)
+        ->orderBy('id', 'DESC')
+        ->findAll();
+
+    $sections = [];
+
+    foreach ($galeri as $item) {
+
+        $images = $imageModel
+            ->where('galeri_id', $item['id'])
+            ->where('is_active', 1)
+            ->orderBy('id', 'ASC')
+            ->findAll();
+
+        $chunks = array_chunk($images, 8);
+
+        foreach ($chunks as $chunk) {
+            $tiles = [];
+
+            foreach ($chunk as $img) {
+                $tiles[] = [
+                    'image' => $img['image'],
+                    'title' => $img['title'] ?? '', // ✅ AMAN
+                ];
+            }
+
+            $sections[] = $tiles;
+        }
     }
+
+    return view('pages/Galeri', [
+        'pageTitle' => 'GALERI KORPRI ACEH',
+        'sections'  => $sections
+    ]);
+}
 
     public function galeri_video()
 {

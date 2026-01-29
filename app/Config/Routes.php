@@ -22,6 +22,8 @@ $routes->get('kepengurusan', 'Pages::Kepengurusan');
 $routes->get('KetuaUmum', 'Pages::KetuaUmum');
 $routes->get('Sekjen', 'Pages::Sekjen');
 
+$routes->get('testGaleri', 'Pages::testGaleri');
+
 $routes->get('galeri', 'Pages::Galeri');
 $routes->get('galeri_video', 'Pages::galeri_video');
 // $routes->get('berita', 'Pages::Berita');

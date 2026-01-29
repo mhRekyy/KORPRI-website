@@ -6,13 +6,20 @@ use CodeIgniter\Model;
 
 class GaleriModel extends Model
 {
-    protected $table = 'galeri';
+    protected $table      = 'galeri';
     protected $primaryKey = 'id';
+
     protected $allowedFields = [
         'judul',
         'deskripsi',
-        'kategori',
-        'tahun',
+        'tanggal',
         'is_active'
     ];
+
+    // karena kita pakai created_at & updated_at
+    protected $useTimestamps = true;
+
+    // opsional tapi rapi
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 }

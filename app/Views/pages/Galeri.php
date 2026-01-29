@@ -1,67 +1,64 @@
 <?= $this->extend('layout/main_inner') ?>
 <?= $this->section('content') ?>
+
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/galeri.css') ?>">
 
 <section class="galeri-wrap">
 
+  <?php if (empty($sections)): ?>
+    <p style="padding:40px">Belum ada galeri.</p>
+  <?php endif; ?>
+
   <div class="galeri-fullbleed">
-  <div class="bento-marquee" id="bentoMarquee">
-    <div class="bento-marquee__track" id="bentoTrack">
+    <div class="bento-marquee" id="bentoMarquee">
+      <div class="bento-marquee__track" id="bentoTrack">
 
-      <div class="bento-grid" id="bentoSet">
-        <?php foreach ($galeri as $i => $g): ?>
-          <div class="bento-tile tile-<?= ($i % 8) + 1 ?>">
-            <img class="tile-img" src="<?= esc($g['image']) ?>" alt="<?= esc($g['title']) ?>">
-            <div class="tile-overlay">
-              <span class="tile-label"><?= esc($g['title']) ?></span>
+        <?php
+        // render 2x agar loop mulus: S1,S2,S1,S2
+        for ($repeat = 0; $repeat < 2; $repeat++):
+          foreach ($sections as $section):
+        ?>
+            <div class="bento-section">
+              <div class="bento-grid">
+                <?php foreach ($section as $i => $t): ?>
+                  <div class="bento-tile tile-<?= ($i % 8) + 1 ?>">
+                    <img
+                      class="tile-img"
+                      src="<?= base_url('uploads/galeri/' . $t['image']) ?>"
+                      alt="<?= esc($t['title'] ?? '') ?>"
+                    >
+                    <?php if (!empty($t['title'])): ?>
+                      <div class="tile-overlay">
+                        <span class="tile-label">
+                          <?= esc($t['title']) ?>
+                        </span>
+                      </div>
+                    <?php endif; ?>
+                  </div>
+                <?php endforeach; ?>
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
+        <?php
+          endforeach;
+        endfor;
+        ?>
 
-      <!-- duplikat awal (biar langsung jalan), nanti JS akan clone lagi kalau perlu -->
-      <div class="bento-grid" aria-hidden="true">
-        <?php foreach ($galeri as $i => $g): ?>
-          <div class="bento-tile tile-<?= ($i % 8) + 1 ?>">
-            <img class="tile-img" src="<?= esc($g['image']) ?>" alt="" aria-hidden="true">
-            <div class="tile-overlay" aria-hidden="true">
-              <span class="tile-label"><?= esc($g['title']) ?></span>
-            </div>
-          </div>
-        <?php endforeach; ?>
       </div>
-
     </div>
   </div>
-</div>
-
 
 </section>
+
 <script>
 (() => {
   const marquee = document.getElementById('bentoMarquee');
   const track   = document.getElementById('bentoTrack');
-  const firstSet = document.getElementById('bentoSet');
+  if (!marquee || !track) return;
 
-  if (!marquee || !track || !firstSet) return;
-
-  // px per detik (velocity). ubah sesukamu.
   const SPEED = 40;
-
   let paused = false;
   let x = 0;
   let last = performance.now();
-
-  function ensureEnoughClones() {
-    // pastikan track cukup panjang untuk menutup layar + cadangan
-    const needWidth = marquee.clientWidth * 2;
-    while (track.scrollWidth < needWidth) {
-      const clone = firstSet.cloneNode(true);
-      clone.removeAttribute('id');
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    }
-  }
 
   function tick(now) {
     const dt = (now - last) / 1000;
@@ -70,9 +67,9 @@
     if (!paused) {
       x -= SPEED * dt;
 
-      const setWidth = firstSet.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0) || firstSet.offsetWidth;
-      // reset saat sudah lewat 1 set (supaya loop mulus)
-      if (Math.abs(x) >= setWidth) x += setWidth;
+      // karena konten dirender 2x (S1,S2,S1,S2)
+      const resetAt = track.scrollWidth / 2;
+      if (Math.abs(x) >= resetAt) x += resetAt;
 
       track.style.transform = `translate3d(${x}px,0,0)`;
     }
@@ -80,11 +77,11 @@
     requestAnimationFrame(tick);
   }
 
-  ensureEnoughClones();
-  window.addEventListener('resize', ensureEnoughClones);
-
   marquee.addEventListener('mouseenter', () => paused = true);
-  marquee.addEventListener('mouseleave', () => paused = false);
+  marquee.addEventListener('mouseleave', () => {
+    paused = false;
+    last = performance.now();
+  });
 
   requestAnimationFrame(tick);
 })();

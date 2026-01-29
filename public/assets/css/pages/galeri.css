@@ -20,9 +20,14 @@
 
 .bento-marquee{ overflow: hidden; width: 100%; }
 
+.bento-section {
+  flex: 0 0 auto;
+}
+
+
 .bento-marquee__track{
   display: flex;
-  gap: var(--gap);
+  gap: 16px;
   width: max-content;
   will-change: transform;
   transform: translate3d(0,0,0);
@@ -35,6 +40,7 @@
   gap: var(--gap);
   grid-template-columns: 240px 380px 240px;
   grid-auto-rows: 160px;
+  grid-auto-flow: dense;
   grid-template-areas:
     "a b c"
     "d b e"

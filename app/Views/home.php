@@ -212,7 +212,7 @@
         <!-- Tombol Selengkapnya -->
         <div class="text-center mt-4">
             <a href="<?= base_url('galeri') ?>" class="btn-selengkapnya">
-                Lihat Selengkapnya &rarr;
+                Selengkapnya &rarr;
             </a>
         </div>
 

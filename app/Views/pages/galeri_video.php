@@ -4,21 +4,14 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/galeri_video.css') ?>">
 
 <section class="vk-wrap">
+
+<div class="watermark-bg"></div>
+
   <div class="vk-container">
-
-    <div class="vk-hero">
-      <h2 class="vk-hero__title">VIDEO KEGIATAN</h2>
-
-      <div class="vk-filter">
-        <input class="vk-input" type="text" placeholder="Tahun">
-        <input class="vk-input" type="text" placeholder="Kategori Acara">
-        <button class="vk-btn" type="button" aria-label="Search">⌕</button>
-      </div>
-    </div>
 
     <div class="vk-list">
       <?php foreach ($videos as $i => $v): ?>
-        <div class="vk-item <?= ($i % 2 === 0) ? 'is-left' : 'is-right' ?>"
+        <div class="vk-item <?= ($i % 3 === 0) ? 'is-left' : 'is-right' ?>"
              data-youtube-url="<?= esc($v['youtube_url']) ?>">
 
           <!-- CARD VIDEO -->

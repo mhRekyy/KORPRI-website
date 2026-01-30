@@ -34,9 +34,11 @@ class Home extends BaseController
                 ['title' => 'Pengumuman 3', 'link' => '/pengumuman/3'],
             ],
 
-             'tentang_korpri' => 'Korps Pegawai Republik Indonesia (KORPRI) adalah wadah tunggal untuk menghimpun seluruh Pegawai Republik Indonesia demi meningkatkan perjuangan, pengabdian, serta kesetiaan kepada cita-cita perjuangan Bangsa dan Negara Kesatuan Republik Indonesia.
+             'tentang_korpri' => ['Korps Pegawai Republik Indonesia (KORPRI) adalah wadah tunggal untuk menghimpun seluruh Pegawai Republik Indonesia demi meningkatkan perjuangan, pengabdian, serta kesetiaan kepada cita-cita perjuangan Bangsa dan Negara Kesatuan Republik Indonesia.',
+             
+             'Berdiri sejak 29 November 1971 berdasarkan Keputusan Presiden Nomor 82 Tahun 1971, KORPRI berfungsi sebagai perekat dan pemersatu bangsa, menjaga netralitas, serta berkomitmen teguh untuk melayani masyarakat dengan profesionalisme dan integritas tinggi berlandaskan Panca Prasetya KORPRI.',
+             ],
 
-                                Berdiri sejak 29 November 1971 berdasarkan Keputusan Presiden Nomor 82 Tahun 1971, KORPRI berfungsi sebagai perekat dan pemersatu bangsa, menjaga netralitas, serta berkomitmen teguh untuk melayani masyarakat dengan profesionalisme dan integritas tinggi berlandaskan Panca Prasetya KORPRI.',
 
             'programs' => [
                 [
@@ -66,11 +68,11 @@ class Home extends BaseController
             ],
 
             'gallery' => [
-                ['image' => base_url('assets/img/slide-1.JPG'), 'title' => 'Kegiatan 1'],
-                ['image' => base_url('assets/img/slide-2.JPG'), 'title' => 'Kegiatan 2'],
-                ['image' => base_url('assets/img/slide-3.JPG'), 'title' => 'Kegiatan 3'],
-                ['image' => base_url('assets/img/slide-4.JPG'), 'title' => 'Kegiatan 4'],
-                ['image' => base_url('assets/img/slide-5.JPG'), 'title' => 'Kegiatan 5'],
+                ['image' => base_url('uploads/galeri/rapat1.jpg'), 'title' => 'Kegiatan 1'],
+                ['image' => base_url('uploads/galeri/rapat2.jpg'), 'title' => 'Kegiatan 2'],
+                ['image' => base_url('uploads/galeri/rapat3.jpg'), 'title' => 'Kegiatan 3'],
+                ['image' => base_url('uploads/galeri/rapat4.jpg'), 'title' => 'Kegiatan 4'],
+                ['image' => base_url('uploads/galeri/rapat5.jpg'), 'title' => 'Kegiatan 5'],
             ],
         ];
 

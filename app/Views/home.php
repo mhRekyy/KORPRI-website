@@ -129,9 +129,13 @@
           </div>
           <div class="about-content">
             <h2>TENTANG KORPRI</h2>
-            <p>
-              <?= esc($tentang_korpri) ?>
-            </p>
+            <?php if (is_array($tentang_korpri)): ?>
+    <?php foreach ($tentang_korpri as $paragraf): ?>
+      <p><?= esc($paragraf) ?></p>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p><?= esc($tentang_korpri) ?></p>
+  <?php endif; ?>
           </div>
         </div>
     </div>

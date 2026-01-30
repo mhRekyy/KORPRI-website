@@ -70,62 +70,69 @@
         </div>
 
       <?php else: ?>
-        <?php foreach ($berita as $b): ?>
-          <div class="brow">
-
-            <!-- Kolom 1: SATU CONTAINER PUTIH Gambar + Tombol -->
-            <div class="media-card">
-              <div class="bmedia">
-                <?php if (!empty($b['gambar'])): ?>
-                  <img
-                    class="bmedia__img"
-                    src="<?= base_url('uploads/berita/' . $b['gambar']) ?>"
-                    alt="<?= esc($b['judul']) ?>"
-                  >
-                <?php else: ?>
-                  <div class="bmedia__ph">
-                    <svg class="ph-icon" viewBox="0 0 48 48">
-                      <rect x="4" y="4" width="40" height="30" rx="4" fill="#f3f4f6"/>
-                      <circle cx="32" cy="36" r="6" fill="#d1d5db"/>
-                    </svg>
-                    <span class="ph-plus">+</span>
-                  </div>
-                <?php endif; ?>
-              </div>
-
-              <div class="btn-wrapper">
-                <a href="<?= site_url('berita/' . $b['id']) ?>" class="bmedia__btn">SELENGKAPNYA</a>
-              </div>
+        <div class="berita-grid">
+  <?php foreach ($berita as $b): ?>
+    <article class="brow berita-item">
+      <!-- Kolom 1: Media -->
+      <div class="media-card">
+        <div class="bmedia">
+          <?php if (!empty($b['gambar'])): ?>
+            <img
+              class="bmedia__img"
+              src="<?= base_url('uploads/berita/' . $b['gambar']) ?>"
+              alt="<?= esc($b['judul']) ?>"
+            >
+          <?php else: ?>
+            <div class="bmedia__ph">
+              <svg class="ph-icon" viewBox="0 0 48 48">
+                <rect x="4" y="4" width="40" height="30" rx="4" fill="#f3f4f6"/>
+                <circle cx="32" cy="36" r="6" fill="#d1d5db"/>
+              </svg>
+              <span class="ph-plus">+</span>
             </div>
+          <?php endif; ?>
+        </div>
 
-            <!-- Kolom 2: Tanggal Tengah -->
-            <div class="bmid">
-              <div class="bdate">
-                <?php
-                  setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'Indonesian_indonesia.1252');
-                  echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
-                ?>
-              </div>
-            </div>
+        <div class="btn-wrapper">
+          <a href="<?= site_url('berita/' . $b['id']) ?>" class="bmedia__btn">SELENGKAPNYA</a>
+        </div>
+      </div>
 
-            <!-- Kolom 3: Judul + Deskripsi -->
-            <div class="b-right">
-              <div class="title-card">
-                <h3 class="btitle"><?= esc($b['judul']) ?></h3>
-              </div>
+      <!-- Kolom 2: Tanggal -->
+      <div class="bmid">
+        <div class="bdate">
+          <?php
+            setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'Indonesian_indonesia.1252');
+            echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
+          ?>
+        </div>
+      </div>
 
-              <div class="desc-card">
-                <p class="bdesc">
-                  <?= esc(strip_tags($b['konten'])) ?>
-                </p>
-              </div>
-            </div>
+      <!-- Kolom 3: Judul + Deskripsi -->
+      <div class="b-right">
+        <div class="title-card">
+          <h3 class="btitle"><?= esc($b['judul']) ?></h3>
+        </div>
 
-          </div>
-        <?php endforeach; ?>
-      <?php endif; ?>
+        <div class="desc-card">
+          <p class="bdesc"><?= esc(strip_tags($b['konten'])) ?></p>
+        </div>
+      </div>
+    </article>
+  <?php endforeach; ?>
+</div>
 
-    </div>
+<?php if (isset($pager)): ?>
+  <nav class="pager-wrap" aria-label="Pagination berita">
+    <?= $pager->links('berita') ?>
+  </nav>
+<?php endif; ?>
+
+
+
+        <?php endif; ?>
+
+      </div>
 
   </div>
 </section>

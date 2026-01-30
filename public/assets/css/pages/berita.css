@@ -12,7 +12,7 @@
 /* page */
 .berita-wrap{ padding: 26px 0 56px; background: var(--bg); }
 .berita-container{
-  width: min(1200px, calc(100% - 36px));
+  width: min(1300px, calc(100% - 36px));
   margin: 0 auto;
   font-family: "Poppins";
 }
@@ -71,13 +71,13 @@
   position: relative;
   display: grid;
   gap: 28px;
-  padding: 6px 0;
+  padding: 28px 0;
 }
 .berita-list--timeline::before{
   content:"";
   position: absolute;
-  top: 0; bottom: 0;
-  left: calc(50% - 45px);
+  top: 0; bottom: 80px;
+  left: calc(50%);
   width: 2px;
   background: repeating-linear-gradient(to bottom, rgba(200,162,75,.95) 0 7px, transparent 7px 14px);
   opacity: .85;
@@ -89,92 +89,165 @@
   display: none;
 }
 
-
-/* ROW (1 berita) - gap lebih presisi */
-.brow {
-  position: relative;
+/* GRID LUAR: 2 kolom, rapi dan stabil */
+.berita-grid{
   display: grid;
-  grid-template-columns: 500px 60px 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px; /* dari 24px -> sedikit lebih lega */
+  align-items: start;
 }
 
-/* TANGGAL - naikkan posisi 4px ke atas */
+/* biar item grid boleh mengecil tanpa overflow teks */
+.berita-grid > .brow,
+.berita-item{
+  min-width: 0;
+}
+
+/* ITEM: layout 3 kolom (kiri - tanggal - kanan) */
+.brow{
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+
+  /* kiri fleksibel, tengah fix, kanan fleksibel */
+  grid-template-columns: minmax(320px, 1fr) 20px minmax(0, 1fr);
+
+  column-gap: 5px;
+  row-gap: 5px; /* kalau suatu saat ada wrap/tinggi beda, tetap rapi */
+  align-items: start;
+}
+
+/* KOLOM TANGGAL (tengah) */
 .bmid{
-  width: 60px;
+  width: 20px;               /* SAMAKAN dengan kolom grid tengah */
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  pointer-events: none;      /* opsional: biar tidak ganggu klik area lain */
 }
+
 .bdate{
-  margin-top: 40px; /* naik dari 8px */
-  width: 140px;
-  padding: 12px 10px;
-  border-radius: 8px;
+  margin-top: 60px;          /* dari 40px -> lebih seimbang */
+  width: 120px;              /* dari 140px -> lebih pas di 2 kolom */
+  padding: 5px 5px;
+  border-radius: 10px;
   background: var(--gold);
   color: #fff;
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   text-align: center;
   box-shadow: 0 14px 24px rgba(0,0,0,.16);
   z-index: 2;
 }
 
-/* KIRI: MEDIA + TOMBOL PINK */
-.bmedia {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9; /* TAMBAH - agar proporsional */
-  height: auto; /* TAMBAH - hapus 340px */
-  border-radius: 12px;
-  overflow: hidden;
-  background: #ececec;
-  box-shadow: var(--shadowInner);
-}
-
-.bmedia__img{ width:100%; height:100%; object-fit:cover; display:block; }
-.bmedia__ph{ height:100%; display:grid; place-items:center; background:#e9e9e9; }
-.ph-icon{ font-size: 46px; opacity:.55; }
-.ph-plus{ position: absolute; font-size: 28px; font-weight: 900; color: #6b7280; }
-
-/* LEFT: SATU CONTAINER PUTIH GAMBAR+TOMBOL */
-.media-card {
-  background: var(--card);
-  border-radius: 20px; /* lengkung lebih besar exact desain */
-  box-shadow: var(--shadow);
-  padding: 24px; /* padding atas bawah untuk gambar+tombol */
-  position: relative;
+/* KIRI: CARD MEDIA */
+.media-card{
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: auto;
   align-self: start;
 }
 
-.btn-wrapper {
-  margin-top: auto;
+.bmedia{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: var(--shadowInner);
+}
+
+.bmedia__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.btn-wrapper{
   display: grid;
   place-items: center;
 }
 
-/* Tombol pink tetap, tapi centered */
-.bmedia__btn {
+.bmedia__btn{
   display: inline-block;
   width: 100%;
-  padding: 14px 0; /* sedikit lebih besar */
+  padding: 12px 0;
   background: linear-gradient(135deg, var(--gold));
   color: #fff;
   text-decoration: none;
-  border-radius: 14px;
+  border-radius: 10px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 0 4px 8px rgb(199, 165, 97);
-  transition: all .3s;
+  transition: transform .2s, box-shadow .2s;
   text-align: center;
 }
-.bmedia__btn:hover {
-  transform: translateY(-3px) scale(1.02);
+
+.bmedia__btn:hover{
+  transform: translateY(-2px);
   box-shadow: 0 10px 16px rgba(199, 165, 97, .6);
+}
+
+/* KANAN: card judul + card deskripsi */
+.b-right{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                 /* dari 30px -> lebih rapi dan konsisten */
+  height: 100%;
+  overflow: visible;             /* penting untuk clamp & overflow */
+}
+
+/* CONTAINER JUDUL PUTIH */
+.title-card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+/* CONTAINER DESC PUTIH + BORDER EMAS KIRI */
+.desc-card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 20px;
+
+
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.btitle{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.bdesc{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 9;
+  line-clamp: 9;
+  overflow: hidden;
+
+  text-align: justify;
 }
 
 
@@ -227,60 +300,75 @@
   color: #fff;
 }
 
-
-/* KANAN: CONTAINER TERPISAH JUDUL & DESC */
-.b-right {
+/* WRAPPER pagination */
+.pager-wrap{
   display: flex;
-  flex-direction: column;
-  gap: 30px; /* gap antar container exact desain */
-  height: 100%;
-  overflow: visible;
+  justify-content: center;
+  margin-top: 28px;
 }
 
-/* CONTAINER JUDUL PUTIH */
-.title-card {
-  background: var(--card);
-  border-radius: 14px;
-  padding: 24px;
-}
-
-/* CONTAINER DESC PUTIH + BORDER EMAS KIRI */
-.desc-card {
-  background: var(--card);
-  border-radius: 14px;
-  padding: 24px;
-
-  flex: 1;
-  min-height: 0;
-  overflow: visible;
+/* Default CI4 pager biasanya pakai <ul class="pagination"> */
+.pager-wrap .pagination{
+  list-style: none;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;          /* jarak antar item */
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
 }
 
-/* Style text tetap */
-.btitle {
+/* Item */
+.pager-wrap .pagination li{
   margin: 0;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.3;
-
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
 }
-.bdesc {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.7;
 
-  display: -webkit-box;
-  -webkit-line-clamp: 7;
-  line-clamp: 7; /* Sesuaikan jumlah baris yang muat */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-align: justify;
+/* Link tombol */
+.pager-wrap .pagination a,
+.pager-wrap .pagination span{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+
+  border-radius: 12px;
+  text-decoration: none;
+
+  background: #fff;
+  color: #111827;
+
+  border: 1px solid rgba(17, 24, 39, .12);
+  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .15s, box-shadow .15s, background-color .15s, border-color .15s;
+}
+
+/* Hover */
+.pager-wrap .pagination a:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+  border-color: rgba(17, 24, 39, .18);
+}
+
+/* Active page (CI4 biasanya pakai class active di <li>) */
+.pager-wrap .pagination li.active span,
+.pager-wrap .pagination li.active a{
+  background: var(--gold);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 12px 26px rgba(199, 165, 97, .45);
+}
+
+/* Disabled (prev/next) */
+.pager-wrap .pagination li.disabled span{
+  opacity: .55;
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 /* RESPONSIVE */

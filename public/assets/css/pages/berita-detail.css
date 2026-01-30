@@ -3,9 +3,19 @@
     padding-top: 60px;
 }
 
-.berita-image img {
-    border-radius: 6px;
-    width: 100%;
+.berita-image{
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;   /* pindahkan radius ke wrapper biar crop ikut rounded */
+}
+
+.berita-image img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;    /* jaga rasio gambar, tapi isi kotak 16:9 */
+  object-position: center;
 }
 
 .berita-meta {
@@ -229,6 +239,8 @@
 .berita-terkait-item a:hover {
     color: #112759;
 }
+
+
 
 @media (max-width: 768px) {
     .hero-detail-berita {

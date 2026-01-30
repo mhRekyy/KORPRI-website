@@ -16,7 +16,7 @@
         </div>
 
         <p class="korpri-footer__desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit aliquam
+          KORPRI Provinsi Aceh merupakan organisasi yang mewadahi aparatur sipil negara dalam memperkuat persatuan, profesionalisme, dan pengabdian kepada masyarakat.
         </p>
 
         <div class="korpri-footer__sosmed">

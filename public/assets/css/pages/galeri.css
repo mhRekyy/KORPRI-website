@@ -1,89 +1,169 @@
 :root{
   --bg: #f6f2e8;
-  --gap: 14px;
-  --radius: 14px;
-  --shadow: 0 10px 24px rgba(0,0,0,.10);
+  --gap: 10px;           /* Lebih rapat, tapi tidak sempit */
+  --radius: 6px;         /* Border radius kecil */
+  --shadow: 0 8px 22px rgba(0,0,0,.10);
 }
 
+/* =========================
+   BASE
+========================= */
+
 .galeri-wrap{
-  padding: 46px 0 70px;
+  padding: 44px 0 68px;
   background: var(--bg);
   font-family: "Poppins";
 }
 
 .galeri-fullbleed{
-  width: min(1600px, calc(100%));
-  position: relative;
+  width: min(1600px, 100%);
+  margin: 0 auto;
   overflow: hidden;
 }
 
-.bento-marquee{ overflow: hidden; width: 100%; }
-
-.bento-section {
-  flex: 0 0 auto;
+.bento-marquee{
+  width: 100%;
+  overflow: hidden;
 }
-
 
 .bento-marquee__track{
   display: flex;
-  gap: 16px;
+  gap: 20px; /* jarak antar section */
   width: max-content;
   will-change: transform;
   transform: translate3d(0,0,0);
 }
 
-/* bento grid set */
-.bento-grid{
+.bento-section{
   flex: 0 0 auto;
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: 240px 380px 240px;
-  grid-auto-rows: 160px;
-  grid-auto-flow: dense;
-  grid-template-areas:
-    "a b c"
-    "d b e"
-    "f g h";
 }
 
-.tile-1{ grid-area: a; } .tile-2{ grid-area: b; } .tile-3{ grid-area: c; }
-.tile-4{ grid-area: d; } .tile-5{ grid-area: e; } .tile-6{ grid-area: f; }
-.tile-7{ grid-area: g; } .tile-8{ grid-area: h; }
+/* =========================
+   BENTO GRID (UKURAN BESAR + NO GAP)
+========================= */
+
+.bento-grid{
+  display: grid;
+  gap: var(--gap);
+
+  /* INI KUNCI: ukuran kembali besar */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows: 180px;
+
+  /* isi ruang kosong */
+  grid-auto-flow: dense;
+}
+
+/* =========================
+   TILE VARIANT (MENGISI CELAH)
+========================= */
+
+.bento-tile.is-normal{
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-tile.is-wide{
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.bento-tile.is-tall{
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-tile.is-big{
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* =========================
+   TILE STYLE
+========================= */
 
 .bento-tile{
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
-  background: #d9d9d9;
+  background: #ddd;
   box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
+
+.bento-tile:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.15);
+}
+
+/* =========================
+   IMAGE
+========================= */
 
 .tile-img{
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
 }
+
+.bento-tile:hover .tile-img{
+  transform: scale(1.04);
+}
+
+/* =========================
+   OVERLAY
+========================= */
 
 .tile-overlay{
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.40);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.15),
+    transparent
+  );
   opacity: 0;
   transition: opacity .25s ease;
-  display: grid;
-  place-items: center;
-  padding: 12px;
 }
-.bento-tile:hover .tile-overlay{ opacity: 1; }
+
+.bento-tile:hover .tile-overlay{
+  opacity: 1;
+}
+
+/* =========================
+   LABEL
+========================= */
 
 .tile-label{
   color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(0,0,0,.25);
-  backdrop-filter: blur(2px);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: 6px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px){
+  .bento-grid{
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-rows: 160px;
+  }
+}
+
+@media (max-width: 768px){
+  .bento-grid{
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-auto-rows: 140px;
+  }
 }

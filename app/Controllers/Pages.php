@@ -7,6 +7,8 @@ use App\Models\GaleriModel;
 use App\Models\GaleriImageModel;
 use App\Models\StrukturDPKModel;
 use App\Models\ProfilKorpriModel;
+use App\Models\ArtikelModel;
+
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
@@ -388,12 +390,45 @@ public function Galeri()
     }
 
 
-    public function Artikel()
-    {
-        return view('pages/Artikel', [
-            'pageTitle' => 'ARTIKEL KORPRI',
-        ]);
+public function Artikel()
+{
+    $model = new \App\Models\ArtikelModel();
+
+    $artikel = $model
+        ->where('is_active', 1)
+        ->orderBy('published_at', 'DESC')
+        ->paginate(6, 'artikel');
+
+    return view('pages/Artikel', [
+        'pageTitle' => 'ARTIKEL KORPRI',
+        'artikel'   => $artikel,
+        'pager'     => $model->pager,
+        'keyword'   => null,
+    ]);
+}
+
+
+
+
+public function ArtikelDetail($slug)
+{
+    $model = new \App\Models\ArtikelModel();
+
+    $artikel = $model
+        ->where('slug', $slug)
+        ->where('is_active', 1)
+        ->where('published_at <=', date('Y-m-d H:i:s'))
+        ->first();
+
+    if (!$artikel) {
+        throw PageNotFoundException::forPageNotFound('Artikel tidak ditemukan');
     }
+
+    return view('pages/ArtikelDetail', [
+        'pageTitle' => $artikel['title'],
+        'artikel'   => $artikel,
+    ]);
+}
 
 
     public function Pengumuman()

@@ -218,7 +218,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('Artikel') ?>">
+        <a class="dropdown-item" href="<?= base_url('artikel') ?>">
           <span class="dd-ic"><i class="fas fa-file-alt"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Artikel KORPRI</span>

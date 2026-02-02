@@ -30,7 +30,9 @@ $routes->get('galeri_video', 'Pages::galeri_video');
 $routes->get('Peraturan', 'Pages::Peraturan');
 $routes->get('Keputusan', 'Pages::Keputusan');
 $routes->get('SuratEdaran', 'Pages::SuratEdaran');
-$routes->get('Artikel', 'Pages::Artikel');
+$routes->get('artikel', 'Pages::artikel');
+$routes->get('artikel/(:segment)', 'Pages::ArtikelDetail');
+
 $routes->get('Pengumuman', 'Pages::Pengumuman');
 // $routes->get('test-berita', 'Pages::testBerita');
 $routes->get('berita', 'Pages::Berita');

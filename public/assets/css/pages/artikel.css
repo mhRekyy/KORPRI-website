@@ -10,15 +10,15 @@
 }
 
 /* page */
-.berita-wrap{ padding: 26px 0 56px; background: var(--bg); }
-.berita-container{
+.artikel-wrap{ padding: 26px 0 56px; background: var(--bg); }
+.artikel-container{
   width: min(1300px, calc(100% - 36px));
   margin: 0 auto;
   font-family: "Poppins";
 }
 
 /* filter (tetap, sudah bagus) */
-.berita-filter{
+.artikel-filter{
   display: grid;
   grid-template-columns: 280px 1fr 88px;
   gap: 16px;
@@ -28,7 +28,7 @@
   position: relative;
   z-index: 5;
 }
-.bf-select, .bf-input{
+.bf-input{
   height: 58px;
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,.10);
@@ -38,16 +38,7 @@
   outline: none;
   box-shadow: 0 14px 26px rgba(0,0,0,.10);
 }
-.bf-select{
-  appearance: none;
-  padding-right: 44px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, #666 50%),
-    linear-gradient(135deg, #666 50%, transparent 50%);
-  background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-}
+
 .bf-input::placeholder{ color: #9a9a9a; }
 .bf-btn{
   width: 100px; height: 58px;
@@ -67,13 +58,13 @@
 }
 
 /* LIST + TIMELINE */
-.berita-list--timeline{
+.artikel-list--timeline{
   position: relative;
   display: grid;
   gap: 28px;
   padding: 28px 0;
 }
-.berita-list--timeline::before{
+.artikel-list--timeline::before{
   content:"";
   position: absolute;
   top: 0; bottom: 80px;
@@ -85,12 +76,12 @@
 }
 
 /* Hilangkan garis timeline saat empty state */
-.berita-list--timeline.is-empty::before{
+.artikel-list--timeline.is-empty::before{
   display: none;
 }
 
 /* GRID LUAR: 2 kolom, rapi dan stabil */
-.berita-grid{
+.artikel-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px; /* dari 24px -> sedikit lebih lega */
@@ -98,8 +89,8 @@
 }
 
 /* biar item grid boleh mengecil tanpa overflow teks */
-.berita-grid > .brow,
-.berita-item{
+.artikel-grid > .brow,
+.artikel-item{
   min-width: 0;
 }
 
@@ -373,35 +364,35 @@
 
 /* RESPONSIVE */
 @media (max-width: 992px){
-  .berita-filter{ grid-template-columns: 1fr; }
-  .berita-list--timeline::before{ display:none; }
+  .artikel-filter{ grid-template-columns: 1fr; }
+  .artikel-list--timeline::before{ display:none; }
   .brow{ grid-template-columns: 1fr; gap: 16px; }
   .bmid{ width: 100%; justify-content: flex-start; }
   .bmedia{ height: 220px; }
 }
 
 /* FIX layout filter setelah pakai form */
-.berita-filter {
+.artikel-filter {
   display: flex;
   align-items: center;
   gap: 16px; /* atur jarak antar elemen */
 }
 
-.berita-filter form {
+.artikel-filter form {
   margin: 0;
 }
 
-.berita-filter form,
-.berita-filter .bf-select {
+.artikel-filter form,
+.artikel-filter .bf-select {
   display: flex;
   align-items: center;
 }
 
-.berita-filter .bf-input {
+.artikel-filter .bf-input {
   flex: 1;
 }
 
-.berita-filter-inner {
+.artikel-filter-inner {
   display: flex;
   gap: 16px;
   width: 100%;
@@ -412,12 +403,12 @@
   gap: 16px;
 }
 
-.berita-filter-form {
+.artikel-filter-form {
   display: flex;
   gap: 16px;
   width: 100%;
 }
 
-.berita-filter-form > * {
+.artikel-filter-form > * {
   flex-shrink: 0;
 }

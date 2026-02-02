@@ -322,7 +322,9 @@ public function Galeri()
         $kategori = $this->request->getGet('kategori') ?? 'Semua';
         $keyword  = $this->request->getGet('q');
 
-        $builder = $model->where('is_active', 1);
+        // Query dasar: hanya aktif + urut terbaru
+        $builder = $model->where('is_active', 1)
+                        ->orderBy('created_at', 'DESC');
 
         if ($kategori !== 'Semua') {
             $builder->where('kategori', $kategori);
@@ -330,14 +332,23 @@ public function Galeri()
 
         if (!empty($keyword)) {
             $builder->groupStart()
-                ->like('judul', $keyword)
-                ->orLike('konten', $keyword)
-                ->groupEnd();
+                    ->like('judul', $keyword)
+                    ->orLike('konten', $keyword)
+                    ->groupEnd();
         }
+
+        // Pagination: 10 per halaman
+        $berita = $builder->paginate(6, 'berita');
+        $pager  = $model->pager;
+
+        // Opsional tapi membantu: pastikan base path pagination sesuai URL saat ini
+        // (agar link pager tidak “lari” kalau route kamu unik)
+        $pager->setPath(current_url(), 'berita'); // setPath() tersedia di Pager [web:93]
 
         return view('pages/Berita', [
             'pageTitle'      => 'BERITA KORPRI ACEH',
-            'berita'         => $builder->orderBy('created_at', 'DESC')->findAll(),
+            'berita'         => $berita,
+            'pager'          => $pager,
             'kategori_aktif' => $kategori,
             'keyword'        => $keyword,
         ]);
@@ -394,18 +405,35 @@ public function Artikel()
 {
     $model = new \App\Models\ArtikelModel();
 
-    $artikel = $model
-        ->where('is_active', 1)
-        ->orderBy('published_at', 'DESC')
-        ->paginate(6, 'artikel');
+    $keyword = $this->request->getGet('q') ?? '';
+
+    // Builder dasar
+    $builder = $model->where('is_active', 1)
+                     ->orderBy('published_at', 'DESC');
+
+    // Search
+    if ($keyword !== '') {
+        $builder->groupStart()
+                ->like('title', $keyword)     // sesuaikan nama kolom jika 'judul'
+                ->orLike('content', $keyword)  // sesuaikan jika kolomnya berbeda
+                ->groupEnd();
+    }
+
+    // Pagination 6 per halaman, group 'artikel'
+    $artikel = $builder->paginate(6, 'artikel');
+    $pager   = $model->pager;
+
+    // Jangan pakai current_url() dulu (biar tidak dobel)
+    // Kalau butuh: $pager->setPath(site_url('artikel'), 'artikel');
 
     return view('pages/Artikel', [
-        'pageTitle' => 'ARTIKEL KORPRI',
+        'pageTitle' => 'ARTIKEL KORPRI ACEH',
         'artikel'   => $artikel,
-        'pager'     => $model->pager,
-        'keyword'   => null,
+        'pager'     => $pager,
+        'keyword'   => $keyword,
     ]);
 }
+
 
 
 

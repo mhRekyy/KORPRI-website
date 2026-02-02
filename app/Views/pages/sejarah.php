@@ -98,7 +98,7 @@ Kondisi tersebut menjadi dasar penting bagi munculnya kesadaran akan perlunya pe
         <div class="sejarah__marker"></div>
 
         <div class="sejarah__body">
-          <h2 class="sejarah__heading">Demokrasi Terpimpin &amp; Nasakom</h2>
+          <h2 class="sejarah__heading">Demokrasi Terpimpin &amp; Nasakom (1959-1965)</h2>
 
           <div class="sejarah__grid">
             <div class="sejarah__text">
@@ -123,6 +123,44 @@ Kondisi tersebut menimbulkan kebutuhan mendesak akan penataan aparatur negara ya
               </div>
             </aside>
           </div>
+        </div>
+      </article>
+
+            <!-- Item 3 -->
+      <article class="sejarah__item">
+        <div class="sejarah__marker"></div>
+
+        <div class="sejarah__body">
+          <h2 class="sejarah__heading">Penataan Netralitas PNS (1966-1970)</h2>
+
+          <div class="sejarah__grid">
+            <div class="sejarah__text">
+              <p>Pada masa Demokrasi Liberal, aparatur negara belum memiliki wadah tunggal yang menghimpun dan melindungi kepentingan pegawai negeri secara profesional. Sistem politik multipartai yang berkembang saat itu menyebabkan birokrasi berada dalam posisi yang rentan terhadap pengaruh dan intervensi partai politik, sehingga netralitas aparatur negara belum dapat terwujud secara optimal.
+
+Pegawai negeri kerap dihadapkan pada kondisi loyalitas ganda, yaitu antara kepentingan negara dan kepentingan partai politik tertentu. Situasi ini berdampak pada terganggunya stabilitas birokrasi, munculnya ketidakpastian dalam jabatan dan karier, serta menurunnya efektivitas penyelenggaraan pemerintahan. Profesionalisme aparatur negara pada periode ini masih sangat dipengaruhi oleh dinamika politik nasional.
+
+Kondisi tersebut menjadi dasar penting bagi munculnya kesadaran akan perlunya penataan aparatur negara yang lebih terarah, netral, dan profesional. Pengalaman pada masa Demokrasi Liberal selanjutnya mendorong pemerintah untuk merumuskan kebijakan pembinaan pegawai negeri yang mampu menjamin stabilitas, integritas, serta loyalitas aparatur kepada negara dan kepentingan nasional.</p>
+            </div>
+            </div>
+        </div>
+      </article>
+
+                  <!-- Item 4 -->
+      <article class="sejarah__item">
+        <div class="sejarah__marker"></div>
+
+        <div class="sejarah__body">
+          <h2 class="sejarah__heading">Lahirnya KORPRI 1971</h2>
+
+          <div class="sejarah__grid">
+            <div class="sejarah__text">
+              <p>Pada masa Demokrasi Liberal, aparatur negara belum memiliki wadah tunggal yang menghimpun dan melindungi kepentingan pegawai negeri secara profesional. Sistem politik multipartai yang berkembang saat itu menyebabkan birokrasi berada dalam posisi yang rentan terhadap pengaruh dan intervensi partai politik, sehingga netralitas aparatur negara belum dapat terwujud secara optimal.
+
+Pegawai negeri kerap dihadapkan pada kondisi loyalitas ganda, yaitu antara kepentingan negara dan kepentingan partai politik tertentu. Situasi ini berdampak pada terganggunya stabilitas birokrasi, munculnya ketidakpastian dalam jabatan dan karier, serta menurunnya efektivitas penyelenggaraan pemerintahan. Profesionalisme aparatur negara pada periode ini masih sangat dipengaruhi oleh dinamika politik nasional.
+
+Kondisi tersebut menjadi dasar penting bagi munculnya kesadaran akan perlunya penataan aparatur negara yang lebih terarah, netral, dan profesional. Pengalaman pada masa Demokrasi Liberal selanjutnya mendorong pemerintah untuk merumuskan kebijakan pembinaan pegawai negeri yang mampu menjamin stabilitas, integritas, serta loyalitas aparatur kepada negara dan kepentingan nasional.</p>
+            </div>
+            </div>
         </div>
       </article>
 

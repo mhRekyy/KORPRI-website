@@ -313,36 +313,33 @@ public function Galeri()
      * ===============================
      */
 
-public function Berita()
-{
-    $model = new \App\Models\BeritaModel();
+    public function Berita()
+    {
+        $model = new \App\Models\BeritaModel();
 
-    $kategori = $this->request->getGet('kategori') ?? 'Semua';
-    $keyword  = $this->request->getGet('q');
+        $kategori = $this->request->getGet('kategori') ?? 'Semua';
+        $keyword  = $this->request->getGet('q');
 
-    $builder = $model->where('is_active', 1)
-                     ->orderBy('created_at', 'DESC');
+        $builder = $model->where('is_active', 1);
 
-    if ($kategori !== 'Semua') {
-        $builder->where('kategori', $kategori);
-    }
+        if ($kategori !== 'Semua') {
+            $builder->where('kategori', $kategori);
+        }
 
-    if (!empty($keyword)) {
-        $builder->groupStart()
+        if (!empty($keyword)) {
+            $builder->groupStart()
                 ->like('judul', $keyword)
                 ->orLike('konten', $keyword)
                 ->groupEnd();
+        }
+
+        return view('pages/Berita', [
+            'pageTitle'      => 'BERITA KORPRI ACEH',
+            'berita'         => $builder->orderBy('created_at', 'DESC')->findAll(),
+            'kategori_aktif' => $kategori,
+            'keyword'        => $keyword,
+        ]);
     }
-
-    return view('pages/Berita', [
-        'pageTitle'      => 'BERITA KORPRI ACEH',
-        'berita'         => $builder->paginate(4, 'berita'),
-        'pager'          => $model->pager,
-        'kategori_aktif' => $kategori,
-        'keyword'        => $keyword,
-    ]);
-}
-
 
     public function detailBerita($id)
     {
@@ -393,31 +390,8 @@ public function Berita()
 
     public function Artikel()
     {
-        $model = new \App\Models\BeritaModel();
-
-        $kategori = $this->request->getGet('kategori') ?? 'Semua';
-        $keyword  = $this->request->getGet('q');
-
-        $builder = $model->where('is_active', 1)
-                        ->orderBy('created_at', 'DESC');
-
-        if ($kategori !== 'Semua') {
-            $builder->where('kategori', $kategori);
-        }
-
-        if (!empty($keyword)) {
-            $builder->groupStart()
-                    ->like('judul', $keyword)
-                    ->orLike('konten', $keyword)
-                    ->groupEnd();
-        }
-
-        return view('pages/Berita', [
-            'pageTitle'      => 'ARTIKEL KORPRI ACEH',
-            'berita'         => $builder->paginate(4, 'berita'),
-            'pager'          => $model->pager,
-            'kategori_aktif' => $kategori,
-            'keyword'        => $keyword,
+        return view('pages/Artikel', [
+            'pageTitle' => 'ARTIKEL KORPRI',
         ]);
     }
 

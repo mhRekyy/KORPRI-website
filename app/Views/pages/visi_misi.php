@@ -38,12 +38,12 @@
     <div class="vm-grid vm-grid--3">
       <?php
         $misi = [
-          ['no'=>1, 'icon'=>'fa-briefcase',          'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
-          ['no'=>2, 'icon'=>'fa-user-tie',           'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
-          ['no'=>3, 'icon'=>'fa-clipboard-check',    'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
-          ['no'=>4, 'icon'=>'fa-people-group',       'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
-          ['no'=>5, 'icon'=>'fa-award',              'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
-          ['no'=>6, 'icon'=>'fa-shield-halved',      'desc'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'],
+          ['no'=>1, 'icon'=>'fa-briefcase',          'desc'=>'Meningkatkan profesionalisme, integritas, dan etika Aparatur Sipil Negara (ASN) dalam melaksanakan tugas pelayanan kepada masyarakat.'],
+          ['no'=>2, 'icon'=>'fa-user-tie',           'desc'=>'Mengembangkan kualitas dan kapasitas sumber daya manusia ASN melalui pendidikan, pelatihan, dan pengembangan karier yang berkelanjutan.'],
+          ['no'=>3, 'icon'=>'fa-clipboard-check',    'desc'=>'Mendorong terwujudnya tata kelola pemerintahan yang bersih, transparan, dan akuntabel sesuai dengan peraturan perundang-undangan.'],
+          ['no'=>4, 'icon'=>'fa-people-group',       'desc'=>'Memperkuat rasa kebersamaan, solidaritas, serta meningkatkan kesejahteraan anggota KORPRI sebagai perekat persatuan ASN.'],
+          ['no'=>5, 'icon'=>'fa-award',              'desc'=>'Mendorong budaya kerja berorientasi pada kinerja, inovasi, dan prestasi guna mendukung pencapaian tujuan organisasi dan pembangunan daerah.'],
+          ['no'=>6, 'icon'=>'fa-shield-halved',      'desc'=>'Menjaga disiplin, netralitas, serta memberikan perlindungan dan pembelaan terhadap hak-hak ASN dalam menjalankan tugas kedinasan.'],
         ];
       ?>
 
@@ -70,10 +70,10 @@
     <div class="vm-grid vm-grid--4">
       <?php
         $nilai = [
-          ['icon'=>'fa-star',             'title'=>'Profesional', 'desc'=>'Lorem ipsum dolor sit amet, consectetur.'],
-          ['icon'=>'fa-scale-balanced',   'title'=>'Netral',      'desc'=>'Lorem ipsum dolor sit amet, consectetur.'],
-          ['icon'=>'fa-handshake',        'title'=>'Solidaritas', 'desc'=>'Lorem ipsum dolor sit amet, consectetur.'],
-          ['icon'=>'fa-landmark',         'title'=>'Abdi Negara', 'desc'=>'Lorem ipsum dolor sit amet, consectetur.'],
+          ['icon'=>'fa-star',             'title'=>'Profesional', 'desc'=>'Menjunjung tinggi kompetensi, integritas, dan tanggung jawab dalam melaksanakan tugas serta memberikan pelayanan terbaik kepada masyarakat.'],
+          ['icon'=>'fa-scale-balanced',   'title'=>'Netral',      'desc'=>'Bersikap adil, objektif, dan tidak berpihak, serta menjaga netralitas Aparatur Sipil Negara dari pengaruh kepentingan politik maupun golongan.'],
+          ['icon'=>'fa-handshake',        'title'=>'Solidaritas', 'desc'=>'Menumbuhkan semangat kebersamaan, kepedulian, dan saling menghormati antar anggota KORPRI dalam rangka memperkuat persatuan.'],
+          ['icon'=>'fa-landmark',         'title'=>'Abdi Negara', 'desc'=>'Mengutamakan kepentingan bangsa dan negara di atas kepentingan pribadi atau kelompok dalam pengabdian kepada masyarakat.'],
         ];
       ?>
 

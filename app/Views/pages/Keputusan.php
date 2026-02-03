@@ -14,10 +14,11 @@
   </select>
 
   <select class="pf-select" aria-label="Filter kategori">
-    <option selected disabled>Kategori</option>
-    <option>Peraturan</option>
-    <option>Keputusan</option>
-    <option>Pedoman</option>
+    <option selected disabled>Jenis Keputusan</option>
+    <option>Keputusan Pengangkatan</option>
+    <option>Keputusan Pemberhentian</option>
+    <option>Keputusan Penetapan</option>
+    <option>Keputusan Lainnya</option>
   </select>
 
   <!-- WRAP: input + tombol (hover tombol => input muncul) -->
@@ -73,35 +74,74 @@
         ];
       ?>
 
-      <?php foreach ($items as $it): ?>
-        <article class="per-card">
-          <div class="per-left">
-            <img
-                class="per-pdf"
-                src="<?= base_url('assets/img/pdf.png') ?>"
-                alt="PDF"
-            >
-            </div>
+      
+        <?php foreach ($items as $it): ?>
+  <article class="per-card">
 
+    <div class="per-left">
+      <img
+        class="per-pdf"
+        src="<?= base_url('assets/img/pdf.png') ?>"
+        alt="PDF"
+      >
+    </div>
 
-          <div class="per-mid">
-            <h3 class="per-title">
-              <?= esc($it['judul']) ?>
-            </h3>
-            <p class="per-meta"><?= esc($it['meta']) ?></p>
-          </div>
+    <div class="per-mid">
+      <h3 class="per-title">
+        <?= esc($it['judul']) ?>
+      </h3>
 
-          <div class="per-right">
-            <a class="per-btn" href="<?= esc($it['file']) ?>">
-              <i class="bi bi-download per-btn__icon" aria-hidden="true"></i>
-              <span>UNDUH</span>
-            </a>
-          </div>
-        </article>
-      <?php endforeach; ?>
+      <p class="per-meta">
+        <?= esc($it['instansi']) ?> |
+        <?= date('d F Y', strtotime($it['tanggal_keputusan'])) ?>
+      </p>
+    </div>
+
+    <div class="per-right">
+      <a class="per-btn"
+         href="<?= base_url('uploads/keputusan/' . $it['file_pdf']) ?>"
+         target="_blank">
+        <i class="bi bi-download per-btn__icon" aria-hidden="true"></i>
+        <span>UNDUH</span>
+      </a>
+    </div>
+
+  </article>
+<?php endforeach; ?>
+
     </div>
 
   </div>
 </section>
+<script>
+  const selects = document.querySelectorAll('.pf-select');
+  const input   = document.querySelector('.pf-input');
+  const button  = document.querySelector('.pf-btn');
+
+  function applyFilter() {
+    const masa  = selects[0].value;
+    const jenis = selects[1].value;
+    const q     = input.value;
+
+    const params = new URLSearchParams();
+
+    if (masa && masa !== 'Masa Bakti') {
+      params.append('masa', masa);
+    }
+
+    if (jenis && jenis !== 'Jenis Keputusan') {
+      params.append('jenis', jenis);
+    }
+
+    if (q) {
+      params.append('q', q);
+    }
+
+    window.location.href = "<?= base_url('keputusan') ?>?" + params.toString();
+  }
+
+  selects.forEach(s => s.addEventListener('change', applyFilter));
+  button.addEventListener('click', applyFilter);
+</script>
 
 <?= $this->endSection() ?>

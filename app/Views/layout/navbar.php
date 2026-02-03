@@ -176,7 +176,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('Keputusan') ?>">
+        <a class="dropdown-item" href="<?= base_url('keputusan') ?>">
           <span class="dd-ic"><i class="fas fa-gavel"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Keputusan</span>
@@ -185,7 +185,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('SuratEdaran') ?>">
+        <a class="dropdown-item" href="<?= base_url('suratedaran') ?>">
           <span class="dd-ic"><i class="fas fa-envelope-open-text"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Surat edaran</span>
@@ -239,7 +239,6 @@
   </div>
 
 </nav>
-
 
             <!-- BUTTON -->
             <a href="<?= base_url('kontak-kami') ?>" class="btn-kontak">

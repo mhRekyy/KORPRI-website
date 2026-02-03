@@ -32,7 +32,7 @@ $routes->get('galeri_video', 'Pages::galeri_video');
 // $routes->get('berita', 'Pages::Berita');
 $routes->get('peraturan', 'Pages::peraturan');
 $routes->get('keputusan', 'Pages::keputusan');
-$routes->get('SuratEdaran', 'Pages::SuratEdaran');
+$routes->get('suratedaran', 'Pages::suratedaran');
 $routes->get('artikel', 'Pages::artikel');
 $routes->get('artikel/(:segment)', 'Pages::ArtikelDetail');
 

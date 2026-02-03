@@ -94,6 +94,18 @@
         <div class="kontak-right">
           <h2 class="kontak-heading">KIRIMKAN PESAN ANDA</h2>
 
+          <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success">
+              <?= session()->getFlashdata('success') ?>
+            </div>
+          <?php endif; ?>
+
+          <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger">
+              <?= session()->getFlashdata('error') ?>
+            </div>
+          <?php endif; ?>
+
           <form class="kontak-form" action="<?= base_url('kontak-kami/kirim') ?>" method="post">
             <?= csrf_field() ?>
 

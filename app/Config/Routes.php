@@ -10,6 +10,9 @@ $routes->get('pdf/(:any)', 'Files::show/$1');
 $routes->get('/', 'Home::index');
 
 $routes->get('kontak-kami', 'Pages::kontakKami');
+$routes->post('kontak-kami/kirim', 'Pages::kirimKontak');
+$routes->get('test-email', 'Pages::testEmail');
+
 
 // $routes->get('profil-korpri', 'Pages::profilKorpri');
 $routes->get('profile', 'Pages::Profile');

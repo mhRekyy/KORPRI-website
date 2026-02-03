@@ -136,6 +136,64 @@ class Pages extends BaseController
         ]);
     }
 
+    public function kirimKontak()
+{
+    $nama   = $this->request->getPost('nama');
+    $nomor  = $this->request->getPost('nomor');
+    $email  = $this->request->getPost('email');
+    $subjek = $this->request->getPost('subjek');
+    $pesan  = $this->request->getPost('pesan');
+
+    if (!$nama || !$email || !$pesan) {
+        return redirect()->back()->with('error', 'Mohon lengkapi data yang wajib diisi.');
+    }
+
+    $emailService = \Config\Services::email();
+
+        $emailService->setFrom(
+            'muhammadrekyyyy@gmail.com',
+            'Website KORPRI'
+        );
+
+        $emailService->setTo('muhammadrekyyyy@gmail.com');
+        $emailService->setReplyTo($email, $nama);
+        $emailService->setSubject($subjek ?: 'Pesan dari Form Kontak Website');
+
+        $emailService->setMessage("
+            <strong>Nama:</strong> {$nama}<br>
+            <strong>Email:</strong> {$email}<br>
+            <strong>No HP:</strong> {$nomor}<br><br>
+            <strong>Pesan:</strong><br>{$pesan}
+        ");
+
+       if ($emailService->send()) {
+            return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
+        } else {
+            return redirect()->back()
+                ->with('error', 'Pesan gagal dikirim.')
+                ->with('debug', $emailService->printDebugger(['headers']));
+        }
+
+
+}
+
+
+    public function testEmail()
+    {
+        $email = \Config\Services::email();
+
+        $email->setTo('muhammadrekyyyy@gmail.com'); // ganti ke email kamu
+        $email->setSubject('TEST CI4');
+        $email->setMessage('EMAIL TEST BERHASIL');
+
+        if ($email->send()) {
+            echo 'EMAIL BERHASIL DIKIRIM';
+        } else {
+            echo $email->printDebugger(['headers', 'subject', 'body']);
+        }
+    }
+
+
     public function Kepengurusan()
     {
         $dokumen = [

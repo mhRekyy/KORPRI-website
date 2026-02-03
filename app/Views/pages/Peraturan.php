@@ -13,12 +13,14 @@
     <option>2016 - 2021</option>
   </select>
 
-  <select class="pf-select" aria-label="Filter kategori">
-    <option selected disabled>Kategori</option>
-    <option>Peraturan</option>
-    <option>Keputusan</option>
-    <option>Pedoman</option>
-  </select>
+<select class="pf-select" aria-label="Filter kategori">
+  <option selected disabled>Kategori</option>
+  <option>Peraturan Perundang-undangan</option>
+  <option>Peraturan Gubernur</option>
+  <option>Peraturan Daerah</option>
+  <option>Peraturan KORPRI</option>
+</select>
+
 
   <!-- WRAP: input + tombol (hover tombol => input muncul) -->
   <div class="pf-search">

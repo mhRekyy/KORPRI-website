@@ -167,7 +167,7 @@
 
     <ul class="dropdown-menu" aria-labelledby="ddKebijakan">
       <li>
-        <a class="dropdown-item" href="<?= base_url('Peraturan') ?>">
+        <a class="dropdown-item" href="<?= base_url('peraturan') ?>">
           <span class="dd-ic"><i class="fas fa-scale-balanced"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Peraturan</span>

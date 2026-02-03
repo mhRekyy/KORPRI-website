@@ -9,6 +9,8 @@ use App\Models\StrukturDPKModel;
 use App\Models\ProfilKorpriModel;
 use App\Models\ArtikelModel;
 use App\Models\PengumumanModel;
+use App\Models\PeraturanModel;
+
 
 
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -502,12 +504,54 @@ public function pengumuman()
 }
 
 
-    public function Peraturan()
-    {
-        return view('pages/Peraturan', [
-            'pageTitle' => 'PERATURAN KORPRI',
-        ]);
-    }
+    public function peraturan()
+{
+        $model = new PeraturanModel();
+
+        // Ambil parameter GET
+        $kategori   = $this->request->getGet('kategori');
+        $masaBakti  = $this->request->getGet('masa_bakti');
+        $keyword    = $this->request->getGet('keyword');
+
+        // Query dasar
+        $builder = $model->where('is_active', 1);
+
+        // Filter kategori
+        if (!empty($kategori)) {
+            $builder->where('kategori', $kategori);
+        }
+
+        // Filter masa bakti
+        if (!empty($masaBakti)) {
+            $builder->where('masa_bakti', $masaBakti);
+        }
+
+        // Search judul
+        if (!empty($keyword)) {
+            $builder->like('judul', $keyword);
+        }
+
+        // Ambil data
+        $data['peraturan'] = $builder
+            ->orderBy('tanggal_penetapan', 'DESC')
+            ->findAll();
+
+        // Data dropdown
+        $data['kategoriList'] = [
+            'Peraturan Perundang-undangan',
+            'Peraturan Gubernur',
+            'Peraturan Daerah',
+            'Peraturan KORPRI'
+        ];
+
+        $data['masaBaktiList'] = [
+            '2016–2021',
+            '2021–2026'
+        ];
+
+        return view('pages/peraturan', $data);
+}
+
 
 
     public function Keputusan()

@@ -30,13 +30,13 @@ $routes->get('testGaleri', 'Pages::testGaleri');
 $routes->get('galeri', 'Pages::Galeri');
 $routes->get('galeri_video', 'Pages::galeri_video');
 // $routes->get('berita', 'Pages::Berita');
-$routes->get('Peraturan', 'Pages::Peraturan');
+$routes->get('peraturan', 'Pages::peraturan');
 $routes->get('Keputusan', 'Pages::Keputusan');
 $routes->get('SuratEdaran', 'Pages::SuratEdaran');
 $routes->get('artikel', 'Pages::artikel');
 $routes->get('artikel/(:segment)', 'Pages::ArtikelDetail');
 
-$routes->get('Pengumuman', 'Pages::Pengumuman');
+$routes->get('pengumuman', 'Pages::pengumuman');
 // $routes->get('test-berita', 'Pages::testBerita');
 $routes->get('berita', 'Pages::Berita');
 $routes->get('berita/(:num)', 'Pages::detailBerita/$1');

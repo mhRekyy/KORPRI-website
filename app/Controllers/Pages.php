@@ -8,6 +8,8 @@ use App\Models\GaleriImageModel;
 use App\Models\StrukturDPKModel;
 use App\Models\ProfilKorpriModel;
 use App\Models\ArtikelModel;
+use App\Models\PengumumanModel;
+
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -459,12 +461,45 @@ public function ArtikelDetail($slug)
 }
 
 
-    public function Pengumuman()
-    {
-        return view('pages/Pengumuman', [
-            'pageTitle' => 'PENGUMUMAN KORPRI',
-        ]);
+public function pengumuman()
+{
+
+    $pengumumanModel = new PengumumanModel();
+
+    // Ambil parameter dari GET
+    $keyword     = $this->request->getGet('q');
+    $kategori    = $this->request->getGet('kategori');
+    $masa_bakti  = $this->request->getGet('masa_bakti');
+
+    // Query dasar
+    $builder = $pengumumanModel
+        ->where('is_active', 1);
+
+    // Filter SEARCH (judul)
+    if (!empty($keyword)) {
+        $builder->like('judul', $keyword);
     }
+
+    // Filter KATEGORI
+    if (!empty($kategori)) {
+        $builder->where('kategori', $kategori);
+    }
+
+    // 🔥 Filter MASA BAKTI (INI YANG KURANG)
+    if (!empty($masa_bakti)) {
+        $builder->where('masa_bakti', $masa_bakti);
+    }
+
+    // Ambil data
+    $pengumuman = $builder
+        ->orderBy('tanggal_pengumuman', 'DESC')
+        ->findAll();
+
+    return view('pages/Pengumuman', [
+        'title' => 'Pengumuman KORPRI',
+        'pengumuman' => $pengumuman
+    ]);
+}
 
 
     public function Peraturan()

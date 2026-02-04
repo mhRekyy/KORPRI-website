@@ -23,7 +23,7 @@ class Home extends BaseController
         $latestPengumuman = $pengumumanModel
             ->where('is_active', 1)
             ->orderBy('tanggal_pengumuman', 'DESC')
-            ->limit(3)  // Hanya 3 terbaru untuk home
+            ->limit(5)  // Hanya 3 terbaru untuk home
             ->findAll();
 
         $data = [

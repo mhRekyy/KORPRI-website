@@ -81,7 +81,7 @@
     <div class="per-left">
       <img
         class="per-pdf"
-        src="<?= base_url('assets/img/pdf.png') ?>"
+        src="<?= base_url('assets/img/icon_keputusan.png') ?>"
         alt="PDF"
       >
     </div>

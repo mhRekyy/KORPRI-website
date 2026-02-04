@@ -250,8 +250,8 @@
 }
 
 .per-pdf{
-  width: 76px;     /* samakan dengan visual di screenshot */
-  height: 76px;
+  width: 60px;     /* samakan dengan visual di screenshot */
+  height: 60px;
   object-fit: contain; /* biar gambar tidak gepeng */
   display: block;
   filter: drop-shadow(0 10px 14px rgba(0,0,0,.18));

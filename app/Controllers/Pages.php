@@ -227,9 +227,6 @@ class Pages extends BaseController
     }
 
 
-
-
-
     public function KetuaUmum()
     {
         $dataKetua = [

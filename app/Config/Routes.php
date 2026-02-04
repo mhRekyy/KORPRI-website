@@ -34,7 +34,7 @@ $routes->get('peraturan', 'Pages::peraturan');
 $routes->get('Keputusan', 'Pages::Keputusan');
 $routes->get('suratedaran', 'Pages::suratedaran');
 $routes->get('artikel', 'Pages::artikel');
-$routes->get('artikel/(:segment)', 'Pages::ArtikelDetail');
+$routes->get('artikel/(:segment)', 'Pages::ArtikelDetail/$1');
 
 $routes->get('pengumuman', 'Pages::pengumuman');
 // $routes->get('test-berita', 'Pages::testBerita');

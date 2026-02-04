@@ -101,15 +101,15 @@
           <ul class="korpri-footer__contact">
             <li class="korpri-footer__contact-item">
               <i class="bi bi-envelope korpri-footer__contact-icon"></i>
-              <span>contact@company.com</span>
+              <span>korpri@gmail.com</span>
             </li>
             <li class="korpri-footer__contact-item">
               <i class="bi bi-telephone korpri-footer__contact-icon"></i>
-              <span>(414) 687 - 5892</span>
+              <span> 0852-0000-0000</span>
             </li>
             <li class="korpri-footer__contact-item">
               <i class="bi bi-geo-alt korpri-footer__contact-icon"></i>
-              <span>794 Mcallister St<br>San Francisco, 94102</span>
+              <span>Jl. Tengku Malem No.2,<br> Kuta Alam,Kec. Kuta Alam, <br>Kota Banda Aceh, Aceh 24415</span>
             </li>
           </ul>
         </div>

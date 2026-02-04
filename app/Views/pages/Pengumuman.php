@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main_inner') ?>
 <?= $this->section('content') ?>
 
-<link rel="stylesheet" href="<?= base_url('assets/css/pages/peraturan.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pages/pengumuman.css') ?>">
 
 <section class="peraturan-wrap">
   <div class="peraturan-container">
@@ -65,7 +65,7 @@
         <?php foreach ($pengumuman as $it): ?>
 
           <article class="per-card">
-            <div class="per-left">
+            <div class="per-left"> 
               <img
                 class="per-pdf"
                 src="<?= base_url('assets/img/date.png') ?>"
@@ -100,6 +100,7 @@
 
     </div>
 
+  </div>
   </div>
 </section>
 

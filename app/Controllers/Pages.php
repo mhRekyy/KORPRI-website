@@ -10,6 +10,8 @@ use App\Models\ProfilKorpriModel;
 use App\Models\ArtikelModel;
 use App\Models\PengumumanModel;
 use App\Models\PeraturanModel;
+use App\Models\KeputusanModel;
+use App\Models\SuratEdaranModel;
 
 
 
@@ -612,19 +614,73 @@ public function pengumuman()
 
 
 
-    public function Keputusan()
-    {
-        return view('pages/Keputusan', [
-            'pageTitle' => 'KEPUTUSAN KORPRI',
-        ]);
+   
+
+public function keputusan()
+{
+    $model = new KeputusanModel();
+
+    // Ambil parameter GET
+    $masa  = $this->request->getGet('masa');
+    $jenis = $this->request->getGet('jenis');
+    $q     = $this->request->getGet('q');
+
+    $builder = $model->where('is_active', 1);
+
+    if (!empty($masa)) {
+        // Samakan format: "2021 - 2026" -> "2021–2026"
+        $masa = str_replace(' - ', '–', $masa);
+        $builder->where('masa_bakti', $masa);
     }
 
-
-    public function SuratEdaran()
-    {
-        return view('pages/SuratEdaran', [
-            'pageTitle' => 'SURAT EDARAN KORPRI',
-        ]);
+    if (!empty($jenis)) {
+        $builder->where('jenis_keputusan', $jenis);
     }
+
+    if (!empty($q)) {
+        $builder->like('judul', $q);
+    }
+
+    $data['items'] = $builder
+        ->orderBy('tanggal_keputusan', 'DESC')
+        ->findAll();
+
+    return view('pages/keputusan', $data);
+}
+
+
+public function SuratEdaran()
+{
+    $model = new SuratEdaranModel();
+
+    $masa  = $this->request->getGet('masa');
+    $jenis = $this->request->getGet('jenis');
+    $q     = $this->request->getGet('q');
+
+    $builder = $model->where('is_active', 1);
+
+    if (!empty($masa)) {
+        $masa = str_replace(' - ', '–', $masa);
+        $builder->where('masa_bakti', $masa);
+    }
+
+    if (!empty($jenis)) {
+        $builder->where('jenis_surat', $jenis);
+    }
+
+    if (!empty($q)) {
+        $builder->like('judul', $q);
+    }
+
+    $data['items'] = $builder
+        ->orderBy('tanggal_surat', 'DESC')
+        ->findAll();
+
+    // ⬇️ PENTING DI SINI
+    return view('pages/SuratEdaran', $data);
+}
+
+
+
 
 }

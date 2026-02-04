@@ -60,8 +60,9 @@
               <div>
                 <div class="kontak-label">KANTOR KAMI</div>
                 <div class="kontak-value">
-                  Jl. Gajah Mada No.8, RT.1/RW.2, Krukut,<br>
-                  Kec. Taman Sari, Kota Jakarta Barat
+                  Jl. Tengku Malem No.2, Kuta Alam,<br>
+                  Kec. Kuta Alam, Kota Banda Aceh, Aceh 24415
+
                 </div>
               </div>
             </div>

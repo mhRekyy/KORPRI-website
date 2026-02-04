@@ -176,7 +176,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="<?= base_url('keputusan') ?>">
+        <a class="dropdown-item" href="<?= base_url('Keputusan') ?>">
           <span class="dd-ic"><i class="fas fa-gavel"></i></span>
           <span class="dd-txt">
             <span class="dd-title">Keputusan</span>

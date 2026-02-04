@@ -67,51 +67,55 @@
         
         <div class="news-pengumuman-wrapper">
           <?php if (!empty($news)): ?>
-  <?php foreach ($news as $b): ?>
-    <a href="<?= site_url('berita/' . $b['id']) ?>" class="news-card-link">
-    <div class="news-card">
-      <div class="news-image">
-        <?php if (!empty($b['gambar'])): ?>
-          <img src="<?= base_url('uploads/berita/' . $b['gambar']) ?>" alt="<?= esc($b['judul']) ?>">
-        <?php else: ?>
-          <img src="<?= base_url('assets/img/default-news.jpg') ?>" alt="<?= esc($b['judul'] ?? 'Berita') ?>">
-        <?php endif; ?>
-      </div>
+            <?php foreach ($news as $b): ?>
+              <a href="<?= site_url('berita/' . $b['id']) ?>" class="news-card-link">
+              <div class="news-card">
+                <div class="news-image">
+                  <?php if (!empty($b['gambar'])): ?>
+                    <img src="<?= base_url('uploads/berita/' . $b['gambar']) ?>" alt="<?= esc($b['judul']) ?>">
+                  <?php else: ?>
+                    <img src="<?= base_url('assets/img/default-news.jpg') ?>" alt="<?= esc($b['judul'] ?? 'Berita') ?>">
+                  <?php endif; ?>
+                </div>
 
-      <div class="news-content">
-        <h3 class="news-title"><?= esc($b['judul']) ?></h3>
+                <div class="news-content">
+                  <h3 class="news-title"><?= esc($b['judul']) ?></h3>
 
-        <span class="news-date">
-          <?php
-            setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'INDONESIA');
-            echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
-          ?>
-        </span>
-      </div>
-    </div>
-  <?php endforeach; ?>
-<?php else: ?>
-  <p style="color:#9ca3af;">Tidak ada berita</p>
-<?php endif; ?>
+                  <span class="news-date">
+                    <?php
+                      setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'INDONESIA');
+                      echo esc(strftime('%d %B %Y', strtotime($b['created_at'])));
+                    ?>
+                  </span>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p style="color:#9ca3af;">Tidak ada berita</p>
+          <?php endif; ?>
 
-          <div class="pengumuman-box">
-            <div class="pengumuman-content">
-              <?php if (!empty($pengumuman)): ?>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  <?php foreach (array_slice($pengumuman, 0, 5) as $p): ?>
-                    <li style="margin-bottom: 12px;">
-                      <a href="<?= esc($p['link']) ?>" style="color: #4b5563; text-decoration: none; font-size: 14px; line-height: 1.5; display: block;">
-                        • <?= esc($p['title']) ?>
-                      </a>
-                    </li>
-                  <?php endforeach; ?>
-                </ul>
-              <?php else: ?>
-                <p style="color: #9ca3af; font-size: 14px; text-align: center; margin-top: 50px;">Tidak ada pengumuman</p>
-              <?php endif; ?>
+          <a href="<?= site_url('pengumuman') ?>" class="pengumuman-link">
+            <div class="pengumuman-box">
+              <div class="pengumuman-content">
+                <?php if (!empty($pengumuman)): ?>
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    <?php foreach (array_slice($pengumuman, 0, 5) as $p): ?>
+                      <li style="margin-bottom: 12px;">
+                        <span class="pengumuman-item">
+                          <?= esc($p['judul']) ?>
+                        </span>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                <?php else: ?>
+                  <p style="color: #9ca3af; font-size: 14px; text-align: center; margin-top: 50px;">Tidak ada pengumuman</p>
+                <?php endif; ?>
+              </div>
             </div>
-          </div>
+          </a>
+
         </div>
+
         
         <div class="text-center mt-4">
           <a href="/berita" class="btn-selengkapnya">

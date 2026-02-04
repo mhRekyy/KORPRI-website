@@ -57,7 +57,6 @@
 </div>
 
 
-    </div>
 
     <!-- LIST -->
     <div class="peraturan-list">

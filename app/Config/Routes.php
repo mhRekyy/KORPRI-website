@@ -43,3 +43,24 @@ $routes->get('berita/(:num)', 'Pages::detailBerita/$1');
 
 
 
+
+// Admin Routes
+$routes->group('admin', function($routes) {
+
+    $routes->get('/', 'Admin\Dashboard::index');
+
+    $routes->get('berita', 'Admin\Berita::index');
+    $routes->get('berita/create', 'Admin\Berita::create');
+    $routes->post('berita/store', 'Admin\Berita::store');
+    $routes->get('berita/edit/(:num)', 'Admin\Berita::edit/$1');
+    $routes->post('berita/update/(:num)', 'Admin\Berita::update/$1');
+    $routes->post('berita/delete/(:num)', 'Admin\Berita::delete/$1');
+    $routes->post('berita/toggle/(:num)', 'Admin\Berita::toggle/$1');
+
+
+
+});
+
+
+
+

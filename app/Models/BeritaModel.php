@@ -11,6 +11,7 @@ class BeritaModel extends Model
 
     protected $allowedFields = [
         'judul',
+        'kategori',
         'konten',
         'gambar',
         'is_active',

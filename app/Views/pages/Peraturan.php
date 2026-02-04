@@ -6,43 +6,59 @@
 <section class="peraturan-wrap">
   <div class="peraturan-container">
 
-    <!-- FILTER -->
     <form method="get" class="peraturan-filter">
 
-      <select name="masa_bakti" class="pf-select" aria-label="Filter masa bakti">
-        <option value="">Masa Bakti</option>
-        <option value="2021–2026" <?= (($_GET['masa_bakti'] ?? '') == '2021–2026') ? 'selected' : '' ?>>
-          2021 – 2026
-        </option>
-        <option value="2016–2021" <?= (($_GET['masa_bakti'] ?? '') == '2016–2021') ? 'selected' : '' ?>>
-          2016 – 2021
-        </option>
-      </select>
+  <select
+    id="filter-masa"
+    name="masa_bakti"
+    class="pf-select"
+    aria-label="Filter masa bakti"
+  >
+    <option value="">Masa Bakti</option>
+    <option value="2021–2026" <?= (($_GET['masa_bakti'] ?? '') == '2021–2026') ? 'selected' : '' ?>>
+      2021 – 2026
+    </option>
+    <option value="2016–2021" <?= (($_GET['masa_bakti'] ?? '') == '2016–2021') ? 'selected' : '' ?>>
+      2016 – 2021
+    </option>
+  </select>
 
-      <select name="kategori" class="pf-select" aria-label="Filter kategori">
-        <option value="">Semua Kategori</option>
-        <?php foreach ($kategoriList as $k): ?>
-          <option value="<?= $k ?>" <?= (($_GET['kategori'] ?? '') == $k) ? 'selected' : '' ?>>
-            <?= $k ?>
-          </option>
-        <?php endforeach; ?>
-      </select>
+  <select
+    id="filter-kategori"
+    name="kategori"
+    class="pf-select"
+    aria-label="Filter kategori"
+  >
+    <option value="">Semua Kategori</option>
+    <?php foreach ($kategoriList as $k): ?>
+      <option value="<?= $k ?>" <?= (($_GET['kategori'] ?? '') == $k) ? 'selected' : '' ?>>
+        <?= $k ?>
+      </option>
+    <?php endforeach; ?>
+  </select>
 
-      <div class="pf-search">
-        <input
-          class="pf-input"
-          type="text"
-          name="keyword"
-          placeholder="Cari peraturan..."
-          value="<?= esc($_GET['keyword'] ?? '') ?>"
-          aria-label="Cari peraturan"
-        >
-        <button class="pf-btn" type="submit" aria-label="Search">
-          <i class="fas fa-search pf-btn__icon"></i>
-        </button>
-      </div>
+  <div class="pf-search">
+    <input
+  id="filter-keyword"
+  class="pf-input"
+  type="text"
+  name="keyword"
+  placeholder="Cari peraturan..."
+  aria-label="Cari peraturan"
+>
 
-    </form>
+    <button
+      id="filter-btn"
+      class="pf-btn"
+      type="submit"
+      aria-label="Search"
+    >
+      <i class="fas fa-search pf-btn__icon"></i>
+    </button>
+  </div>
+
+</form>
+
 
     <!-- LIST -->
     <div class="peraturan-list">
@@ -90,5 +106,67 @@
 
   </div>
 </section>
+
+<script>
+  // Ambil elemen
+  const masa     = document.getElementById('filter-masa');
+  const kategori = document.getElementById('filter-kategori');
+  const keyword  = document.getElementById('filter-keyword');
+  const btn      = document.getElementById('filter-btn');
+
+  /**
+   * Fungsi utama untuk menerapkan filter
+   * @param {boolean} clearKeyword - apakah input keyword dikosongkan
+   */
+  function applyFilter(clearKeyword = false) {
+    const params = new URLSearchParams();
+
+    // Filter masa bakti
+    if (masa && masa.value) {
+      params.append('masa_bakti', masa.value);
+    }
+
+    // Filter kategori
+    if (kategori && kategori.value) {
+      params.append('kategori', kategori.value);
+    }
+
+    // Search keyword
+    if (keyword && keyword.value) {
+      params.append('keyword', keyword.value);
+    }
+
+    // Jika dipanggil dari tombol "Cari"
+    if (clearKeyword && keyword) {
+      keyword.value = '';
+    }
+
+    // Redirect dengan query string
+    window.location.href =
+      "<?= base_url('peraturan') ?>?" + params.toString();
+  }
+
+  // AUTO FILTER (dropdown berubah)
+  if (masa) {
+    masa.addEventListener('change', function () {
+      applyFilter(false); // keyword tetap
+    });
+  }
+
+  if (kategori) {
+    kategori.addEventListener('change', function () {
+      applyFilter(false); // keyword tetap
+    });
+  }
+
+  // MANUAL SEARCH (klik tombol Cari)
+  if (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault(); // cegah submit form default
+      applyFilter(true);  // keyword DIKOSONGKAN
+    });
+  }
+</script>
+
 
 <?= $this->endSection() ?>

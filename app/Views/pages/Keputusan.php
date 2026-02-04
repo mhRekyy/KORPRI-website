@@ -137,7 +137,7 @@
       params.append('q', q);
     }
 
-    window.location.href = "<?= base_url('keputusan') ?>?" + params.toString();
+    window.location.href = "<?= base_url('Keputusan') ?>?" + params.toString();
   }
 
   selects.forEach(s => s.addEventListener('change', applyFilter));

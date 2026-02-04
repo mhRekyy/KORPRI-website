@@ -20,7 +20,7 @@
       </select>
 
       <select name="kategori" class="pf-select" aria-label="Filter kategori">
-        <option value="">Kategori</option>
+        <option value="">Semua Kategori</option>
         <?php foreach ($kategoriList as $k): ?>
           <option value="<?= $k ?>" <?= (($_GET['kategori'] ?? '') == $k) ? 'selected' : '' ?>>
             <?= $k ?>

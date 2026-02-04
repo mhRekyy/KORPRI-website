@@ -327,7 +327,7 @@ public function Galeri()
             ->orderBy('id', 'ASC')
             ->findAll();
 
-        $chunks = array_chunk($images, 8);
+        $chunks = array_chunk($images, 7);
 
         foreach ($chunks as $chunk) {
             $tiles = [];
@@ -555,7 +555,7 @@ public function pengumuman()
         ->findAll();
 
     return view('pages/Pengumuman', [
-        'title' => 'Pengumuman KORPRI',
+        'pageTitle' => 'Pengumuman KORPRI',
         'pengumuman' => $pengumuman
     ]);
 }
@@ -563,51 +563,55 @@ public function pengumuman()
 
     public function peraturan()
 {
-        $model = new PeraturanModel();
+    $model = new PeraturanModel();
 
-        // Ambil parameter GET
-        $kategori   = $this->request->getGet('kategori');
-        $masaBakti  = $this->request->getGet('masa_bakti');
-        $keyword    = $this->request->getGet('keyword');
+    // Ambil parameter GET
+    $kategori   = $this->request->getGet('kategori');
+    $masaBakti  = $this->request->getGet('masa_bakti');
+    $keyword    = $this->request->getGet('keyword');
 
-        // Query dasar
-        $builder = $model->where('is_active', 1);
+    // Query dasar
+    $builder = $model->where('is_active', 1);
 
-        // Filter kategori
-        if (!empty($kategori)) {
-            $builder->where('kategori', $kategori);
-        }
+    // Filter kategori
+    if (!empty($kategori)) {
+        $builder->where('kategori', $kategori);
+    }
 
-        // Filter masa bakti
-        if (!empty($masaBakti)) {
-            $builder->where('masa_bakti', $masaBakti);
-        }
+    // Filter masa bakti
+    if (!empty($masaBakti)) {
+        $builder->where('masa_bakti', $masaBakti);
+    }
 
-        // Search judul
-        if (!empty($keyword)) {
-            $builder->like('judul', $keyword);
-        }
+    // Search judul
+    if (!empty($keyword)) {
+        $builder->like('judul', $keyword);
+    }
 
-        // Ambil data
-        $data['peraturan'] = $builder
-            ->orderBy('tanggal_penetapan', 'DESC')
-            ->findAll();
+    // Ambil data
+    $data['peraturan'] = $builder
+        ->orderBy('tanggal_penetapan', 'DESC')
+        ->findAll();
 
-        // Data dropdown
-        $data['kategoriList'] = [
-            'Peraturan Perundang-undangan',
-            'Peraturan Gubernur',
-            'Peraturan Daerah',
-            'Peraturan KORPRI'
-        ];
+    // Dropdown kategori
+    $data['kategoriList'] = [
+        'Peraturan Perundang-undangan',
+        'Peraturan Gubernur',
+        'Peraturan Daerah',
+        'Peraturan KORPRI'
+    ];
 
-        $data['masaBaktiList'] = [
-            '2016–2021',
-            '2021–2026'
-        ];
+    // Dropdown masa bakti
+    $data['masaBaktiList'] = [
+        '2016–2021',
+        '2021–2026'
+    ];
 
-        return view('pages/peraturan', $data);
+    $data['pageTitle'] = 'Peraturan KORPRI';
+
+    return view('pages/Peraturan', $data);
 }
+
 
 
 
@@ -641,8 +645,9 @@ public function keputusan()
     $data['items'] = $builder
         ->orderBy('tanggal_keputusan', 'DESC')
         ->findAll();
-
-    return view('pages/keputusan', $data);
+    
+    $data['pageTitle'] = 'Keputusan KORPRI';
+     return view('pages/Keputusan', $data);
 }
 
 
@@ -673,11 +678,7 @@ public function SuratEdaran()
         ->orderBy('tanggal_surat', 'DESC')
         ->findAll();
 
-    // ⬇️ PENTING DI SINI
-    return view('pages/SuratEdaran', $data);
+     $data['pageTitle'] = 'Surat Edaran KORPRI';
+     return view('pages/SuratEdaran', $data);
 }
-
-
-
-
 }

@@ -273,7 +273,7 @@ main {
   align-items: stretch;
 }
 
-/* Pengumuman Box - Hapus h3 karena sudah di header */
+/* Pengumuman Box - FULL RESPONSIVE */
 .pengumuman-box {
   background: #F0F5FB;
   border: 1px solid #e5e7eb;
@@ -284,15 +284,34 @@ main {
   min-height: 400px;
 }
 
-.pengumuman-content {
-  min-height: auto;
+.pengumuman-item {
+  color: #4b5563;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 15px;
+  transition: color 0.2s ease;
+  text-decoration: underline;
 }
 
-.pengumuman-content p {
-  font-size: 14px;
-  color: #9ca3af;
-  text-align: center;
-  margin-top: 50px;
+.pengumuman-item:hover {
+  color: #1a2332;
+}
+
+/* Link Wrapper */
+.pengumuman-link {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Hover Effect SELURUH BOX */
+.pengumuman-link:hover .pengumuman-box {
+  background: #e8f4fd !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px) !important;
+  transition: all 0.2s ease !important;
 }
 
 /* News Card */

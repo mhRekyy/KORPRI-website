@@ -645,7 +645,7 @@ public function keputusan()
         ->orderBy('tanggal_keputusan', 'DESC')
         ->findAll();
 
-    return view('pages/keputusan', $data);
+    return view('pages/Keputusan', $data);
 }
 
 

@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $title ?? 'Admin KORPRI' ?></title>
-    <link rel="stylesheet" href="<?= base_url('assets/admin/css/admin.css') ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= base_url('assets/css/admin/admin.css') ?>">
 </head>
 <body>
 
 <div class="admin-wrapper">
 
-    <?= $this->include('admin/layout/sidebar') ?>
+  <?= $this->include('admin/layout/sidebar') ?>
 
-    <div class="admin-content">
-        <?= $this->include('admin/layout/header') ?>
-
-        <main class="admin-main">
-            <?= $this->renderSection('content') ?>
-        </main>
-    </div>
+  <main class="admin-content">
+    <?= $this->renderSection('content') ?>
+  </main>
 
 </div>
 

@@ -6,8 +6,9 @@
 <a href="<?= base_url('admin/berita/create') ?>">+ Tambah Berita</a>
 
 <br><br>
-<form method="get" action="<?= base_url('admin/berita') ?>" style="margin-bottom:20px;">
-  <div style="display:flex; gap:10px; align-items:end; flex-wrap:wrap;">
+<form method="get" action="<?= base_url('admin/berita') ?>">
+  <div class="admin-filter">
+
 
     <!-- Search Judul -->
     <div>
@@ -46,7 +47,8 @@
   </div>
 </form>
 
-<table border="1" cellpadding="8" cellspacing="0" width="100%">
+<table class="admin-table">
+
     <thead>
         <tr>
             <th>No</th>
@@ -82,16 +84,10 @@ $no = 1 + ($perPage * ((int)$page - 1));
                               style="display:inline">
                             <?= csrf_field() ?>
 
-                            <button type="submit"
-                                style="
-                                    padding:4px 10px;
-                                    border:none;
-                                    cursor:pointer;
-                                    background:<?= $b['is_active'] ? '#2ecc71' : '#95a5a6' ?>;
-                                    color:white;
-                                ">
-                                <?= $b['is_active'] ? 'Publish' : 'Draft' ?>
-                            </button>
+                            <button type="submit" class="badge <?= $b['is_active'] ? 'badge-publish' : 'badge-draft' ?>">
+  <?= $b['is_active'] ? 'Publish' : 'Draft' ?>
+</button>
+
                         </form>
                     </td>
 
@@ -105,7 +101,8 @@ $no = 1 + ($perPage * ((int)$page - 1));
                     </td>
 
                     <!-- AKSI -->
-                    <td>
+                    <td class="admin-action">
+
                         <a href="<?= base_url('admin/berita/edit/'.$b['id']) ?>">Edit</a> |
 
                         <form action="<?= base_url('admin/berita/delete/'.$b['id']) ?>"

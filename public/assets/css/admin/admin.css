@@ -1,0 +1,236 @@
+/* ===============================
+   GLOBAL ADMIN
+================================ */
+.admin-container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+/* ===============================
+   FILTER FORM
+================================ */
+.admin-filter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.admin-filter label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-filter input,
+.admin-filter select {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 180px;
+}
+
+.admin-filter button {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
+.admin-filter a {
+  padding: 7px 14px;
+  border-radius: 4px;
+  background: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+}
+
+.admin-filter button:hover {
+  background: #2980b9;
+}
+
+/* ===============================
+   TABLE ADMIN
+================================ */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background: #f5f5f5;
+  text-align: left;
+}
+
+.admin-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* ===============================
+   STATUS BADGE
+================================ */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff;
+  display: inline-block;
+}
+
+.badge-publish {
+  background: #2ecc71;
+}
+
+.badge-draft {
+  background: #95a5a6;
+}
+
+/* ===============================
+   ACTION BUTTON
+================================ */
+.admin-action a,
+.admin-action button {
+  font-size: 13px;
+  margin-right: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3498db;
+  text-decoration: none;
+}
+
+.admin-action button {
+  color: #e74c3c;
+}
+
+.admin-action a:hover,
+.admin-action button:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   PAGINATION
+================================ */
+.pagination {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination .active {
+  background: #3498db;
+  color: #fff;
+  border-color: #3498db;
+}
+
+/* ===============================
+   LAYOUT ADMIN
+================================ */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 240px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  min-height: 100vh;
+}
+
+/* CONTENT */
+.admin-content {
+  flex: 1;
+  padding: 25px;
+  background: #fff;
+  overflow-y: auto;
+}
+/* ===============================
+   SIDEBAR
+================================ */
+
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+
+/* ===============================
+   SIDEBAR MENU
+================================ */
+.admin-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-menu li {
+  margin-bottom: 6px;
+}
+
+.admin-menu a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.admin-menu a:hover {
+  background: #34495e;
+}
+
+/* SECTION TITLE */
+.menu-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #bdc3c7;
+  margin: 18px 0 6px;
+  padding-left: 6px;
+  pointer-events: none;
+}
+
+/* LOGOUT */
+.menu-logout a {
+  margin-top: 20px;
+  background: #c0392b;
+}
+
+.menu-logout a:hover {
+  background: #e74c3c;
+}
+
+/* ACTIVE MENU */
+.admin-menu a.active {
+  background: #1abc9c;
+  color: #fff;
+  font-weight: 600;
+}
+

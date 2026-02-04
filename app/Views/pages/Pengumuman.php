@@ -26,7 +26,7 @@
 
     <!-- FILTER KATEGORI -->
     <select class="pf-select" name="kategori" onchange="this.form.submit()">
-      <option value="">Kategori</option>
+      <option value="">Semua Kategori</option>
       <option value="Peraturan" <?= ($_GET['kategori'] ?? '') == 'Peraturan' ? 'selected' : '' ?>>
         Peraturan
       </option>

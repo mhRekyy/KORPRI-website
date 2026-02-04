@@ -330,7 +330,7 @@ public function Galeri()
             ->orderBy('id', 'ASC')
             ->findAll();
 
-        $chunks = array_chunk($images, 8);
+        $chunks = array_chunk($images, 7);
 
         foreach ($chunks as $chunk) {
             $tiles = [];

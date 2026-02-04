@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BeritaModel;
+use App\Models\PengumumanModel;
 
 class Home extends BaseController
 {
@@ -16,6 +17,15 @@ class Home extends BaseController
             ->orderBy('created_at', 'DESC')
             ->findAll(3);
 
+
+
+        $pengumumanModel = new PengumumanModel();
+        $latestPengumuman = $pengumumanModel
+            ->where('is_active', 1)
+            ->orderBy('tanggal_pengumuman', 'DESC')
+            ->limit(5)  // Hanya 3 terbaru untuk home
+            ->findAll();
+
         $data = [
             'title' => 'Beranda - KORPRI Aceh',
 
@@ -28,11 +38,7 @@ class Home extends BaseController
             // GANTI news statis -> dari DB
             'news' => $latestNews,
 
-            'pengumuman' => [
-                ['title' => 'Pengumuman 1', 'link' => '/pengumuman/1'],
-                ['title' => 'Pengumuman 2', 'link' => '/pengumuman/2'],
-                ['title' => 'Pengumuman 3', 'link' => '/pengumuman/3'],
-            ],
+            'pengumuman' => $latestPengumuman,
 
              'tentang_korpri' => ['Korps Pegawai Republik Indonesia (KORPRI) adalah wadah tunggal untuk menghimpun seluruh Pegawai Republik Indonesia demi meningkatkan perjuangan, pengabdian, serta kesetiaan kepada cita-cita perjuangan Bangsa dan Negara Kesatuan Republik Indonesia.',
              

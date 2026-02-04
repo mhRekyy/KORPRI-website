@@ -11,15 +11,10 @@
   --muted:#475569;
 }
 
-.peraturan-wrap{
-  padding: 26px 0 56px;
-  background: var(--bg);
-}
-
-.peraturan-container{
-  width: min(1200px, calc(100% - 36px));
-  margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+.peraturan-container {
+  max-width: min(1200px, calc(100% - 36px));
+  width: 100%;
+  font-family: 'Poppins';
 }
 
 .peraturan-filter{
@@ -111,22 +106,6 @@
   pointer-events: auto;
 }
 
-/* Responsive */
-@media (max-width: 768px){
-  .peraturan-filter{
-    grid-template-columns: 1fr;
-    margin-top: 0;
-  }
-  .pf-search{
-    grid-template-columns: 1fr 86px; /* input selalu nampak di mobile */
-  }
-  .pf-input{
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-}
-
 /* select */
 .pf-select{
   height: 58px;
@@ -195,23 +174,6 @@
   line-height: 1;
 }
 
-/* Responsive */
-@media (max-width: 768px){
-  .peraturan-filter{
-    grid-template-columns: 1fr; /* stack */
-    margin-top: 0;
-  }
-  .peraturan-filter.is-search{
-    grid-template-columns: 1fr; /* tetap stack */
-  }
-  .pf-input{
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-  }
-}
-
-
 .pf-btn__icon{
   color: #fff;
   font-size: 22px;
@@ -222,6 +184,7 @@
 .peraturan-list{
   display: grid;
   gap: 18px;
+  width: 100%;
 }
 
 /* CARD */
@@ -235,6 +198,7 @@
   grid-template-columns: 86px 1fr 160px;
   gap: 18px;
   align-items: center;
+  width: 100%;
 }
 
 /* PDF ICON */
@@ -274,6 +238,14 @@
   position: relative;
 }
 
+.per-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;  /* TAMBAH INI */
+  min-width: 0; /* Biar text-clamp bekerja */
+}
+
 /* TEXT */
 .per-title{
   margin: 0;
@@ -288,6 +260,7 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  width: 100%;
 }
 
 .per-meta{

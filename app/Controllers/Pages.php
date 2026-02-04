@@ -558,7 +558,7 @@ public function pengumuman()
         ->findAll();
 
     return view('pages/Pengumuman', [
-        'title' => 'Pengumuman KORPRI',
+        'pageTitle' => 'Pengumuman KORPRI',
         'pengumuman' => $pengumuman
     ]);
 }

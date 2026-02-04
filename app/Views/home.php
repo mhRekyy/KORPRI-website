@@ -94,13 +94,15 @@
             <p style="color:#9ca3af;">Tidak ada berita</p>
           <?php endif; ?>
 
+          
+
           <a href="<?= site_url('pengumuman') ?>" class="pengumuman-link">
             <div class="pengumuman-box">
               <div class="pengumuman-content">
                 <?php if (!empty($pengumuman)): ?>
-                  <ul style="list-style: none; padding: 0; margin: 0;">
+                  <ul class="pengumuman-list">
                     <?php foreach (array_slice($pengumuman, 0, 5) as $p): ?>
-                      <li style="margin-bottom: 12px;">
+                      <li class="pengumuman-li">
                         <span class="pengumuman-item">
                           <?= esc($p['judul']) ?>
                         </span>

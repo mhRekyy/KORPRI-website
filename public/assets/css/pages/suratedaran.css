@@ -325,6 +325,11 @@
   line-height: 1;
 }
 
+.per-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 16px rgba(199, 165, 97, .6);
+}
+
 /* Responsive */
 @media (max-width: 768px){
   .peraturan-filter{

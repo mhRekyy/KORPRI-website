@@ -49,12 +49,23 @@
   place-items: center;
   box-shadow: 0 14px 26px rgba(0,0,0,.12);
 }
+
+.bf-input:focus {
+  outline: none;
+  border-color: #c49a3a;
+  box-shadow: 0 0 0 2px rgba(196,154,58,.2);
+}
+
 .bf-btn__icon{
   color: #fff;
   font-size: 22px;
   font-weight: 900;
   line-height: 1;
   transform: translateY(-1px);
+}
+
+.bf-btn:hover {
+  filter: brightness(1.15);
 }
 
 /* LIST + TIMELINE */

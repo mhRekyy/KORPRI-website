@@ -289,8 +289,7 @@ main {
   font-size: 16px;
   font-weight: 300;
   line-height: 1.6;
-  display: block;
-  margin-bottom: 15px;
+  display: inline;
   transition: color 0.2s ease;
   text-decoration: underline;
 }
@@ -298,6 +297,18 @@ main {
 .pengumuman-item:hover {
   color: #1a2332;
 }
+
+.pengumuman-list{
+  list-style: disc;           /* aktifkan bullet */
+  padding-left: 20px;         /* ruang untuk bullet */
+  margin: 0;
+  list-style-position: outside; /* posisi marker relatif ke item */
+}
+
+.pengumuman-li{
+  margin-bottom: 12px;
+}
+
 
 /* Link Wrapper */
 .pengumuman-link {
@@ -651,3 +662,237 @@ main {
         color: #fff;
         font-size: 2.5rem;
     }
+
+
+/* =========================================
+   MOBILE & TABLET RESPONSIVE
+   (Override only – aman untuk desktop)
+   ========================================= */
+
+@media (max-width: 992px) {
+
+  body{
+    padding-top: 70px !important;
+  }
+
+  /* HERO */
+  .hero-media{
+    height: 320px;
+  }
+
+  .caption-badge{
+    left: 20px; 
+    top: auto;
+    font-size: 24px !important;
+    line-height: 1.2;
+  }
+
+  .hero-media .swiper-pagination{
+    bottom: 20px !important;
+  }
+
+  .hero-media .swiper-button-prev,
+  .hero-media .swiper-button-next{
+    display: none;
+  }
+
+  /* QUICK ACCESS */
+  .quick-access-section{
+    margin-top: -20px;
+  }
+
+  .landing-wrap .quick-access-section .container{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .quick-access-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .quick-access-item{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .quick-access-item h3{
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .quick-icon{
+    width: 24px;
+    height: 24px;
+  }
+
+  .quick-icon i{
+    font-size: 12px;
+  }
+
+  /* NEWS + PENGUMUMAN */
+  .news-section{
+    padding: 20px;
+  }
+
+  .section-header{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* sembunyikan judul pengumuman di header atas */
+  .section-header .pengumuman-title{
+    display: none;
+    text-align: left;
+  }
+
+  .section-header h2{
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  .news-pengumuman-wrapper{
+    grid-template-columns: 1fr;
+  }
+
+  /* semua card berita di atas */
+  .news-card-link{
+    order: 1;
+  }
+
+  /* pengumuman di paling bawah */
+  .pengumuman-link{
+    order: 2;
+  }
+
+  /* munculkan judul pengumuman tepat di atas box */
+  .news-pengumuman-wrapper > .pengumuman-link::before{
+    content: "Pengumuman";
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 10px 0 10px 0;
+  }
+
+  .pengumuman-box{
+    min-height: auto;
+  }
+
+  .news-image{
+    aspect-ratio: 16/9;
+  }
+
+  /* ABOUT */
+  .about-wrapper{
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .about-logo img{
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .about-content h2{
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .about-content p{
+    font-size: 16px;
+    text-indent: 0;
+    text-align: justify;
+  }
+
+  /* PROGRAM */
+  .program-section{
+    padding: 20px;
+  }
+
+  .program-title{
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  .program-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .program-card{
+    padding: 20px 15px;
+  }
+
+  .program-icon{
+    width: 60px;
+    height: 60px;
+  }
+
+  .program-icon i{
+    font-size: 26px;
+  }
+
+  .program-card h3{
+    font-size: 16px;
+    min-height: auto;
+  }
+
+  /* GALLERY */
+  .gallery-header h2{
+    font-size: 24px;
+  }
+
+  .gallery-header p{
+    font-size: 14px;
+  }
+
+  .gallerySwiper .swiper-slide{
+    width: 260px;
+    height: 200px;
+  }
+
+}
+
+
+/* ====== EXTRA SMALL (HP kecil) ====== */
+
+@media (max-width: 576px){
+
+  .hero-media{
+    height: 260px;
+  }
+
+  .caption-badge{
+    font-size: 18px;
+    bottom: 45px;
+  }
+
+  /* News + pengumuman jadi 1 kolom */
+  .news-pengumuman-wrapper{
+    grid-template-columns: 1fr;
+  }
+
+  .news-title{
+    font-size: 14px;
+  }
+
+  .news-date{
+    font-size: 12px;
+  }
+
+  /* Program jadi 1 kolom bila mau super nyaman */
+  .program-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .btn-selengkapnya{
+    padding: 8px 24px;
+    font-size: 14px;
+  }
+
+}

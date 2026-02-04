@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main_inner') ?>
 <?= $this->section('content') ?>
 
-<link rel="stylesheet" href="<?= base_url('assets/css/pages/peraturan.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pages/keputusan.css') ?>">
 
 <section class="peraturan-wrap">
   <div class="peraturan-container">

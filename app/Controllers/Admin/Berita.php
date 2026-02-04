@@ -34,16 +34,24 @@ public function index()
         $model->where('is_active', $status);
     }
 
-    $data = [
-        'berita'   => $model->orderBy('created_at', 'DESC')
-                            ->paginate(10, 'berita'),
-        'pager'    => $model->pager,
-        'q'        => $q,
-        'kategori' => $kategori,
-        'status'   => $status,
-    ];
+    $berita = $model->orderBy('created_at', 'DESC')
+                ->paginate(10, 'berita');
 
-    return view('admin/berita/index', $data);
+// 🔑 KUNCI: pertahankan query filter saat pagination
+$model->pager->setPath(
+    current_url() . '?' . http_build_query($this->request->getGet())
+);
+
+$data = [
+    'berita'   => $berita,
+    'pager'    => $model->pager,
+    'q'        => $q,
+    'kategori' => $kategori,
+    'status'   => $status,
+];
+
+return view('admin/berita/index', $data);
+
 }
 
 

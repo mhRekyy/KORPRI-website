@@ -9,6 +9,8 @@ class PeraturanModel extends Model
     protected $table      = 'peraturan';
     protected $primaryKey = 'id';
 
+    protected $returnType = 'array';
+
     protected $allowedFields = [
         'judul',
         'kategori',
@@ -16,8 +18,29 @@ class PeraturanModel extends Model
         'tanggal_penetapan',
         'masa_bakti',
         'file_pdf',
-        'is_active'
+        'is_active',
+        'created_at',
+        'updated_at',
     ];
 
-    protected $useTimestamps = false;
+    // ==============================
+    // TIMESTAMPS
+    // ==============================
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+
+    // ==============================
+    // HELPER QUERY (OPSIONAL)
+    // ==============================
+    public function getAdminPeraturan($keyword = null)
+    {
+        $builder = $this->orderBy('created_at', 'DESC');
+
+        if ($keyword) {
+            $builder->like('judul', $keyword);
+        }
+
+        return $builder;
+    }
 }

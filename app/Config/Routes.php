@@ -61,6 +61,40 @@ $routes->group('admin', function($routes) {
 
 });
 
+// ===============================
+// ADMIN PERATURAN
+// ===============================
+$routes->get('admin/peraturan', 'Admin\Peraturan::index');
+
+$routes->get('admin/peraturan/create', 'Admin\Peraturan::create');
+$routes->post('admin/peraturan/store', 'Admin\Peraturan::store');
+
+$routes->get('admin/peraturan/edit/(:num)', 'Admin\Peraturan::edit/$1');
+$routes->post('admin/peraturan/update/(:num)', 'Admin\Peraturan::update/$1');
+
+$routes->get('admin/peraturan/delete/(:num)', 'Admin\Peraturan::delete/$1');
+
+$routes->get('admin/peraturan/toggle/(:num)', 'Admin\Peraturan::toggle/$1');
+// ADMIN ARTIKEL
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('artikel', 'Artikel::index');
+    $routes->get('artikel/create', 'Artikel::create');
+    $routes->post('artikel/store', 'Artikel::store');
+    $routes->get('artikel/edit/(:num)', 'Artikel::edit/$1');
+    $routes->post('artikel/update/(:num)', 'Artikel::update/$1');
+    $routes->get('artikel/delete/(:num)', 'Artikel::delete/$1');
+    $routes->get('artikel/toggle/(:num)', 'Artikel::toggle/$1');
+});
 
 
 
+// ===============================
+// ADMIN KEPUTUSAN
+// ===============================
+$routes->get('admin/keputusan', 'Admin\Keputusan::index');
+$routes->get('admin/keputusan/create', 'Admin\Keputusan::create');
+$routes->post('admin/keputusan/store', 'Admin\Keputusan::store');
+$routes->get('admin/keputusan/edit/(:num)', 'Admin\Keputusan::edit/$1');
+$routes->post('admin/keputusan/update/(:num)', 'Admin\Keputusan::update/$1');
+$routes->get('admin/keputusan/delete/(:num)', 'Admin\Keputusan::delete/$1');
+$routes->get('admin/keputusan/toggle/(:num)', 'Admin\Keputusan::toggle/$1');

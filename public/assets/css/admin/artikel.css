@@ -1,0 +1,313 @@
+/* ===========================
+   ADMIN ARTIKEL – POLISHED
+   =========================== */
+
+.admin-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 7px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.filter-bar button {
+    padding: 7px 16px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.filter-bar button:hover {
+    background: #1d4ed8;
+}
+
+/* ===== ADD BUTTON ===== */
+.admin-add {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.admin-add:hover {
+    text-decoration: underline;
+}
+
+/* ===== TABLE CARD STYLE ===== */
+.table-admin {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.table-admin thead {
+    background: #f9fafb;
+}
+
+.table-admin th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.table-admin td {
+    padding: 14px 16px;
+    border-top: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.table-admin tr:hover {
+    background: #f9fafb;
+}
+
+/* ===== STATUS BADGE ===== */
+.status {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.status-publish {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-draft {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ===== ACTION BUTTON MODERN ===== */
+.admin-action {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.15s ease;
+}
+
+/* Edit */
+.btn-edit {
+    background: #eef2ff;
+    color: #3730a3;
+}
+.btn-edit:hover {
+    background: #c7d2fe;
+}
+
+/* Toggle */
+.btn-toggle {
+    background: #ecfeff;
+    color: #155e75;
+}
+.btn-toggle:hover {
+    background: #cffafe;
+}
+
+/* Delete */
+.btn-delete {
+    background: #fee2e2;
+    color: #991b1b;
+}
+.btn-delete:hover {
+    background: #fecaca;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal {
+    background: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+.modal h3 {
+    margin: 0 0 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+
+/* ===== PAGINATION ===== */
+.pagination {
+    margin-top: 16px;
+}
+
+.pagination a,
+.pagination strong {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 4px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.pagination a {
+    background: #f1f5f9;
+    color: #374151;
+}
+
+.pagination strong {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ===========================
+   ADMIN FORM (CREATE / EDIT)
+   =========================== */
+
+.form-card {
+    background: #fff;
+    padding: 24px 28px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    max-width: 900px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    font-size: 14px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.form-actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.btn-primary {
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+
+
+/* Button Tambah Artikel */
+.btn-add-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 12px 0 18px;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-add-floating .icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.btn-add-floating:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+}

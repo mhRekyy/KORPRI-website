@@ -245,111 +245,192 @@ body {
 }
 
 /* =====================================================
-   RESPONSIVE
+   MOBILE SIDEBAR NAVBAR (KORPRI STYLE)
 ===================================================== */
 @media (max-width: 991px) {
 
-    .korpri-navbar {
-        height: 72px;
-    }
+  /* NAVBAR */
+  .korpri-navbar {
+    height: 64px;
+  }
 
-    .korpri-navbar .container-fluid {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  body {
+    padding-top: 70px;
+  }
 
-    .korpri-menu {
-        display: none;
-    }
+  .korpri-nav-inner {
+    grid-template-columns: auto auto;
+    grid-template-areas: "logo burger";
+    padding: 0 16px;
+  }
+
+  /* LOGO */
+  .korpri-logo img {
+    height: 44px;
+  }
+
+  .logo-text {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  .logo-text small {
+    font-size: 10px;
+  }
+
+  /* =====================================================
+     BURGER BUTTON (KANAN)
+  ===================================================== */
+  .korpri-burger {
+    grid-area: burger;
+    justify-self: end;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #1c3577;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .korpri-burger span {
+    height: 2px;
+    width: 20px;
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* =====================================================
+     OVERLAY
+  ===================================================== */
+  .korpri-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 9997;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+  }
+
+  .korpri-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* =====================================================
+     SIDEBAR MENU (MUNCUL DARI KIRI)
+  ===================================================== */
+  .korpri-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column !important;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 16px 0;
+    transition: left .35s ease;
+    z-index: 9998;
+    overflow-y: auto;
+  }
+
+  .korpri-menu.is-open {
+    left: 0;
+  }
+
+  /* HILANGKAN DISPLAY DESKTOP */
+  .korpri-menu.d-none {
+    display: flex !important;
+  }
+
+  /* ITEM MENU */
+  .korpri-menu .nav-link {
+    color: #1e2a3a;
+    font-size: 15px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* =====================================================
+     DROPDOWN → ACCORDION MOBILE
+  ===================================================== */
+  /* dropdown container */
+  .korpri-menu .dropdown-menu {
+    display: none;
+    position: static !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #f9fafb;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: unset !important;
+    columns: 1 !important;
+  }
+
+  /* buka accordion */
+  .korpri-menu .nav-item.dropdown.open > .dropdown-menu {
+    display: block;
+  }
+
+  /* HILANGKAN STYLE CARD DESKTOP */
+  .korpri-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px !important;
+    border-bottom: 1px solid #e6e6e6;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  /* icon */
+  .korpri-menu .dropdown-item .dd-ic {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: #eef2f6;
+    flex-shrink: 0;
+  }
+
+  /* text */
+  .korpri-menu .dd-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .korpri-menu .dd-desc {
+    font-size: 12px;
+    color: #6f7680;
+  }
+
+  /* HILANGKAN SEGITIGA DROPDOWN DESKTOP */
+  .korpri-menu .dropdown-menu::before {
+    display: none !important;
+  }
+  /* =====================================================
+     BUTTON KONTAK DI SIDEBAR
+  ===================================================== */
+  /* kontak kami jadi item paling bawah */
+  .btn-kontak {
+    order: 999;
+    margin: 20px;
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* sidebar pakai flex column */
+  .korpri-menu {
+    display: flex !important;
+  }
 }
-
-
-/* ===== Smooth hover enhancement (ADD-ON) ===== */
-
-/* Navbar halus saat berubah (kalau nanti kamu tambahkan efek hover/scroll) */
-.korpri-navbar{
-  transition: background-color .35s cubic-bezier(.22,.61,.36,1),
-              box-shadow .35s cubic-bezier(.22,.61,.36,1),
-              backdrop-filter .35s cubic-bezier(.22,.61,.36,1);
-}
-
-/* Link menu lebih halus + sedikit “lift” */
-.korpri-menu a{
-  transition: color .22s ease,
-              opacity .22s ease,
-              transform .22s cubic-bezier(.22,.61,.36,1);
-}
-.korpri-menu a:hover{
-  transform: translateY(-1px);
-}
-
-/* Dropdown item halus */
-.korpri-menu .dropdown-item{
-  transition: background-color .22s ease,
-              color .22s ease,
-              transform .22s cubic-bezier(.22,.61,.36,1);
-}
-.korpri-menu .dropdown-item:hover{
-  transform: translateX(2px);
-}
-
-/* Tombol kontak: smooth + sedikit lift */
-.btn-kontak{
-  transition: background-color .25s ease,
-              color .25s ease,
-              transform .25s cubic-bezier(.22,.61,.36,1),
-              box-shadow .25s cubic-bezier(.22,.61,.36,1);
-}
-.btn-kontak:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(0,0,0,.18);
-}
-
-/* Logo: halus saat di-hover (opsional) */
-.korpri-logo img{
-  transition: transform .25s cubic-bezier(.22,.61,.36,1),
-              filter .25s ease;
-}
-.korpri-logo:hover img{
-  transform: translateY(-1px);
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.25));
-}
-
-/* ===== Smooth dropdown open/close (ADD-ON) ===== */
-
-/* default: hidden tapi tetap "ada" untuk bisa ditransisi */
-.korpri-menu .dropdown-menu{
-  display: block !important;              /* override display:none */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transform: translateX(-50%) translateY(10px) scale(.98);
-  transition: opacity .22s ease,
-              transform .22s cubic-bezier(.22,.61,.36,1),
-              visibility 0s linear .22s;  /* visibility nyala setelah anim selesai */
-  will-change: opacity, transform;
-}
-
-/* saat hover: muncul halus */
-.korpri-menu .nav-item.dropdown:hover > .dropdown-menu{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-
-  transform: translateX(-50%) translateY(0) scale(1);
-  transition-delay: 0s, 0s, 0s;
-}
-
-/* opsional: biar segitiga ikut smooth juga */
-.korpri-menu .dropdown-menu::before{
-  opacity: 0;
-  transform: translateX(-50%) rotate(45deg) translateY(6px);
-  transition: opacity .22s ease, transform .22s cubic-bezier(.22,.61,.36,1);
-}
-
-.korpri-menu .nav-item.dropdown:hover > .dropdown-menu::before{
-  opacity: 1;
-  transform: translateX(-50%) rotate(45deg) translateY(0);
-}
-

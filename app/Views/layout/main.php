@@ -28,6 +28,7 @@
   
   <!-- Navbar kamu -->
   <?= $this->include('layout/navbar') ?>
+  
 
   <main class="landing-wrap">
     <?= $this->renderSection('content') ?>

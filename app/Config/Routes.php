@@ -75,6 +75,16 @@ $routes->post('admin/peraturan/update/(:num)', 'Admin\Peraturan::update/$1');
 $routes->get('admin/peraturan/delete/(:num)', 'Admin\Peraturan::delete/$1');
 
 $routes->get('admin/peraturan/toggle/(:num)', 'Admin\Peraturan::toggle/$1');
+// ADMIN ARTIKEL
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('artikel', 'Artikel::index');
+    $routes->get('artikel/create', 'Artikel::create');
+    $routes->post('artikel/store', 'Artikel::store');
+    $routes->get('artikel/edit/(:num)', 'Artikel::edit/$1');
+    $routes->post('artikel/update/(:num)', 'Artikel::update/$1');
+    $routes->get('artikel/delete/(:num)', 'Artikel::delete/$1');
+    $routes->get('artikel/toggle/(:num)', 'Artikel::toggle/$1');
+});
 
 
 

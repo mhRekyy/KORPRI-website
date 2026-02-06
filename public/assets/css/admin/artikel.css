@@ -311,3 +311,35 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
 }
+
+/* Thumbnail di tabel admin */
+.thumb-admin {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.thumb-empty {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.js-tooltip {
+    position: relative;
+}
+
+.js-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111827;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+}

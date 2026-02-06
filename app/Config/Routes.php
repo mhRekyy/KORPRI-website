@@ -101,7 +101,6 @@ $routes->get('admin/keputusan/toggle/(:num)', 'Admin\Keputusan::toggle/$1');
 
 
 // ===============================
-<<<<<<< HEAD
 // ADMIN Pengumuman
 // ===============================
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
@@ -113,7 +112,6 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->get('pengumuman/delete/(:num)', 'Pengumuman::delete/$1');
     $routes->get('pengumuman/toggle/(:num)', 'Pengumuman::toggle/$1');
 });
-=======
 // ADMIN - SURAT EDARAN
 // ===============================
 $routes->get('admin/surat-edaran', 'Admin\SuratEdaran::index');
@@ -123,4 +121,3 @@ $routes->get('admin/surat-edaran/edit/(:num)', 'Admin\SuratEdaran::edit/$1');
 $routes->post('admin/surat-edaran/update/(:num)', 'Admin\SuratEdaran::update/$1');
 $routes->get('admin/surat-edaran/delete/(:num)', 'Admin\SuratEdaran::delete/$1');
 $routes->get('admin/surat-edaran/toggle/(:num)', 'Admin\SuratEdaran::toggle/$1');
->>>>>>> edfe71b05b5ecda49679e8bbb86c89b56249933c

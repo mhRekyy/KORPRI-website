@@ -254,10 +254,6 @@ body {
     height: 64px;
   }
 
-  body {
-    padding-top: 70px;
-  }
-
   .korpri-nav-inner {
     grid-template-columns: auto auto;
     grid-template-areas: "logo burger";
@@ -266,16 +262,16 @@ body {
 
   /* LOGO */
   .korpri-logo img {
-    height: 44px;
+    height: 40px;
   }
 
   .logo-text {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.1;
   }
 
   .logo-text small {
-    font-size: 10px;
+    font-size: 8px;
   }
 
   /* =====================================================
@@ -284,8 +280,8 @@ body {
   .korpri-burger {
     grid-area: burger;
     justify-self: end;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
     background: #1c3577;
     border: none;
@@ -328,22 +324,22 @@ body {
   .korpri-menu {
     position: fixed;
     top: 0;
-    left: -100%;
-    width: 85%;
-    max-width: 360px;
+    right: -100%;
+    width: 80%;
+    max-width: 250px;
     height: 100vh;
     background: #ffffff;
     flex-direction: column !important;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 16px 0;
-    transition: left .35s ease;
+    padding: 20px 0;
+    transition: right .35s ease;
     z-index: 9998;
     overflow-y: auto;
   }
 
   .korpri-menu.is-open {
-    left: 0;
+    right: 0;
   }
 
   /* HILANGKAN DISPLAY DESKTOP */
@@ -354,8 +350,8 @@ body {
   /* ITEM MENU */
   .korpri-menu .nav-link {
     color: #1e2a3a;
-    font-size: 15px;
-    padding: 14px 20px;
+    font-size: 14px;
+    padding: 15px 5px;
     border-bottom: 1px solid #eee;
   }
 
@@ -385,8 +381,8 @@ body {
   .korpri-menu .dropdown-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px !important;
+    gap: 6px;
+    padding: 10px 5px !important;
     border-bottom: 1px solid #e6e6e6;
     border-radius: 0 !important;
     background: transparent !important;
@@ -394,8 +390,8 @@ body {
 
   /* icon */
   .korpri-menu .dropdown-item .dd-ic {
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     border-radius: 6px;
     background: #eef2f6;
     flex-shrink: 0;
@@ -403,19 +399,29 @@ body {
 
   /* text */
   .korpri-menu .dd-title {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 12px !important;
+
   }
 
   .korpri-menu .dd-desc {
-    font-size: 12px;
-    color: #6f7680;
-  }
-
-  /* HILANGKAN SEGITIGA DROPDOWN DESKTOP */
-  .korpri-menu .dropdown-menu::before {
     display: none !important;
   }
+
+  .korpri-menu .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+    max-height 0.25s cubic-bezier(.4,0,.2,1),
+    opacity 0.3s ease;
+  }
+
+  /* saat dibuka */
+  .korpri-menu .nav-item.dropdown.open > .dropdown-menu {
+    max-height: 100%; /* cukup besar untuk isi */
+    opacity: 1;
+  }
+
   /* =====================================================
      BUTTON KONTAK DI SIDEBAR
   ===================================================== */
@@ -423,8 +429,8 @@ body {
   .btn-kontak {
     order: 999;
     margin: 20px;
-    padding: 12px 16px;
-    font-size: 15px;
+    padding: 15px 5px;
+    font-size: 14px !important;
     border-radius: 10px;
     text-align: center;
   }

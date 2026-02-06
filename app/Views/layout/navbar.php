@@ -278,17 +278,42 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===============================
-     DROPDOWN → ACCORDION MOBILE
+     DROPDOWN → ACCORDION (SMOOTH + AUTO CLOSE)
   =============================== */
-  document.querySelectorAll('.korpri-menu .nav-item.dropdown > a')
-    .forEach(link => {
-      link.addEventListener('click', function (e) {
-        if (window.innerWidth <= 991) {
-          e.preventDefault();
-          this.parentElement.classList.toggle('open');
+  const dropdownLinks = document.querySelectorAll(
+    '.korpri-menu .nav-item.dropdown > a'
+  );
+
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      if (window.innerWidth > 991) return;
+
+      e.preventDefault();
+
+      const currentItem = this.parentElement;
+      const isOpen = currentItem.classList.contains('open');
+
+      // 1️⃣ tutup dropdown lain dulu (smooth)
+      document.querySelectorAll(
+        '.korpri-menu .nav-item.dropdown.open'
+      ).forEach(item => {
+        if (item !== currentItem) {
+          item.classList.remove('open');
         }
       });
+
+      // 2️⃣ kalau dropdown ini sudah open → tutup
+      if (isOpen) {
+        currentItem.classList.remove('open');
+        return;
+      }
+
+      // 3️⃣ frame berikutnya → buka dropdown ini
+      requestAnimationFrame(() => {
+        currentItem.classList.add('open');
+      });
     });
+  });
 
   /* ===============================
      PINDAHKAN TOMBOL KONTAK KE SIDEBAR (MOBILE)
@@ -308,5 +333,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
-
-

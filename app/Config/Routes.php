@@ -98,3 +98,15 @@ $routes->get('admin/keputusan/edit/(:num)', 'Admin\Keputusan::edit/$1');
 $routes->post('admin/keputusan/update/(:num)', 'Admin\Keputusan::update/$1');
 $routes->get('admin/keputusan/delete/(:num)', 'Admin\Keputusan::delete/$1');
 $routes->get('admin/keputusan/toggle/(:num)', 'Admin\Keputusan::toggle/$1');
+
+
+// ===============================
+// ADMIN - SURAT EDARAN
+// ===============================
+$routes->get('admin/surat-edaran', 'Admin\SuratEdaran::index');
+$routes->get('admin/surat-edaran/create', 'Admin\SuratEdaran::create');
+$routes->post('admin/surat-edaran/store', 'Admin\SuratEdaran::store');
+$routes->get('admin/surat-edaran/edit/(:num)', 'Admin\SuratEdaran::edit/$1');
+$routes->post('admin/surat-edaran/update/(:num)', 'Admin\SuratEdaran::update/$1');
+$routes->get('admin/surat-edaran/delete/(:num)', 'Admin\SuratEdaran::delete/$1');
+$routes->get('admin/surat-edaran/toggle/(:num)', 'Admin\SuratEdaran::toggle/$1');

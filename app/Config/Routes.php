@@ -98,3 +98,17 @@ $routes->get('admin/keputusan/edit/(:num)', 'Admin\Keputusan::edit/$1');
 $routes->post('admin/keputusan/update/(:num)', 'Admin\Keputusan::update/$1');
 $routes->get('admin/keputusan/delete/(:num)', 'Admin\Keputusan::delete/$1');
 $routes->get('admin/keputusan/toggle/(:num)', 'Admin\Keputusan::toggle/$1');
+
+
+// ===============================
+// ADMIN Pengumuman
+// ===============================
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('pengumuman', 'Pengumuman::index');
+    $routes->get('pengumuman/create', 'Pengumuman::create');
+    $routes->post('pengumuman/store', 'Pengumuman::store');
+    $routes->get('pengumuman/edit/(:num)', 'Pengumuman::edit/$1');
+    $routes->post('pengumuman/update/(:num)', 'Pengumuman::update/$1');
+    $routes->get('pengumuman/delete/(:num)', 'Pengumuman::delete/$1');
+    $routes->get('pengumuman/toggle/(:num)', 'Pengumuman::toggle/$1');
+});

@@ -34,6 +34,7 @@
   <main>
     <?= $this->renderSection('content') ?>
   </main>
+  <script src="<?= base_url('assets/js/landing.js') ?>"></script>
 
   <!-- Footer kamu -->
   <?= view('layout/footer') ?>

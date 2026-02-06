@@ -73,9 +73,9 @@
       <a href="<?= base_url('logout') ?>">Logout</a>
     </li>
 
-    <li class="<?= service('uri')->getSegment(2)=='artikel'?'active':'' ?>">
+    <!-- <li class="<?= service('uri')->getSegment(2)=='artikel'?'active':'' ?>">
     <a href="/admin/artikel">Artikel</a>
-    </li>
+    </li> -->
 
 
   </ul>

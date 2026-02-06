@@ -31,47 +31,65 @@
             <th>Judul</th>
             <th>Status</th>
             <th>Tanggal</th>
+            <th>Thumbnail</th>
             <th width="180">Aksi</th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($artikel as $row): ?>
         <tr>
-            <td><?= esc($row['title']) ?></td>
-            <td>
-                <?php if ($row['is_active']): ?>
-                    <span class="status status-publish">Publish</span>
-                <?php else: ?>
-                    <span class="status status-draft">Draft</span>
-                <?php endif ?>
-            </td>
-            <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
-            <td class="admin-action">
+    <td><?= esc($row['title']) ?></td>
 
+    <td>
+        <?php if ($row['is_active']): ?>
+            <span class="status status-publish">Publish</span>
+        <?php else: ?>
+            <span class="status status-draft">Draft</span>
+        <?php endif ?>
+    </td>
+
+    <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
+
+    <!-- THUMBNAIL -->
+    <td>
+        <?php if (!empty($row['thumbnail'])): ?>
+            <img src="<?= base_url('uploads/artikel/' . $row['thumbnail']) ?>"
+                 class="thumb-admin">
+        <?php else: ?>
+            <span class="thumb-empty">—</span>
+        <?php endif ?>
+    </td>
+
+    <td class="admin-action">
+
+    <!-- EDIT -->
     <a href="<?= base_url('admin/artikel/edit/' . $row['id']) ?>"
-       class="btn-action btn-edit"
-       title="Edit Artikel">
+       class="btn-action btn-edit js-tooltip"
+       data-tooltip="Edit Artikel">
         ✏️
     </a>
 
+    <!-- TOGGLE -->
     <button type="button"
-            class="btn-action btn-toggle js-toggle"
+            class="btn-action btn-toggle js-toggle js-tooltip"
             data-url="<?= base_url('admin/artikel/toggle/' . $row['id']) ?>"
             data-status="<?= $row['is_active'] ? 'publish' : 'draft' ?>"
-            title="<?= $row['is_active'] ? 'Unpublish' : 'Publish' ?>">
+            data-tooltip="<?= $row['is_active'] ? 'Unpublish' : 'Publish' ?>">
         <?= $row['is_active'] ? '👁️' : '🚫' ?>
     </button>
 
+    <!-- DELETE -->
     <button type="button"
-            class="btn-action btn-delete js-delete"
+            class="btn-action btn-delete js-delete js-tooltip"
             data-url="<?= base_url('admin/artikel/delete/' . $row['id']) ?>"
-            title="Hapus Artikel">
+            data-tooltip="Hapus Artikel">
         🗑️
     </button>
 
 </td>
 
-        </tr>
+</tr>
+
     <?php endforeach ?>
     </tbody>
 </table>

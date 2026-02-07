@@ -163,97 +163,111 @@ h1 {
 }
 
 /* ===============================
-   SIDEBAR
+   SIDEBAR (HOVER DROPDOWN FINAL)
 ================================ */
 .admin-sidebar {
-  width: 240px;
-  background: #2c3e50;
-  color: #ecf0f1;
-  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  overflow-y: auto;
+
+  background: #1e293b; /* slate-800 */
+  color: #e5e7eb;
+  padding: 16px 12px;
 }
 
-.sidebar-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 22px 0;
+/* Brand */
+.sidebar-title,
+.sidebar-brand h2 {
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
+  letter-spacing: 1px;
+  margin: 16px 0 24px;
+  color: #ffffff;
 }
 
-/* ===============================
-   SIDEBAR MENU
-================================ */
+/* Menu list */
 .admin-menu {
   list-style: none;
-  padding: 0 12px;
+  padding: 0;
   margin: 0;
 }
 
 .admin-menu li {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
+/* Menu link & label */
 .admin-menu a,
 .menu-label {
   display: block;
   padding: 10px 14px;
-  border-radius: 6px;
-  color: #ecf0f1;
+  border-radius: 8px;
+
+  color: #e5e7eb;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+
   cursor: pointer;
-  transition: background .25s ease;
+  transition: background .2s ease, color .2s ease;
 }
 
 .admin-menu a:hover,
 .menu-label:hover {
-  background: #34495e;
+  background: rgba(255,255,255,0.08);
 }
 
-/* ACTIVE */
-.admin-menu a.active,
-.menu-item.active > .menu-label {
-  background: #1abc9c;
-  color: #fff;
+/* Active main menu */
+.menu-item.active > a {
+  background: #2563eb; /* blue-600 */
+  color: #ffffff;
   font-weight: 600;
 }
 
 /* ===============================
-   SUBMENU DROPDOWN
+   SUBMENU - HOVER MODE (FIXED)
 ================================ */
-.menu-item {
+
+/* parent harus relative supaya hover tidak putus */
+.menu-item.has-submenu {
   position: relative;
 }
 
-.has-submenu .submenu {
-  list-style: none;
-  padding: 4px 0;
-  margin: 0;
-  background: #34495e;
-  border-radius: 6px;
+/* default hidden */
+.menu-item.has-submenu .submenu {
   display: none;
+  list-style: none;
+  margin: 6px 0 8px;
+  padding-left: 8px;
 }
 
-.has-submenu:hover .submenu {
+/* tampil saat hover */
+.menu-item.has-submenu:hover .submenu {
   display: block;
 }
 
-.submenu li {
-  margin: 0;
-}
-
+/* submenu item */
 .submenu a {
-  padding: 8px 14px 8px 32px;
+  padding: 8px 14px 8px 36px;
   font-size: 13px;
-  color: #dfe6e9;
+  color: #cbd5f5;
+  border-radius: 6px;
+  display: block;
 }
 
+/* hover submenu */
 .submenu a:hover {
-  background: #3d566e;
+  background: rgba(255,255,255,0.08);
 }
 
+/* active submenu */
 .submenu a.active {
-  background: #16a085;
-  color: #fff;
+  background: rgba(37,99,235,0.35);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -265,14 +279,17 @@ h1 {
 }
 
 .menu-logout a {
-  background: #c0392b;
+  background: #dc2626; /* red-600 */
+  color: #ffffff;
   text-align: center;
   font-weight: 600;
 }
 
 .menu-logout a:hover {
-  background: #e74c3c;
+  background: #b91c1c;
 }
+
+
 
 /* ===============================
    PAGE HEADER
@@ -376,19 +393,35 @@ h1 {
 /* wrapper admin */
 .admin-wrapper {
   display: flex;
+  min-height: 100vh;
 }
 
 /* sidebar tetap */
 .admin-sidebar {
-  width: 240px;
-  flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    
+    background: #1e293b;
+    color: white;
+    padding: 10px;
+}
+
+
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* content utama */
 .admin-content {
   flex: 1;
-  padding: 25px;
+  padding: 30px;
   background: #f8fafc;
-  margin-left: 0; /* pastikan tidak ketarik */
+  margin-left: 290px; /* pastikan tidak ketarik */
   box-sizing: border-box;
 }

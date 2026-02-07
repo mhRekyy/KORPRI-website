@@ -1,28 +1,22 @@
 <?php
-  $uri = uri_string(); // contoh: admin/berita
+  $uri = uri_string();
 ?>
 
 <aside class="admin-sidebar">
-  <h2 class="sidebar-title">KORPRI</h2>
+  <div class="sidebar-brand">
+    <h2>KORPRI</h2>
+  </div>
 
   <ul class="admin-menu">
 
-    <!-- Dashboard -->
-    <li class="menu-item">
-      <a href="<?= base_url('admin') ?>"
-         class="<?= ($uri === 'admin') ? 'active' : '' ?>">
-        Dashboard
-      </a>
+    <!-- DASHBOARD -->
+    <li class="menu-item <?= ($uri === 'admin' || $uri === 'admin/dashboard') ? 'active' : '' ?>">
+      <a href="<?= base_url('admin') ?>">Dashboard</a>
     </li>
 
-    <!-- Media Publik -->
-    <li class="menu-item has-submenu
-      <?= str_starts_with($uri, 'admin/berita') ||
-         str_starts_with($uri, 'admin/artikel') ||
-         str_starts_with($uri, 'admin/pengumuman')
-         ? 'active' : '' ?>">
+    <!-- MEDIA PUBLIK -->
+    <li class="menu-item has-submenu open">
       <span class="menu-label">Media Publik</span>
-
       <ul class="submenu">
         <li>
           <a href="<?= base_url('admin/berita') ?>"
@@ -45,14 +39,9 @@
       </ul>
     </li>
 
-    <!-- Kebijakan -->
-    <li class="menu-item has-submenu
-      <?= str_starts_with($uri, 'admin/peraturan') ||
-         str_starts_with($uri, 'admin/keputusan') ||
-         str_starts_with($uri, 'admin/surat-edaran')
-         ? 'active' : '' ?>">
+    <!-- KEBIJAKAN -->
+    <li class="menu-item has-submenu open">
       <span class="menu-label">Kebijakan</span>
-
       <ul class="submenu">
         <li>
           <a href="<?= base_url('admin/peraturan') ?>"
@@ -75,27 +64,22 @@
       </ul>
     </li>
 
-    <!-- Tentang Kami -->
-    <li class="menu-item has-submenu
-      <?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
-      
+    <!-- TENTANG KAMI -->
+    <li class="menu-item has-submenu open">
       <span class="menu-label">Tentang Kami</span>
-
       <ul class="submenu">
         <li>
           <a href="<?= base_url('admin/struktur-dpk') ?>"
-            class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
+             class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
             Struktur DPK
           </a>
         </li>
       </ul>
     </li>
 
-    <!-- Manajemen -->
-    <li class="menu-item has-submenu
-      <?= str_starts_with($uri, 'admin/users') ? 'active' : '' ?>">
+    <!-- MANAJEMEN -->
+    <li class="menu-item has-submenu open">
       <span class="menu-label">Manajemen</span>
-
       <ul class="submenu">
         <li>
           <a href="<?= base_url('admin/users') ?>"
@@ -106,10 +90,7 @@
       </ul>
     </li>
 
-    
-
-
-    <!-- Logout -->
+    <!-- LOGOUT -->
     <li class="menu-logout">
       <a href="<?= base_url('logout') ?>">Logout</a>
     </li>

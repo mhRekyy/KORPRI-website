@@ -121,3 +121,16 @@ $routes->get('admin/surat-edaran/edit/(:num)', 'Admin\SuratEdaran::edit/$1');
 $routes->post('admin/surat-edaran/update/(:num)', 'Admin\SuratEdaran::update/$1');
 $routes->get('admin/surat-edaran/delete/(:num)', 'Admin\SuratEdaran::delete/$1');
 $routes->get('admin/surat-edaran/toggle/(:num)', 'Admin\SuratEdaran::toggle/$1');
+
+
+// ===============================
+// ADMIN STRUKTUR DPK
+// ===============================
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('struktur-dpk', 'StrukturDpk::index');
+    // $routes->get('struktur-dpk/create', 'StrukturDpk::create');
+    // $routes->post('struktur-dpk/store', 'StrukturDpk::store');
+    $routes->get('struktur-dpk/edit/(:num)', 'StrukturDpk::edit/$1');
+    $routes->post('struktur-dpk/update/(:num)', 'StrukturDpk::update/$1');
+    $routes->get('struktur-dpk/delete/(:num)', 'StrukturDpk::delete/$1');
+});

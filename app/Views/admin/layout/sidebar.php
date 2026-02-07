@@ -75,6 +75,22 @@
       </ul>
     </li>
 
+    <!-- Tentang Kami -->
+    <li class="menu-item has-submenu
+      <?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
+      
+      <span class="menu-label">Tentang Kami</span>
+
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/struktur-dpk') ?>"
+            class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
+            Struktur DPK
+          </a>
+        </li>
+      </ul>
+    </li>
+
     <!-- Manajemen -->
     <li class="menu-item has-submenu
       <?= str_starts_with($uri, 'admin/users') ? 'active' : '' ?>">
@@ -89,6 +105,9 @@
         </li>
       </ul>
     </li>
+
+    
+
 
     <!-- Logout -->
     <li class="menu-logout">

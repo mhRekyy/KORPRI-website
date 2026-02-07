@@ -1,0 +1,74 @@
+/* =====================================
+   ADMIN PAGE - STRUKTUR DPK
+   ===================================== */
+
+.struktur-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 12px;
+}
+
+.struktur-table th,
+.struktur-table td {
+    border: 1px solid #e5e7eb;
+    padding: 10px 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.struktur-table td div {
+    line-height: 1.5;
+}
+
+
+.struktur-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.struktur-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* ===== STATUS BADGE ===== */
+
+.struktur-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.struktur-badge.active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.struktur-badge.inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ===== ACTION LINKS ===== */
+
+.struktur-action a {
+    margin-right: 6px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.struktur-action a:hover {
+    text-decoration: underline;
+}
+
+/* ===== EMPTY STATE ===== */
+
+.struktur-empty {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-style: italic;
+}

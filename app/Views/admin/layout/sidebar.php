@@ -73,6 +73,11 @@
              class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
             Struktur DPK
           </a>
+        <li>
+          <a href="<?= base_url('admin/profil-korpri') ?>"
+             class="<?= str_starts_with($uri, 'admin/profil-korpri') ? 'active' : '' ?>">
+            Profil KORPRI
+          </a>
         </li>
       </ul>
     </li>

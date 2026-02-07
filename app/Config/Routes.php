@@ -134,3 +134,19 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->post('struktur-dpk/update/(:num)', 'StrukturDpk::update/$1');
     $routes->get('struktur-dpk/delete/(:num)', 'StrukturDpk::delete/$1');
 });
+
+
+// ===============================
+// TENTANG KAMI - PROFIL KORPRI
+// ===============================
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('profil-korpri', 'ProfilKorpri::index');
+    $routes->get('profil-korpri/create', 'ProfilKorpri::create');
+    $routes->post('profil-korpri/store', 'ProfilKorpri::store');
+    $routes->get('profil-korpri/edit/(:num)', 'ProfilKorpri::edit/$1');
+    $routes->post('profil-korpri/update/(:num)', 'ProfilKorpri::update/$1');
+    $routes->get('profil-korpri/deactivate/(:num)', 'ProfilKorpri::deactivate/$1');
+    $routes->get('profil-korpri/activate/(:num)', 'ProfilKorpri::activate/$1');
+
+});
+

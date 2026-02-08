@@ -15,10 +15,10 @@
             </a>
 
             <button class="korpri-burger" type="button" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
 
             <!-- MENU -->
             <nav class="korpri-menu navbar-nav d-none d-md-flex flex-row gap-3">

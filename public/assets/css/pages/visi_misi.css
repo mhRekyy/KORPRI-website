@@ -186,17 +186,79 @@
   opacity: .9;
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px){
-  .vm-grid--4{ grid-template-columns: repeat(2, 1fr); }
-}
+/* ================= RESPONSIVE VISI MISI ================= */
 
-@media (max-width: 768px){
-  .vm-visi{ grid-template-columns: 1fr; }
-  .vm-grid--3{ grid-template-columns: repeat(2, 1fr); }
-}
+/* TABLET */
+@media (max-width: 991px) {
 
-@media (max-width: 480px){
+  body{
+    padding-top: 60px !important;
+  }
+
+  .vm-page{
+    padding: 20px;
+  }
+
+  .vm-inner{
+    padding:20px;
+  }
+
+  /* VISI jadi 1 kolom */
+  .vm-visi{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .vm-title-left{
+    font-size:20px;
+    text-underline-offset:8px;
+  }
+
+  .vm-visi__desc{
+    font-size:16px;
+    max-width:100%;
+  }
+
+  .vm-visi__mark{
+    display: none;
+  }
+
+  /* Section Head */
+  .vm-section-head{
+    margin:20px 0;
+  }
+
+  .vm-section-head__title{
+    font-size:20px;
+  }
+
+  /* GRID */
   .vm-grid--3,
-  .vm-grid--4{ grid-template-columns: 1fr; }
+  .vm-grid--4{
+    grid-template-columns:1fr;
+  }
+
+  /* CARD */
+  .vm-card__desc{
+    font-size:16px;
+  }
+
+  .vm-badge{
+    width:25px;
+    height:25px;
+    font-size:20px;
+  }
+
+  .vm-card__icon{
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .vm-nilai__title{
+    font-size:20px;
+  }
+
+  .vm-nilai__desc{
+    font-size:14px;
+  }
 }

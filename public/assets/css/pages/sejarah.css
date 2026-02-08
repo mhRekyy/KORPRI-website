@@ -227,3 +227,80 @@
   border-radius: 99px;
   background: rgba(122,91,28,.55);
 }
+
+/* TABLET */
+@media (max-width: 991px) {
+
+  body{
+    padding-top: 60px !important;
+  }
+
+  .sejarah{
+    padding:30px 0 60px;
+  }
+
+  .sejarah__container{
+    padding:0 20px;
+  }
+
+  /* Header jadi stack */
+  .sejarah__header{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .sejarah__title{
+    font-size:20px;
+  }
+
+  .sejarah__lead{
+    font-size:16px;
+    max-width:100%;
+    line-height:1.5;
+  }
+
+  .sejarah__line{
+    width:400px;
+    height:2.5px;
+  }
+
+  .sejarah__hero{
+    display: none;
+  }
+
+  /* Tabs jadi 2 kolom */
+  .sejarah__tabs{
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+  }
+
+  .sejarah__tab{
+    padding: 10px;
+  }
+
+  .sejarah__tab-text strong{
+    font-size:16px;
+  }
+
+  .sejarah__tab-text small{
+    font-size:12px;
+  }
+
+  /* Grid konten jadi 1 kolom */
+  .sejarah__grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Card kanan disembunyikan */
+  .sejarah__card{
+    display:none;
+  }
+
+  .sejarah__heading{
+    font-size:20px;
+  }
+
+  .sejarah__card-sub{
+    font-size: 14px;
+  }
+}

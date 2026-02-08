@@ -132,11 +132,34 @@ body {
 }
 
 /* --- Responsive Mobile --- */
-@media (max-width: 992px) {
-    .card-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 576px) {
-    .card-grid { grid-template-columns: 1fr; }
-    .section-title h1 { font-size: 32px; }
-    .watermark-text { font-size: 40px; }
+
+@media (max-width: 991px) {
+    body{
+        padding-top: 60px !important;
+    }
+    .page-container{
+        padding: 20px;
+    }
+    .card-grid {
+        grid-template-columns:repeat(2, 1fr);
+        gap: 20px;
+        padding: 0;
+    }
+    .section-title h1 {
+        font-size: 24px;
+    }
+    .section-title p{
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .watermark-bg{
+    background-size: min(620px, 92vw);
+    background-position: center center;
+    }
+    .card-name{
+        font-size: 14px;
+    }
+    .card-period{
+        font-size: 12px;
+    }
 }

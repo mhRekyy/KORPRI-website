@@ -202,9 +202,54 @@
 }
 
 /* Responsive */
-@media (max-width: 991.98px){
+@media (max-width: 991px){
+
+  .korpri-footer__inner{
+    width: min(1200px, calc(100% - 20px));
+    padding-top: 30px;
+  }
+
   .korpri-footer__desc{
     max-width: 100%;
+    text-align: justify;
+  }
+
+  .korpri-footer__brand{
+    gap: 10px;
+  }
+
+  .korpri-footer__logo{
+    width: 60px;
+    height: 50px;
+  }
+
+  .korpri-footer__logo img{
+    width: 60px;
+    height: 50px;
+  }
+
+  .korpri-footer__title{
+    font-size: 20px;
+  }
+
+  .korpri-footer__subtitle{
+    font-size: 12px;
+  }
+
+  .korpri-footer__heading{
+    font-size: 16px;
+  }
+
+  .korpri-footer__contact-item{
+    font-size: 12px;
+  }
+
+  .korpri-footer__item{
+    padding: 2px 0;
+  }
+
+  .korpri-footer__contact-item{
+    padding: 2px 0;
   }
 
   .korpri-footer__contact-col{

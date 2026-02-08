@@ -189,3 +189,50 @@
   background: #0f3ba2;
   color: #fff;
 }
+
+/* ===============================
+   RESPONSIVE (tanpa tambah class)
+   =============================== */
+
+@media (max-width: 991px){
+
+  body{
+    padding-top: 60px !important;
+  }
+
+  .profil-wrap{ padding: 18px 0 40px; }
+
+  .profil-container{
+    width: min(1200px, calc(100% - 20px));
+  }
+
+  .profil-search {
+    margin-top: -45px;
+    margin-bottom: 22px;
+    gap: 8px;
+  }
+  
+  .profil-search input {
+    height: 50px;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    min-width: 180px;
+  }
+  
+  .profil-search button {
+    padding: 10px 24px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  .table-profil{ font-size: 14px; border-radius: 12px; }
+  .table-profil thead th{ padding: 12px 14px; }
+  .table-profil td{ padding: 12px 14px; }
+
+  .badge-no{ width: 26px; height: 26px; font-size: 10px; }
+
+  .table-profil tbody td:nth-child(3){ font-size: 12px; }
+
+  .empty-state{ padding: 56px 18px; }
+}

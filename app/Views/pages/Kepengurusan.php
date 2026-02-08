@@ -81,7 +81,6 @@
             id="pdfDoc"
             src="<?= esc($dokumen['pdf_viewer_url']) ?>"
             class="pdf-frame"
-            style="width:100%; height:80vh; border:0;"
             onload="window.__pdfReady = true"
             ></iframe>
         </div>

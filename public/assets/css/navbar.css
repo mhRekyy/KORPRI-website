@@ -244,6 +244,11 @@ body {
     padding-top: 100px;
 }
 
+.korpri-burger {
+  display: none;
+}
+
+
 /* =====================================================
    MOBILE SIDEBAR NAVBAR (KORPRI STYLE)
 ===================================================== */
@@ -251,7 +256,7 @@ body {
 
   /* NAVBAR */
   .korpri-navbar {
-    height: 64px;
+    height: 60px;
   }
 
   .korpri-nav-inner {

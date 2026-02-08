@@ -58,7 +58,7 @@
 
 .prog__title{
   font-family: "Cinzel";
-  font-size: clamp(32px, 3.2vw, 46px);
+  font-size: clamp(24px, 3.2vw, 46px);
   color: var(--prog-ink);
   margin: 0;
   letter-spacing: .5px;
@@ -179,9 +179,25 @@
 }
 
 /* Responsive */
-@media (max-width: 576px){
-  .progCard{ min-height: 132px; }
+@media (max-width: 991px){
+  body{
+    padding-top: 60px !important;
+  }
+  .progCard{
+    min-height: 120px;
+  }
   .progCard .progCard__lines::before,
-  .progCard .progCard__lines::after{ width: 28%; }
-  .prog::before{ background-size: min(620px, 92vw); opacity: .12; }
+  .progCard .progCard__lines::after{
+    width: 28%;
+  }
+  .progCard__title{
+    font-size: 16px;
+  }
+  .progCard__text{
+    font-size: 16px;
+  }
+  .prog::before{
+    background-size: min(620px, 92vw);
+    background-position: center center;
+  }
 }

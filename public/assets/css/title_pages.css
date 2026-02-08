@@ -46,8 +46,8 @@ html, body {
   line-height: 1.1;
 }
 
-@media (max-width: 576px){
+@media (max-width: 991px){
   .title-pages{ min-height: 180px; }
-  .title-pages__logo{ height: 60px; }
-  .title-pages__title{ font-size: 28px; }
+  .title-pages__logo{ height: 80px; }
+  .title-pages__title{ font-size: 28px; margin-bottom: 0;}
 }

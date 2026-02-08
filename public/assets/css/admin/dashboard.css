@@ -1,140 +1,208 @@
-/* =========================
-   DASHBOARD HEADER
-========================= */
+/* =====================================================
+   DASHBOARD CONTAINER
+===================================================== */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* =====================================================
+   DASHBOARD HEADER (EXECUTIVE)
+===================================================== */
 .dashboard-header {
-  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .dashboard-header h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.dashboard-header p {
-  margin: 6px 0 4px;
-  font-size: 15px;
-  color: #475569;
-}
-
-.dashboard-header small {
-  font-size: 13px;
+.dashboard-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
   color: #64748b;
 }
 
+.dashboard-meta {
+  font-size: 13px;
+  color: #475569;
+  white-space: nowrap;
+}
 
-/* =========================
-   GRID CARD STATISTIK
-========================= */
-.dashboard-grid {
+.meta-separator {
+  margin: 0 8px;
+  color: #cbd5e1;
+}
+
+/* =====================================================
+   KPI STATISTIK
+===================================================== */
+.dashboard-kpi {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
-  margin-bottom: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
-
-/* =========================
-   CARD
-========================= */
-.card {
-  background: linear-gradient(180deg, #ffffff, #f9fafb);
+.kpi-card {
+  background: #ffffff;
   border-radius: 16px;
-  padding: 24px 26px;
-  box-shadow:
-    0 12px 24px rgba(0, 0, 0, 0.05),
-    0 3px 8px rgba(0, 0, 0, 0.06);
-  position: relative;
-  overflow: hidden;
-  transition: transform .25s ease, box-shadow .25s ease;
+  padding: 20px 22px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.05);
+  border-left: 5px solid #2563eb;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 6px;
-  background: linear-gradient(180deg, #1e3a8a, #22c55e);
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 20px 32px rgba(0, 0, 0, 0.08),
-    0 6px 14px rgba(0, 0, 0, 0.10);
-}
-
-.card h3 {
-  margin: 0;
-  font-size: 38px;
+.kpi-value {
+  font-size: 34px;
   font-weight: 700;
-  letter-spacing: -0.5px;
   color: #1e3a8a;
 }
 
-.card p {
-  margin-top: 8px;
-  font-size: 15px;
+.kpi-label {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #64748b;
   font-weight: 500;
-  color: #475569;
 }
 
-
-/* =========================
-   DASHBOARD SECTION
-========================= */
-.dashboard-section {
-  background: #ffffff;
+/* =====================================================
+   QUICK ACTION – PRIORITY PANEL
+===================================================== */
+.quick-action-panel {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 18px;
   padding: 24px 26px;
-  border-radius: 14px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
 }
 
-.dashboard-section h2 {
-  margin: 0 0 18px;
-  font-size: 20px;
+.quick-action-title {
+  font-size: 18px;
   font-weight: 600;
-  color: #0f172a;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 18px;
 }
 
+.quick-action-title span {
+  display: block;
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-top: 4px;
+}
 
-/* =========================
-   STATUS KONTEN
-========================= */
-.status-grid {
+.quick-action-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
 }
 
-.status-box {
-  background: #f8fafc;
+.qa-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
   border-radius: 14px;
-  padding: 20px 22px;
-  border-left: 6px solid #1e3a8a;
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
 
-.status-box h4 {
-  margin: 0 0 10px;
+.qa-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.qa-icon {
+  font-size: 26px;
+}
+
+.qa-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.qa-text span {
+  font-size: 13px;
+  color: #e2e8f0;
+}
+
+/* accent */
+.qa-blue    { border-left: 4px solid #3b82f6; }
+.qa-indigo  { border-left: 4px solid #6366f1; }
+.qa-emerald { border-left: 4px solid #10b981; }
+.qa-slate   { border-left: 4px solid #94a3b8; }
+
+/* =====================================================
+   GRID 2 KOLOM (OVERVIEW)
+===================================================== */
+.dashboard-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   DASHBOARD BOX
+===================================================== */
+.dashboard-box {
+  background: #ffffff;
+  padding: 22px 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+.dashboard-box h3 {
+  margin: 0 0 16px;
   font-size: 18px;
   font-weight: 600;
   color: #0f172a;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
 }
 
-.status-box p {
-  margin: 6px 0;
+/* =====================================================
+   STATUS LIST
+===================================================== */
+.status-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.status-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
   font-size: 14px;
+  border-bottom: 1px dashed #e5e7eb;
   color: #334155;
 }
 
+.status-list li:last-child {
+  border-bottom: none;
+}
 
-/* =========================
-   TABLE
-========================= */
+.status-list strong {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* =====================================================
+   TABLE (COMPACT)
+===================================================== */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -143,7 +211,7 @@
 .table th {
   padding: 12px;
   background: #f1f5f9;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #0f172a;
   text-align: left;
@@ -151,7 +219,7 @@
 
 .table td {
   padding: 12px;
-  font-size: 14px;
+  font-size: 13px;
   color: #334155;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -160,28 +228,17 @@
   background: #f8fafc;
 }
 
-
-/* =========================
-   QUICK LINK
-========================= */
-.quick-link {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+.table-compact th,
+.table-compact td {
+  padding: 10px;
 }
 
-.quick-link a {
-  padding: 12px 18px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 10px;
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+.empty-state {
   font-size: 14px;
-  font-weight: 500;
-  transition: transform .2s ease, box-shadow .2s ease;
+  color: #64748b;
+  font-style: italic;
 }
-
-.quick-link a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
+ 

@@ -23,7 +23,7 @@
 
   <!-- WRAP: input + tombol (hover tombol => input muncul) -->
   <div class="pf-search">
-    <input class="pf-input" type="text" placeholder="Cari peraturan..." aria-label="Cari peraturan">
+    <input class="pf-input" type="text" placeholder="Cari keputusan..." aria-label="Cari keputusan">
     <button class="pf-btn" type="button" aria-label="Search">
       <i class="bi bi-search pf-btn__icon"></i>
     </button>

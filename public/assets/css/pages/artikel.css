@@ -373,15 +373,6 @@
   cursor: not-allowed;
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px){
-  .artikel-filter{ grid-template-columns: 1fr; }
-  .artikel-list--timeline::before{ display:none; }
-  .brow{ grid-template-columns: 1fr; gap: 16px; }
-  .bmid{ width: 100%; justify-content: flex-start; }
-  .bmedia{ height: 220px; }
-}
-
 /* FIX layout filter setelah pakai form */
 .artikel-filter {
   display: flex;
@@ -422,4 +413,121 @@
 
 .artikel-filter-form > * {
   flex-shrink: 0;
+}
+
+/* ================= MOBILE 1 ITEM SEPAKET ================= */
+@media (max-width: 991px){
+
+  body{
+    padding-top: 60px !important;
+  }
+
+  /* 1 BERITA = 1 BARIS */
+  .artikel-grid{
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  /* Timeline tetap tengah */
+  .artikel-list--timeline::before{
+    left: 47%;
+  }
+
+  /* ITEM tetap horizontal */
+  .brow{
+    grid-template-columns: minmax(150px, 42%) 16px 1fr;
+    column-gap: 10px;
+    align-items: start;
+  }
+
+  /* Kolom tanggal */
+  .bmid{
+    width: 16px;
+  }
+
+  .bdate{
+    margin-top: 40px;
+    width: 55px;
+    font-size: 10px;
+    padding: 5px 6px;
+    border-radius: 8px;
+  }
+
+  /* MEDIA */
+  .bmedia{
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+  }
+
+  .bmedia__btn{
+    font-size: 12px;
+    padding: 10px 0;
+  }
+
+  /* CARD TEKS */
+  .title-card,
+  .desc-card{
+    padding: 10px;
+  }
+
+  .btitle{
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .bdesc{
+    font-size: 12px;
+    -webkit-line-clamp: 5;
+  }
+
+  .artikel-filter{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: -45px;
+  }
+
+  .artikel-filter-form,
+  .bf-form{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* SELECT */
+  .bf-select{
+    flex: 0 0 120px; /* FIX kecil tapi stabil */
+    height: 40px;
+    font-size: 14px;
+    padding-right: 34px;
+    border-radius: 8px;
+  }
+
+  /* INPUT SEARCH */
+  .bf-input{
+    flex: 1;               /* AMBIL SISA RUANG */
+    min-width: 0;          /* PENTING biar bisa mengecil */
+    height: 42px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  /* BUTTON */
+  .bf-btn{
+    flex: 0 0 48px;
+    height: 42px;
+    border-radius: 8px;
+  }
+
+  .bf-btn__icon{
+    font-size: 16px;
+  }
+
+  /* IZINKAN SHRINK */
+  .artikel-filter-form > *,
+  .bf-form > *{
+    flex-shrink: 1;
+  }
+
 }

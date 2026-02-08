@@ -77,7 +77,10 @@
             <!-- Tanggal -->
             <div class="bmid">
               <div class="bdate">
-                <?= date('d F Y', strtotime($a['published_at'])) ?>
+                 <?php
+            setlocale(LC_TIME, 'id_ID.UTF-8', 'id_ID', 'Indonesian_indonesia.1252');
+            echo esc(strftime('%d %B %Y', strtotime($a['published_at'])));
+          ?>
               </div>
             </div>
 

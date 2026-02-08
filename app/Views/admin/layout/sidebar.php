@@ -1,82 +1,104 @@
 <?php
-  $uri = uri_string(); // contoh: admin/berita
+  $uri = uri_string();
 ?>
 
 <aside class="admin-sidebar">
-  <h2 class="sidebar-title">KORPRI</h2>
+  <div class="sidebar-brand">
+    <h2>KORPRI</h2>
+  </div>
 
   <ul class="admin-menu">
 
-    <li>
-      <a href="<?= base_url('admin') ?>"
-         class="<?= ($uri === 'admin') ? 'active' : '' ?>">
-         Dashboard
-      </a>
+    <!-- DASHBOARD -->
+    <li class="menu-item <?= ($uri === 'admin' || $uri === 'admin/dashboard') ? 'active' : '' ?>">
+      <a href="<?= base_url('admin') ?>">Dashboard</a>
     </li>
 
-    <li class="menu-title">Media Publik</li>
-
-    <li>
-      <a href="<?= base_url('admin/berita') ?>"
-         class="<?= str_starts_with($uri, 'admin/berita') ? 'active' : '' ?>">
-         Berita
-      </a>
+    <!-- MEDIA PUBLIK -->
+    <li class="menu-item has-submenu open">
+      <span class="menu-label">Media Publik</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/berita') ?>"
+             class="<?= str_starts_with($uri, 'admin/berita') ? 'active' : '' ?>">
+            Berita
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/artikel') ?>"
+             class="<?= str_starts_with($uri, 'admin/artikel') ? 'active' : '' ?>">
+            Artikel
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/pengumuman') ?>"
+             class="<?= str_starts_with($uri, 'admin/pengumuman') ? 'active' : '' ?>">
+            Pengumuman
+          </a>
+        </li>
+      </ul>
     </li>
 
-    <li>
-      <a href="<?= base_url('admin/artikel') ?>"
-         class="<?= str_starts_with($uri, 'admin/artikel') ? 'active' : '' ?>">
-         Artikel
-      </a>
+    <!-- KEBIJAKAN -->
+    <li class="menu-item has-submenu open">
+      <span class="menu-label">Kebijakan</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/peraturan') ?>"
+             class="<?= str_starts_with($uri, 'admin/peraturan') ? 'active' : '' ?>">
+            Peraturan
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/keputusan') ?>"
+             class="<?= str_starts_with($uri, 'admin/keputusan') ? 'active' : '' ?>">
+            Keputusan
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/surat-edaran') ?>"
+             class="<?= str_starts_with($uri, 'admin/surat-edaran') ? 'active' : '' ?>">
+            Surat Edaran
+          </a>
+        </li>
+      </ul>
     </li>
 
-    <li>
-      <a href="<?= base_url('admin/pengumuman') ?>"
-         class="<?= str_starts_with($uri, 'admin/pengumuman') ? 'active' : '' ?>">
-         Pengumuman
-      </a>
+    <!-- TENTANG KAMI -->
+    <li class="menu-item has-submenu open">
+      <span class="menu-label">Tentang Kami</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/struktur-dpk') ?>"
+             class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
+            Struktur DPK
+          </a>
+        <li>
+          <a href="<?= base_url('admin/profil-korpri') ?>"
+             class="<?= str_starts_with($uri, 'admin/profil-korpri') ? 'active' : '' ?>">
+            Profil KORPRI
+          </a>
+        </li>
+      </ul>
     </li>
 
-    <li class="menu-title">Kebijakan</li>
-
-    <li>
-      <a href="<?= base_url('admin/peraturan') ?>"
-         class="<?= str_starts_with($uri, 'admin/peraturan') ? 'active' : '' ?>">
-         Peraturan
-      </a>
+    <!-- MANAJEMEN -->
+    <li class="menu-item has-submenu open">
+      <span class="menu-label">Manajemen</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/users') ?>"
+             class="<?= str_starts_with($uri, 'admin/users') ? 'active' : '' ?>">
+            User Admin
+          </a>
+        </li>
+      </ul>
     </li>
 
-    <li>
-      <a href="<?= base_url('admin/keputusan') ?>"
-         class="<?= str_starts_with($uri, 'admin/keputusan') ? 'active' : '' ?>">
-         Keputusan
-      </a>
-    </li>
-
-    <li>
-      <a href="<?= base_url('admin/surat-edaran') ?>"
-         class="<?= str_starts_with($uri, 'admin/surat-edaran') ? 'active' : '' ?>">
-         Surat Edaran
-      </a>
-    </li>
-
-    <li class="menu-title">Manajemen</li>
-
-    <li>
-      <a href="<?= base_url('admin/users') ?>"
-         class="<?= str_starts_with($uri, 'admin/users') ? 'active' : '' ?>">
-         User Admin
-      </a>
-    </li>
-
+    <!-- LOGOUT -->
     <li class="menu-logout">
       <a href="<?= base_url('logout') ?>">Logout</a>
     </li>
-
-    <!-- <li class="<?= service('uri')->getSegment(2)=='artikel'?'active':'' ?>">
-    <a href="/admin/artikel">Artikel</a>
-    </li> -->
-
 
   </ul>
 </aside>

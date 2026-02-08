@@ -79,6 +79,10 @@ h1 {
   background: #fafafa;
 }
 
+.admin-table tbody tr:hover {
+  background: #f1f7ff;
+}
+
 /* ===============================
    STATUS BADGE
 ================================ */
@@ -90,21 +94,25 @@ h1 {
   display: inline-block;
 }
 
-.badge-publish {
+.badge-publish,
+.badge-success {
   background: #2ecc71;
 }
 
-.badge-draft {
+.badge-draft,
+.badge-warning {
   background: #95a5a6;
+  color: #000;
 }
 
 /* ===============================
    ACTION BUTTON
 ================================ */
 .admin-action a,
-.admin-action button {
+.admin-action button,
+.action a {
   font-size: 13px;
-  margin-right: 6px;
+  margin-right: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -117,7 +125,8 @@ h1 {
 }
 
 .admin-action a:hover,
-.admin-action button:hover {
+.admin-action button:hover,
+.action a:hover {
   text-decoration: underline;
 }
 
@@ -153,37 +162,34 @@ h1 {
   background: #f4f6f9;
 }
 
-/* SIDEBAR */
+/* ===============================
+   SIDEBAR (HOVER DROPDOWN FINAL)
+================================ */
 .admin-sidebar {
-  width: 240px;
-  background: #2c3e50;
-  color: #ecf0f1;
-  min-height: 100vh;
-}
-
-/* CONTENT */
-.admin-content {
-  flex: 1;
-  padding: 25px;
-  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
   overflow-y: auto;
+
+  background: #1e293b; /* slate-800 */
+  color: #e5e7eb;
+  padding: 16px 12px;
 }
-/* ===============================
-   SIDEBAR
-================================ */
 
-
-.sidebar-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 25px;
+/* Brand */
+.sidebar-title,
+.sidebar-brand h2 {
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
+  letter-spacing: 1px;
+  margin: 16px 0 24px;
+  color: #ffffff;
 }
 
-
-/* ===============================
-   SIDEBAR MENU
-================================ */
+/* Menu list */
 .admin-menu {
   list-style: none;
   padding: 0;
@@ -194,276 +200,122 @@ h1 {
   margin-bottom: 6px;
 }
 
-.admin-menu a {
+/* Menu link & label */
+.admin-menu a,
+.menu-label {
   display: block;
   padding: 10px 14px;
-  border-radius: 6px;
-  color: #ecf0f1;
+  border-radius: 8px;
+
+  color: #e5e7eb;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
 }
 
-.admin-menu a:hover {
-  background: #34495e;
+.admin-menu a:hover,
+.menu-label:hover {
+  background: rgba(255,255,255,0.08);
 }
 
-/* SECTION TITLE */
-.menu-title {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #bdc3c7;
-  margin: 18px 0 6px;
-  padding-left: 6px;
-  pointer-events: none;
-}
-
-/* LOGOUT */
-.menu-logout a {
-  margin-top: 20px;
-  background: #c0392b;
-}
-
-.menu-logout a:hover {
-  background: #e74c3c;
-}
-
-/* ACTIVE MENU */
-.admin-menu a.active {
-  background: #1abc9c;
-  color: #fff;
+/* Active main menu */
+.menu-item.active > a {
+  background: #2563eb; /* blue-600 */
+  color: #ffffff;
   font-weight: 600;
 }
 
 /* ===============================
-   KEPUTUSAN – UI REFINEMENT
+   SUBMENU - HOVER MODE (FIXED)
 ================================ */
 
-/* Header halaman */
+/* parent harus relative supaya hover tidak putus */
+.menu-item.has-submenu {
+  position: relative;
+}
+
+/* default hidden */
+.menu-item.has-submenu .submenu {
+  display: none;
+  list-style: none;
+  margin: 6px 0 8px;
+  padding-left: 8px;
+}
+
+/* tampil saat hover */
+.menu-item.has-submenu:hover .submenu {
+  display: block;
+}
+
+/* submenu item */
+.submenu a {
+  padding: 8px 14px 8px 36px;
+  font-size: 13px;
+  color: #cbd5f5;
+  border-radius: 6px;
+  display: block;
+}
+
+/* hover submenu */
+.submenu a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* active submenu */
+.submenu a.active {
+  background: rgba(37,99,235,0.35);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ===============================
+   LOGOUT
+================================ */
+.menu-logout {
+  margin-top: 28px;
+}
+
+.menu-logout a {
+  background: #dc2626; /* red-600 */
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+
+.menu-logout a:hover {
+  background: #b91c1c;
+}
+
+
+
+/* ===============================
+   PAGE HEADER
+================================ */
 .page-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 22px;
 }
 
-.page-header h1 {
-  margin-bottom: 4px;
+.page-desc,
+.page-subtitle {
+  font-size: 14px;
+  color: #6b7280;
 }
 
-.page-desc {
-  font-size: 13px;
-  color: #777;
-}
-
-/* Judul panjang aman */
-.col-title {
-  max-width: 360px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Status center */
-.col-status {
-  text-align: center;
-}
-
-/* Empty state */
-.empty-state {
-  text-align: center;
-  padding: 32px;
-  color: #777;
-  font-style: italic;
-}
-
-/* Hover row */
-.admin-table tbody tr:hover {
-  background: #f1f7ff;
-}
-
-/* Action konsisten */
-.action a {
-  font-size: 13px;
-  margin-right: 8px;
-  color: #3498db;
-  text-decoration: none;
-}
-
-.action a:last-child {
-  margin-right: 0;
-}
-
-.action a:hover {
-  text-decoration: underline;
-}
-
-/* Perbaiki badge agar konsisten */
-.badge-success {
-  background: #2ecc71;
-}
-
-.badge-warning {
-  background: #f1c40f;
-  color: #000;
-}
-
-
+/* ===============================
+   FORM
+================================ */
 .form-card {
   background: #fff;
   padding: 22px;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
-  max-width: 1000px;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-}
-
-.form-row .form-group {
-  flex: 1;
-}
-
-.form-hint {
-  display: block;
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 6px;
-}
-
-.required {
-  color: #e74c3c;
-}
-
-.file-preview {
-  margin-top: 8px;
-  font-size: 13px;
-}
-
-.file-preview a {
-  color: #3498db;
-  text-decoration: none;
-}
-
-.file-preview a:hover {
-  text-decoration: underline;
-}
-
-.page-subtitle {
-  color: #6b7280;
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-/* LIST */
-.pengumuman-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* CARD */
-.pengumuman-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 18px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: .2s ease;
-}
-
-.pengumuman-card:hover {
-  border-color: #14b8a6;
-  box-shadow: 0 8px 24px rgba(0,0,0,.06);
-}
-
-/* CONTENT */
-.pengumuman-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.pengumuman-meta {
-  font-size: 14px;
-  color: #6b7280;
-  display: flex;
-  gap: 8px;
-}
-
-/* ACTION */
-.pengumuman-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 16px;
-}
-
-.pengumuman-actions a {
-  text-decoration: none;
-  opacity: .7;
-}
-
-.pengumuman-actions a:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* STATUS */
-.status {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.status.publish {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.status.draft {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.page-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  margin-bottom: 22px;
-}
-
-.btn-back {
-  font-size: 14px;
-  color: #3498db;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.btn-back:hover {
-  text-decoration: underline;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 14px;       /* INI KUNCI UTAMA */
-  font-size: 14px;
-  line-height: 1.6;         /* BIAR TIDAK CEKUNG */
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-/* khusus date supaya tinggi konsisten */
-.form-group input[type="date"] {
-  padding: 11px 14px;
+  max-width: 1100px;
 }
 
 .form-group {
@@ -476,9 +328,30 @@ h1 {
   display: inline-block;
 }
 
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
 
-.form-card {
-  max-width: 1100px;
+.form-group input[type="date"] {
+  padding: 11px 14px;
+}
+
+.form-hint {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.required {
+  color: #e74c3c;
 }
 
 .btn-primary {
@@ -499,4 +372,56 @@ h1 {
   border: none;
   border-top: 1px solid #e5e7eb;
   margin: 26px 0;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.empty-state {
+  text-align: center;
+  padding: 32px;
+  color: #777;
+  font-style: italic;
+}
+
+
+/* =====================================================
+   FIX LAYOUT CONTENT SETELAH SIDEBAR
+   Mengembalikan padding & alignment seperti sebelumnya
+===================================================== */
+
+/* wrapper admin */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* sidebar tetap */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    
+    background: #1e293b;
+    color: white;
+    padding: 10px;
+}
+
+
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* content utama */
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  background: #f8fafc;
+  margin-left: 290px; /* pastikan tidak ketarik */
+  box-sizing: border-box;
 }

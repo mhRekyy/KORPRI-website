@@ -127,6 +127,7 @@ class Routing extends BaseRouting
      */
     public array $moduleRoutes = [];
 
+
     /**
      * For Auto Routing (Improved).
      * Whether to translate dashes in URIs for controller/method to CamelCase.

@@ -179,6 +179,18 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('ketua-umum/delete/(:num)', 'Admin\KetuaUmumController::delete/$1');
     $routes->get('ketua-umum/toggle/(:num)', 'Admin\KetuaUmumController::toggle/$1');
 
+    // ===============================
+    // PROFIL SEKRETARIS JENDERAL
+    // ===============================
+    $routes->get('sekretaris-jenderal', 'Admin\SekretarisJenderalController::index');
+    $routes->get('sekretaris-jenderal/create', 'Admin\SekretarisJenderalController::create');
+    $routes->post('sekretaris-jenderal/store', 'Admin\SekretarisJenderalController::store');
+    $routes->get('sekretaris-jenderal/edit/(:num)', 'Admin\SekretarisJenderalController::edit/$1');
+    $routes->post('sekretaris-jenderal/update/(:num)', 'Admin\SekretarisJenderalController::update/$1');
+    $routes->get('sekretaris-jenderal/delete/(:num)', 'Admin\SekretarisJenderalController::delete/$1');
+    $routes->get('sekretaris-jenderal/toggle/(:num)', 'Admin\SekretarisJenderalController::toggle/$1');
+
+
 });
 
 //     // ===============================

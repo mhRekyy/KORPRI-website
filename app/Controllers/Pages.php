@@ -483,10 +483,12 @@ public function Artikel()
 
 
 
+
 public function ArtikelDetail($slug)
 {
-    $model = new \App\Models\ArtikelModel();
+    $model = new ArtikelModel();
 
+    // Artikel utama
     $artikel = $model
         ->where('slug', $slug)
         ->where('is_active', 1)
@@ -497,11 +499,18 @@ public function ArtikelDetail($slug)
         throw PageNotFoundException::forPageNotFound('Artikel tidak ditemukan');
     }
 
+    // === INI YANG DIBUTUHKAN VIEW ===
+    $artikelTerbaru = $model->getArtikelTerkini(5, $artikel['id']);
+
     return view('pages/ArtikelDetail', [
-        'pageTitle' => $artikel['title'],
-        'artikel'   => $artikel,
+        'pageTitle'      => $artikel['title'],
+        'artikel'        => $artikel,
+        'artikelTerbaru' => $artikelTerbaru, // ← NAMA HARUS SAMA
+        // 'artikelTerkait' => $artikelTerkait (kalau sudah ada)
     ]);
 }
+
+
 
 
 public function pengumuman()

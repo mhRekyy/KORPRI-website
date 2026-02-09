@@ -40,7 +40,7 @@
 
       <!-- Tengah: Statistik -->
       <div class="col-12 col-lg-4">
-        <h6 class="korpri-footer__heading">Statistik Pengunjung</h6>
+        <h6 class="korpri-footer__heading1">Statistik Pengunjung</h6>
 
         <ul class="korpri-footer__list">
           <li class="korpri-footer__item">
@@ -96,7 +96,7 @@
       <!-- Kanan: Kontak -->
       <div class="col-12 col-lg-4 korpri-footer__contact-col">
         <div class="korpri-footer__contact-wrap">
-          <h6 class="korpri-footer__heading">Contacts us</h6>
+          <h6 class="korpri-footer__heading2">Contacts us</h6>
 
           <ul class="korpri-footer__contact">
             <li class="korpri-footer__contact-item">

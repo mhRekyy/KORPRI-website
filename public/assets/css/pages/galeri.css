@@ -10,13 +10,13 @@
 ========================= */
 
 .galeri-wrap{
-  padding: 44px 0 68px;
+  padding: 44px 0;
   background: var(--bg);
   font-family: "Poppins";
 }
 
 .galeri-fullbleed{
-  width: min(1600px, 100%);
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }

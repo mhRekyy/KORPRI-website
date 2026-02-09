@@ -10,7 +10,15 @@
 }
 
 /* Heading */
-.korpri-footer__heading{
+.korpri-footer__heading1{
+  color: #C79A53;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  margin-bottom: 16px;
+}
+
+.korpri-footer__heading2{
   color: #C79A53;
   font-size: 20px;
   font-weight: 700;
@@ -236,7 +244,15 @@
     font-size: 12px;
   }
 
-  .korpri-footer__heading{
+  .korpri-footer__heading1{
+    display: none;
+  }
+
+  .korpri-footer__list{
+    display: none;
+  }
+
+  .korpri-footer__heading2{
     font-size: 16px;
   }
 
@@ -249,7 +265,7 @@
   }
 
   .korpri-footer__contact-item{
-    padding: 2px 0;
+    padding: 0;
   }
 
   .korpri-footer__contact-col{

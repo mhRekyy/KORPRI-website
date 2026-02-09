@@ -384,12 +384,6 @@ h1 {
   font-style: italic;
 }
 
-
-/* =====================================================
-   FIX LAYOUT CONTENT SETELAH SIDEBAR
-   Mengembalikan padding & alignment seperti sebelumnya
-===================================================== */
-
 /* wrapper admin */
 .admin-wrapper {
   display: flex;

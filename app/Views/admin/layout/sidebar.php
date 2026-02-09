@@ -87,8 +87,8 @@
       <span class="menu-label">Manajemen</span>
       <ul class="submenu">
         <li>
-          <a href="<?= base_url('admin/users') ?>"
-             class="<?= str_starts_with($uri, 'admin/users') ? 'active' : '' ?>">
+          <a href="<?= base_url('admin/user-admin') ?>"
+             class="<?= str_starts_with($uri, 'admin/user-admin') ? 'active' : '' ?>">
             User Admin
           </a>
         </li>

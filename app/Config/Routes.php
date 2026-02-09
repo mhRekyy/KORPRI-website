@@ -160,4 +160,12 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('profil-korpri/deactivate/(:num)', 'Admin\ProfilKorpri::deactivate/$1');
     $routes->get('profil-korpri/activate/(:num)', 'Admin\ProfilKorpri::activate/$1');
 
+
+    // USER ADMIN
+    $routes->get('user-admin', 'Admin\UserAdmin::index');
+    $routes->get('user-admin/create', 'Admin\UserAdmin::create');
+    $routes->post('user-admin/store', 'Admin\UserAdmin::store');
+    $routes->get('user-admin/edit/(:num)', 'Admin\UserAdmin::edit/$1');
+    $routes->post('user-admin/update/(:num)', 'Admin\UserAdmin::update/$1');
+
 });

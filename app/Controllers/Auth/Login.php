@@ -14,13 +14,15 @@ class Login extends BaseController
         $this->adminModel = new AdminModel();
     }
 
-    // GET /login
     public function index()
     {
+        if (session()->get('admin_logged_in')) {
+            return redirect()->to('/admin/dashboard');
+        }
+
         return view('auth/login');
     }
 
-    // POST /login
     public function process()
     {
         $rules = [
@@ -29,7 +31,9 @@ class Login extends BaseController
         ];
 
         if (! $this->validate($rules)) {
-            return redirect()->back()->withInput()->with('error', 'Email atau password tidak valid.');
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Email atau password tidak valid.');
         }
 
         $email    = $this->request->getPost('email');
@@ -40,26 +44,25 @@ class Login extends BaseController
             ->where('is_active', 1)
             ->first();
 
-        if (! $admin) {
-            return redirect()->back()->withInput()->with('error', 'Email tidak terdaftar sebagai admin.');
+        if (! $admin || ! password_verify($password, $admin['password'])) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Email atau password salah.');
         }
 
-        if (! password_verify($password, $admin['password'])) {
-            return redirect()->back()->withInput()->with('error', 'Password salah.');
-        }
+        session()->regenerate();
 
-        // SET SESSION
         session()->set([
             'admin_logged_in' => true,
             'admin_id'        => $admin['id'],
             'admin_name'      => $admin['name'],
             'admin_email'     => $admin['email'],
+            'admin_role'      => $admin['role'], // super_admin / admin
         ]);
 
         return redirect()->to('/admin/dashboard');
     }
 
-    // GET /logout
     public function logout()
     {
         session()->destroy();

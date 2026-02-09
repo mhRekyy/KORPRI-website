@@ -1,3 +1,4 @@
+/* ================= ROOT ================= */
 :root{
   --bg:#f4f4f4;
   --card:#ffffff;
@@ -11,288 +12,273 @@
   --muted:#475569;
 }
 
+/* GLOBAL SAFETY */
+html,body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* ================= WRAP ================= */
 .peraturan-wrap{
   padding: 26px 0 56px;
   background: var(--bg);
 }
 
 .peraturan-container{
-  width: min(1200px, calc(100% - 36px));
-  margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+  max-width:1200px;
+  margin:0 auto;
+  padding-inline:16px;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
 }
 
+/* ================= FILTER ================= */
 .peraturan-filter{
-  display: grid;
-  grid-template-columns: 1fr 1fr auto; /* kolom 3 = search wrap */
-  gap: 16px;
-  align-items: center;
-  margin-top: -55px;
-  margin-bottom: 18px;
-  position: relative;
-  z-index: 5;
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:16px;
+  align-items:center;
+  margin-top:-55px;
+  margin-bottom:18px;
+  position:relative;
+  z-index:5;
 }
 
-/* wrapper search: 1 kolom (input), tombol ditumpuk (absolute) */
+/* SEARCH WRAP (DESKTOP) */
 .pf-search{
-  position: relative;
-  display: block;
-  width: 86px;                 /* default: hanya selebar tombol */
-  transition: width .28s ease; /* smooth */
+  position:relative;
+  width:86px;
+  transition:width .3s ease;
 }
 
-/* saat hover: wrapper melebar untuk input */
-.pf-search:hover,
-.pf-search:focus-within{
-  width: 462px; /* 360 input + 16 gap + 86 tombol (sesuaikan jika perlu) */
+/* hover expand ONLY desktop */
+@media (hover:hover){
+  .pf-search:hover,
+  .pf-search:focus-within{
+    width:420px;
+  }
+
+  .pf-search:hover .pf-input,
+  .pf-search:focus-within .pf-input{
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+  }
 }
 
-/* input mengisi wrapper, tapi sisakan ruang tombol + gap */
+/* INPUT SEARCH */
 .pf-input{
-  height: 58px;
-  width: 100%;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.10);
-  background: #fff;
-  padding: 0 18px;
-  padding-right: 110px;  /* 86 tombol + 24 ruang (≈ gap 16 + aman) */
-  font-size: 15px;
-  outline: none;
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
+  width:100%;
+  height:58px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.1);
+  background:#fff;
+  padding:0 110px 0 18px;
+  font-size:15px;
+  outline:none;
+  box-shadow:0 14px 26px rgba(0,0,0,.10);
 
-  opacity: 0;
-  transform: translateX(10px);
-  pointer-events: none;
-  transition: opacity .22s ease, transform .22s ease;
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(10px);
+  transition:.25s ease;
 }
 
-/* saat hover: input muncul */
-.pf-search:hover .pf-input,
-.pf-search:focus-within .pf-input{
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
+.pf-input::placeholder{
+  color:#9a9a9a;
 }
 
-/* tombol tetap di ujung kanan, jarak konsisten */
+/* BUTTON SEARCH */
 .pf-btn{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 86px;
-  height: 58px;
-  border-radius: 14px;
-  background: var(--gold);
-  border: 0;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 14px 26px rgba(0,0,0,.12);
-  cursor: pointer;
+  position:absolute;
+  top:0;
+  right:0;
+  width:86px;
+  height:58px;
+  border-radius:14px;
+  background:var(--gold);
+  border:0;
+  display:grid;
+  place-items:center;
+  box-shadow:0 14px 26px rgba(0,0,0,.12);
+  cursor:pointer;
 }
-
 
 .pf-btn__icon{
-  color: #fff;
-  font-size: 22px;
-  line-height: 1;
+  color:#fff;
+  font-size:22px;
 }
 
-/* INI KUNCINYA:
-   Saat hover tombol atau hover area search, input melebar & muncul */
-.pf-search:hover,
-.pf-search:focus-within{
-  grid-template-columns: 360px 86px; /* input muncul lebar tetap */
-}
-
-.pf-search:hover .pf-input,
-.pf-search:focus-within .pf-input{
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* select */
+/* SELECT */
 .pf-select{
-  height: 58px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.10);
-  background: #fff;
-  padding: 0 18px;
-  font-size: 15px;
-  outline: none;
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
-  appearance: none;
+  height:58px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.1);
+  background:#fff;
+  padding:0 18px;
+  font-size:15px;
+  outline:none;
+  box-shadow:0 14px 26px rgba(0,0,0,.10);
+  appearance:none;
 
   background-image:
     linear-gradient(45deg, transparent 50%, #666 50%),
     linear-gradient(135deg, #666 50%, transparent 50%);
-  background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
+  background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;
+  background-size:6px 6px;
+  background-repeat:no-repeat;
 }
 
-/* input search (hidden -> show) */
-.pf-input{
-  height: 58px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.10);
-  background: #fff;
-  padding: 0 18px;
-  font-size: 15px;
-  outline: none;
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
-
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(10px);
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-/* aktif: input muncul */
-.peraturan-filter.is-search .pf-input{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(0);
-}
-
-.pf-input::placeholder{
-  color: #9a9a9a;
-}
-
-/* tombol search */
-.pf-btn{
-  width: 86px;
-  height: 58px;
-  border-radius: 14px;
-  background: var(--gold);
-  border: 0;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 14px 26px rgba(0,0,0,.12);
-  cursor: pointer;
-}
-
-.pf-btn__icon{
-  color: #fff;
-  font-size: 22px;
-  line-height: 1;
-}
-
-
-.pf-btn__icon{
-  color: #fff;
-  font-size: 22px;
-  line-height: 1;
-}
-
-/* LIST */
+/* ================= LIST ================= */
 .peraturan-list{
-  display: grid;
-  gap: 18px;
+  display:grid;
+  gap:18px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .per-card{
-  background: var(--card);
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 14px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.10);
-  padding: 0 18px;
-  display: grid;
-  grid-template-columns: 86px 1fr 160px;
-  gap: 18px;
-  align-items: center;
+  background:var(--card);
+  border:1px solid rgba(15,23,42,.12);
+  border-radius:14px;
+  box-shadow:0 10px 22px rgba(0,0,0,.10);
+  padding:16px 18px;
+  display:grid;
+  grid-template-columns:86px 1fr 160px;
+  gap:18px;
+  align-items:center;
 }
 
-/* ICON PDF (PAKAI IMAGE) */
 .per-left{
-  display: grid;
-  place-items: center;
+  display:grid;
+  place-items:center;
 }
 
 .per-pdf{
-  width: 100px;     /* samakan dengan visual di screenshot */
-  height: 100px;
-  object-fit: contain; /* biar gambar tidak gepeng */
-  display: block;
-  filter: drop-shadow(0 10px 14px rgba(0,0,0,.18));
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  filter:drop-shadow(0 10px 14px rgba(0,0,0,.18));
 }
 
 /* TEXT */
 .per-title{
-  margin: 0;
-  font-size: 14.5px;
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.25;
+  margin:0;
+  font-size:16px;
+  font-weight:800;
+  line-height:1.25;
+  color:#0f172a;
 
-  /* Maks 3 baris, sisanya ... */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
 
 .per-meta{
-  margin: 6px 0 0;
-  font-size: 11px;
-  color: #111827;
-  opacity: .65;
+  margin-top:6px;
+  font-size:12px;
+  opacity:.65;
 }
 
 /* BUTTON */
 .per-right{
-  display: grid;
-  place-items: center;
+  display:grid;
+  place-items:center;
 }
 
 .per-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  width: 132px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--gold);
-  color: #fff;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 800;
-  box-shadow: 0 12px 22px rgba(199,165,97,.45);
+  width:132px;
+  height:44px;
+  border-radius:10px;
+  background:var(--gold);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  box-shadow:0 12px 22px rgba(199,165,97,.45);
+  text-decoration:none;
 }
 
-.per-btn__icon{
-  font-size: 14px;
-  line-height: 1;
-}
+/* ================= MOBILE ================= */
+@media (max-width:991px){
+  body{
+        padding-top: 60px !important;
+    }
 
-.per-btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 16px rgba(199, 165, 97, .6);
-}
-
-/* Responsive */
-@media (max-width: 768px){
   .peraturan-filter{
-    grid-template-columns: 1fr;
-    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: -45px;
+  }
+
+  .peraturan-filter .pf-search{
+    grid-column: 1 / -1; /* FULL BARIS */
+    width: 100%;
+  }
+
+  .pf-search:hover,
+  .pf-search:focus-within{
+    width: 100% !important;
+  }
+
+  /* INPUT FULL SAMPAI UJUNG */
+  .pf-input{
+    opacity: 1 !important;
+    pointer-events: auto;
+    transform: none;
+
+    width: 100%;
+    height: 40px;
+    padding: 0 52px 0 12px; /* ruang tombol */
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  /* TOMBOL NEMPEL KANAN */
+  .pf-btn{
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+  }
+
+  .pf-btn__icon{
+    font-size: 16px;
+  }
+
+  /* SELECT */
+  .pf-select{
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
   }
 
   .per-card{
-    grid-template-columns: 72px 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns:70px 1fr;
   }
 
   .per-right{
-    grid-column: 1 / -1;
-    place-items: center;
+    grid-column:1/-1;
   }
 
   .per-btn{
-    width: 100%;
+    width:100%;
+    height: 40px;
+  }
+
+  .per-title{
+    font-size: 14px;
+  }
+  .per-pdf{
+    width: 80px;
+    height: 80px;
+  }
+  .per-card{
+    padding: 12px 10px;
+    gap: 10px;
   }
 }

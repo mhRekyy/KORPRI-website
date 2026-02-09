@@ -1,0 +1,118 @@
+/* ===============================
+   ADMIN – KETUA UMUM (STYLE SEKJEN)
+   =============================== */
+
+.ketua-umum-wrapper {
+    max-width: 1100px;        /* kunci lebar seperti Sekjen */
+    margin: 0 auto;           /* bikin konten di tengah */
+    padding: 10px 20px 0;     /* napas kiri-kanan */
+}
+
+
+/* HEADER */
+.ketua-umum-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* optional: kecilkan tombol biar halus */
+.ketua-umum-header .btn {
+    padding: 6px 14px;
+    font-size: 14px;
+}
+
+
+/* FOTO */
+.ketua-umum-photo {
+    width: 64px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f3f4f6;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===== TABLE STYLE (SEKJEN-LIKE) ===== */
+
+.ketua-umum-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    width: 100%;
+}
+
+/* HEADER */
+.ketua-umum-table thead th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #111827;
+    padding: 14px 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+/* ROW */
+.ketua-umum-table tbody tr {
+    background: #ffffff;
+}
+
+.ketua-umum-table tbody td {
+    padding: 18px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+/* NAMA */
+.ketua-umum-table tbody td:nth-child(3) {
+    font-weight: 500;
+}
+
+/* STATUS */
+.ketua-umum-status {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ketua-umum-status.active {
+    color: #16a34a;
+}
+
+.ketua-umum-status.inactive {
+    color: #dc2626;
+}
+
+/* AKSI */
+.ketua-umum-aksi {
+    white-space: nowrap;
+}
+
+.ketua-umum-aksi a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.ketua-umum-aksi a.btn-warning {
+    color: #2563eb;
+    background: none;
+    border: none;
+}
+
+.ketua-umum-aksi a.btn-info {
+    color: #7c3aed;
+    background: none;
+    border: none;
+}
+
+.ketua-umum-aksi a.btn-danger {
+    color: #dc2626;
+    background: none;
+    border: none;
+}
+
+.ketua-umum-aksi a:hover {
+    text-decoration: underline;
+}

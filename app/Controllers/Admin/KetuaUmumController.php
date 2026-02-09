@@ -131,27 +131,20 @@ class KetuaUmumController extends BaseController
 
 
     public function toggle($id)
-{
-    $row = $this->ketuaModel->find($id);
+    {
+        $row = $this->ketuaModel->find($id);
 
-    if (!$row) {
-        return redirect()->back()->with('error', 'Data tidak ditemukan');
+        if (!$row) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        $this->ketuaModel->update($id, [
+            'is_active' => $row['is_active'] ? 0 : 1
+        ]);
+
+        return redirect()->back()->with('success', 'Status berhasil diubah');
     }
 
-    // Kalau mau AKTIFKAN → nonaktifkan semua dulu
-    if ($row['is_active'] == 0) {
-        $this->ketuaModel
-            ->where('is_active', 1)
-            ->set(['is_active' => 0])
-            ->update();
-    }
-
-    $this->ketuaModel->update($id, [
-        'is_active' => $row['is_active'] ? 0 : 1
-    ]);
-
-    return redirect()->back()->with('success', 'Status berhasil diubah');
-}
 
 
 }

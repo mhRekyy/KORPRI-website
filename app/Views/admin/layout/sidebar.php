@@ -83,6 +83,11 @@
              class="<?= str_starts_with($uri, 'admin/ketua-umum') ? 'active' : '' ?>">
             Ketua Umum
           </a>
+        </li>
+          <a href="<?= base_url('admin/sekretaris-jenderal') ?>"
+            class="<?= str_starts_with($uri, 'admin/sekretaris-jenderal') ? 'active' : '' ?>">
+            Sekretaris Jenderal
+          </a>
       </ul>
     </li>
 

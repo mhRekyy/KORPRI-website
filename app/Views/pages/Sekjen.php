@@ -17,7 +17,7 @@
 
         <!-- Grid Cards -->
         <div class="card-grid">
-            <?php foreach ($Sekjen_list as $Sekjen) : ?>
+            <?php foreach ($sekjen_list as $Sekjen) : ?>
                 <div class="profile-card">
                     <div class="card-photo">
                         <!-- Logika: Tampilkan foto jika ada, jika kosong biarkan abu-abu -->

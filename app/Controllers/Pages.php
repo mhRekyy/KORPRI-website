@@ -13,7 +13,7 @@ use App\Models\PeraturanModel;
 use App\Models\KeputusanModel;
 use App\Models\SuratEdaranModel;
 use App\Models\KetuaUmumModel;
-
+use App\Models\SekretarisJenderalModel;
 
 
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -247,43 +247,19 @@ public function KetuaUmum()
 
 
 
-
-
     public function Sekjen()
     {
-        $dataSekjen = [
-            [
-                'nama' => 'Dr. H. M. Zaini Abdullah', 
-                'foto' => 'ketua_1.jpg', // Ganti dengan nama file aslimu nanti
-                'periode' => '2012 - 2017'
-            ],
-            [
-                'nama' => 'Ir. Nova Iriansyah, M.T.', 
-                'foto' => 'ketua_2.jpg',
-                'periode' => '2017 - 2022'
-            ],
-            [
-                'nama' => 'Achmad Marzuki', 
-                'foto' => 'ketua_3.jpg',
-                'periode' => '2022 - 2023'
-            ],
-            [
-                'nama' => 'Bustami Hamzah, S.E., M.Si.', 
-                'foto' => 'ketua_4.jpg',
-                'periode' => '2023 - Sekarang'
-            ],
-            // Data kosong untuk placeholder (kotak abu-abu) sesuai gambar
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-        ];
+        $model = new SekretarisJenderalModel();
 
-        return view('pages/Sekjen', [
-            'pageTitle'  => 'PROFIL SEKRETARIS JENDERAL KORPRI MASA KE MASA',
-            'Sekjen_list' => $dataSekjen // Data ini akan dipanggil di foreach View
+        $data = $model->getAktifUntukFrontend();
+
+        return view('pages/sekjen', [
+            'pageTitle' => 'PROFIL SEKRETARIS JENDERAL KORPRI',
+            'sekjen_list' => $data
         ]);
     }
+
+
 
 
     /**

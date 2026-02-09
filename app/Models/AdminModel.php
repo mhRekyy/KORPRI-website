@@ -14,6 +14,7 @@ class AdminModel extends Model
         'email',
         'password',
         'is_active',
+        'role',
     ];
 
     protected $useTimestamps = true;

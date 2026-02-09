@@ -21,10 +21,15 @@
         <input type="password" name="password" required>
     </div>
 
-    <button type="submit" class="btn-primary">
-        Simpan
-    </button>
+    <div class="form-group">
+        <label>Role</label>
+        <select name="role" required>
+            <option value="admin">Admin</option>
+            <option value="super_admin">Super Admin</option>
+        </select>
+    </div>
 
+    <button type="submit" class="btn-primary">Simpan</button>
     <a href="<?= base_url('admin/user-admin') ?>">Kembali</a>
 </form>
 

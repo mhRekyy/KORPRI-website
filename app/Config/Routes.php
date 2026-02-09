@@ -167,6 +167,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('user-admin/store', 'Admin\UserAdmin::store');
     $routes->get('user-admin/edit/(:num)', 'Admin\UserAdmin::edit/$1');
     $routes->post('user-admin/update/(:num)', 'Admin\UserAdmin::update/$1');
+    $routes->get('logs', 'Admin\AdminLog::index');
+
+
     
     // ===============================
     // PROFIL KETUA UMUM

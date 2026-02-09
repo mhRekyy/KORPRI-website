@@ -10,7 +10,8 @@ use App\Models\PeraturanModel;
 use App\Models\KeputusanModel;
 use App\Models\SuratEdaranModel;
 use App\Models\GaleriModel;
-use App\Models\UsersModel;
+use App\Models\AdminLogModel;
+use App\Models\AdminModel;
 
 class Dashboard extends BaseController
 {
@@ -23,7 +24,9 @@ class Dashboard extends BaseController
         $keputusanModel    = new KeputusanModel();
         $suratEdaranModel  = new SuratEdaranModel();
         $galeriModel       = new GaleriModel();
-        // $usersModel        = new UsersModel();
+
+        // ✅ LOG MODEL (HARUS DI DALAM FUNCTION)
+        $logModel = new AdminLogModel();
 
         $data = [
             'title' => 'Dashboard Admin',
@@ -53,10 +56,17 @@ class Dashboard extends BaseController
                 ->limit(5)
                 ->find(),
 
-            'admin_name' => session()->get('name') ?? 'Admin',
+            // ✅ LOG AKTIVITAS TERBARU
+            'latest_logs' => $logModel
+                ->select('admin_logs.*, admins.name AS admin_name')
+                ->join('admins', 'admins.id = admin_logs.admin_id', 'left')
+                ->orderBy('admin_logs.created_at', 'DESC')
+                ->limit(5)
+                ->find(),
+
+            'admin_name' => session()->get('admin_name') ?? 'Admin',
             'now'        => date('d M Y, H:i'),
         ];
-
 
         return view('admin/dashboard', $data);
     }

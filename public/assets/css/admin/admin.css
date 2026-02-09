@@ -419,3 +419,163 @@ h1 {
   margin-left: 290px; /* pastikan tidak ketarik */
   box-sizing: border-box;
 }
+
+
+
+
+/* USER ADMIN */
+
+/* ===============================
+   USER ADMIN – ADVANCED
+================================ */
+
+.user-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.page-subtitle {
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 14px;
+    max-width: 520px;
+}
+
+/* STATS */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.05);
+}
+
+.stat-label {
+    display: block;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* CARD */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+/* TABLE */
+.table-admin {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-admin thead {
+    background: #f9fafb;
+}
+
+.table-admin th {
+    padding: 14px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-admin td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-admin tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* NAME */
+.admin-name {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* BADGES */
+.badge {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-primary {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.badge-secondary {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.badge-self {
+    background: #fde68a;
+    color: #92400e;
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+/* ACTION */
+.btn-action {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-action:hover {
+    text-decoration: underline;
+}
+
+.text-muted {
+    color: #9ca3af;
+}

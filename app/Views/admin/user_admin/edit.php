@@ -22,6 +22,14 @@
     </div>
 
     <div class="form-group">
+        <label>Role</label>
+        <select name="role">
+            <option value="admin" <?= $admin['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+            <option value="super_admin" <?= $admin['role'] === 'super_admin' ? 'selected' : '' ?>>Super Admin</option>
+        </select>
+    </div>
+
+    <div class="form-group">
         <label>Status</label>
         <select name="is_active">
             <option value="1" <?= $admin['is_active'] ? 'selected' : '' ?>>Aktif</option>
@@ -29,10 +37,7 @@
         </select>
     </div>
 
-    <button type="submit" class="btn-primary">
-        Update
-    </button>
-
+    <button type="submit" class="btn-primary">Update</button>
     <a href="<?= base_url('admin/user-admin') ?>">Kembali</a>
 </form>
 

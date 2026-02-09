@@ -14,50 +14,35 @@ class UserAdmin extends BaseController
         $this->adminModel = new AdminModel();
     }
 
-    // ===============================
-    // HELPER: WAJIB SUPER ADMIN
-    // ===============================
     private function mustBeSuperAdmin()
     {
         if (session()->get('admin_role') !== 'super_admin') {
             return redirect()->to('/admin/dashboard')
                 ->with('error', 'Anda tidak memiliki akses.');
         }
-
         return null;
     }
 
-    // ===============================
-    // LIST ADMIN (SEMUA BOLEH LIHAT)
-    // ===============================
     public function index()
     {
         $data['admins'] = $this->adminModel->findAll();
         return view('admin/user_admin/index', $data);
     }
 
-    // ===============================
-    // FORM TAMBAH ADMIN (SUPER ADMIN)
-    // ===============================
     public function create()
     {
         if ($redirect = $this->mustBeSuperAdmin()) {
             return $redirect;
         }
-
         return view('admin/user_admin/create');
     }
 
-    // ===============================
-    // SIMPAN ADMIN (SUPER ADMIN)
-    // ===============================
     public function store()
     {
         if ($redirect = $this->mustBeSuperAdmin()) {
             return $redirect;
         }
 
-        // Cek email unik
         if ($this->adminModel->where('email', $this->request->getPost('email'))->first()) {
             return redirect()->back()->with('error', 'Email sudah digunakan.');
         }
@@ -65,20 +50,24 @@ class UserAdmin extends BaseController
         $this->adminModel->insert([
             'name'      => $this->request->getPost('name'),
             'email'     => $this->request->getPost('email'),
-            'password'  => password_hash(
-                $this->request->getPost('password'),
-                PASSWORD_DEFAULT
-            ),
+            'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'is_active' => 1,
-            'role'      => 'admin', // default admin biasa
+            'role'      => $this->request->getPost('role') ?? 'admin',
         ]);
+
+        $newAdminId = $this->adminModel->getInsertID();
+
+        // ✅ LOG CREATE ADMIN
+        admin_log(
+            session()->get('admin_id'),
+            'CREATE_ADMIN',
+            $newAdminId,
+            'Menambahkan admin baru'
+        );
 
         return redirect()->to('/admin/user-admin');
     }
 
-    // ===============================
-    // FORM EDIT ADMIN (SUPER ADMIN)
-    // ===============================
     public function edit($id)
     {
         if ($redirect = $this->mustBeSuperAdmin()) {
@@ -86,7 +75,6 @@ class UserAdmin extends BaseController
         }
 
         $data['admin'] = $this->adminModel->find($id);
-
         if (! $data['admin']) {
             return redirect()->to('/admin/user-admin');
         }
@@ -94,9 +82,6 @@ class UserAdmin extends BaseController
         return view('admin/user_admin/edit', $data);
     }
 
-    // ===============================
-    // UPDATE ADMIN (SUPER ADMIN)
-    // ===============================
     public function update($id)
     {
         if ($redirect = $this->mustBeSuperAdmin()) {
@@ -112,14 +97,13 @@ class UserAdmin extends BaseController
             'name'      => $this->request->getPost('name'),
             'email'     => $this->request->getPost('email'),
             'is_active' => $this->request->getPost('is_active'),
+            'role'      => $this->request->getPost('role'),
         ];
 
-        // Super admin tidak boleh menonaktifkan dirinya sendiri
         if ($id == session()->get('admin_id')) {
             unset($data['is_active']);
         }
 
-        // Update password jika diisi
         if ($this->request->getPost('password')) {
             $data['password'] = password_hash(
                 $this->request->getPost('password'),
@@ -128,6 +112,14 @@ class UserAdmin extends BaseController
         }
 
         $this->adminModel->update($id, $data);
+
+        // ✅ LOG UPDATE ADMIN
+        admin_log(
+            session()->get('admin_id'),
+            'UPDATE_ADMIN',
+            $id,
+            'Mengubah data admin'
+        );
 
         return redirect()->to('/admin/user-admin');
     }

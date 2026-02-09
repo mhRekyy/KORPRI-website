@@ -156,6 +156,42 @@
 
   </div>
 
+  <!-- ===============================
+       AKTIVITAS ADMIN TERAKHIR (LOG)
+  ================================ -->
+  <div class="dashboard-box">
+    <h3>Aktivitas Admin Terakhir</h3>
+
+    <?php if (empty($latest_logs)): ?>
+      <p class="empty-state">Belum ada aktivitas admin.</p>
+    <?php else: ?>
+      <table class="table table-compact">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Admin</th>
+            <th>Aksi</th>
+            <th>Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($latest_logs as $log): ?>
+            <tr>
+              <td><?= date('d M Y H:i', strtotime($log['created_at'])) ?></td>
+              <td><?= esc($log['admin_name'] ?? '-') ?></td>
+              <td><?= esc($log['action']) ?></td>
+              <td><?= esc($log['target_id'] ?? '-') ?></td>
+            </tr>
+          <?php endforeach ?>
+        </tbody>
+      </table>
+
+      <div style="margin-top:10px;">
+        <a href="<?= base_url('admin/logs') ?>">Lihat semua log →</a>
+      </div>
+    <?php endif ?>
+  </div>
+
 </div>
 
 <?= $this->endSection() ?>

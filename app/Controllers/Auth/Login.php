@@ -57,14 +57,32 @@ class Login extends BaseController
             'admin_id'        => $admin['id'],
             'admin_name'      => $admin['name'],
             'admin_email'     => $admin['email'],
-            'admin_role'      => $admin['role'], // super_admin / admin
+            'admin_role'      => $admin['role'],
         ]);
+
+        // ✅ LOG LOGIN
+        admin_log(
+            $admin['id'],
+            'LOGIN',
+            null,
+            'Admin berhasil login'
+        );
 
         return redirect()->to('/admin/dashboard');
     }
 
     public function logout()
     {
+        // ✅ LOG LOGOUT
+        if (session()->get('admin_id')) {
+            admin_log(
+                session()->get('admin_id'),
+                'LOGOUT',
+                null,
+                'Admin logout'
+            );
+        }
+
         session()->destroy();
         return redirect()->to('/login');
     }

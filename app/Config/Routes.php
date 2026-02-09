@@ -160,4 +160,31 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('profil-korpri/deactivate/(:num)', 'Admin\ProfilKorpri::deactivate/$1');
     $routes->get('profil-korpri/activate/(:num)', 'Admin\ProfilKorpri::activate/$1');
 
+
+    // ===============================
+    // PROFIL KETUA UMUM
+    // ===============================
+    $routes->get('ketua-umum', 'Admin\KetuaUmumController::index');
+    $routes->get('ketua-umum/create', 'Admin\KetuaUmumController::create');
+    $routes->post('ketua-umum/store', 'Admin\KetuaUmumController::store');
+    $routes->get('ketua-umum/edit/(:num)', 'Admin\KetuaUmumController::edit/$1');
+    $routes->post('ketua-umum/update/(:num)', 'Admin\KetuaUmumController::update/$1');
+    $routes->get('ketua-umum/delete/(:num)', 'Admin\KetuaUmumController::delete/$1');
+    $routes->get('ketua-umum/toggle/(:num)', 'Admin\KetuaUmumController::toggle/$1');
+
 });
+
+//     // ===============================
+//     // PROFIL KETUA UMUM
+//     // ===============================
+//     $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+//         $routes->get('ketua-umum', 'KetuaUmumController::index');
+//         $routes->get('ketua-umum/create', 'KetuaUmumController::create');
+//         $routes->post('ketua-umum/store', 'KetuaUmumController::store');
+//         $routes->get('ketua-umum/edit/(:num)', 'KetuaUmumController::edit/$1');
+//         $routes->post('ketua-umum/update/(:num)', 'KetuaUmumController::update/$1');
+//         $routes->get('ketua-umum/delete/(:num)', 'KetuaUmumController::delete/$1');
+//         $routes->get('ketua-umum/toggle/(:num)', 'Admin\KetuaUmumController::toggle/$1');
+
+// });
+

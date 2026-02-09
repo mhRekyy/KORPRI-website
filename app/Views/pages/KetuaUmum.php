@@ -17,15 +17,17 @@
 
         <!-- Grid Cards -->
         <div class="card-grid">
+            
             <?php foreach ($ketua_list as $ketua) : ?>
                 <div class="profile-card">
                     <div class="card-photo">
-                        <!-- Logika: Tampilkan foto jika ada, jika kosong biarkan abu-abu -->
-                        <?php if (!empty($ketua['foto']) && !empty($ketua['nama'])) : ?>
-                            <!-- Pastikan path gambarnya benar -->
-                            <img src="<?= base_url('assets/img/ketua/' . $ketua['foto']) ?>" alt="<?= $ketua['nama'] ?>" onerror="this.style.display='none'">
+                        <?php if (!empty($ketua['foto'])) : ?>
+                            <img src="<?= base_url('assets/img/ketua/' . $ketua['foto']) ?>"
+                                alt="<?= esc($ketua['nama']) ?>"
+                                class="ketua-photo">
                         <?php endif; ?>
                     </div>
+
                     
                     <div class="card-footer">
                         <!-- Logika: Tampilkan nama jika ada -->

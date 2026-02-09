@@ -12,6 +12,7 @@ use App\Models\PengumumanModel;
 use App\Models\PeraturanModel;
 use App\Models\KeputusanModel;
 use App\Models\SuratEdaranModel;
+use App\Models\KetuaUmumModel;
 
 
 
@@ -230,41 +231,21 @@ class Pages extends BaseController
 
 
 
-    public function KetuaUmum()
-    {
-        $dataKetua = [
-            [
-                'nama' => 'Dr. H. M. Zaini Abdullah', 
-                'foto' => 'ketua_1.jpg', // Ganti dengan nama file aslimu nanti
-                'periode' => '2012 - 2017'
-            ],
-            [
-                'nama' => 'Ir. Nova Iriansyah, M.T.', 
-                'foto' => 'ketua_2.jpg',
-                'periode' => '2017 - 2022'
-            ],
-            [
-                'nama' => 'Achmad Marzuki', 
-                'foto' => 'ketua_3.jpg',
-                'periode' => '2022 - 2023'
-            ],
-            [
-                'nama' => 'Bustami Hamzah, S.E., M.Si.', 
-                'foto' => 'ketua_4.jpg',
-                'periode' => '2023 - Sekarang'
-            ],
-            // Data kosong untuk placeholder (kotak abu-abu) sesuai gambar
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-            ['nama' => '', 'foto' => '', 'periode' => ''],
-        ];
 
-        return view('pages/KetuaUmum', [
-            'pageTitle'  => 'PROFIL KETUA UMUM KORPRI MASA KE MASA',
-            'ketua_list' => $dataKetua // Data ini akan dipanggil di foreach View
-        ]);
-    }
+
+public function KetuaUmum()
+{
+    $model = new KetuaUmumModel();
+
+    $data = $model->getAktifUntukFrontend();
+
+    return view('pages/KetuaUmum', [
+        'pageTitle'  => 'PROFIL KETUA UMUM KORPRI MASA KE MASA',
+        'ketua_list' => $data
+    ]);
+}
+
+
 
 
 
@@ -684,4 +665,8 @@ public function SuratEdaran()
      $data['pageTitle'] = 'Surat Edaran KORPRI';
      return view('pages/SuratEdaran', $data);
 }
+
+
+
+
 }

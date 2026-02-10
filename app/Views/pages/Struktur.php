@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/struktur.css') ?>">
 
+
+<section class="page-wrap">
 <div class="page-container">
   <!-- Watermark Background -->
   <div class="watermark-bg"></div>
@@ -73,6 +75,7 @@ function getIconByJabatan(string $jabatan): string
 
   <!-- ================= LEVEL 1 : KETUA ================= -->
   <div class="row row--ketua">
+    <div class="col">
     <?php
       renderCard(
         $ketua['jabatan'],
@@ -83,6 +86,7 @@ function getIconByJabatan(string $jabatan): string
         null
       );
     ?>
+  </div>
   </div>
 
   <!-- ================= LEVEL 2 : WAKIL ================= -->
@@ -162,6 +166,8 @@ function getIconByJabatan(string $jabatan): string
 
 </div> <!-- /.page-container -->
 
+</section>
+
 <script>
 (() => {
   const svg = document.getElementById('chartSvg');
@@ -183,6 +189,36 @@ function getIconByJabatan(string $jabatan): string
     stroke: '#1f1f1f',
     strokeWidth: 3,
   };
+
+  function isMobile(){
+    return window.matchMedia('(max-width: 991px)').matches;
+  }
+
+  function applyResponsiveCFG(){
+    if(isMobile()){
+      CFG.trunkFromKetua = 16;
+      CFG.dropToWakil = 4;
+
+      CFG.gapToChildTop = 0;
+
+      CFG.wk2SideOut = 8;
+      CFG.wk2TrunkMin = 14;
+      CFG.wk2DropToChild = 14;
+
+      CFG.strokeWidth = 1;
+    }else{
+      CFG.trunkFromKetua = 30;
+      CFG.dropToWakil = 5;
+
+      CFG.gapToChildTop = 0;
+
+      CFG.wk2SideOut = 20;
+      CFG.wk2TrunkMin = 30;
+      CFG.wk2DropToChild = 30;
+
+      CFG.strokeWidth = 3;
+    }
+  }
 
   function rectRel(el){
     const r = el.getBoundingClientRect();        // posisi elemen [web:41]
@@ -315,6 +351,7 @@ function getIconByJabatan(string $jabatan): string
 
 
   function draw(){
+  applyResponsiveCFG();
   setSvgSize();
   svg.innerHTML = '';
   drawKetuaToWakil();

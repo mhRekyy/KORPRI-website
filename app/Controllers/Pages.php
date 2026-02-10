@@ -269,43 +269,52 @@ public function KetuaUmum()
      */
 public function Galeri()
 {
-    $galeriModel = new \App\Models\GaleriModel();
-    $imageModel  = new \App\Models\GaleriImageModel();
-
-    $galeri = $galeriModel
-        ->where('is_active', 1)
-        ->orderBy('id', 'DESC')
-        ->findAll();
-
-    $sections = [];
-
-    foreach ($galeri as $item) {
-
-        $images = $imageModel
-            ->where('galeri_id', $item['id'])
-            ->where('is_active', 1)
-            ->orderBy('id', 'ASC')
-            ->findAll();
-
-        $chunks = array_chunk($images, 7);
-
-        foreach ($chunks as $chunk) {
-            $tiles = [];
-
-            foreach ($chunk as $img) {
-                $tiles[] = [
-                    'image' => $img['image'],
-                    'title' => $img['title'] ?? '', // ✅ AMAN
-                ];
-            }
-
-            $sections[] = $tiles;
-        }
-    }
+    $kegiatan = [
+            [
+                'judul' => 'Rapat Koordinasi KORPRI Aceh',
+                'tanggal' => '12 Agustus 2025',
+                'lokasi' => 'Banda Aceh',
+                'deskripsi' => 'Rapat koordinasi KORPRI Aceh membahas program kerja dan peningkatan pelayanan anggota.',
+                'foto' => [
+                    'foto1.jpg',
+                    'foto2.jpg',
+                    'foto3.jpg',
+                    'foto4.jpg',
+                    'foto5.jpg',
+                    'foto6.jpg',
+                ]
+            ],
+            [
+                'judul' => 'Upacara HUT KORPRI ke-52',
+                'tanggal' => '29 November 2025',
+                'lokasi' => 'Lhokseumawe',
+                'deskripsi' => 'Upacara peringatan HUT KORPRI ke-52.',
+                'foto' => [
+                    'hut1.jpg',
+                    'hut2.jpg',
+                    'hut3.jpg',
+                    'hut4.jpg',
+                    'hut5.jpg',
+                ]
+            ],
+            [
+                'judul' => 'Bakti Sosial KORPRI',
+                'tanggal' => '10 Desember 2025',
+                'lokasi' => 'Aceh Besar',
+                'deskripsi' => 'Kegiatan bakti sosial KORPRI Aceh.',
+                'foto' => [
+                    'baksos1.jpg',
+                    'baksos2.jpg',
+                    'baksos3.jpg',
+                    'baksos4.jpg',
+                    'baksos5.jpg',
+                ]
+            ]
+        ];
 
     return view('pages/Galeri', [
         'pageTitle' => 'GALERI KORPRI ACEH',
-        'sections'  => $sections
+         'kegiatan' => $kegiatan
     ]);
 }
 

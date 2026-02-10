@@ -3,97 +3,95 @@
 
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/galeri.css') ?>">
 
-<section class="galeri-wrap">
+<div class="gallery-container">
 
-  <?php if (empty($sections)): ?>
-    <p style="padding:40px">Belum ada galeri.</p>
-  <?php endif; ?>
-
-  <div class="galeri-fullbleed">
-    <div class="bento-marquee" id="bentoMarquee">
-      <div class="bento-marquee__track" id="bentoTrack">
-
-        <?php
-        for ($repeat = 0; $repeat < 2; $repeat++):
-          foreach ($sections as $section):
-        ?>
-          <div class="bento-section">
-            <div class="bento-grid bento-grid--mosaic">
-
-              <?php foreach ($section as $i => $t): 
-                // pola aman: acak tapi konsisten
-                $variant = $i % 7;
-                $tileClass = match ($variant) {
-                  0 => 'is-wide',
-                  1 => 'is-tall',
-                  2 => 'is-big',
-                  default => 'is-normal'
-                };
-              ?>
-                <div class="bento-tile <?= $tileClass ?>">
-                  <img
-                    class="tile-img"
-                    src="<?= base_url('uploads/galeri/' . $t['image']) ?>"
-                    alt="<?= esc($t['title'] ?? '') ?>"
-                    loading="lazy"
-                  >
-
-                  <?php if (!empty($t['title'])): ?>
-                    <div class="tile-overlay">
-                      <span class="tile-label">
-                        <?= esc($t['title']) ?>
-                      </span>
-                    </div>
-                  <?php endif; ?>
+    <div class="slider" id="slider">
+        <?php foreach ($kegiatan as $index => $item): ?>
+            <section class="slide <?= $index === 0 ? 'active' : '' ?>">
+                <h2><?= $item['judul'] ?></h2>
+                <div class="meta">
+                    <?= $item['tanggal'] ?> | <?= $item['lokasi'] ?>
                 </div>
-              <?php endforeach; ?>
+                <p class="desc"><?= $item['deskripsi'] ?></p>
 
-            </div>
-          </div>
-        <?php
-          endforeach;
-        endfor;
-        ?>
-
-      </div>
+                <div class="photo-grid">
+                    <?php foreach ($item['foto'] as $foto): ?>
+                        <img src="<?= base_url('uploads/galeri/'.$foto) ?>" alt="">
+                    <?php endforeach ?>
+                </div>
+            </section>
+        <?php endforeach ?>
     </div>
-  </div>
 
-</section>
+    <div class="navigation">
+        <button onclick="prevSlide()">← Kegiatan Sebelumnya</button>
+        <span id="counter">1 dari <?= count($kegiatan) ?> Kegiatan</span>
+        <button onclick="nextSlide()">Kegiatan Selanjutnya →</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+</div>
 
 <script>
-(() => {
-  const marquee = document.getElementById('bentoMarquee');
-  const track   = document.getElementById('bentoTrack');
-  if (!marquee || !track) return;
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const counter = document.getElementById('counter');
+const dotsContainer = document.getElementById('dots');
 
-  const SPEED = 40;
-  let paused = false;
-  let x = 0;
-  let last = performance.now();
+let autoSlide; // ⬅️ TAMBAHAN
 
-  function tick(now) {
-    const dt = (now - last) / 1000;
-    last = now;
+// buat dot indikator
+slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => {
+        goToSlide(i);
+        resetAutoSlide(); // ⬅️ TAMBAHAN
+    };
+    dotsContainer.appendChild(dot);
+});
 
-    if (!paused) {
-      x -= SPEED * dt;
-      const resetAt = track.scrollWidth / 2;
-      if (Math.abs(x) >= resetAt) x += resetAt;
-      track.style.transform = `translate3d(${x}px,0,0)`;
-    }
+const dots = document.querySelectorAll('.dot');
 
-    requestAnimationFrame(tick);
-  }
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
 
-  marquee.addEventListener('mouseenter', () => paused = true);
-  marquee.addEventListener('mouseleave', () => {
-    paused = false;
-    last = performance.now();
-  });
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
 
-  requestAnimationFrame(tick);
-})();
+    counter.innerText = `${index + 1} dari ${totalSlides} Kegiatan`;
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+}
+
+// ================= AUTO SLIDE =================
+function startAutoSlide() {
+    autoSlide = setInterval(nextSlide, 8000);
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+}
+
+// start pertama
+startAutoSlide();
 </script>
 
 <?= $this->endSection() ?>

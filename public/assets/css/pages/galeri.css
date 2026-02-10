@@ -1,169 +1,143 @@
-:root{
-  --bg: #f6f2e8;
-  --gap: 10px;           /* Lebih rapat, tapi tidak sempit */
-  --radius: 6px;         /* Border radius kecil */
-  --shadow: 0 8px 22px rgba(0,0,0,.10);
+body {
+    font-family: "Poppins";
+    background: #f6f7f8;
+    margin: 0;
+    padding: 0;
 }
 
-/* =========================
-   BASE
-========================= */
-
-.galeri-wrap{
-  padding: 44px 0;
-  background: var(--bg);
-  font-family: "Poppins";
+.gallery-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
 }
 
-.galeri-fullbleed{
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
+.slide {
+    display: none;
 }
 
-.bento-marquee{
-  width: 100%;
-  overflow: hidden;
+.slide.active {
+    display: block;
+    animation: fade 0.6s ease-in-out;
 }
 
-.bento-marquee__track{
-  display: flex;
-  gap: 20px; /* jarak antar section */
-  width: max-content;
-  will-change: transform;
-  transform: translate3d(0,0,0);
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
-.bento-section{
-  flex: 0 0 auto;
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: #112759;
 }
 
-/* =========================
-   BENTO GRID (UKURAN BESAR + NO GAP)
-========================= */
-
-.bento-grid{
-  display: grid;
-  gap: var(--gap);
-
-  /* INI KUNCI: ukuran kembali besar */
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-auto-rows: 180px;
-
-  /* isi ruang kosong */
-  grid-auto-flow: dense;
+.meta {
+    font-size: 20px;
+    text-align: center;
+    color: #777;
+    margin-bottom: 10px;
 }
 
-/* =========================
-   TILE VARIANT (MENGISI CELAH)
-========================= */
-
-.bento-tile.is-normal{
-  grid-column: span 1;
-  grid-row: span 1;
+.desc {
+    font-size: 24px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #444;
 }
 
-.bento-tile.is-wide{
-  grid-column: span 2;
-  grid-row: span 1;
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.bento-tile.is-tall{
-  grid-column: span 1;
-  grid-row: span 2;
+.photo-grid img {
+    width: 360px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    cursor: pointer;
 }
 
-.bento-tile.is-big{
-  grid-column: span 2;
-  grid-row: span 2;
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
 }
 
-/* =========================
-   TILE STYLE
-========================= */
-
-.bento-tile{
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: #ddd;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease, box-shadow .25s ease;
+.navigation button {
+    background: #112759;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.bento-tile:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(0,0,0,.15);
+.navigation button:hover {
+    background: #030f2b;
 }
 
-/* =========================
-   IMAGE
-========================= */
-
-.tile-img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .45s ease;
+.dots {
+    text-align: center;
+    margin-top: 15px;
 }
 
-.bento-tile:hover .tile-img{
-  transform: scale(1.04);
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
 }
 
-/* =========================
-   OVERLAY
-========================= */
-
-.tile-overlay{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 12px;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.15),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity .25s ease;
+.dot.active {
+    background: #112759;
 }
 
-.bento-tile:hover .tile-overlay{
-  opacity: 1;
-}
+@media (max-width: 991px) {
 
-/* =========================
-   LABEL
-========================= */
+    .gallery-container {
+        padding: 20px;
+        margin: 20px;
+    }
 
-.tile-label{
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 11px;
-  border-radius: 6px;
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(3px);
-}
+    h2 {
+        font-size: 20px;
+    }
 
-/* =========================
-   RESPONSIVE
-========================= */
+    .meta {
+        font-size: 12px;
+    }
 
-@media (max-width: 1024px){
-  .bento-grid{
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-auto-rows: 160px;
-  }
-}
+    .desc {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
 
-@media (max-width: 768px){
-  .bento-grid{
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    grid-auto-rows: 140px;
-  }
+    .photo-grid{
+        gap: 10px;
+    }
+
+    .photo-grid img {
+        width: 48%; /* ⬅️ 2 foto per baris */
+    }
+
+    .navigation {
+        font-size: 10px;
+        gap: 40px;       
+    }
+
+    .navigation button{
+        padding: 5px 10px;
+    }
 }

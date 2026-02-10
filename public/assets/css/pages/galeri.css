@@ -28,43 +28,53 @@ body {
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 700;
     text-align: center;
     color: #112759;
+    margin-bottom: 8px;
 }
 
 .meta {
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     color: #777;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
+/* ===============================
+   DESKRIPSI AMAN & RAPI
+================================ */
 .desc {
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 25px;
+    max-width: 760px;
+    margin: 0 auto 28px;
     color: #444;
+    line-height: 1.6;
+
+    /* PENTING */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
+/* Grid foto publik */
 .photo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
 .photo-grid img {
-    width: 360px;
-    aspect-ratio: 16/9;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
-    cursor: pointer;
 }
 
+/* Navigasi */
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -85,6 +95,7 @@ h2 {
     background: #030f2b;
 }
 
+/* Dots */
 .dots {
     text-align: center;
     margin-top: 15px;
@@ -104,6 +115,9 @@ h2 {
     background: #112759;
 }
 
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 991px) {
 
     .gallery-container {
@@ -112,32 +126,28 @@ h2 {
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .meta {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .desc {
-        font-size: 16px;
-        margin-bottom: 20px;
+        font-size: 15px;
     }
 
-    .photo-grid{
-        gap: 10px;
-    }
-
-    .photo-grid img {
-        width: 48%; /* ⬅️ 2 foto per baris */
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .navigation {
-        font-size: 10px;
-        gap: 40px;       
+        font-size: 12px;
+        gap: 20px;
     }
 
-    .navigation button{
-        padding: 5px 10px;
+    .navigation button {
+        padding: 6px 12px;
     }
 }

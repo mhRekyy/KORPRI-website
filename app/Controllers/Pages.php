@@ -14,6 +14,7 @@ use App\Models\KeputusanModel;
 use App\Models\SuratEdaranModel;
 use App\Models\KetuaUmumModel;
 use App\Models\SekretarisJenderalModel;
+use App\Models\GaleriVideoModel;
 
 
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -229,10 +230,6 @@ class Pages extends BaseController
 
 
 
-
-
-
-
     public function KetuaUmum()
     {
         $model = new KetuaUmumModel();
@@ -262,82 +259,64 @@ class Pages extends BaseController
 
 
 
-    /**
+ /**
      * ===============================
-     * HALAMAN GALERI (STATIS)
+     * HALAMAN GALERI FOTO (DINAMIS)
      * ===============================
      */
     public function Galeri()
-{
-    $kegiatan = [
-            [
-                'judul' => 'Rapat Koordinasi KORPRI Aceh',
-                'tanggal' => '12 Agustus 2025',
-                'lokasi' => 'Banda Aceh',
-                'deskripsi' => 'Rapat koordinasi KORPRI Aceh membahas program kerja dan peningkatan pelayanan anggota.',
-                'foto' => [
-                    'foto1.jpg',
-                    'foto2.jpg',
-                    'foto3.jpg',
-                    'foto4.jpg',
-                    'foto5.jpg',
-                    'foto6.jpg',
-                ]
-            ],
-            [
-                'judul' => 'Upacara HUT KORPRI ke-52',
-                'tanggal' => '29 November 2025',
-                'lokasi' => 'Lhokseumawe',
-                'deskripsi' => 'Upacara peringatan HUT KORPRI ke-52.',
-                'foto' => [
-                    'hut1.jpg',
-                    'hut2.jpg',
-                    'hut3.jpg',
-                    'hut4.jpg',
-                    'hut5.jpg',
-                ]
-            ],
-            [
-                'judul' => 'Bakti Sosial KORPRI',
-                'tanggal' => '10 Desember 2025',
-                'lokasi' => 'Aceh Besar',
-                'deskripsi' => 'Kegiatan bakti sosial KORPRI Aceh.',
-                'foto' => [
-                    'baksos1.jpg',
-                    'baksos2.jpg',
-                    'baksos3.jpg',
-                    'baksos4.jpg',
-                    'baksos5.jpg',
-                ]
-            ]
-        ];
+    {
+        $db = \Config\Database::connect();
 
-    return view('pages/Galeri', [
-        'pageTitle' => 'GALERI KORPRI ACEH',
-         'kegiatan' => $kegiatan
-    ]);
-}
+        $kegiatanData = $db->table('galeri_kegiatan')
+            ->orderBy('tanggal_kegiatan', 'DESC')
+            ->get()
+            ->getResultArray();
 
+        $kegiatan = [];
+
+        foreach ($kegiatanData as $row) {
+
+            $foto = $db->table('galeri_foto')
+                ->select('file_name')
+                ->where('galeri_kegiatan_id', $row['id'])
+                ->orderBy('id', 'ASC')
+                ->limit(6)
+                ->get()
+                ->getResultArray();
+
+            $kegiatan[] = [
+                'judul'     => $row['judul_kegiatan'],
+                'tanggal'   => date('d F Y', strtotime($row['tanggal_kegiatan'])),
+                'lokasi'    => $row['lokasi'] ?? '-',
+                'deskripsi' => $row['deskripsi'],
+                'foto'      => array_column($foto, 'file_name'),
+            ];
+        }
+
+        return view('pages/Galeri', [
+            'pageTitle' => 'GALERI KORPRI ACEH',
+            'kegiatan'  => $kegiatan,
+        ]);
+    }
+
+    /**
+     * ===============================
+     * HALAMAN GALERI VIDEO (DINAMIS)
+     * ===============================
+     */
     public function galeri_video()
     {
-        $data = [
-                [
-                    'youtube_url' => 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
-                    'tanggal' => '2026-01-27',
-                    'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
-                ],
-                [
-                    'youtube_url' => 'https://youtu.be/dQw4w9WgXcQ',
-                    'tanggal' => '2026-01-26',
-                    'deskripsi' => 'Contoh deskripsi kegiatan (bisa dari DB).',
-                ],
-            ];
+        $model = new GaleriVideoModel();
 
-            return view('pages/galeri_video', [
-                'videos' => $data,
-                'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
-            ]);
+        $videos = $model->orderBy('created_at', 'DESC')->findAll();
+
+        return view('pages/galeri_video', [
+            'pageTitle' => 'GALERI VIDEO KORPRI ACEH',
+            'videos'    => $videos,
+        ]);
     }
+
 
     /**
      * ===============================

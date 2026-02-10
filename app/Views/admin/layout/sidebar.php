@@ -39,6 +39,25 @@
       </ul>
     </li>
 
+    <!-- GALERI -->
+    <li class="menu-item has-submenu <?= str_starts_with($uri, 'admin/galeri') ? 'open' : '' ?>">
+      <span class="menu-label">Galeri</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/galeri/foto') ?>"
+             class="<?= str_starts_with($uri, 'admin/galeri/foto') ? 'active' : '' ?>">
+            Foto Kegiatan
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/galeri/video') ?>"
+             class="<?= str_starts_with($uri, 'admin/galeri/video') ? 'active' : '' ?>">
+            Video Kegiatan
+          </a>
+        </li>
+      </ul>
+    </li>
+
     <!-- KEBIJAKAN -->
     <li class="menu-item has-submenu open">
       <span class="menu-label">Kebijakan</span>
@@ -73,21 +92,25 @@
              class="<?= str_starts_with($uri, 'admin/struktur-dpk') ? 'active' : '' ?>">
             Struktur DPK
           </a>
+        </li>
         <li>
           <a href="<?= base_url('admin/profil-korpri') ?>"
              class="<?= str_starts_with($uri, 'admin/profil-korpri') ? 'active' : '' ?>">
             Profil KORPRI
           </a>
         </li>
+        <li>
           <a href="<?= base_url('admin/ketua-umum') ?>"
              class="<?= str_starts_with($uri, 'admin/ketua-umum') ? 'active' : '' ?>">
             Ketua Umum
           </a>
         </li>
+        <li>
           <a href="<?= base_url('admin/sekretaris-jenderal') ?>"
-            class="<?= str_starts_with($uri, 'admin/sekretaris-jenderal') ? 'active' : '' ?>">
+             class="<?= str_starts_with($uri, 'admin/sekretaris-jenderal') ? 'active' : '' ?>">
             Sekretaris Jenderal
           </a>
+        </li>
       </ul>
     </li>
 

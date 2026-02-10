@@ -110,6 +110,8 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('artikel/edit/(:num)', 'Admin\Artikel::edit/$1');
     $routes->get('artikel/delete/(:num)', 'Admin\Artikel::delete/$1');
     $routes->get('artikel/toggle/(:num)', 'Admin\Artikel::toggle/$1');
+    $routes->post('artikel/update/(:num)', 'Admin\Artikel::update/$1');
+
 
     // ===============================
     // KEPUTUSAN

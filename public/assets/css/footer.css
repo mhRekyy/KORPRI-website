@@ -272,3 +272,60 @@
     justify-content: flex-start;
   }
 }
+
+.korpri-footer__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #eaeaea;
+  text-decoration: none;
+}
+
+.korpri-footer__link:hover {
+  color: #f2c14e; /* emas KORPRI */
+}
+
+.korpri-footer__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.korpri-footer__menu .korpri-footer__item {
+  margin-bottom: 12px;
+}
+
+.korpri-footer__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #eaeaea;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.korpri-footer__link i {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.korpri-footer__link:hover {
+  color: #f2c14e;
+  transform: translateX(4px);
+}
+
+
+
+/* @media (max-width: 991px) {
+  .korpri-footer__menu-wrapper {
+    transform: none;
+  }
+} */
+
+@media (min-width: 1200px) {
+  .korpri-footer .col-lg-4:nth-child(2) {
+    transform: translateX(40px);
+  }
+}
+

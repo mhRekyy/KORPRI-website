@@ -458,8 +458,6 @@ public function Artikel()
 
 
 
-
-
 public function ArtikelDetail($slug)
 {
     $model = new ArtikelModel();
@@ -475,16 +473,21 @@ public function ArtikelDetail($slug)
         throw PageNotFoundException::forPageNotFound('Artikel tidak ditemukan');
     }
 
-    // === INI YANG DIBUTUHKAN VIEW ===
+    // Artikel terbaru (sidebar) — setara Berita Terkini
     $artikelTerbaru = $model->getArtikelTerkini(5, $artikel['id']);
+
+    // Artikel terkait — setara Berita Terkait
+    $artikelTerkait = $model->getArtikelTerkait($artikel['id'], 3);
 
     return view('pages/ArtikelDetail', [
         'pageTitle'      => $artikel['title'],
         'artikel'        => $artikel,
-        'artikelTerbaru' => $artikelTerbaru, // ← NAMA HARUS SAMA
-        // 'artikelTerkait' => $artikelTerkait (kalau sudah ada)
+        'artikelTerbaru' => $artikelTerbaru,
+        'artikelTerkait' => $artikelTerkait,
     ]);
 }
+
+
 
 
 

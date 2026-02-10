@@ -39,59 +39,55 @@
       </div>
 
       <!-- Tengah: Statistik -->
-      <div class="col-12 col-lg-4">
-        <h6 class="korpri-footer__heading1">Statistik Pengunjung</h6>
+<!-- Tengah: Informasi & Layanan -->
+  <div class="col-12 col-lg-4">
+    <h6 class="korpri-footer__heading1">Informasi & Layanan</h6>
 
-        <ul class="korpri-footer__list">
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Pengunjung Hari ini
-            </span>
-            <span class="korpri-footer__value">133 <span class="korpri-footer__unit">USER</span></span>
-          </li>
+    <ul class="korpri-footer__list korpri-footer__menu">
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('profile') ?>" class="korpri-footer__link">
+          <i class="bi bi-building korpri-footer__icon"></i>
+          Profil Organisasi Korpri
+        </a>
+      </li>
 
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Pengunjung Kemarin
-            </span>
-            <span class="korpri-footer__value">332 <span   class="korpri-footer__unit">USER</span></span>
-          </li>
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('struktur') ?>" class="korpri-footer__link">
+          <i class="bi bi-diagram-3-fill korpri-footer__icon"></i>
+          Struktur Kepengurusan korpri
+        </a>
+      </li>
 
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Total Pengunjung
-            </span>
-            <span class="korpri-footer__value">575.946 <span class="korpri-footer__unit">USER</span></span>
-          </li>
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('berita') ?>" class="korpri-footer__link">
+          <i class="bi bi-newspaper korpri-footer__icon"></i>
+          Berita & Kegiatan Korpri
+        </a>
+      </li>
 
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Pengunjung Bulan ini
-            </span>
-            <span class="korpri-footer__value">29.419 <span class="korpri-footer__unit">USER</span></span>
-          </li>
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('pengumuman') ?>" class="korpri-footer__link">
+          <i class="bi bi-megaphone-fill korpri-footer__icon"></i>
+          Pengumuman Resmi Korpri
+        </a>
+      </li>
 
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Pengunjung Tahun ini
-            </span>
-            <span class="korpri-footer__value">4.903 <span class="korpri-footer__unit">USER</span></span>
-          </li>
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('peraturan') ?>" class="korpri-footer__link">
+          <i class="bi bi-file-earmark-text-fill korpri-footer__icon"></i>
+          Peraturan & Keputusan Korpri
+        </a>
+      </li>
 
-          <li class="korpri-footer__item">
-            <span class="korpri-footer__item-left">
-              <i class="bi bi-people-fill korpri-footer__icon"></i>
-              Pengunjung Online
-            </span>
-            <span class="korpri-footer__value">133 <span class="korpri-footer__unit">USER</span></span>
-          </li>
-        </ul>
-      </div>
+      <li class="korpri-footer__item">
+        <a href="<?= base_url('galeri') ?>" class="korpri-footer__link">
+          <i class="bi bi-images korpri-footer__icon"></i>
+          Galeri Kegiatan Korpri
+        </a>
+      </li>
+    </ul>
+  </div>
+
 
       <!-- Kanan: Kontak -->
       <div class="col-12 col-lg-4 korpri-footer__contact-col">

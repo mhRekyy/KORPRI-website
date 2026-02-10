@@ -25,7 +25,7 @@ class ArtikelModel extends Model
 
     protected $useTimestamps = true;
 
-    // ⬇️ WAJIB ADA
+    // === Artikel Terkini (sidebar) ===
     public function getArtikelTerkini(int $limit = 5, int $exceptId = null): array
     {
         $builder = $this->where('is_active', 1)
@@ -39,4 +39,16 @@ class ArtikelModel extends Model
 
         return $builder->findAll();
     }
+
+    // === ARTIKEL TERKAIT (setara Berita Terkait) ===
+    public function getArtikelTerkait(int $exceptId, int $limit = 3): array
+    {
+        return $this->where('is_active', 1)
+                    ->where('published_at <=', date('Y-m-d H:i:s'))
+                    ->where('id !=', $exceptId)
+                    ->orderBy('published_at', 'DESC')
+                    ->limit($limit)
+                    ->findAll();
+    }
+
 }

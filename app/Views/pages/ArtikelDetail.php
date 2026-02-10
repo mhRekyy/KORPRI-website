@@ -100,14 +100,19 @@
                     <div class="berita-terkait-item">
 
                         <?php if (!empty($item['thumbnail'])): ?>
-                        <img src="<?= base_url('uploads/artikel/' . $item['thumbnail']) ?>"
-                             class="img-fluid mb-2"
-                             alt="<?= esc($item['title']) ?>">
+                            <img src="<?= base_url('uploads/artikel/' . $item['thumbnail']) ?>"
+                                 class="img-fluid mb-2"
+                                 alt="<?= esc($item['title']) ?>">
+                        <?php else: ?>
+                            <img src="<?= base_url('uploads/artikel/default.jpg') ?>"
+                                 class="img-fluid mb-2"
+                                 alt="<?= esc($item['title']) ?>">
                         <?php endif; ?>
 
                         <a href="<?= base_url('artikel/' . $item['slug']) ?>">
                             <strong><?= esc($item['title']) ?></strong>
                         </a>
+
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -115,6 +120,7 @@
     </div>
 </section>
 <?php endif; ?>
+
 
 
 

@@ -1,7 +1,7 @@
 <?= $this->extend('admin/layout/main') ?>
 <?= $this->section('content') ?>
 
-<link rel="stylesheet" href="<?= base_url('assets/css/admin/form.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/admin/Create.css') ?>">
 
 <div class="form-wrapper">
 

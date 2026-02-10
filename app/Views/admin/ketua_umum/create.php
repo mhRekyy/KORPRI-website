@@ -1,65 +1,93 @@
 <?= $this->extend('admin/layout/main') ?>
 <?= $this->section('content') ?>
 
-<h4 class="mb-3">Tambah Ketua Umum</h4>
+<link rel="stylesheet" href="<?= base_url('assets/css/admin/Create.css') ?>">
 
-<form action="<?= base_url('admin/ketua-umum/store') ?>" method="post" enctype="multipart/form-data">
-    <?= csrf_field() ?>
+<div class="form-wrapper">
 
-    <table class="table table-bordered align-middle">
-        <tbody>
-            <tr>
-                <th width="200">Nama Ketua Umum</th>
-                <td>
-                    <input type="text" name="nama" class="form-control" required>
-                </td>
-            </tr>
+    <h1 class="form-title">Tambah Ketua Umum</h1>
 
-            <tr>
-                <th>Foto</th>
-                <td>
-                    <input type="file" name="foto" class="form-control" accept="image/*">
-                    <small class="text-muted">Format JPG / PNG. Boleh dikosongkan.</small>
-                </td>
-            </tr>
+    <div class="form-card">
+        <form action="<?= base_url('admin/ketua-umum/store') ?>"
+              method="post"
+              enctype="multipart/form-data">
 
-            <tr>
-                <th>Masa Jabatan Mulai</th>
-                <td>
-                    <input type="number" name="masa_jabat_mulai" class="form-control" placeholder="Contoh: 2017" required>
-                </td>
-            </tr>
+            <?= csrf_field() ?>
 
-            <tr>
-                <th>Masa Jabatan Selesai</th>
-                <td>
-                    <input type="number" name="masa_jabat_selesai" class="form-control" placeholder="Kosongkan jika masih menjabat">
-                </td>
-            </tr>
+            <!-- NAMA -->
+            <div class="form-group">
+                <label>Nama Ketua Umum</label>
+                <input type="text"
+                       name="nama"
+                       value="<?= old('nama') ?>"
+                       required>
+            </div>
 
-            <tr>
-                <th>Urutan Tampil</th>
-                <td>
-                    <input type="number" name="urutan" class="form-control" value="0">
-                </td>
-            </tr>
+            <!-- FOTO -->
+            <div class="form-group">
+                <label>Foto</label>
+                <input type="file"
+                       name="foto"
+                       accept="image/*">
+                <small class="text-muted">
+                    Format JPG / PNG. Boleh dikosongkan.
+                </small>
+            </div>
 
-            <tr>
-                <th>Status</th>
-                <td>
-                    <select name="is_active" class="form-select">
-                        <option value="1" selected>Aktif</option>
-                        <option value="0">Nonaktif</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            <!-- MASA JABAT MULAI -->
+            <div class="form-group">
+                <label>Masa Jabatan Mulai</label>
+                <input type="number"
+                       name="masa_jabat_mulai"
+                       placeholder="Contoh: 2017"
+                       value="<?= old('masa_jabat_mulai') ?>"
+                       required>
+            </div>
 
-    <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="<?= base_url('admin/ketua-umum') ?>" class="btn btn-secondary">Kembali</a>
+            <!-- MASA JABAT SELESAI -->
+            <div class="form-group">
+                <label>Masa Jabatan Selesai</label>
+                <input type="number"
+                       name="masa_jabat_selesai"
+                       placeholder="Kosongkan jika masih menjabat"
+                       value="<?= old('masa_jabat_selesai') ?>">
+            </div>
+
+            <!-- URUTAN -->
+            <div class="form-group">
+                <label>Urutan Tampil</label>
+                <input type="number"
+                       name="urutan"
+                       value="<?= old('urutan', 0) ?>">
+            </div>
+
+            <!-- STATUS -->
+            <div class="form-group">
+                <label>Status</label>
+                <select name="is_active">
+                    <option value="1" <?= old('is_active', '1') == '1' ? 'selected' : '' ?>>
+                        Aktif
+                    </option>
+                    <option value="0" <?= old('is_active') == '0' ? 'selected' : '' ?>>
+                        Nonaktif
+                    </option>
+                </select>
+            </div>
+
+            <!-- ACTION -->
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    Simpan
+                </button>
+
+                <a href="<?= base_url('admin/ketua-umum') ?>"
+                   class="btn-secondary">
+                    Kembali
+                </a>
+            </div>
+
+        </form>
     </div>
-</form>
+</div>
 
 <?= $this->endSection() ?>

@@ -60,6 +60,9 @@ $routes->get('admin', function () {
     return redirect()->to('/admin/dashboard');
 });
 
+// ===============================
+// ADMIN ROOT (TRAILING SLASH FIX)
+// ===============================
 $routes->get('admin/', function () {
     if (! session()->get('admin_logged_in')) {
         return redirect()->to('/login');
@@ -110,6 +113,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('artikel/toggle/(:num)', 'Admin\Artikel::toggle/$1');
     $routes->post('artikel/update/(:num)', 'Admin\Artikel::update/$1');
 
+
     // ===============================
     // KEPUTUSAN
     // ===============================
@@ -159,20 +163,17 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('profil-korpri/deactivate/(:num)', 'Admin\ProfilKorpri::deactivate/$1');
     $routes->get('profil-korpri/activate/(:num)', 'Admin\ProfilKorpri::activate/$1');
 
-    // ===============================
+
     // USER ADMIN
-    // ===============================
     $routes->get('user-admin', 'Admin\UserAdmin::index');
     $routes->get('user-admin/create', 'Admin\UserAdmin::create');
     $routes->post('user-admin/store', 'Admin\UserAdmin::store');
     $routes->get('user-admin/edit/(:num)', 'Admin\UserAdmin::edit/$1');
     $routes->post('user-admin/update/(:num)', 'Admin\UserAdmin::update/$1');
-
-    // ===============================
-    // ADMIN LOG
-    // ===============================
     $routes->get('logs', 'Admin\AdminLog::index');
 
+
+    
     // ===============================
     // PROFIL KETUA UMUM
     // ===============================
@@ -195,29 +196,20 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('sekretaris-jenderal/delete/(:num)', 'Admin\SekretarisJenderalController::delete/$1');
     $routes->get('sekretaris-jenderal/toggle/(:num)', 'Admin\SekretarisJenderalController::toggle/$1');
 
-    // ==================================================
-    // GALERI FOTO (ADMIN)  ✅ INI YANG BARU
-    // ==================================================
-    $routes->get('galeri/foto', 'Admin\GaleriFotoController::index');
-    $routes->get('galeri/foto/create', 'Admin\GaleriFotoController::create');
-    $routes->post('galeri/foto/store', 'Admin\GaleriFotoController::store');
-    $routes->get('galeri/foto/edit/(:num)', 'Admin\GaleriFotoController::edit/$1');
-    $routes->post('galeri/foto/update/(:num)', 'Admin\GaleriFotoController::update/$1');
-    $routes->post('galeri/foto/delete/(:num)', 'Admin\GaleriFotoController::delete/$1');
-
-    $routes->get('galeri/foto/kelola/(:num)', 'Admin\GaleriFotoController::kelolaFoto/$1');
-    $routes->post('galeri/foto/upload/(:num)', 'Admin\GaleriFotoController::uploadFoto/$1');
-    $routes->post('galeri/foto/hapus-foto/(:num)', 'Admin\GaleriFotoController::hapusFoto/$1');
-
-    // ==================================================
-    // GALERI VIDEO (ADMIN)
-    // ==================================================
-    $routes->get('galeri/video', 'Admin\GaleriVideoController::index');
-    $routes->get('galeri/video/create', 'Admin\GaleriVideoController::create');
-    $routes->post('galeri/video/store', 'Admin\GaleriVideoController::store');
-    $routes->get('galeri/video/edit/(:num)', 'Admin\GaleriVideoController::edit/$1');
-    $routes->post('galeri/video/update/(:num)', 'Admin\GaleriVideoController::update/$1');
-    $routes->post('galeri/video/delete/(:num)', 'Admin\GaleriVideoController::delete/$1');
-
 
 });
+
+//     // ===============================
+//     // PROFIL KETUA UMUM
+//     // ===============================
+//     $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+//         $routes->get('ketua-umum', 'KetuaUmumController::index');
+//         $routes->get('ketua-umum/create', 'KetuaUmumController::create');
+//         $routes->post('ketua-umum/store', 'KetuaUmumController::store');
+//         $routes->get('ketua-umum/edit/(:num)', 'KetuaUmumController::edit/$1');
+//         $routes->post('ketua-umum/update/(:num)', 'KetuaUmumController::update/$1');
+//         $routes->get('ketua-umum/delete/(:num)', 'KetuaUmumController::delete/$1');
+//         $routes->get('ketua-umum/toggle/(:num)', 'Admin\KetuaUmumController::toggle/$1');
+
+// });
+

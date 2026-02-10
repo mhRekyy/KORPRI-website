@@ -1,0 +1,135 @@
+/* =========================
+   PAGE
+========================= */
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+/* =========================
+   FORM CONTAINER
+========================= */
+.form-admin {
+    max-width: 900px;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* =========================
+   FORM GROUP
+========================= */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+/* =========================
+   INPUT
+========================= */
+.form-input,
+.form-textarea,
+.form-file {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-file:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+.form-textarea {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* =========================
+   THUMBNAIL
+========================= */
+.thumbnail-preview {
+    margin-bottom: 10px;
+}
+
+.thumbnail-preview img {
+    max-width: 160px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+.form-check {
+    margin-top: 8px;
+}
+
+.check-label {
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================
+   ACTION BUTTON
+========================= */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+    padding: 9px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}

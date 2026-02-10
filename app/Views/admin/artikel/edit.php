@@ -1,44 +1,77 @@
 <?= $this->extend('admin/layout/main') ?>
 <?= $this->section('content') ?>
 
-<h1>Edit Artikel</h1>
+<link rel="stylesheet" href="<?= base_url('assets/css/admin/edit.css') ?>">
 
-<form action="<?= base_url('admin/artikel/update/' . $artikel['id']) ?>" method="post" enctype="multipart/form-data">
+<h1 class="page-title">Edit Artikel</h1>
+
+<form action="<?= base_url('admin/artikel/update/' . $artikel['id']) ?>"
+      method="post"
+      enctype="multipart/form-data"
+      class="form-admin">
+
     <?= csrf_field() ?>
 
-    <label>Judul Artikel</label>
-    <input type="text" name="title" value="<?= esc($artikel['title']) ?>" required style="width:100%">
+    <!-- JUDUL -->
+    <div class="form-group">
+        <label class="form-label">Judul Artikel</label>
+        <input type="text"
+               name="title"
+               value="<?= esc($artikel['title']) ?>"
+               required
+               class="form-input">
+    </div>
 
-    <br><br>
+    <!-- RINGKASAN -->
+    <div class="form-group">
+        <label class="form-label">Ringkasan</label>
+        <textarea name="excerpt"
+                  rows="3"
+                  class="form-textarea"><?= esc($artikel['excerpt']) ?></textarea>
+    </div>
 
-    <label>Ringkasan</label>
-    <textarea name="excerpt" rows="3" style="width:100%"><?= esc($artikel['excerpt']) ?></textarea>
+    <!-- KONTEN -->
+    <div class="form-group">
+        <label class="form-label">Konten</label>
+        <textarea name="content"
+                  rows="8"
+                  class="form-textarea"><?= esc($artikel['content']) ?></textarea>
+    </div>
 
-    <br><br>
+    <!-- THUMBNAIL -->
+    <div class="form-group">
+        <label class="form-label">Thumbnail</label>
 
-    <label>Konten</label>
-    <textarea name="content" rows="8" style="width:100%"><?= esc($artikel['content']) ?></textarea>
+        <?php if (!empty($artikel['thumbnail'])): ?>
+            <div class="thumbnail-preview">
+                <img src="<?= base_url('uploads/artikel/' . $artikel['thumbnail']) ?>"
+                     alt="Thumbnail">
+            </div>
+        <?php endif ?>
 
-    <br><br>
+        <input type="file"
+               name="thumbnail"
+               accept="image/*"
+               class="form-file">
+    </div>
 
-    <label>Thumbnail</label><br>
-    <?php if (!empty($artikel['thumbnail'])): ?>
-        <img src="<?= base_url('uploads/artikel/' . $artikel['thumbnail']) ?>" width="150"><br><br>
-    <?php endif ?>
+    <!-- STATUS -->
+    <div class="form-group form-check">
+        <label class="check-label">
+            <input type="checkbox"
+                   name="is_active"
+                   value="1"
+                   <?= $artikel['is_active'] ? 'checked' : '' ?>>
+            Publish
+        </label>
+    </div>
 
-    <input type="file" name="thumbnail" accept="image/*">
+    <!-- ACTION -->
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="<?= base_url('admin/artikel') ?>" class="btn btn-secondary">Kembali</a>
+    </div>
 
-    <br><br>
-
-    <label>
-        <input type="checkbox" name="is_active" value="1" <?= $artikel['is_active']?'checked':'' ?>>
-        Publish
-    </label>
-
-    <br><br>
-
-    <button type="submit">Update</button>
-    <a href="<?= base_url('admin/artikel') ?>">Kembali</a>
 </form>
 
 <?= $this->endSection() ?>

@@ -1,7 +1,7 @@
 <?= $this->extend('admin/layout/main') ?>
 <?= $this->section('content') ?>
 
-<link rel="stylesheet" href="<?= base_url('assets/css/admin/artikel.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/admin/index.css') ?>">
 
 <h1 class="admin-title">Berita</h1>
 

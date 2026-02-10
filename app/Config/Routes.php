@@ -87,8 +87,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('berita/store', 'Admin\Berita::store');
     $routes->get('berita/edit/(:num)', 'Admin\Berita::edit/$1');
     $routes->post('berita/update/(:num)', 'Admin\Berita::update/$1');
-    $routes->post('berita/delete/(:num)', 'Admin\Berita::delete/$1');
-    $routes->post('berita/toggle/(:num)', 'Admin\Berita::toggle/$1');
+
+    $routes->get('berita/toggle/(:num)', 'Admin\Berita::toggle/$1');
+    $routes->get('berita/delete/(:num)', 'Admin\Berita::delete/$1');
 
     // ===============================
     // PERATURAN

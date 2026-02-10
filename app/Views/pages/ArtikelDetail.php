@@ -1,6 +1,6 @@
 <?= $this->extend('layout/main_inner') ?>
 <?= $this->section('content') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/pages/berita-detail.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pages/artikel-detail.css') ?>">
 
 <!-- HERO / BANNER -->
 <section class="hero-detail-berita">
@@ -16,13 +16,11 @@
             <div class="col-lg-8">
 
                 <!-- Thumbnail -->
-                <?php if (!empty($artikel['thumbnail'])): ?>
                 <div class="berita-image mb-3">
                     <img src="<?= base_url('uploads/artikel/' . $artikel['thumbnail']) ?>"
                          alt="<?= esc($artikel['title']) ?>"
                          class="img-fluid">
                 </div>
-                <?php endif; ?>
 
                 <!-- Meta -->
                 <div class="berita-meta mb-2">

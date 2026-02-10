@@ -10,6 +10,7 @@
             <th>Waktu</th>
             <th>Admin</th>
             <th>Aksi</th>
+            <th>Keterangan</th> <!-- ✅ BARU -->
             <th>Target ID</th>
             <th>IP Address</th>
             <th>Device</th>
@@ -18,7 +19,7 @@
     <tbody>
         <?php if (empty($logs)): ?>
             <tr>
-                <td colspan="7" align="center">Belum ada log aktivitas</td>
+                <td colspan="8" align="center">Belum ada log aktivitas</td>
             </tr>
         <?php else: ?>
             <?php foreach ($logs as $i => $log): ?>
@@ -27,9 +28,17 @@
                     <td><?= date('d-m-Y H:i:s', strtotime($log['created_at'])) ?></td>
                     <td><?= esc($log['admin_name'] ?? '-') ?></td>
                     <td><?= esc($log['action']) ?></td>
+
+                    <!-- ✅ KETERANGAN -->
+                    <td style="max-width: 350px; white-space: normal;">
+                        <?= esc($log['description'] ?? '-') ?>
+                    </td>
+
                     <td><?= esc($log['target_id'] ?? '-') ?></td>
                     <td><?= esc($log['ip_address']) ?></td>
-                    <td><?= esc(substr($log['user_agent'], 0, 40)) ?>...</td>
+                    <td title="<?= esc($log['user_agent']) ?>">
+                        <?= esc(substr($log['user_agent'], 0, 40)) ?>…
+                    </td>
                 </tr>
             <?php endforeach ?>
         <?php endif ?>

@@ -4,56 +4,69 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/pages/galeri_video.css') ?>">
 
 <section class="vk-wrap">
-
-<div class="watermark-bg"></div>
+  <div class="watermark-bg"></div>
 
   <div class="vk-container">
 
+    <?php if (empty($videos)): ?>
+        <div class="empty-state">
+            Dokumentasi video kegiatan belum tersedia.
+        </div>
+    <?php else: ?>
+
     <div class="vk-list">
       <?php foreach ($videos as $i => $v): ?>
-        <div class="vk-item <?= ($i % 3 === 0) ? 'is-left' : 'is-right' ?>"
-             data-youtube-url="<?= esc($v['youtube_url']) ?>">
+        <div class="vk-item <?= ($i % 2 === 0) ? 'is-left' : 'is-right' ?>">
 
           <!-- CARD VIDEO -->
           <div class="vk-card">
-            <button class="vk-thumb" type="button" aria-label="Play video">
-              <img class="vk-thumb__img" alt="Thumbnail video">
+            <button
+              class="vk-thumb"
+              type="button"
+              aria-label="Putar video"
+              data-video-id="<?= esc($v['youtube_video_id']) ?>"
+            >
+              <img
+                class="vk-thumb__img"
+                src="<?= esc($v['thumbnail_url']) ?>"
+                alt="<?= esc($v['youtube_title']) ?>"
+                loading="lazy"
+              >
               <span class="vk-thumb__play"></span>
             </button>
 
             <div class="vk-card__meta">
-              <div class="vk-card__title js-title">Memuat judul…</div>
-              <div class="vk-card__date"><?= date('d F Y', strtotime($v['tanggal'])) ?></div>
+              <div class="vk-card__title">
+                <?= esc($v['youtube_title']) ?>
+              </div>
+              <div class="vk-card__date">
+                <?= date('d F Y', strtotime($v['created_at'])) ?>
+              </div>
             </div>
           </div>
 
           <!-- DESKRIPSI -->
           <div class="vk-desc">
-            <h3 class="vk-desc__title js-title2">Memuat judul…</h3>
-            <p class="vk-desc__text"><?= esc($v['deskripsi']) ?></p>
+            <h3 class="vk-desc__title">
+              <?= esc($v['youtube_title']) ?>
+            </h3>
+            <?php if (! empty($v['description'])): ?>
+              <p class="vk-desc__text">
+                <?= esc($v['description']) ?>
+              </p>
+            <?php endif; ?>
           </div>
 
         </div>
       <?php endforeach; ?>
     </div>
 
+    <?php endif; ?>
+
   </div>
 </section>
 
 <script>
-  function getYouTubeId(url) {
-    url = String(url || '');
-    const m = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{6,})/);
-    return m ? m[1] : null;
-  }
-
-  async function getOEmbed(url) {
-    const endpoint = 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(url);
-    const res = await fetch(endpoint);
-    if (!res.ok) throw new Error('oEmbed failed');
-    return await res.json();
-  }
-
   function mountIframe(container, videoId) {
     const iframe = document.createElement('iframe');
     iframe.className = 'vk-iframe';
@@ -65,40 +78,15 @@
     container.appendChild(iframe);
   }
 
-  document.querySelectorAll('.vk-item').forEach(async (item) => {
-    const url = item.dataset.youtubeUrl;
-    const videoId = getYouTubeId(url);
-
-    // set thumbnail
-    const img = item.querySelector('.vk-thumb__img');
-    if (videoId) {
-      img.src = 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
-      img.dataset.videoId = videoId;
-    }
-
-    // set title from oEmbed
-    try {
-      const data = await getOEmbed(url);
-      item.querySelectorAll('.js-title, .js-title2').forEach(el => el.textContent = data.title);
-    } catch (e) {
-      item.querySelectorAll('.js-title, .js-title2').forEach(el => el.textContent = 'Video Kegiatan');
-    }
-  });
-
-  // click play
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', function (e) {
     const btn = e.target.closest('.vk-thumb');
     if (!btn) return;
 
-    const item = btn.closest('.vk-item');
-    const img = btn.querySelector('.vk-thumb__img');
-    const vid = img.dataset.videoId;
-    if (!vid) return;
+    const videoId = btn.dataset.videoId;
+    if (!videoId) return;
 
-    // ganti area thumbnail jadi iframe autoplay
-    mountIframe(btn.parentElement, vid);
+    mountIframe(btn.parentElement, videoId);
   });
 </script>
-
 
 <?= $this->endSection() ?>

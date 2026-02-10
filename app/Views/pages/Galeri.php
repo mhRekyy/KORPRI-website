@@ -8,16 +8,23 @@
     <div class="slider" id="slider">
         <?php foreach ($kegiatan as $index => $item): ?>
             <section class="slide <?= $index === 0 ? 'active' : '' ?>">
-                <h2><?= $item['judul'] ?></h2>
+                <h2><?= esc($item['judul']) ?></h2>
                 <div class="meta">
-                    <?= $item['tanggal'] ?> | <?= $item['lokasi'] ?>
+                    <?= esc($item['tanggal']) ?> | <?= esc($item['lokasi']) ?>
                 </div>
-                <p class="desc"><?= $item['deskripsi'] ?></p>
+                <p class="desc"><?= esc($item['deskripsi']) ?></p>
 
                 <div class="photo-grid">
-                    <?php foreach ($item['foto'] as $foto): ?>
-                        <img src="<?= base_url('uploads/galeri/'.$foto) ?>" alt="">
-                    <?php endforeach ?>
+                    <?php if (empty($item['foto'])): ?>
+                        <p class="text-muted">Belum ada foto untuk kegiatan ini.</p>
+                    <?php else: ?>
+                        <?php foreach ($item['foto'] as $foto): ?>
+                            <img
+                                src="<?= base_url('uploads/galeri/foto/' . $foto) ?>"
+                                alt="Foto Kegiatan"
+                            >
+                        <?php endforeach ?>
+                    <?php endif; ?>
                 </div>
             </section>
         <?php endforeach ?>
@@ -39,7 +46,7 @@ const totalSlides = slides.length;
 const counter = document.getElementById('counter');
 const dotsContainer = document.getElementById('dots');
 
-let autoSlide; // ⬅️ TAMBAHAN
+let autoSlide;
 
 // buat dot indikator
 slides.forEach((_, i) => {
@@ -48,7 +55,7 @@ slides.forEach((_, i) => {
     if (i === 0) dot.classList.add('active');
     dot.onclick = () => {
         goToSlide(i);
-        resetAutoSlide(); // ⬅️ TAMBAHAN
+        resetAutoSlide();
     };
     dotsContainer.appendChild(dot);
 });
@@ -80,7 +87,6 @@ function goToSlide(index) {
     showSlide(currentSlide);
 }
 
-// ================= AUTO SLIDE =================
 function startAutoSlide() {
     autoSlide = setInterval(nextSlide, 8000);
 }
@@ -90,7 +96,6 @@ function resetAutoSlide() {
     startAutoSlide();
 }
 
-// start pertama
 startAutoSlide();
 </script>
 

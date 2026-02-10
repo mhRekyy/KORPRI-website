@@ -143,46 +143,46 @@ class Pages extends BaseController
         ]);
     }
 
-    public function kirimKontak()
-{
-    $nama   = $this->request->getPost('nama');
-    $nomor  = $this->request->getPost('nomor');
-    $email  = $this->request->getPost('email');
-    $subjek = $this->request->getPost('subjek');
-    $pesan  = $this->request->getPost('pesan');
+        public function kirimKontak()
+    {
+        $nama   = $this->request->getPost('nama');
+        $nomor  = $this->request->getPost('nomor');
+        $email  = $this->request->getPost('email');
+        $subjek = $this->request->getPost('subjek');
+        $pesan  = $this->request->getPost('pesan');
 
-    if (!$nama || !$email || !$pesan) {
-        return redirect()->back()->with('error', 'Mohon lengkapi data yang wajib diisi.');
-    }
-
-    $emailService = \Config\Services::email();
-
-        $emailService->setFrom(
-            'muhammadrekyyyy@gmail.com',
-            'Website KORPRI'
-        );
-
-        $emailService->setTo('muhammadrekyyyy@gmail.com');
-        $emailService->setReplyTo($email, $nama);
-        $emailService->setSubject($subjek ?: 'Pesan dari Form Kontak Website');
-
-        $emailService->setMessage("
-            <strong>Nama:</strong> {$nama}<br>
-            <strong>Email:</strong> {$email}<br>
-            <strong>No HP:</strong> {$nomor}<br><br>
-            <strong>Pesan:</strong><br>{$pesan}
-        ");
-
-       if ($emailService->send()) {
-            return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
-        } else {
-            return redirect()->back()
-                ->with('error', 'Pesan gagal dikirim.')
-                ->with('debug', $emailService->printDebugger(['headers']));
+        if (!$nama || !$email || !$pesan) {
+            return redirect()->back()->with('error', 'Mohon lengkapi data yang wajib diisi.');
         }
 
+        $emailService = \Config\Services::email();
 
-}
+            $emailService->setFrom(
+                'muhammadrekyyyy@gmail.com',
+                'Website KORPRI'
+            );
+
+            $emailService->setTo('muhammadrekyyyy@gmail.com');
+            $emailService->setReplyTo($email, $nama);
+            $emailService->setSubject($subjek ?: 'Pesan dari Form Kontak Website');
+
+            $emailService->setMessage("
+                <strong>Nama:</strong> {$nama}<br>
+                <strong>Email:</strong> {$email}<br>
+                <strong>No HP:</strong> {$nomor}<br><br>
+                <strong>Pesan:</strong><br>{$pesan}
+            ");
+
+        if ($emailService->send()) {
+                return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
+            } else {
+                return redirect()->back()
+                    ->with('error', 'Pesan gagal dikirim.')
+                    ->with('debug', $emailService->printDebugger(['headers']));
+            }
+
+
+    }
 
 
     public function testEmail()
@@ -233,17 +233,17 @@ class Pages extends BaseController
 
 
 
-public function KetuaUmum()
-{
-    $model = new KetuaUmumModel();
+    public function KetuaUmum()
+    {
+        $model = new KetuaUmumModel();
 
-    $data = $model->getAktifUntukFrontend();
+        $data = $model->getAktifUntukFrontend();
 
-    return view('pages/KetuaUmum', [
-        'pageTitle'  => 'PROFIL KETUA UMUM KORPRI MASA KE MASA',
-        'ketua_list' => $data
-    ]);
-}
+        return view('pages/KetuaUmum', [
+            'pageTitle'  => 'PROFIL KETUA UMUM KORPRI MASA KE MASA',
+            'ketua_list' => $data
+        ]);
+    }
 
 
 
@@ -267,7 +267,7 @@ public function KetuaUmum()
      * HALAMAN GALERI (STATIS)
      * ===============================
      */
-public function Galeri()
+    public function Galeri()
 {
     $kegiatan = [
             [
@@ -352,7 +352,6 @@ public function Galeri()
         $kategori = $this->request->getGet('kategori') ?? 'Semua';
         $keyword  = $this->request->getGet('q');
 
-        // Query dasar: hanya aktif + urut terbaru
         $builder = $model->where('is_active', 1)
                         ->orderBy('created_at', 'DESC');
 
@@ -367,13 +366,9 @@ public function Galeri()
                     ->groupEnd();
         }
 
-        // Pagination: 10 per halaman
+        // ✅ pagination
         $berita = $builder->paginate(6, 'berita');
         $pager  = $model->pager;
-
-        // Opsional tapi membantu: pastikan base path pagination sesuai URL saat ini
-        // (agar link pager tidak “lari” kalau route kamu unik)
-        $pager->setPath(current_url(), 'berita'); // setPath() tersedia di Pager [web:93]
 
         return view('pages/Berita', [
             'pageTitle'      => 'BERITA KORPRI ACEH',
@@ -383,6 +378,7 @@ public function Galeri()
             'keyword'        => $keyword,
         ]);
     }
+
 
     public function detailBerita($id)
     {
@@ -465,8 +461,6 @@ public function Artikel()
 }
 
 
-
-
 public function ArtikelDetail($slug)
 {
     $model = new ArtikelModel();
@@ -489,16 +483,12 @@ public function ArtikelDetail($slug)
     $artikelTerkait = $model->getArtikelTerkait($artikel['id'], 3);
 
     return view('pages/ArtikelDetail', [
-        'pageTitle'      => $artikel['title'],
+        'pageTitle'      => 'DETAIL ARTIKEL',
         'artikel'        => $artikel,
         'artikelTerbaru' => $artikelTerbaru,
         'artikelTerkait' => $artikelTerkait,
     ]);
 }
-
-
-
-
 
 
 public function pengumuman()
@@ -593,9 +583,6 @@ public function pengumuman()
     return view('pages/Peraturan', $data);
 }
 
-
-
-
    
 
 public function keputusan()
@@ -662,8 +649,6 @@ public function SuratEdaran()
      $data['pageTitle'] = 'Surat Edaran KORPRI';
      return view('pages/SuratEdaran', $data);
 }
-
-
 
 
 }

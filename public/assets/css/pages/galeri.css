@@ -61,17 +61,19 @@ h2 {
 
 /* Grid foto publik */
 .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* ⬅️ INI KUNCINYA */
     gap: 20px;
 }
 
 .photo-grid img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    width: 360px;
+    aspect-ratio: 16/9;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    cursor: pointer;
 }
 
 /* Navigasi */
@@ -130,28 +132,31 @@ h2 {
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .meta {
-        font-size: 13px;
+        font-size: 10px;
     }
 
     .desc {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .photo-grid{
+        gap: 10px;
+    }
+
+    .photo-grid img {
+        width: 48%; /* ⬅️ 2 foto per baris */
     }
 
     .navigation {
-        font-size: 12px;
+        font-size: 10px;
         gap: 20px;
     }
 
     .navigation button {
-        padding: 6px 12px;
+        padding: 5px 10px;
     }
 }

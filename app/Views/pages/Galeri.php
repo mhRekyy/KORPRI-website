@@ -46,7 +46,7 @@ const totalSlides = slides.length;
 const counter = document.getElementById('counter');
 const dotsContainer = document.getElementById('dots');
 
-let autoSlide;
+let autoSlide; // ⬅️ TAMBAHAN
 
 // buat dot indikator
 slides.forEach((_, i) => {
@@ -55,7 +55,7 @@ slides.forEach((_, i) => {
     if (i === 0) dot.classList.add('active');
     dot.onclick = () => {
         goToSlide(i);
-        resetAutoSlide();
+        resetAutoSlide(); // ⬅️ TAMBAHAN
     };
     dotsContainer.appendChild(dot);
 });
@@ -87,6 +87,7 @@ function goToSlide(index) {
     showSlide(currentSlide);
 }
 
+// ================= AUTO SLIDE =================
 function startAutoSlide() {
     autoSlide = setInterval(nextSlide, 8000);
 }
@@ -96,6 +97,7 @@ function resetAutoSlide() {
     startAutoSlide();
 }
 
+// start pertama
 startAutoSlide();
 </script>
 

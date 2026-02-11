@@ -37,7 +37,7 @@
             <h3>Cek Keanggotaan</h3>
           </a>
 
-          <a class="quick-access-item" href="<?= base_url('Peraturan') ?>">
+          <a class="quick-access-item" href="<?= base_url('peraturan') ?>">
             <div class="quick-icon"><i class="fas fa-balance-scale"></i></div>
             <h3>Peraturan</h3>
           </a>

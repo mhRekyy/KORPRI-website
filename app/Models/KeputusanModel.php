@@ -17,7 +17,7 @@ class KeputusanModel extends Model
         'judul',
         'instansi',
         'jenis_keputusan',
-        'masa_bakti',
+        'masa_bakti_id',
         'tanggal_keputusan',
         'file_pdf',
         'is_active'

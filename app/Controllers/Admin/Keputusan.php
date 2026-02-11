@@ -13,6 +13,21 @@ class Keputusan extends BaseController
     protected $allowedExt = ['pdf', 'doc', 'docx'];
     protected $maxFileSize = 2048; // KB (2MB)
 
+    protected $jenisOptions = [
+    'Keputusan Pengangkatan',
+    'Keputusan Pemberhentian',
+    'Keputusan Penetapan',
+    'Keputusan Lainnya'
+];
+
+protected $masaBaktiOptions = [
+    '2020-2025',
+    '2021-2026',
+    '2022-2027',
+    '2023-2028'
+];
+
+
     public function __construct()
     {
         $this->keputusanModel = new KeputusanModel();
@@ -43,12 +58,25 @@ class Keputusan extends BaseController
     /**
      * CREATE
      */
-    public function create()
-    {
-        return view('admin/keputusan/create', [
-            'title' => 'Tambah Keputusan'
-        ]);
-    }
+public function create()
+{
+    $masaBaktiModel = new \App\Models\MasaBaktiModel();
+
+    return view('admin/keputusan/create', [
+        'title'            => 'Tambah Keputusan',
+        'masaBaktiOptions' => $masaBaktiModel
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'DESC')
+                                ->findAll(),
+        'jenisOptions'     => [
+            'Keputusan Pengangkatan',
+            'Keputusan Pemberhentian',
+            'Keputusan Penetapan',
+            'Keputusan Lainnya',
+        ]
+    ]);
+}
+
 
     /**
      * STORE
@@ -78,11 +106,12 @@ class Keputusan extends BaseController
             'judul'             => $this->request->getPost('judul'),
             'instansi'          => $this->request->getPost('instansi'),
             'jenis_keputusan'   => $this->request->getPost('jenis_keputusan'),
-            'masa_bakti'        => $this->request->getPost('masa_bakti'),
+            'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'), // 🔥 ganti ini
             'tanggal_keputusan' => $this->request->getPost('tanggal_keputusan'),
             'file_pdf'          => $fileName,
             'is_active'         => $this->request->getPost('is_active') ?? 0,
         ]);
+
 
         return redirect()->to('/admin/keputusan')
             ->with('success', 'Data keputusan berhasil ditambahkan');
@@ -91,18 +120,27 @@ class Keputusan extends BaseController
     /**
      * EDIT
      */
-    public function edit($id)
-    {
-        $keputusan = $this->keputusanModel->find($id);
-        if (!$keputusan) {
-            return redirect()->to('/admin/keputusan');
-        }
-
-        return view('admin/keputusan/edit', [
-            'title'     => 'Edit Keputusan',
-            'keputusan' => $keputusan
-        ]);
+public function edit($id)
+{
+    $keputusan = $this->keputusanModel->find($id);
+    if (!$keputusan) {
+        return redirect()->to('/admin/keputusan');
     }
+
+    $masaBaktiModel = new \App\Models\MasaBaktiModel();
+
+    return view('admin/keputusan/edit', [
+        'title'            => 'Edit Keputusan',
+        'keputusan'        => $keputusan,
+        'jenisOptions'     => $this->jenisOptions, // tetap boleh array
+        'masaBaktiOptions' => $masaBaktiModel
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'DESC')
+                                ->findAll(),
+    ]);
+}
+
+
 
     /**
      * UPDATE
@@ -141,11 +179,12 @@ class Keputusan extends BaseController
             'judul'             => $this->request->getPost('judul'),
             'instansi'          => $this->request->getPost('instansi'),
             'jenis_keputusan'   => $this->request->getPost('jenis_keputusan'),
-            'masa_bakti'        => $this->request->getPost('masa_bakti'),
+            'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'), // 🔥 ganti ini
             'tanggal_keputusan' => $this->request->getPost('tanggal_keputusan'),
             'file_pdf'          => $fileName,
             'is_active'         => $this->request->getPost('is_active') ?? 0,
         ]);
+
 
         return redirect()->to('/admin/keputusan')
             ->with('success', 'Data keputusan berhasil diperbarui');

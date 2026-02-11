@@ -563,39 +563,46 @@ public function pengumuman()
 }
 
    
-
 public function keputusan()
 {
-    $model = new KeputusanModel();
+    $model = new \App\Models\KeputusanModel();
 
-    // Ambil parameter GET
     $masa  = $this->request->getGet('masa');
     $jenis = $this->request->getGet('jenis');
     $q     = $this->request->getGet('q');
 
-    $builder = $model->where('is_active', 1);
+    $builder = $model
+        ->select('keputusan.*, masa_bakti.nama as masa_bakti') // 🔥 ini kunci
+        ->join('masa_bakti', 'masa_bakti.id = keputusan.masa_bakti_id', 'left')
+        ->where('keputusan.is_active', 1);
 
     if (!empty($masa)) {
-        // Samakan format: "2021 - 2026" -> "2021–2026"
-        $masa = str_replace(' - ', '–', $masa);
-        $builder->where('masa_bakti', $masa);
+        $builder->where('masa_bakti.nama', $masa);
     }
 
     if (!empty($jenis)) {
-        $builder->where('jenis_keputusan', $jenis);
+        $builder->where('keputusan.jenis_keputusan', $jenis);
     }
 
     if (!empty($q)) {
-        $builder->like('judul', $q);
+        $builder->like('keputusan.judul', $q);
     }
 
     $data['items'] = $builder
-        ->orderBy('tanggal_keputusan', 'DESC')
+        ->orderBy('keputusan.tanggal_keputusan', 'DESC')
         ->findAll();
-    
+
+    // Dropdown masa bakti
+    $data['masaBaktiOptions'] = (new \App\Models\MasaBaktiModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'DESC')
+        ->findAll();
+
     $data['pageTitle'] = 'Keputusan KORPRI';
-     return view('pages/Keputusan', $data);
+
+    return view('pages/Keputusan', $data);
 }
+
 
 
 public function SuratEdaran()

@@ -30,17 +30,39 @@
                 <input type="text" name="instansi" placeholder="Instansi terkait">
             </div>
 
-            <div class="form-group">
-                <label>Jenis Keputusan</label>
-                <input type="text" name="jenis_keputusan" placeholder="Jenis keputusan">
-            </div>
+        <div class="form-group">
+            <label>Jenis Keputusan</label>
+            <select name="jenis_keputusan">
+                <option value="">-- Pilih Jenis Keputusan --</option>
+
+                <?php foreach ($jenisOptions as $jenis): ?>
+                    <option value="<?= $jenis ?>"
+                        <?= old('jenis_keputusan') == $jenis ? 'selected' : '' ?>>
+                        <?= $jenis ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
 
-        <div class="form-row">
-            <div class="form-group">
+        </div>
+
+            <div class="form-row">
+                        <div class="form-group">
                 <label>Masa Bakti</label>
-                <input type="text" name="masa_bakti" placeholder="Contoh: 2023 – 2028">
+                <select name="masa_bakti_id">
+                    <option value="">-- Pilih Masa Bakti --</option>
+
+                    <?php foreach ($masaBaktiOptions as $row): ?>
+                        <option value="<?= $row['id'] ?>"
+                            <?= old('masa_bakti_id') == $row['id'] ? 'selected' : '' ?>>
+                            <?= esc($row['nama']) ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
             </div>
+
 
             <div class="form-group">
                 <label>Tanggal Keputusan</label>

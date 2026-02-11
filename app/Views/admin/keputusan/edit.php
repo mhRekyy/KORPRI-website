@@ -46,10 +46,19 @@
         <div class="form-row">
             <div class="form-group">
                 <label>Masa Bakti</label>
-                <input type="text"
-                       name="masa_bakti"
-                       value="<?= esc($keputusan['masa_bakti']) ?>">
+                <select name="masa_bakti_id">
+                    <option value="">-- Pilih Masa Bakti --</option>
+
+                    <?php foreach ($masaBaktiOptions as $row): ?>
+                        <option value="<?= $row['id'] ?>"
+                            <?= $keputusan['masa_bakti_id'] == $row['id'] ? 'selected' : '' ?>>
+                            <?= esc($row['nama']) ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
             </div>
+
 
             <div class="form-group">
                 <label>Tanggal Keputusan</label>

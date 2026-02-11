@@ -23,6 +23,14 @@
             <!-- MENU -->
             <nav class="korpri-menu navbar-nav d-none d-md-flex flex-row gap-3">
 
+              <!-- Beranda -->
+              <div class="nav-item">
+                <a class="nav-link" href="<?= base_url('/') ?>">
+                  Beranda
+                </a>
+              </div>
+
+
               <!-- Tentang Kami -->
               <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle"

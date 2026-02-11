@@ -7,11 +7,18 @@
   <div class="peraturan-container">
 
  <div class="peraturan-filter">
-  <select class="pf-select" aria-label="Filter masa bakti">
-    <option selected disabled>Masa Bakti</option>
-    <option>2021 - 2026</option>
-    <option>2016 - 2021</option>
-  </select>
+    <select class="pf-select" aria-label="Filter masa bakti">
+      <option selected disabled>Masa Bakti</option>
+
+      <?php foreach ($masaBaktiOptions as $row): ?>
+        <option value="<?= esc($row['nama']) ?>"
+          <?= (isset($_GET['masa']) && $_GET['masa'] == $row['nama']) ? 'selected' : '' ?>>
+          <?= esc($row['nama']) ?>
+        </option>
+      <?php endforeach; ?>
+
+    </select>
+
 
   <select class="pf-select" aria-label="Filter kategori">
     <option selected disabled>Jenis Keputusan</option>

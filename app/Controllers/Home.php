@@ -8,23 +8,56 @@ use App\Models\PengumumanModel;
 class Home extends BaseController
 {
     public function index()
-    {
-        $beritaModel = new BeritaModel();
+{
+    $beritaModel = new BeritaModel();
 
-        // contoh: 3 berita terbaru aktif untuk landing page
-        $latestNews = $beritaModel
-            ->where('is_active', 1)
-            ->orderBy('created_at', 'DESC')
-            ->findAll(3);
+    $latestNews = $beritaModel
+        ->where('is_active', 1)
+        ->orderBy('created_at', 'DESC')
+        ->findAll(3);
 
+    $pengumumanModel = new PengumumanModel();
+    $latestPengumuman = $pengumumanModel
+        ->where('is_active', 1)
+        ->orderBy('tanggal_pengumuman', 'DESC')
+        ->limit(5)
+        ->findAll();
 
+    /*
+    ============================================
+    AMBIL GALERI DARI DATABASE (SAMA SEPERTI Galeri())
+    ============================================
+    */
 
-        $pengumumanModel = new PengumumanModel();
-        $latestPengumuman = $pengumumanModel
-            ->where('is_active', 1)
-            ->orderBy('tanggal_pengumuman', 'DESC')
-            ->limit(5)  // Hanya 3 terbaru untuk home
-            ->findAll();
+    $db = \Config\Database::connect();
+
+    // Ambil 5 kegiatan terbaru saja untuk homepage
+    $kegiatanData = $db->table('galeri_kegiatan')
+        ->orderBy('tanggal_kegiatan', 'DESC')
+        ->limit(5)
+        ->get()
+        ->getResultArray();
+
+    $gallery = [];
+
+    foreach ($kegiatanData as $row) {
+
+        // Ambil 1 foto pertama sebagai thumbnail
+        $foto = $db->table('galeri_foto')
+            ->select('file_name')
+            ->where('galeri_kegiatan_id', $row['id'])
+            ->orderBy('id', 'ASC')
+            ->limit(1)
+            ->get()
+            ->getRowArray();
+
+        if ($foto) {
+            $gallery[] = [
+                'image' => base_url('uploads/galeri/foto/' . $foto['file_name']),
+                'title' => $row['judul_kegiatan'],
+            ];
+        }
+    }
 
         $data = [
             'title' => 'Beranda - KORPRI Aceh',
@@ -39,6 +72,8 @@ class Home extends BaseController
             'news' => $latestNews,
 
             'pengumuman' => $latestPengumuman,
+
+            'gallery'     => $gallery,
 
              'tentang_korpri' => ['Korps Pegawai Republik Indonesia (KORPRI) adalah wadah tunggal untuk menghimpun seluruh Pegawai Republik Indonesia demi meningkatkan perjuangan, pengabdian, serta kesetiaan kepada cita-cita perjuangan Bangsa dan Negara Kesatuan Republik Indonesia.',
              
@@ -73,13 +108,6 @@ class Home extends BaseController
                 ],
             ],
 
-            'gallery' => [
-                ['image' => base_url('uploads/galeri/rapat1.jpg'), 'title' => 'Kegiatan 1'],
-                ['image' => base_url('uploads/galeri/rapat2.jpg'), 'title' => 'Kegiatan 2'],
-                ['image' => base_url('uploads/galeri/rapat3.jpg'), 'title' => 'Kegiatan 3'],
-                ['image' => base_url('uploads/galeri/rapat4.jpg'), 'title' => 'Kegiatan 4'],
-                ['image' => base_url('uploads/galeri/rapat5.jpg'), 'title' => 'Kegiatan 5'],
-            ],
         ];
 
         return view('home', $data);

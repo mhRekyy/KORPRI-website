@@ -73,7 +73,7 @@ main {
   z-index: 3;
 }
 
-.hero-media .swiper::after {
+.hero-media .swiper-slide::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -88,18 +88,24 @@ main {
     transparent 100%
   );
   pointer-events: none;
-  z-index: 10; /* Di atas gambar tapi di bawah pagination */
+  z-index: 1; /* Di atas gambar tapi di bawah pagination */
+}
+
+.hero-media .swiper-slide{
+  position: relative;
 }
 
 .hero-media .swiper-slide img{
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  z-index: 0;
 }
 
 .hero-media .swiper-pagination{
-  bottom: 80px !important;
+  bottom: 60px !important;
   z-index: 12;
 }
 
@@ -118,11 +124,13 @@ main {
   height: 4px;
   opacity: 1;
 }
+
+.hero-media .swiper-pagination,
 .hero-media .swiper-button-prev,
 .hero-media .swiper-button-next{
   color: #ffffff;
   text-shadow: 0 6px 22px rgba(0,56,71,0.45);
-  z-index: 12;
+  z-index: 20;
 }
 
 .hero-media .swiper-button-prev::after,
@@ -131,25 +139,31 @@ main {
   font-weight: 800;
 }
 
-/* =============
-   CAPTION BADGE
-   ============= */
 
-.caption-badge{
+
+.hero-overlay{
   position: absolute;
   left: 100px;
   top: 320px;
-  margin: 0;
-  font-family: 'Cinzel';
-  font-size: 40px;
-  font-weight: bold;
-  color: #ffffff;
-  line-height: 1;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-  display: inline-block;
   z-index: 2;
+  color: #ffffff;
+  font-family: 'Cinzel';
 }
+
+.hero-overlay h2{
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+.hero-overlay p{
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
+  white-space: normal;
+}
+
 
 /* =========================
    QUICK ACCESS SECTION
@@ -164,7 +178,7 @@ main {
 }
 
 .quick-access-section .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -236,7 +250,7 @@ main {
 }
 
 .news-section .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -245,7 +259,7 @@ main {
 .section-header {
   display: grid;
   grid-template-columns: 3fr 1fr; /* 3 kolom untuk berita, 1 untuk pengumuman */
-  gap: 25px;
+  gap: 30px;
   margin-bottom: 20px; /* Kurangi margin */
   align-items: baseline; /* Align teks baseline */
 }
@@ -269,7 +283,7 @@ main {
 .news-pengumuman-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  gap: 30px;
   align-items: stretch;
 }
 
@@ -279,9 +293,10 @@ main {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   height: 100%;
-  min-height: 400px;
 }
 
 .pengumuman-item {
@@ -301,7 +316,7 @@ main {
 .pengumuman-list{
   list-style: disc;           /* aktifkan bullet */
   padding-left: 20px;         /* ruang untuk bullet */
-  margin: 0;
+  margin: 0 auto;
   list-style-position: outside; /* posisi marker relatif ke item */
 }
 
@@ -312,17 +327,14 @@ main {
 
 /* Link Wrapper */
 .pengumuman-link {
-  display: block !important;
-  text-decoration: none !important;
-  color: inherit !important;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Hover Effect SELURUH BOX */
 .pengumuman-link:hover .pengumuman-box {
-  background: #e8f4fd !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
-  transform: translateY(-2px) !important;
-  transition: all 0.2s ease !important;
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+transform: translateY(-3px);
 }
 
 /* News Card */
@@ -680,9 +692,20 @@ main {
     height: 260px;
   }
 
-  .caption-badge{
-    font-size: 18px;
-    bottom: 45px;
+  .hero-overlay{
+    left: 20px;
+    right: 20px;
+    top: auto;      /* MATIKAN top */
+    bottom: 20px;   /* Pakai bottom */
+  }
+
+  .hero-overlay h2{
+    font-size: 18px;    
+    line-height: 0.9;
+  }
+
+  .hero-overlay p{
+    font-size: 8px;
   }
 
   .hero-media .swiper-pagination{
@@ -734,7 +757,7 @@ main {
 
   /* NEWS + PENGUMUMAN */
   .news-section{
-    padding: 20px;
+    padding: 20px 10px;
   }
 
   .news-title{
@@ -782,11 +805,7 @@ main {
     display: block;
     font-size: 24px;
     font-weight: 700;
-    margin:10px;
-  }
-
-  .pengumuman-box {
-    min-height: auto;
+    margin: 10px;
   }
 
   .news-pengumuman-wrapper {

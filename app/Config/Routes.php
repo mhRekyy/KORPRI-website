@@ -220,4 +220,13 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('galeri/video/delete/(:num)', 'Admin\GaleriVideoController::delete/$1');
 
 
+    // HERO IMAGE
+    $routes->get('hero', 'Admin\Hero::index');
+    $routes->get('hero/create', 'Admin\Hero::create');
+    $routes->post('hero/store', 'Admin\Hero::store');
+    $routes->get('hero/edit/(:num)', 'Admin\Hero::edit/$1');
+    $routes->post('hero/update/(:num)', 'Admin\Hero::update/$1');
+    $routes->get('hero/delete/(:num)', 'Admin\Hero::delete/$1');
+
+
 });

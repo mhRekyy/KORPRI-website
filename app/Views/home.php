@@ -5,24 +5,39 @@
   <div class="container-fluid landing-full">
     <div class="landing-container">
     
-      <!-- Hero Slider Section -->
+       <!-- Hero Slider Section -->
       <div class="hero-media">
           <div class="swiper" id="heroSwiper">
             <div class="swiper-wrapper">
-              <?php foreach (($slides ?? []) as $s): ?>
-                <div class="swiper-slide" data-caption="<?= esc($s['caption']) ?>">
-                  <img src="<?= esc($s['image']) ?>" alt="<?= esc($s['caption']) ?>">
+
+              <?php if (!empty($slides)): ?>
+                <?php foreach ($slides as $s): ?>
+                  <div class="swiper-slide">
+                    <img src="<?= esc($s['image'] ?? base_url('assets/img/default-hero.jpg')) ?>" 
+                         alt="<?= esc($s['caption'] ?? 'Hero Slide') ?>">
+
+                    <div class="hero-overlay">
+                        <h2><?= esc($s['caption'] ?? '') ?></h2>
+
+                        <?php if (!empty($s['description'])): ?>
+                            <p><?= esc($s['description']) ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                  </div>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <div class="swiper-slide">
+                  <img src="<?= base_url('assets/img/default-hero.jpg') ?>" alt="KORPRI Aceh">
                 </div>
-              <?php endforeach; ?>
+              <?php endif; ?>
+
             </div>
+
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
           </div>
-      </div>
-      
-      <div class="caption-badge" id="heroCaption">
-        <?= esc($slides[0]['caption'] ?? '') ?>
       </div>
 
     </div>
@@ -55,6 +70,7 @@
         </div>
       </div>
     </div>
+
 
 
     <!-- Latest News Section -->

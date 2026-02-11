@@ -15,7 +15,7 @@ use App\Models\SuratEdaranModel;
 use App\Models\KetuaUmumModel;
 use App\Models\SekretarisJenderalModel;
 use App\Models\GaleriVideoModel;
-
+use App\Models\HeroModel;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -42,6 +42,25 @@ class Pages extends BaseController
         ]);
     }
 
+     public function home()
+    {
+        $heroModel = new HeroModel();
+
+        $slidesDb = $heroModel->getActiveSlides();
+
+        $slides = [];
+
+        foreach ($slidesDb as $row) {
+            $slides[] = [
+                'image'   => base_url('uploads/hero/' . $row['image']),
+                'caption' => $row['title'], // Sesuai struktur lama Anda
+            ];
+        }
+
+        return view('/home', [
+            'slides' => $slides
+        ]);
+    }
 
     public function profile()
     {

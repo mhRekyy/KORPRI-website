@@ -669,7 +669,7 @@ main {
    (Override only – aman untuk desktop)
    ========================================= */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 
   body{
     padding-top: 60px !important;
@@ -677,14 +677,12 @@ main {
 
   /* HERO */
   .hero-media{
-    height: 320px;
+    height: 260px;
   }
 
   .caption-badge{
-    left: 20px; 
-    top: auto;
-    font-size: 24px !important;
-    line-height: 1.2;
+    font-size: 18px;
+    bottom: 45px;
   }
 
   .hero-media .swiper-pagination{
@@ -739,6 +737,14 @@ main {
     padding: 20px;
   }
 
+  .news-title{
+    font-size: 14px;
+  }
+
+  .news-date{
+    font-size: 12px;
+  }
+
   .section-header{
     grid-template-columns: 1fr;
     gap: 10px;
@@ -757,6 +763,8 @@ main {
 
   .news-pengumuman-wrapper{
     grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
   }
 
   /* semua card berita di atas */
@@ -775,7 +783,7 @@ main {
     display: block;
     font-size: 24px;
     font-weight: 700;
-    margin: 10px 0 10px 0;
+    margin:10px;
   }
 
   .pengumuman-box {
@@ -825,7 +833,7 @@ main {
   }
 
   .program-grid{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
@@ -861,43 +869,10 @@ main {
     height: 200px;
   }
 
-}
-
-
-/* ====== EXTRA SMALL (HP kecil) ====== */
-
-@media (max-width: 576px){
-
-  .hero-media{
-    height: 260px;
-  }
-
-  .caption-badge{
-    font-size: 18px;
-    bottom: 45px;
-  }
-
-  /* News + pengumuman jadi 1 kolom */
-  .news-pengumuman-wrapper{
-    grid-template-columns: 1fr;
-  }
-
-  .news-title{
-    font-size: 14px;
-  }
-
-  .news-date{
-    font-size: 12px;
-  }
-
-  /* Program jadi 1 kolom bila mau super nyaman */
-  .program-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .btn-selengkapnya{
+    .btn-selengkapnya{
     padding: 8px 24px;
     font-size: 14px;
   }
 
 }
+

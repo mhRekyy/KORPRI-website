@@ -539,14 +539,18 @@ public function peraturan()
     $keyword  = $this->request->getGet('keyword');
 
     $builder = $model
-        ->select('peraturan.*, masa_bakti.nama as masa_bakti')
+        ->select('peraturan.*, 
+                masa_bakti.nama as masa_bakti,
+                kategori_peraturan.nama as kategori')
         ->join('masa_bakti', 'masa_bakti.id = peraturan.masa_bakti_id', 'left')
+        ->join('kategori_peraturan', 'kategori_peraturan.id = peraturan.kategori_id', 'left')
         ->where('peraturan.is_active', 1);
 
     // Filter kategori
     if (!empty($kategori)) {
-        $builder->where('peraturan.kategori', $kategori);
+        $builder->where('kategori_peraturan.nama', $kategori);
     }
+
 
     // Filter masa bakti (RELATIONAL)
     if (!empty($masa)) {

@@ -10,15 +10,32 @@
 </div>
 
 <!-- SEARCH -->
+<!-- SEARCH + FILTER -->
 <form action="<?= base_url('admin/peraturan') ?>" method="get" class="filter-bar">
+
     <input
         type="text"
         name="keyword"
         placeholder="Cari judul peraturan..."
         value="<?= esc($keyword ?? '') ?>"
     >
-    <button type="submit">Cari</button>
+
+    <select name="kategori_id">
+        <option value="">Semua Kategori</option>
+
+        <?php foreach ($kategoriList as $k): ?>
+            <option value="<?= $k['id']; ?>"
+                <?= (!empty($kategori) && $kategori == $k['id']) ? 'selected' : '' ?>>
+                <?= esc($k['nama']); ?>
+            </option>
+        <?php endforeach; ?>
+
+    </select>
+
+    <button type="submit">Filter</button>
+
 </form>
+
 
 <!-- TABLE -->
 <div class="table-wrapper">

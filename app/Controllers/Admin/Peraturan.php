@@ -24,31 +24,41 @@ class Peraturan extends BaseController
     // ==============================
  public function index()
 {
-    $keyword = $this->request->getGet('keyword');
+    $keyword   = $this->request->getGet('keyword');
+    $kategori  = $this->request->getGet('kategori_id'); // ✅ ambil dari dropdown
 
     $builder = $this->peraturanModel
         ->select('peraturan.*, 
-                masa_bakti.nama as masa_bakti,
-                kategori_peraturan.nama as kategori')
+                  masa_bakti.nama as masa_bakti,
+                  kategori_peraturan.nama as kategori')
         ->join('masa_bakti', 'masa_bakti.id = peraturan.masa_bakti_id', 'left')
         ->join('kategori_peraturan', 'kategori_peraturan.id = peraturan.kategori_id', 'left')
         ->orderBy('peraturan.created_at', 'DESC');
 
-    if ($keyword) {
+    if (!empty($keyword)) {
         $builder->like('peraturan.judul', $keyword);
+    }
+
+    // ✅ FILTER DROPDOWN (AMAN)
+    if (!empty($kategori)) {
+        $builder->where('peraturan.kategori_id', $kategori);
     }
 
     $peraturan = $builder->paginate(10, 'peraturan');
 
-    $data = [
-        'title'      => 'Manajemen Peraturan',
-        'peraturan'  => $peraturan,
-        'pager'      => $this->peraturanModel->pager,
-        'keyword'    => $keyword,
-    ];
-
-    return view('admin/peraturan/index', $data);
+    return view('admin/peraturan/index', [
+        'title'     => 'Manajemen Peraturan',
+        'peraturan' => $peraturan,
+        'pager'     => $this->peraturanModel->pager,
+        'keyword'   => $keyword,
+        'kategori'  => $kategori,
+        'kategoriList' => $this->kategoriModel
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'ASC')
+                                ->findAll()
+    ]);
 }
+
 
 
     // ==============================
@@ -85,6 +95,8 @@ public function create()
 
         $fileName = $file->getRandomName();
         $file->move('uploads/peraturan', $fileName);
+
+        dd($this->request->getPost());
 
         $this->peraturanModel->save([
             'judul'              => $this->request->getPost('judul'),

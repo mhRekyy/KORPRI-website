@@ -33,9 +33,19 @@
 
         <div class="form-group">
             <label>Kategori</label>
-            <input type="text" name="kategori"
-                   value="<?= esc($peraturan['kategori']) ?>">
+            <select name="kategori_id" required>
+                <option value="">-- Pilih Kategori --</option>
+
+                <?php foreach ($kategoriList as $kategori): ?>
+                    <option value="<?= $kategori['id'] ?>"
+                        <?= $peraturan['kategori_id'] == $kategori['id'] ? 'selected' : '' ?>>
+                        <?= esc($kategori['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
+
 
         <div class="form-group">
             <label>Instansi</label>

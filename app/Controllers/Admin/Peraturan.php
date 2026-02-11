@@ -3,54 +3,74 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\KategoriPeraturanModel;
 use App\Models\PeraturanModel;
 
 class Peraturan extends BaseController
 {
     protected $peraturanModel;
+    protected $kategoriModel;
+    protected $masaBaktiModel;
 
     public function __construct()
     {
-        $this->peraturanModel = new PeraturanModel();
+        $this->peraturanModel = new PeraturanModel(); // 🔥 WAJIB
+        $this->kategoriModel  = new KategoriPeraturanModel();
     }
+
 
     // ==============================
     // INDEX
     // ==============================
-    public function index()
-    {
-        $keyword = $this->request->getGet('keyword');
+ public function index()
+{
+    $keyword = $this->request->getGet('keyword');
 
-        if ($keyword) {
-            $peraturan = $this->peraturanModel
-                ->like('judul', $keyword)
-                ->orderBy('created_at', 'DESC')
-                ->paginate(10, 'peraturan');
-        } else {
-            $peraturan = $this->peraturanModel
-                ->orderBy('created_at', 'DESC')
-                ->paginate(10, 'peraturan');
-        }
+    $builder = $this->peraturanModel
+        ->select('peraturan.*, 
+                masa_bakti.nama as masa_bakti,
+                kategori_peraturan.nama as kategori')
+        ->join('masa_bakti', 'masa_bakti.id = peraturan.masa_bakti_id', 'left')
+        ->join('kategori_peraturan', 'kategori_peraturan.id = peraturan.kategori_id', 'left')
+        ->orderBy('peraturan.created_at', 'DESC');
 
-        $data = [
-            'title'      => 'Manajemen Peraturan',
-            'peraturan'  => $peraturan,
-            'pager'      => $this->peraturanModel->pager,
-            'keyword'    => $keyword,
-        ];
-
-        return view('admin/peraturan/index', $data);
+    if ($keyword) {
+        $builder->like('peraturan.judul', $keyword);
     }
+
+    $peraturan = $builder->paginate(10, 'peraturan');
+
+    $data = [
+        'title'      => 'Manajemen Peraturan',
+        'peraturan'  => $peraturan,
+        'pager'      => $this->peraturanModel->pager,
+        'keyword'    => $keyword,
+    ];
+
+    return view('admin/peraturan/index', $data);
+}
+
 
     // ==============================
     // CREATE
     // ==============================
-    public function create()
-    {
-        return view('admin/peraturan/create', [
-            'title' => 'Tambah Peraturan'
-        ]);
-    }
+public function create()
+{
+    $masaBakti = (new \App\Models\MasaBaktiModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'DESC')
+        ->findAll();
+
+    return view('admin/peraturan/create', [
+        'title' => 'Tambah Peraturan',
+        'masaBaktiOptions' => $masaBakti,
+        'kategoriList' => $this->kategoriModel
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'ASC')
+                                ->findAll()
+    ]);
+}
+
 
     // ==============================
     // STORE
@@ -68,14 +88,13 @@ class Peraturan extends BaseController
 
         $this->peraturanModel->save([
             'judul'              => $this->request->getPost('judul'),
-            'kategori'           => $this->request->getPost('kategori'),
+            'kategori_id'           => $this->request->getPost('kategori_id'),
             'instansi'           => $this->request->getPost('instansi'),
             'tanggal_penetapan'  => $this->request->getPost('tanggal_penetapan'),
-            'masa_bakti'         => $this->request->getPost('masa_bakti'),
+            'masa_bakti_id'      => $this->request->getPost('masa_bakti_id'), // 🔥
             'file_pdf'           => $fileName,
             'is_active'          => $this->request->getPost('is_active') ?? 0,
         ]);
-
 
         return redirect()->to('/admin/peraturan')->with('success', 'Peraturan berhasil ditambahkan.');
     }
@@ -83,19 +102,31 @@ class Peraturan extends BaseController
     // ==============================
     // EDIT
     // ==============================
-    public function edit($id)
-    {
-        $peraturan = $this->peraturanModel->find($id);
+public function edit($id)
+{
+    $peraturan = $this->peraturanModel->find($id);
 
-        if (!$peraturan) {
-            return redirect()->to('/admin/peraturan')->with('error', 'Data tidak ditemukan.');
-        }
-
-        return view('admin/peraturan/edit', [
-            'title'     => 'Edit Peraturan',
-            'peraturan' => $peraturan,
-        ]);
+    if (!$peraturan) {
+        return redirect()->to('/admin/peraturan')->with('error', 'Data tidak ditemukan.');
     }
+
+    $masaBakti = (new \App\Models\MasaBaktiModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'DESC')
+        ->findAll();
+
+    return view('admin/peraturan/edit', [
+    'title'     => 'Edit Peraturan',
+    'peraturan' => $peraturan,
+    'masaBaktiOptions' => $masaBakti,
+    'kategoriList' => $this->kategoriModel
+                            ->where('is_active', 1)
+                            ->orderBy('nama', 'ASC')
+                            ->findAll()
+]);
+
+}
+
 
     // ==============================
     // UPDATE
@@ -122,13 +153,14 @@ class Peraturan extends BaseController
 
         $this->peraturanModel->update($id, [
             'judul'             => $this->request->getPost('judul'),
-            'kategori'          => $this->request->getPost('kategori'),
+            'kategori_id'          => $this->request->getPost('kategori_id'),
             'instansi'          => $this->request->getPost('instansi'),
             'tanggal_penetapan' => $this->request->getPost('tanggal_penetapan'),
-            'masa_bakti'        => $this->request->getPost('masa_bakti'),
+            'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'), // 🔥
             'file_pdf'          => $fileName,
             'is_active'         => $this->request->getPost('is_active') ?? 0,
         ]);
+
 
 
         return redirect()->to('/admin/peraturan')->with('success', 'Peraturan berhasil diperbarui.');
@@ -142,9 +174,9 @@ class Peraturan extends BaseController
         $peraturan = $this->peraturanModel->find($id);
 
         if ($peraturan) {
-            if ($peraturan['file'] && file_exists('uploads/peraturan/' . $peraturan['file'])) {
-                unlink('uploads/peraturan/' . $peraturan['file']);
-            }
+                    if ($peraturan['file_pdf'] && file_exists('uploads/peraturan/' . $peraturan['file_pdf'])) {
+            unlink('uploads/peraturan/' . $peraturan['file_pdf']);
+        }
 
             $this->peraturanModel->delete($id);
         }

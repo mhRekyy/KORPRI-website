@@ -32,8 +32,18 @@
 
         <div class="form-group">
             <label>Kategori</label>
-            <input type="text" name="kategori">
+            <select name="kategori_id" required>
+                <option value="">-- Pilih Kategori --</option>
+
+                <?php foreach ($kategoriList as $k): ?>
+                    <option value="<?= $k['id']; ?>">
+                        <?= esc($k['nama']); ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
+
 
         <div class="form-group">
             <label>Instansi</label>
@@ -47,8 +57,18 @@
 
         <div class="form-group">
             <label>Masa Bakti</label>
-            <input type="text" name="masa_bakti" placeholder="Contoh: 2023 - 2028">
+            <select name="masa_bakti_id" required>
+                <option value="">-- Pilih Masa Bakti --</option>
+
+                <?php foreach ($masaBaktiOptions as $row): ?>
+                    <option value="<?= $row['id'] ?>">
+                        <?= esc($row['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
+
 
         <div class="form-group">
             <label>File Peraturan (PDF / DOCX)</label>

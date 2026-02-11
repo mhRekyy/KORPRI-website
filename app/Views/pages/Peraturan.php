@@ -8,20 +8,23 @@
 
     <form method="get" class="peraturan-filter">
 
-  <select
+    <select
     id="filter-masa"
-    name="masa_bakti"
+    name="masa"
     class="pf-select"
     aria-label="Filter masa bakti"
   >
     <option value="">Masa Bakti</option>
-    <option value="2021–2026" <?= (($_GET['masa_bakti'] ?? '') == '2021–2026') ? 'selected' : '' ?>>
-      2021 – 2026
-    </option>
-    <option value="2016–2021" <?= (($_GET['masa_bakti'] ?? '') == '2016–2021') ? 'selected' : '' ?>>
-      2016 – 2021
-    </option>
-  </select>
+
+    <?php foreach ($masaBaktiList as $row): ?>
+      <option value="<?= esc($row['nama']) ?>"
+        <?= (($_GET['masa'] ?? '') == $row['nama']) ? 'selected' : '' ?>>
+        <?= esc($row['nama']) ?>
+      </option>
+    <?php endforeach; ?>
+
+    </select>
+
 
   <select
     id="filter-kategori"
@@ -123,7 +126,7 @@
 
     // Filter masa bakti
     if (masa && masa.value) {
-      params.append('masa_bakti', masa.value);
+      params.append('masa', masa.value);
     }
 
     // Filter kategori

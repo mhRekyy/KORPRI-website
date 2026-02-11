@@ -13,32 +13,31 @@ class PeraturanModel extends Model
 
     protected $allowedFields = [
         'judul',
-        'kategori',
+        'kategori_id',
         'instansi',
         'tanggal_penetapan',
-        'masa_bakti',
+        'masa_bakti_id', // 🔥 ganti ke ini
         'file_pdf',
-        'is_active',
-        'created_at',
-        'updated_at',
+        'is_active'
     ];
 
-    // ==============================
-    // TIMESTAMPS
-    // ==============================
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
+
     // ==============================
-    // HELPER QUERY (OPSIONAL)
+    // ADMIN LIST (JOIN MASA BAKTI)
     // ==============================
     public function getAdminPeraturan($keyword = null)
     {
-        $builder = $this->orderBy('created_at', 'DESC');
+        $builder = $this
+            ->select('peraturan.*, masa_bakti.nama as masa_bakti')
+            ->join('masa_bakti', 'masa_bakti.id = peraturan.masa_bakti_id', 'left')
+            ->orderBy('peraturan.created_at', 'DESC');
 
         if ($keyword) {
-            $builder->like('judul', $keyword);
+            $builder->like('peraturan.judul', $keyword);
         }
 
         return $builder;

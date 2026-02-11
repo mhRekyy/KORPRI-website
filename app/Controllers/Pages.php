@@ -511,39 +511,45 @@ public function pengumuman()
 }
 
 
-    public function peraturan()
+public function peraturan()
 {
-    $model = new PeraturanModel();
+    $model = new \App\Models\PeraturanModel();
 
-    // Ambil parameter GET
-    $kategori   = $this->request->getGet('kategori');
-    $masaBakti  = $this->request->getGet('masa_bakti');
-    $keyword    = $this->request->getGet('keyword');
+    $kategori = $this->request->getGet('kategori');
+    $masa     = $this->request->getGet('masa');
+    $keyword  = $this->request->getGet('keyword');
 
-    // Query dasar
-    $builder = $model->where('is_active', 1);
+    $builder = $model
+        ->select('peraturan.*, masa_bakti.nama as masa_bakti')
+        ->join('masa_bakti', 'masa_bakti.id = peraturan.masa_bakti_id', 'left')
+        ->where('peraturan.is_active', 1);
 
     // Filter kategori
     if (!empty($kategori)) {
-        $builder->where('kategori', $kategori);
+        $builder->where('peraturan.kategori', $kategori);
     }
 
-    // Filter masa bakti
-    if (!empty($masaBakti)) {
-        $builder->where('masa_bakti', $masaBakti);
+    // Filter masa bakti (RELATIONAL)
+    if (!empty($masa)) {
+        $builder->where('masa_bakti.nama', $masa);
     }
 
-    // Search judul
+    // Search
     if (!empty($keyword)) {
-        $builder->like('judul', $keyword);
+        $builder->like('peraturan.judul', $keyword);
     }
 
-    // Ambil data
     $data['peraturan'] = $builder
-        ->orderBy('tanggal_penetapan', 'DESC')
+        ->orderBy('peraturan.tanggal_penetapan', 'DESC')
         ->findAll();
 
-    // Dropdown kategori
+    // 🔥 Ambil masa bakti dari DATABASE
+    $data['masaBaktiList'] = (new \App\Models\MasaBaktiModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'DESC')
+        ->findAll();
+
+    // Kategori tetap manual (boleh)
     $data['kategoriList'] = [
         'Peraturan Perundang-undangan',
         'Peraturan Gubernur',
@@ -551,16 +557,11 @@ public function pengumuman()
         'Peraturan KORPRI'
     ];
 
-    // Dropdown masa bakti
-    $data['masaBaktiList'] = [
-        '2016–2021',
-        '2021–2026'
-    ];
-
     $data['pageTitle'] = 'Peraturan KORPRI';
 
     return view('pages/Peraturan', $data);
 }
+
 
    
 public function keputusan()

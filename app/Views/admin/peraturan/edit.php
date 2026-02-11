@@ -51,9 +51,19 @@
 
         <div class="form-group">
             <label>Masa Bakti</label>
-            <input type="text" name="masa_bakti"
-                   value="<?= esc($peraturan['masa_bakti']) ?>">
+            <select name="masa_bakti_id" required>
+                <option value="">-- Pilih Masa Bakti --</option>
+
+                <?php foreach ($masaBaktiOptions as $row): ?>
+                    <option value="<?= $row['id'] ?>"
+                        <?= $peraturan['masa_bakti_id'] == $row['id'] ? 'selected' : '' ?>>
+                        <?= esc($row['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
+
 
         <div class="form-group">
             <label>File Peraturan</label>

@@ -34,14 +34,29 @@ class AdminLog extends BaseController
             return $redirect;
         }
 
-        $logs = $this->logModel
+        $keyword = $this->request->getGet('q');
+
+        $builder = $this->logModel
             ->select('admin_logs.*, admins.name AS admin_name')
-            ->join('admins', 'admins.id = admin_logs.admin_id', 'left')
+            ->join('admins', 'admins.id = admin_logs.admin_id', 'left');
+
+        if (!empty($keyword)) {
+            $builder->groupStart()
+                ->like('admins.name', $keyword)
+                ->orLike('admin_logs.action', $keyword)
+                ->orLike('admin_logs.description', $keyword)
+                ->orLike('admin_logs.ip_address', $keyword)
+                ->groupEnd();
+        }
+
+        $logs = $builder
             ->orderBy('admin_logs.created_at', 'DESC')
-            ->findAll(100); // batasi 100 log terakhir
+            ->paginate(10, 'logs');
 
         return view('admin/logs/index', [
-            'logs' => $logs
+            'logs'   => $logs,
+            'pager'  => $this->logModel->pager,
+            'keyword'=> $keyword
         ]);
     }
 }

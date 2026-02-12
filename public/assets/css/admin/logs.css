@@ -1,0 +1,119 @@
+.log-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.log-title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.log-table th {
+    background: #f4f6f9;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #e1e4e8;
+}
+
+.log-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eaecef;
+    vertical-align: top;
+}
+
+.log-table tr:hover {
+    background: #f9fbfd;
+}
+
+.log-keterangan {
+    max-width: 300px;
+    white-space: normal;
+}
+
+.log-pagination {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.log-pagination ul {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    gap: 5px;
+}
+
+.log-pagination li {
+    display: inline;
+}
+
+.log-pagination a,
+.log-pagination span {
+    padding: 6px 10px;
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #333;
+}
+
+.log-pagination .active span {
+    background: #1f3c88;
+    color: #fff;
+    border-color: #1f3c88;
+}
+
+.log-pagination a:hover {
+    background: #eef2f7;
+}
+
+
+.log-search {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.log-search form {
+    display: flex;
+    gap: 8px;
+}
+
+.log-search input {
+    padding: 6px 10px;
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.log-search button {
+    padding: 6px 12px;
+    background: #1f3c88;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.log-search button:hover {
+    background: #16306b;
+}
+
+.reset-btn {
+    padding: 6px 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #333;
+    background: #f4f6f9;
+}

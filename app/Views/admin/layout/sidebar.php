@@ -14,6 +14,19 @@
       <a href="<?= base_url('admin') ?>">Dashboard</a>
     </li>
 
+    <!-- LANDING PAGE -->
+    <li class="menu-item has-submenu <?= str_starts_with($uri, 'admin/hero') ? 'open' : '' ?>">
+      <span class="menu-label">Landing Page</span>
+      <ul class="submenu">
+        <li>
+          <a href="<?= base_url('admin/hero') ?>"
+             class="<?= str_starts_with($uri, 'admin/hero') ? 'active' : '' ?>">
+            Hero Section
+          </a>
+        </li>
+      </ul>
+    </li>
+
     <!-- MEDIA PUBLIK -->
     <li class="menu-item has-submenu open">
       <span class="menu-label">Media Publik</span>

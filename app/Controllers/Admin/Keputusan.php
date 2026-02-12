@@ -36,24 +36,25 @@ protected $masaBaktiOptions = [
     /**
      * INDEX
      */
-    public function index()
-    {
-        $keyword = $this->request->getGet('keyword');
+public function index()
+{
+    $keyword = $this->request->getGet('keyword');
 
-        $builder = $this->keputusanModel;
-        if ($keyword) {
-            $builder = $builder->like('judul', $keyword);
-        }
+    $builder = $this->keputusanModel->getWithRelations();
 
-        $data = [
-            'title'     => 'Data Keputusan',
-            'keputusan' => $builder->orderBy('created_at', 'DESC')->paginate(10),
-            'pager'     => $this->keputusanModel->pager,
-            'keyword'   => $keyword
-        ];
-
-        return view('admin/keputusan/index', $data);
+    if ($keyword) {
+        $builder = $builder->like('keputusan.judul', $keyword);
     }
+
+    $data = [
+        'title'     => 'Data Keputusan',
+        'keputusan' => $builder->paginate(10),
+        'pager'     => $this->keputusanModel->pager,
+        'keyword'   => $keyword
+    ];
+
+    return view('admin/keputusan/index', $data);
+}
 
     /**
      * CREATE
@@ -61,21 +62,23 @@ protected $masaBaktiOptions = [
 public function create()
 {
     $masaBaktiModel = new \App\Models\MasaBaktiModel();
+    $jenisModel     = new \App\Models\JenisKeputusanModel();
 
     return view('admin/keputusan/create', [
-        'title'            => 'Tambah Keputusan',
+        'title' => 'Tambah Keputusan',
+
         'masaBaktiOptions' => $masaBaktiModel
-                                ->where('is_active', 1)
-                                ->orderBy('nama', 'DESC')
-                                ->findAll(),
-        'jenisOptions'     => [
-            'Keputusan Pengangkatan',
-            'Keputusan Pemberhentian',
-            'Keputusan Penetapan',
-            'Keputusan Lainnya',
-        ]
+            ->where('is_active', 1)
+            ->orderBy('nama', 'DESC')
+            ->findAll(),
+
+        'jenisOptions' => $jenisModel
+            ->where('is_active', 1)
+            ->orderBy('nama', 'ASC')
+            ->findAll(),
     ]);
 }
+
 
 
     /**
@@ -105,7 +108,7 @@ public function create()
         $this->keputusanModel->save([
             'judul'             => $this->request->getPost('judul'),
             'instansi'          => $this->request->getPost('instansi'),
-            'jenis_keputusan'   => $this->request->getPost('jenis_keputusan'),
+            'jenis_id'   => $this->request->getPost('jenis_id'),
             'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'), // 🔥 ganti ini
             'tanggal_keputusan' => $this->request->getPost('tanggal_keputusan'),
             'file_pdf'          => $fileName,
@@ -127,18 +130,23 @@ public function edit($id)
         return redirect()->to('/admin/keputusan');
     }
 
+    $jenisModel     = new \App\Models\JenisKeputusanModel();
     $masaBaktiModel = new \App\Models\MasaBaktiModel();
 
     return view('admin/keputusan/edit', [
         'title'            => 'Edit Keputusan',
         'keputusan'        => $keputusan,
-        'jenisOptions'     => $this->jenisOptions, // tetap boleh array
+        'jenisOptions'     => $jenisModel
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'ASC')
+                                ->findAll(),
         'masaBaktiOptions' => $masaBaktiModel
                                 ->where('is_active', 1)
                                 ->orderBy('nama', 'DESC')
                                 ->findAll(),
     ]);
 }
+
 
 
 
@@ -178,8 +186,8 @@ public function edit($id)
         $this->keputusanModel->update($id, [
             'judul'             => $this->request->getPost('judul'),
             'instansi'          => $this->request->getPost('instansi'),
-            'jenis_keputusan'   => $this->request->getPost('jenis_keputusan'),
-            'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'), // 🔥 ganti ini
+            'jenis_id'          => $this->request->getPost('jenis_id'),
+            'masa_bakti_id'     => $this->request->getPost('masa_bakti_id'),
             'tanggal_keputusan' => $this->request->getPost('tanggal_keputusan'),
             'file_pdf'          => $fileName,
             'is_active'         => $this->request->getPost('is_active') ?? 0,

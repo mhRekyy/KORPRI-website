@@ -27,13 +27,29 @@
   <!-- KATEGORI -->
   <div class="form-group">
     <label>Kategori</label>
-    <input type="text" name="kategori" value="<?= esc($row['kategori']) ?>">
+    <select name="kategori_id" required>
+      <option value="">-- Pilih Kategori --</option>
+      <?php foreach ($kategoriList as $k): ?>
+        <option value="<?= $k['id'] ?>"
+          <?= $row['kategori_id'] == $k['id'] ? 'selected' : '' ?>>
+          <?= esc($k['nama']) ?>
+        </option>
+      <?php endforeach ?>
+    </select>
   </div>
 
   <!-- MASA BAKTI -->
   <div class="form-group">
     <label>Masa Bakti</label>
-    <input type="text" name="masa_bakti" value="<?= esc($row['masa_bakti']) ?>">
+    <select name="masa_bakti_id" required>
+      <option value="">-- Pilih Masa Bakti --</option>
+      <?php foreach ($masaBaktiList as $m): ?>
+        <option value="<?= $m['id'] ?>"
+          <?= $row['masa_bakti_id'] == $m['id'] ? 'selected' : '' ?>>
+          <?= esc($m['nama']) ?>
+        </option>
+      <?php endforeach ?>
+    </select>
   </div>
 
   <!-- INSTANSI -->

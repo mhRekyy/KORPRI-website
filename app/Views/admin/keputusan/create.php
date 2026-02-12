@@ -32,17 +32,18 @@
 
         <div class="form-group">
             <label>Jenis Keputusan</label>
-            <select name="jenis_keputusan">
-                <option value="">-- Pilih Jenis Keputusan --</option>
+                <select name="jenis_id" required>
+                    <option value="">-- Pilih Jenis Keputusan --</option>
 
-                <?php foreach ($jenisOptions as $jenis): ?>
-                    <option value="<?= $jenis ?>"
-                        <?= old('jenis_keputusan') == $jenis ? 'selected' : '' ?>>
-                        <?= $jenis ?>
-                    </option>
-                <?php endforeach; ?>
+                    <?php foreach ($jenisOptions as $row): ?>
+                        <option value="<?= $row['id'] ?>"
+                            <?= old('jenis_id') == $row['id'] ? 'selected' : '' ?>>
+                            <?= esc($row['nama']) ?>
+                        </option>
+                    <?php endforeach; ?>
 
-            </select>
+                </select>
+
         </div>
 
         </div>

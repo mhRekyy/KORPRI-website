@@ -37,10 +37,19 @@
 
             <div class="form-group">
                 <label>Jenis Keputusan</label>
-                <input type="text"
-                       name="jenis_keputusan"
-                       value="<?= esc($keputusan['jenis_keputusan']) ?>">
+                <select name="jenis_id" required>
+                    <option value="">-- Pilih Jenis Keputusan --</option>
+
+                    <?php foreach ($jenisOptions as $j): ?>
+                        <option value="<?= $j['id'] ?>"
+                            <?= ($keputusan['jenis_id'] ?? '') == $j['id'] ? 'selected' : '' ?>>
+                            <?= esc($j['nama']) ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
             </div>
+
         </div>
 
         <div class="form-row">
@@ -51,7 +60,7 @@
 
                     <?php foreach ($masaBaktiOptions as $row): ?>
                         <option value="<?= $row['id'] ?>"
-                            <?= $keputusan['masa_bakti_id'] == $row['id'] ? 'selected' : '' ?>>
+                            <?= ($keputusan['masa_bakti_id'] ?? '') == $row['id'] ? 'selected' : '' ?>>
                             <?= esc($row['nama']) ?>
                         </option>
                     <?php endforeach; ?>

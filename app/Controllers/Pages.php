@@ -496,43 +496,45 @@ public function ArtikelDetail($slug)
 
 public function pengumuman()
 {
+    $pengumumanModel = new \App\Models\PengumumanModel();
+    $kategoriModel   = new \App\Models\KategoriPengumumanModel();
+    $masaBaktiModel  = new \App\Models\MasaBaktiModel();
 
-    $pengumumanModel = new PengumumanModel();
-
-    // Ambil parameter dari GET
     $keyword     = $this->request->getGet('q');
     $kategori    = $this->request->getGet('kategori');
     $masa_bakti  = $this->request->getGet('masa_bakti');
 
-    // Query dasar
     $builder = $pengumumanModel
-        ->where('is_active', 1);
+        ->select('pengumuman.*, kategori_pengumuman.nama AS kategori_nama, masa_bakti.nama AS masa_bakti_nama')
+        ->join('kategori_pengumuman', 'kategori_pengumuman.id = pengumuman.kategori_id', 'left')
+        ->join('masa_bakti', 'masa_bakti.id = pengumuman.masa_bakti_id', 'left')
+        ->where('pengumuman.is_active', 1);
 
-    // Filter SEARCH (judul)
     if (!empty($keyword)) {
-        $builder->like('judul', $keyword);
+        $builder->like('pengumuman.judul', $keyword);
     }
 
-    // Filter KATEGORI
     if (!empty($kategori)) {
-        $builder->where('kategori', $kategori);
+        $builder->where('pengumuman.kategori_id', $kategori);
     }
 
-    // 🔥 Filter MASA BAKTI (INI YANG KURANG)
     if (!empty($masa_bakti)) {
-        $builder->where('masa_bakti', $masa_bakti);
+        $builder->where('pengumuman.masa_bakti_id', $masa_bakti);
     }
 
-    // Ambil data
     $pengumuman = $builder
-        ->orderBy('tanggal_pengumuman', 'DESC')
+        ->orderBy('pengumuman.tanggal_pengumuman', 'DESC')
         ->findAll();
 
     return view('pages/Pengumuman', [
-        'pageTitle' => 'Pengumuman KORPRI',
-        'pengumuman' => $pengumuman
+        'pageTitle'     => 'Pengumuman KORPRI',
+        'pengumuman'    => $pengumuman,
+        'kategoriList'  => $kategoriModel->where('is_active', 1)->findAll(),
+        'masaBaktiList' => $masaBaktiModel->where('is_active', 1)->findAll(),
     ]);
 }
+
+
 
 
 public function peraturan()
@@ -591,7 +593,6 @@ public function peraturan()
 }
 
 
-   
 public function keputusan()
 {
     $model = new \App\Models\KeputusanModel();
@@ -601,18 +602,26 @@ public function keputusan()
     $q     = $this->request->getGet('q');
 
     $builder = $model
-        ->select('keputusan.*, masa_bakti.nama as masa_bakti') // 🔥 ini kunci
+        ->select('
+            keputusan.*,
+            masa_bakti.nama as masa_bakti_nama,
+            jenis_keputusan.nama as jenis_nama
+        ')
         ->join('masa_bakti', 'masa_bakti.id = keputusan.masa_bakti_id', 'left')
+        ->join('jenis_keputusan', 'jenis_keputusan.id = keputusan.jenis_id', 'left')
         ->where('keputusan.is_active', 1);
 
+    // 🔥 FILTER MASA (pakai ID)
     if (!empty($masa)) {
-        $builder->where('masa_bakti.nama', $masa);
+        $builder->where('keputusan.masa_bakti_id', $masa);
     }
 
+    // 🔥 FILTER JENIS (pakai ID)
     if (!empty($jenis)) {
-        $builder->where('keputusan.jenis_keputusan', $jenis);
+        $builder->where('keputusan.jenis_id', $jenis);
     }
 
+    // 🔥 SEARCH JUDUL
     if (!empty($q)) {
         $builder->like('keputusan.judul', $q);
     }
@@ -621,17 +630,22 @@ public function keputusan()
         ->orderBy('keputusan.tanggal_keputusan', 'DESC')
         ->findAll();
 
-    // Dropdown masa bakti
+    // Dropdown Masa Bakti
     $data['masaBaktiOptions'] = (new \App\Models\MasaBaktiModel())
         ->where('is_active', 1)
         ->orderBy('nama', 'DESC')
+        ->findAll();
+
+    // Dropdown Jenis Keputusan
+    $data['jenisOptions'] = (new \App\Models\JenisKeputusanModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'ASC')
         ->findAll();
 
     $data['pageTitle'] = 'Keputusan KORPRI';
 
     return view('pages/Keputusan', $data);
 }
-
 
 
 public function SuratEdaran()

@@ -55,6 +55,7 @@
             <th>No</th>
             <th>Judul</th>
             <th>Kategori</th>
+            <th>Masa Bakti</th>
             <th>Instansi</th>
             <th>Status</th>
             <th width="180">Aksi</th>
@@ -67,11 +68,13 @@
         <tr>
             <td><?= $no++ ?></td>
 
-            <td><?= esc($row['judul']) ?></td>
+                <td><?= esc($row['judul']) ?></td>
 
-            <td><?= esc($row['kategori']) ?></td>
+                <td><?= esc($row['kategori_nama'] ?? '-') ?></td>
 
-            <td><?= esc($row['instansi']) ?></td>
+                <td><?= esc($row['masa_bakti_nama'] ?? '-') ?></td>
+
+                <td><?= esc($row['instansi']) ?></td>
 
             <!-- STATUS -->
             <td>
@@ -115,7 +118,7 @@
         <?php endforeach ?>
     <?php else: ?>
         <tr>
-            <td colspan="6" align="center">Belum ada data pengumuman</td>
+            <td colspan="7" align="center">Belum ada data pengumuman</td>
         </tr>
     <?php endif ?>
 

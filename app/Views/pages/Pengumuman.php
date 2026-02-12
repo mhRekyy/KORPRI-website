@@ -16,27 +16,26 @@
     <!-- FILTER MASA BAKTI -->
     <select class="pf-select" name="masa_bakti" onchange="this.form.submit()">
       <option value="">Masa Bakti</option>
-      <option value="2021-2026" <?= ($_GET['masa_bakti'] ?? '') == '2021-2026' ? 'selected' : '' ?>>
-        2021 - 2026
-      </option>
-      <option value="2016-2021" <?= ($_GET['masa_bakti'] ?? '') == '2016-2021' ? 'selected' : '' ?>>
-        2016 - 2021
-      </option>
+      <?php foreach ($masaBaktiList as $m): ?>
+        <option value="<?= $m['id'] ?>"
+          <?= ($_GET['masa_bakti'] ?? '') == $m['id'] ? 'selected' : '' ?>>
+          <?= esc($m['nama']) ?>
+        </option>
+      <?php endforeach ?>
     </select>
+
 
     <!-- FILTER KATEGORI -->
     <select class="pf-select" name="kategori" onchange="this.form.submit()">
       <option value="">Semua Kategori</option>
-      <option value="Peraturan" <?= ($_GET['kategori'] ?? '') == 'Peraturan' ? 'selected' : '' ?>>
-        Peraturan
-      </option>
-      <option value="Keputusan" <?= ($_GET['kategori'] ?? '') == 'Keputusan' ? 'selected' : '' ?>>
-        Keputusan
-      </option>
-      <option value="Pedoman" <?= ($_GET['kategori'] ?? '') == 'Pedoman' ? 'selected' : '' ?>>
-        Pedoman
-      </option>
+      <?php foreach ($kategoriList as $k): ?>
+        <option value="<?= $k['id'] ?>"
+          <?= ($_GET['kategori'] ?? '') == $k['id'] ? 'selected' : '' ?>>
+          <?= esc($k['nama']) ?>
+        </option>
+      <?php endforeach ?>
     </select>
+
 
     <!-- SEARCH -->
     <div class="pf-search">

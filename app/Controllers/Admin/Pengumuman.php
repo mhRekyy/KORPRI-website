@@ -4,14 +4,20 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\PengumumanModel;
+use App\Models\KategoriPengumumanModel;
+use App\Models\MasaBaktiModel;
 
 class Pengumuman extends BaseController
 {
     protected $pengumumanModel;
+    protected $kategoriModel;
+    protected $masaBaktiModel;
 
     public function __construct()
     {
         $this->pengumumanModel = new PengumumanModel();
+        $this->kategoriModel   = new KategoriPengumumanModel();
+        $this->masaBaktiModel  = new MasaBaktiModel();
     }
 
     public function index()
@@ -21,28 +27,33 @@ class Pengumuman extends BaseController
         $masa_bakti  = $this->request->getGet('masa_bakti');
         $status      = $this->request->getGet('status');
 
-        $builder = $this->pengumumanModel;
+        $builder = $this->pengumumanModel
+            ->select('pengumuman.*, kategori_pengumuman.nama AS kategori_nama, masa_bakti.nama AS masa_bakti_nama')
+            ->join('kategori_pengumuman', 'kategori_pengumuman.id = pengumuman.kategori_id', 'left')
+            ->join('masa_bakti', 'masa_bakti.id = pengumuman.masa_bakti_id', 'left');
 
         if ($keyword) {
-            $builder->like('judul', $keyword);
+            $builder->like('pengumuman.judul', $keyword);
         }
 
         if ($kategori) {
-            $builder->where('kategori', $kategori);
+            $builder->where('pengumuman.kategori_id', $kategori);
         }
 
         if ($masa_bakti) {
-            $builder->where('masa_bakti', $masa_bakti);
+            $builder->where('pengumuman.masa_bakti_id', $masa_bakti);
         }
 
         if ($status !== null && $status !== '') {
-            $builder->where('is_active', $status);
+            $builder->where('pengumuman.is_active', $status);
         }
 
         $data = [
             'title'       => 'Pengumuman',
-            'pengumuman'  => $builder->orderBy('tanggal_pengumuman', 'DESC')->paginate(10),
-            'pager'       => $builder->pager,
+            'pengumuman'  => $builder->orderBy('pengumuman.tanggal_pengumuman', 'DESC')->paginate(10),
+            'pager'       => $this->pengumumanModel->pager,
+            'kategoriList' => $this->kategoriModel->where('is_active', 1)->findAll(),
+            'masaBaktiList' => $this->masaBaktiModel->where('is_active', 1)->findAll(),
         ];
 
         return view('admin/pengumuman/index', $data);
@@ -51,7 +62,9 @@ class Pengumuman extends BaseController
     public function create()
     {
         return view('admin/pengumuman/create', [
-            'title' => 'Tambah Pengumuman'
+            'title'          => 'Tambah Pengumuman',
+            'kategoriList'   => $this->kategoriModel->where('is_active', 1)->findAll(),
+            'masaBaktiList'  => $this->masaBaktiModel->where('is_active', 1)->findAll(),
         ]);
     }
 
@@ -67,8 +80,8 @@ class Pengumuman extends BaseController
 
         $this->pengumumanModel->save([
             'judul'               => $this->request->getPost('judul'),
-            'kategori'            => $this->request->getPost('kategori'),
-            'masa_bakti'          => $this->request->getPost('masa_bakti'),
+            'kategori_id'         => $this->request->getPost('kategori_id'),
+            'masa_bakti_id'       => $this->request->getPost('masa_bakti_id'),
             'instansi'            => $this->request->getPost('instansi'),
             'tanggal_pengumuman'  => $this->request->getPost('tanggal_pengumuman'),
             'file_pdf'            => $fileName,
@@ -81,8 +94,10 @@ class Pengumuman extends BaseController
     public function edit($id)
     {
         return view('admin/pengumuman/edit', [
-            'title' => 'Edit Pengumuman',
-            'row'   => $this->pengumumanModel->find($id)
+            'title'          => 'Edit Pengumuman',
+            'row'            => $this->pengumumanModel->find($id),
+            'kategoriList'   => $this->kategoriModel->where('is_active', 1)->findAll(),
+            'masaBaktiList'  => $this->masaBaktiModel->where('is_active', 1)->findAll(),
         ]);
     }
 
@@ -103,8 +118,8 @@ class Pengumuman extends BaseController
 
         $this->pengumumanModel->update($id, [
             'judul'               => $this->request->getPost('judul'),
-            'kategori'            => $this->request->getPost('kategori'),
-            'masa_bakti'          => $this->request->getPost('masa_bakti'),
+            'kategori_id'         => $this->request->getPost('kategori_id'),
+            'masa_bakti_id'       => $this->request->getPost('masa_bakti_id'),
             'instansi'            => $this->request->getPost('instansi'),
             'tanggal_pengumuman'  => $this->request->getPost('tanggal_pengumuman'),
             'file_pdf'            => $fileName,

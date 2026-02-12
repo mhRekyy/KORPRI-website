@@ -67,7 +67,7 @@
                 </td>
 
                 <td><?= esc($row['instansi']) ?></td>
-                <td><?= esc($row['jenis_keputusan']) ?></td>
+                <td><?= esc($row['jenis_nama'] ?? '-') ?></td>
 
                 <!-- STATUS -->
                 <td class="col-status">

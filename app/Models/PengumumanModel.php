@@ -9,10 +9,12 @@ class PengumumanModel extends Model
     protected $table      = 'pengumuman';
     protected $primaryKey = 'id';
 
+    protected $returnType = 'array';
+
     protected $allowedFields = [
         'judul',
-        'kategori',
-        'masa_bakti',
+        'kategori_id',
+        'masa_bakti_id',
         'instansi',
         'tanggal_pengumuman',
         'file_pdf',

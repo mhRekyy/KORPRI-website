@@ -11,8 +11,9 @@
       <option selected disabled>Masa Bakti</option>
 
       <?php foreach ($masaBaktiOptions as $row): ?>
-        <option value="<?= esc($row['nama']) ?>"
-          <?= (isset($_GET['masa']) && $_GET['masa'] == $row['nama']) ? 'selected' : '' ?>>
+      <option value="<?= $row['id'] ?>"
+          <?= (isset($_GET['masa']) && $_GET['masa'] == $row['id']) ? 'selected' : '' ?>>
+
           <?= esc($row['nama']) ?>
         </option>
       <?php endforeach; ?>
@@ -21,12 +22,17 @@
 
 
   <select class="pf-select" aria-label="Filter kategori">
-    <option selected disabled>Jenis Keputusan</option>
-    <option>Keputusan Pengangkatan</option>
-    <option>Keputusan Pemberhentian</option>
-    <option>Keputusan Penetapan</option>
-    <option>Keputusan Lainnya</option>
+    <option value="">Jenis Keputusan</option>
+
+    <?php foreach ($jenisOptions as $row): ?>
+      <option value="<?= $row['id'] ?>"
+        <?= (isset($_GET['jenis']) && $_GET['jenis'] == $row['id']) ? 'selected' : '' ?>>
+        <?= esc($row['nama']) ?>
+      </option>
+    <?php endforeach; ?>
+
   </select>
+
 
   <!-- WRAP: input + tombol (hover tombol => input muncul) -->
   <div class="pf-search">
@@ -40,81 +46,50 @@
 
     <!-- List -->
     <div class="peraturan-list">
-      <?php
-        // Dummy data (nanti bisa diganti dari controller)
-        $items = $items ?? [
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-          [
-            'judul' => 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
-            'meta'  => 'Biro Hukum KORPRI | 15 Januari 2026',
-            'file'  => '#'
-          ],
-        ];
-      ?>
+
 
       
-        <?php foreach ($items as $it): ?>
-  <article class="per-card">
+        <?php if (!empty($items)) : ?>
 
-    <div class="per-left">
-      <img
-        class="per-pdf"
-        src="<?= base_url('assets/img/icon_keputusan.png') ?>"
-        alt="PDF"
-      >
-    </div>
+  <?php foreach ($items as $it): ?>
+    <article class="per-card">
 
-    <div class="per-mid">
-      <h3 class="per-title">
-        <?= esc($it['judul']) ?>
-      </h3>
+      <div class="per-left">
+        <img
+          class="per-pdf"
+          src="<?= base_url('assets/img/icon_keputusan.png') ?>"
+          alt="PDF">
+      </div>
 
-      <p class="per-meta">
-        <?= esc($it['instansi']) ?> |
-        <?= date('d F Y', strtotime($it['tanggal_keputusan'])) ?>
-      </p>
-    </div>
+      <div class="per-mid">
+        <h3 class="per-title">
+          <?= esc($it['judul']) ?>
+        </h3>
 
-    <div class="per-right">
-      <a class="per-btn"
-         href="<?= base_url('uploads/keputusan/' . $it['file_pdf']) ?>"
-         target="_blank">
-        <i class="bi bi-download per-btn__icon" aria-hidden="true"></i>
-        <span>UNDUH</span>
-      </a>
-    </div>
+        <p class="per-meta">
+          <?= esc($it['instansi']) ?> |
+          <?= date('d F Y', strtotime($it['tanggal_keputusan'])) ?>
+        </p>
+      </div>
 
-  </article>
-<?php endforeach; ?>
+      <div class="per-right">
+        <a class="per-btn"
+           href="<?= base_url('uploads/keputusan/' . $it['file_pdf']) ?>"
+           target="_blank">
+          <i class="bi bi-download per-btn__icon"></i>
+          <span>UNDUH</span>
+        </a>
+      </div>
+
+    </article>
+  <?php endforeach; ?>
+
+<?php else: ?>
+
+  <p style="text-align:center">Data tidak ditemukan.</p>
+
+<?php endif; ?>
+
 
     </div>
 
@@ -126,26 +101,27 @@
   const button  = document.querySelector('.pf-btn');
 
   function applyFilter() {
-    const masa  = selects[0].value;
-    const jenis = selects[1].value;
-    const q     = input.value;
+  const masa  = selects[0].value;
+  const jenis = selects[1].value;
+  const q     = input.value;
 
-    const params = new URLSearchParams();
+  const params = new URLSearchParams();
 
-    if (masa && masa !== 'Masa Bakti') {
-      params.append('masa', masa);
-    }
-
-    if (jenis && jenis !== 'Jenis Keputusan') {
-      params.append('jenis', jenis);
-    }
-
-    if (q) {
-      params.append('q', q);
-    }
-
-    window.location.href = "<?= base_url('Keputusan') ?>?" + params.toString();
+  if (masa) {
+    params.append('masa', masa);
   }
+
+  if (jenis) {
+    params.append('jenis', jenis);
+  }
+
+  if (q) {
+    params.append('q', q);
+  }
+
+  window.location.href = "<?= base_url('Keputusan') ?>?" + params.toString();
+}
+
 
   selects.forEach(s => s.addEventListener('change', applyFilter));
   button.addEventListener('click', applyFilter);

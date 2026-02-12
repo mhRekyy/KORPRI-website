@@ -117,6 +117,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('keputusan/create', 'Admin\Keputusan::create');
     $routes->post('keputusan/store', 'Admin\Keputusan::store');
     $routes->get('keputusan/edit/(:num)', 'Admin\Keputusan::edit/$1');
+    $routes->post('keputusan/update/(:num)', 'Admin\Keputusan::update/$1');
     $routes->get('keputusan/delete/(:num)', 'Admin\Keputusan::delete/$1');
     $routes->get('keputusan/toggle/(:num)', 'Admin\Keputusan::toggle/$1');
 
@@ -137,6 +138,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('surat-edaran/create', 'Admin\SuratEdaran::create');
     $routes->post('surat-edaran/store', 'Admin\SuratEdaran::store');
     $routes->get('surat-edaran/edit/(:num)', 'Admin\SuratEdaran::edit/$1');
+    $routes->post('pengumuman/update/(:num)', 'Admin\Pengumuman::update/$1');
     $routes->get('surat-edaran/delete/(:num)', 'Admin\SuratEdaran::delete/$1');
     $routes->get('surat-edaran/toggle/(:num)', 'Admin\SuratEdaran::toggle/$1');
     $routes->post('surat-edaran/update/(:num)', 'Admin\SuratEdaran::update/$1');

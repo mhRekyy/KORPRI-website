@@ -36,46 +36,36 @@
         <!-- JENIS SURAT -->
         <div class="form-group">
             <label>Jenis Surat</label>
-            <select name="jenis_surat" required>
-            <option value="">-- Pilih Jenis Surat --</option>
+            <select name="jenis_id" required>
+                <option value="">-- Pilih Jenis Surat --</option>
 
-            <option value="Surat Edaran Organisasi"
-                <?= $data['jenis_surat'] === 'Surat Edaran Organisasi' ? 'selected' : '' ?>>
-                Surat Edaran Organisasi
-            </option>
+                <?php foreach ($jenisList as $j): ?>
+                    <option value="<?= $j['id']; ?>"
+                        <?= $data['jenis_id'] == $j['id'] ? 'selected' : '' ?>>
+                        <?= esc($j['nama']); ?>
+                    </option>
+                <?php endforeach; ?>
 
-            <option value="Surat Edaran Umum"
-                <?= $data['jenis_surat'] === 'Surat Edaran Umum' ? 'selected' : '' ?>>
-                Surat Edaran Umum
-            </option>
+            </select>
 
-            <option value="Surat Edaran Kepegawaian"
-                <?= $data['jenis_surat'] === 'Surat Edaran Kepegawaian' ? 'selected' : '' ?>>
-                Surat Edaran Kepegawaian
-            </option>
-
-            <option value="Surat Edaran Lainnya"
-                <?= $data['jenis_surat'] === 'Surat Edaran Lainnya' ? 'selected' : '' ?>>
-                Surat Edaran Lainnya
-            </option>
-        </select>
 
         </div>
 
         <!-- MASA BAKTI -->
         <div class="form-group">
             <label>Masa Bakti</label>
-            <select name="masa_bakti">
+            <select name="masa_bakti_id" required>
                 <option value="">-- Pilih Masa Bakti --</option>
-                <option value="2016–2021"
-                    <?= $data['masa_bakti'] === '2016–2021' ? 'selected' : '' ?>>
-                    2016–2021
-                </option>
-                <option value="2021–2026"
-                    <?= $data['masa_bakti'] === '2021–2026' ? 'selected' : '' ?>>
-                    2021–2026
-                </option>
+
+                <?php foreach ($masaBaktiList as $m): ?>
+                    <option value="<?= $m['id']; ?>"
+                        <?= $data['masa_bakti_id'] == $m['id'] ? 'selected' : '' ?>>
+                        <?= esc($m['nama']); ?>
+                    </option>
+                <?php endforeach; ?>
+
             </select>
+
         </div>
 
     </div>

@@ -36,13 +36,14 @@
         <tbody>
 
         <?php if (!empty($suratEdaran)) : ?>
-            <?php $no = 1 + (10 * ($pager->getCurrentPage('surat_edaran') - 1)); ?>
+            <?php $no = 1; ?>
             <?php foreach ($suratEdaran as $row) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= esc($row['judul']) ?></td>
-                    <td><?= esc($row['jenis_surat']) ?></td>
-                    <td><?= esc($row['masa_bakti']) ?></td>
+                    <td><?= esc($row['jenis'] ?? '-') ?></td>
+                    <td><?= esc($row['masa_bakti'] ?? '-') ?></td>
+
                     <td><?= date('d-m-Y', strtotime($row['tanggal_surat'])) ?></td>
                     <td>
                         <span class="<?= $row['is_active'] ? 'status-publish' : 'status-draft' ?>">

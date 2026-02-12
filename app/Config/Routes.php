@@ -139,6 +139,8 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('surat-edaran/edit/(:num)', 'Admin\SuratEdaran::edit/$1');
     $routes->get('surat-edaran/delete/(:num)', 'Admin\SuratEdaran::delete/$1');
     $routes->get('surat-edaran/toggle/(:num)', 'Admin\SuratEdaran::toggle/$1');
+    $routes->post('surat-edaran/update/(:num)', 'Admin\SuratEdaran::update/$1');
+
 
     // ===============================
     // STRUKTUR DPK

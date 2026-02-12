@@ -16,6 +16,11 @@ use App\Models\KetuaUmumModel;
 use App\Models\SekretarisJenderalModel;
 use App\Models\GaleriVideoModel;
 use App\Models\HeroModel;
+use App\Models\JenisSuratEdaranModel;
+use App\Models\MasaBaktiModel;
+
+
+
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -637,28 +642,45 @@ public function SuratEdaran()
     $jenis = $this->request->getGet('jenis');
     $q     = $this->request->getGet('q');
 
-    $builder = $model->where('is_active', 1);
+    $builder = $model
+        ->select('surat_edaran.*, 
+                  masa_bakti.nama as masa_bakti, 
+                  jenis_surat_edaran.nama as jenis')
+        ->join('masa_bakti', 'masa_bakti.id = surat_edaran.masa_bakti_id', 'left')
+        ->join('jenis_surat_edaran', 'jenis_surat_edaran.id = surat_edaran.jenis_id', 'left')
+        ->where('surat_edaran.is_active', 1);
 
     if (!empty($masa)) {
-        $masa = str_replace(' - ', '–', $masa);
-        $builder->where('masa_bakti', $masa);
+        $builder->where('surat_edaran.masa_bakti_id', $masa);
     }
 
     if (!empty($jenis)) {
-        $builder->where('jenis_surat', $jenis);
+        $builder->where('surat_edaran.jenis_id', $jenis);
     }
 
     if (!empty($q)) {
-        $builder->like('judul', $q);
+        $builder->like('surat_edaran.judul', $q);
     }
 
     $data['items'] = $builder
-        ->orderBy('tanggal_surat', 'DESC')
+        ->orderBy('surat_edaran.tanggal_surat', 'DESC')
         ->findAll();
 
-     $data['pageTitle'] = 'Surat Edaran KORPRI';
-     return view('pages/SuratEdaran', $data);
+    $data['masaBaktiList'] = (new MasaBaktiModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'DESC')
+        ->findAll();
+
+    $data['jenisList'] = (new JenisSuratEdaranModel())
+        ->where('is_active', 1)
+        ->orderBy('nama', 'ASC')
+        ->findAll();
+
+    $data['pageTitle'] = 'Surat Edaran KORPRI';
+
+    return view('pages/SuratEdaran', $data);
 }
+
 
 
 }

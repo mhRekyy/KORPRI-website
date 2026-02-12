@@ -17,26 +17,30 @@ class SuratEdaran extends BaseController
     // =========================
     // INDEX
     // =========================
-    public function index()
-    {
-        $keyword = $this->request->getGet('keyword');
+public function index()
+{
+    $model = new \App\Models\SuratEdaranModel();
 
-        $query = $this->suratEdaranModel;
+    $keyword = $this->request->getGet('keyword');
 
-        if ($keyword) {
-            $query->like('judul', $keyword);
-        }
+    $builder = $model
+        ->select('surat_edaran.*, 
+                  masa_bakti.nama as masa_bakti, 
+                  jenis_surat_edaran.nama as jenis')
+        ->join('masa_bakti', 'masa_bakti.id = surat_edaran.masa_bakti_id', 'left')
+        ->join('jenis_surat_edaran', 'jenis_surat_edaran.id = surat_edaran.jenis_id', 'left')
+        ->orderBy('tanggal_surat', 'DESC');
 
-        $data = [
-            'title'       => 'Surat Edaran',
-            'keyword'     => $keyword,
-            'suratEdaran' => $query->orderBy('created_at', 'DESC')
-                                   ->paginate(10, 'surat_edaran'),
-            'pager'       => $this->suratEdaranModel->pager
-        ];
-
-        return view('admin/surat_edaran/index', $data);
+    if ($keyword) {
+        $builder->like('surat_edaran.judul', $keyword);
     }
+
+    $data['suratEdaran'] = $builder->paginate(10, 'surat_edaran');
+    $data['pager']       = $model->pager;
+    $data['keyword']     = $keyword;
+
+    return view('admin/surat_edaran/index', $data);
+}
 
     // =========================
     // CREATE
@@ -44,9 +48,18 @@ class SuratEdaran extends BaseController
     public function create()
     {
         return view('admin/surat_edaran/create', [
-            'title' => 'Tambah Surat Edaran'
+            'title' => 'Tambah Surat Edaran',
+            'masaBaktiList' => (new \App\Models\MasaBaktiModel())
+                                    ->where('is_active', 1)
+                                    ->orderBy('nama', 'DESC')
+                                    ->findAll(),
+            'jenisList' => (new \App\Models\JenisSuratEdaranModel())
+                                    ->where('is_active', 1)
+                                    ->orderBy('nama', 'ASC')
+                                    ->findAll()
         ]);
     }
+
 
     // =========================
     // STORE
@@ -64,8 +77,8 @@ class SuratEdaran extends BaseController
         $this->suratEdaranModel->save([
             'judul'         => $this->request->getPost('judul'),
             'instansi'      => $this->request->getPost('instansi'),
-            'jenis_surat'   => $this->request->getPost('jenis_surat'),
-            'masa_bakti'    => $this->request->getPost('masa_bakti'),
+            'jenis_id'      => $this->request->getPost('jenis_id'),
+            'masa_bakti_id' => $this->request->getPost('masa_bakti_id'),
             'tanggal_surat' => $this->request->getPost('tanggal_surat'),
             'file_pdf'      => $fileName,
             'is_active'     => $this->request->getPost('is_active') ? 1 : 0
@@ -86,10 +99,19 @@ class SuratEdaran extends BaseController
             return redirect()->to('/admin/surat-edaran');
         }
 
-        return view('admin/surat_edaran/edit', [
-            'title' => 'Edit Surat Edaran',
-            'data'  => $data
-        ]);
+    return view('admin/surat_edaran/edit', [
+        'title' => 'Edit Surat Edaran',
+        'data'  => $data,
+        'masaBaktiList' => (new \App\Models\MasaBaktiModel())
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'DESC')
+                                ->findAll(),
+        'jenisList' => (new \App\Models\JenisSuratEdaranModel())
+                                ->where('is_active', 1)
+                                ->orderBy('nama', 'ASC')
+                                ->findAll()
+    ]);
+
     }
 
     // =========================
@@ -118,8 +140,8 @@ class SuratEdaran extends BaseController
         $this->suratEdaranModel->update($id, [
             'judul'         => $this->request->getPost('judul'),
             'instansi'      => $this->request->getPost('instansi'),
-            'jenis_surat'   => $this->request->getPost('jenis_surat'),
-            'masa_bakti'    => $this->request->getPost('masa_bakti'),
+            'jenis_id'      => $this->request->getPost('jenis_id'),
+            'masa_bakti_id' => $this->request->getPost('masa_bakti_id'),
             'tanggal_surat' => $this->request->getPost('tanggal_surat'),
             'file_pdf'      => $fileName,
             'is_active'     => $this->request->getPost('is_active') ? 1 : 0

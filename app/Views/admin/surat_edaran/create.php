@@ -24,17 +24,36 @@
         <input type="text" name="instansi">
     </div>
 
-    <div class="form-row">
+<div class="form-row">
+
+        <!-- JENIS SURAT -->
         <div class="form-group">
             <label>Jenis Surat</label>
-            <input type="text" name="jenis_surat" required>
+            <select name="jenis_id" required>
+                <option value="">-- Pilih Jenis Surat --</option>
+                <?php foreach ($jenisList as $j): ?>
+                    <option value="<?= $j['id'] ?>">
+                        <?= esc($j['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
+        <!-- MASA BAKTI -->
         <div class="form-group">
             <label>Masa Bakti</label>
-            <input type="text" name="masa_bakti" placeholder="Contoh: 2023–2028">
+            <select name="masa_bakti_id">
+                <option value="">-- Pilih Masa Bakti --</option>
+                <?php foreach ($masaBaktiList as $m): ?>
+                    <option value="<?= $m['id'] ?>">
+                        <?= esc($m['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
+
     </div>
+
 
     <div class="form-group">
         <label>Tanggal Surat</label>

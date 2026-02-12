@@ -8,18 +8,27 @@
 
  <div class="peraturan-filter">
   <select class="pf-select" aria-label="Filter masa bakti">
-    <option selected disabled>Masa Bakti</option>
-    <option>2021 - 2026</option>
-    <option>2016 - 2021</option>
+    <option value="">Masa Bakti</option>
+
+    <?php foreach ($masaBaktiList as $m): ?>
+      <option value="<?= $m['id'] ?>"
+        <?= (isset($_GET['masa']) && $_GET['masa'] == $m['id']) ? 'selected' : '' ?>>
+        <?= esc($m['nama']) ?>
+      </option>
+    <?php endforeach; ?>
   </select>
 
+
   <select class="pf-select" aria-label="Filter kategori">
-    <option selected disabled>Jenis Surat Edaran</option>
-    <option>Surat Edaran Umum</option>
-    <option>Surat Edaran Kepegawaian</option>
-    <option>Surat Edaran Organisasi</option>
-    <option>Surat Edaran Lainnya</option>
+    <option value="">Jenis Surat Edaran</option>
+    <?php foreach ($jenisList as $j): ?>
+      <option value="<?= $j['id'] ?>"
+        <?= (isset($_GET['jenis']) && $_GET['jenis'] == $j['id']) ? 'selected' : '' ?>>
+        <?= esc($j['nama']) ?>
+      </option>
+    <?php endforeach; ?>
   </select>
+
 
   <div class="pf-search">
     <input class="pf-input" type="text" placeholder="Cari surat edaran..." aria-label="Cari surat edaran">

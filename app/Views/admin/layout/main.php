@@ -25,7 +25,7 @@
         <?php if (is_file(APPPATH . 'Views/admin/layout/header.php')) : ?>
             <?= $this->include('admin/layout/header') ?>
         <?php endif; ?>
-
+        
         <main class="admin-content">
             <?= $this->renderSection('content') ?>
         </main>
@@ -34,6 +34,7 @@
 
 </div>
 
+<?= $this->renderSection('script') ?>
 <?= $this->renderSection('js') ?>
 </body>
 </html>

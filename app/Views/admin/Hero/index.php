@@ -1,5 +1,11 @@
 <?= $this->extend('admin/layout/main') ?>
+
+<?= $this->section('css') ?>
+<link rel="stylesheet" href="<?= base_url('assets/css/admin/index.css') ?>">
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
+
 
 <div class="admin-container">
 

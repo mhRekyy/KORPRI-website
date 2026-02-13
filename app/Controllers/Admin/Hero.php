@@ -44,7 +44,7 @@ class Hero extends BaseController
 
         $validation->setRules([
             'title' => 'required|min_length[3]',
-            'image' => 'uploaded[image]|is_image[image]|max_size[image,2048]'
+            'image' => 'uploaded[image]|is_image[image]|max_size[image,4096]'
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -53,7 +53,23 @@ class Hero extends BaseController
 
         $file = $this->request->getFile('image');
         $newName = $file->getRandomName();
+        $tempPath = FCPATH . 'uploads/hero/' . $newName;
+
         $file->move(FCPATH . 'uploads/hero', $newName);
+
+        // Crop coordinates
+        $cropX = (int) $this->request->getPost('crop_x');
+        $cropY = (int) $this->request->getPost('crop_y');
+        $cropWidth = (int) $this->request->getPost('crop_width');
+        $cropHeight = (int) $this->request->getPost('crop_height');
+
+        if ($cropWidth > 0 && $cropHeight > 0) {
+            \Config\Services::image()
+                ->withFile($tempPath)
+                ->crop($cropWidth, $cropHeight, $cropX, $cropY)
+                ->resize(1920, 720, true, 'height')
+                ->save($tempPath);
+        }
 
         $this->heroModel->save([
             'title'       => $this->request->getPost('title'),
@@ -68,7 +84,6 @@ class Hero extends BaseController
     public function edit($id)
     {
         $data['slide'] = $this->heroModel->find($id);
-
         return view('admin/hero/edit', $data);
     }
 
@@ -85,6 +100,7 @@ class Hero extends BaseController
         $file = $this->request->getFile('image');
 
         if ($file && $file->isValid()) {
+
             $newName = $file->getRandomName();
             $file->move(FCPATH . 'uploads/hero', $newName);
 

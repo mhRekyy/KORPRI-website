@@ -17,9 +17,7 @@ class AdminLog extends BaseController
         $this->adminModel = new AdminModel();
     }
 
-    /**
-     * Semua admin yang sudah login boleh akses (read-only)
-     */
+    
     private function mustLogin()
     {
         if (! session()->get('admin_logged_in')) {

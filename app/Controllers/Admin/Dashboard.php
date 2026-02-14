@@ -25,7 +25,6 @@ class Dashboard extends BaseController
         $suratEdaranModel  = new SuratEdaranModel();
         $galeriModel       = new GaleriModel();
 
-        // ✅ LOG MODEL (HARUS DI DALAM FUNCTION)
         $logModel = new AdminLogModel();
 
         $data = [
@@ -56,7 +55,6 @@ class Dashboard extends BaseController
                 ->limit(5)
                 ->find(),
 
-            // ✅ LOG AKTIVITAS TERBARU
             'latest_logs' => $logModel
                 ->select('admin_logs.*, admins.name AS admin_name')
                 ->join('admins', 'admins.id = admin_logs.admin_id', 'left')

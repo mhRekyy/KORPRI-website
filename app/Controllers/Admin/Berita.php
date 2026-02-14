@@ -41,7 +41,7 @@ class Berita extends BaseController
             ->orderBy('created_at', 'DESC')
             ->paginate(10, 'berita');
 
-        // 🔑 agar filter tetap saat pagination
+    
         $model->pager->setPath(
             current_url() . '?' . http_build_query($this->request->getGet())
         );

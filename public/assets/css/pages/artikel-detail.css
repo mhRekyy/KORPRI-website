@@ -7,14 +7,14 @@
   aspect-ratio: 16 / 9;
   width: 100%;
   overflow: hidden;
-  border-radius: 6px;   /* pindahkan radius ke wrapper biar crop ikut rounded */
+  border-radius: 6px;   
 }
 
 .berita-image img{
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;    /* jaga rasio gambar, tapi isi kotak 16:9 */
+  object-fit: cover;    
   object-position: center;
 }
 
@@ -54,11 +54,11 @@
 }
 
 
-/* Sidebar - Berita Terkini dengan thumbnail */
+/* Sidebar */
 .sidebar-news-item{
   gap: 15px;
   padding: 10px 0;
-  margin-bottom: 0;            /* override .sidebar-item */
+  margin-bottom: 0;           
 }
 
 .sidebar-box .sidebar-news-item:last-child{
@@ -87,7 +87,7 @@
 }
 
 .sidebar-news-content{
-  min-width: 0; /* penting biar judul bisa ellipsis */
+  min-width: 0; 
 }
 
 .sidebar-news-title{

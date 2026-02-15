@@ -301,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const currentItem = this.parentElement;
       const isOpen = currentItem.classList.contains('open');
 
-      // 1️⃣ tutup dropdown lain dulu (smooth)
       document.querySelectorAll(
         '.korpri-menu .nav-item.dropdown.open'
       ).forEach(item => {
@@ -310,13 +309,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      // 2️⃣ kalau dropdown ini sudah open → tutup
       if (isOpen) {
         currentItem.classList.remove('open');
         return;
       }
 
-      // 3️⃣ frame berikutnya → buka dropdown ini
       requestAnimationFrame(() => {
         currentItem.classList.add('open');
       });

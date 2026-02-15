@@ -1,8 +1,8 @@
 :root {
-    --bg-color: #FAF8F2;       /* Cream background */
-    --title-color: #112759;    /* Biru tua */
-    --text-color: #555555;     /* Abu-abu teks */
-    --card-placeholder: #dcdcdc; /* Abu-abu kotak foto kosong */
+    --bg-color: #FAF8F2;       
+    --title-color: #112759;    
+    --text-color: #555555;      
+    --card-placeholder: #dcdcdc;  
     --watermark-color: #f0e6da;
 }
 
@@ -27,7 +27,7 @@ body {
     transform: translate(-50%, -40%);
     width: 900px;
     height: 900px;
-    /* Ganti url ini dengan path logo korpri kamu jika ada */
+     
     background-image: url('../../img/korpri-watermark.png'); 
     background-position: center;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@ body {
 /* --- Grid Layout --- */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 Kolom */
+    grid-template-columns: repeat(4, 1fr);  
     gap: 30px;
     padding: 0 10px;
 }
@@ -80,21 +80,21 @@ body {
     background: transparent;
     border-radius: 12px;
     overflow: hidden;
-    /* Shadow halus di bawah seperti desain */
+     
     box-shadow: 0 10px 15px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    aspect-ratio: 3/4; /* Menjaga bentuk persegi panjang vertikal */
+    aspect-ratio: 3/4;  
     position: relative;
 }
 
 .card-photo {
     background-color: var(--card-placeholder);
-    flex-grow: 1; /* Mengisi area atas */
+    flex-grow: 1;  
     width: 100%;
     overflow: hidden;
     position: relative;
-    /* Membuat foto bisa diisi gambar nanti */
+     
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +149,7 @@ body {
 }
 
 .card-period {
-    color: var(--title-color); /* Warna abu-abu agar beda dengan nama */
+    color: var(--title-color);  
     font-size: 14px;
     margin: 0;
 }

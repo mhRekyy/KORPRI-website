@@ -1,5 +1,5 @@
 .korpri-footer{
-  background: #112759; /* biru tua mirip desain */
+  background: #112759; 
   color: rgba(255,255,255,.85);
   font-family: 'Poppins';
 }
@@ -132,7 +132,7 @@
 
 .korpri-footer__value{
   font-size: 12px;
-  color: #C79A53; /* angka kuning emas */
+  color: #C79A53;  
   font-weight: 700;
   white-space: nowrap;
 }
@@ -169,13 +169,13 @@
 
 .korpri-footer__contact-col{
   display: flex;
-  justify-content: flex-end;  /* geser ke kanan */
+  justify-content: flex-end;   
   align-items: flex-start;
 }
 
 .korpri-footer__contact-wrap{
-  text-align: left;           /* jangan rata kanan */
-  width: 260px;               /* atur lebar blok contact biar terlihat “di kanan” */
+  text-align: left;            
+  width: 260px;             
   max-width: 100%;
 }
 

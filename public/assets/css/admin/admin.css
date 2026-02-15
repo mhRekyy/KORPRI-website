@@ -416,7 +416,7 @@ h1 {
   flex: 1;
   padding: 30px;
   background: #f8fafc;
-  margin-left: 290px; /* pastikan tidak ketarik */
+  margin-left: 290px; 
   box-sizing: border-box;
 }
 

@@ -60,7 +60,7 @@
   color: rgba(0, 0, 0, 0.78);
   line-height: 1.5;
   font-size: 18px;
-  font-style: italic; /* efek mirip desain */
+  font-style: italic;  
 }
 
 .tfCard__text p:last-child{ margin-bottom: 0; }

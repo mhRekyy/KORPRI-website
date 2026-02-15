@@ -112,15 +112,15 @@ main {
 .hero-media .swiper-pagination-bullet{
   background: rgba(255,255,255,0.5);
   opacity: 1;
-  width: 40px; /* Lebar garis */
-  height: 4px; /* Tinggi garis (ketebalan) */
-  border-radius: 2px; /* Sedikit rounded, bisa 0 untuk kotak */
+  width: 40px;  
+  height: 4px;  
+  border-radius: 2px;  
   transition: all 0.3s ease;
 }
 
 .hero-media .swiper-pagination-bullet-active{
   background: #ffffff;
-  width: 60px; /* Garis lebih panjang saat aktif */
+  width: 60px;  
   height: 4px;
   opacity: 1;
 }
@@ -314,10 +314,10 @@ main {
 }
 
 .pengumuman-list{
-  list-style: disc;           /* aktifkan bullet */
-  padding-left: 20px;         /* ruang untuk bullet */
+  list-style: disc;            
+  padding-left: 20px;          
   margin: 0 auto;
-  list-style-position: outside; /* posisi marker relatif ke item */
+  list-style-position: outside; 
 }
 
 .pengumuman-li{
@@ -596,9 +596,9 @@ transform: translateY(-3px);
 /* Container Section */
     .gallery-section {
         position: relative;
-        background-color: #ffffff; /* Bisa ganti #f8f9fa jika mau agak abu */
+        background-color: #ffffff; 
         padding: 20px 0 60px;
-        overflow: hidden; /* Penting! */
+        overflow: hidden; 
     }
 
     /* Judul Header */
@@ -621,16 +621,16 @@ transform: translateY(-3px);
     .gallerySwiper {
         width: 100%;
         padding-top: 20px;
-        padding-bottom: 20px; /* Space untuk pagination */
-        overflow: visible; /* Biar efek 3D tidak terpotong kasar */
+        padding-bottom: 20px;  
+        overflow: visible;  
     }
 
     /* ITEM SLIDE */
     .gallerySwiper .swiper-slide {
-        width: 380px;  /* Lebar FIX */
-        height: 300px; /* Tinggi FIX */
+        width: 380px;   
+        height: 300px; 
         
-        /* Default: Slide Sembunyi Dulu (Biar rapi, JS yang akan munculkan) */
+        
         opacity: 0;
         visibility: hidden;
         
@@ -642,7 +642,7 @@ transform: translateY(-3px);
         width: 100%;
         height: 100%;
         border-radius: 12px;
-        background: #eee; /* Placeholder warna sebelum gambar load */
+        background: #eee;  
         overflow: hidden;
         box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         position: relative;
@@ -695,8 +695,8 @@ transform: translateY(-3px);
   .hero-overlay{
     left: 20px;
     right: 20px;
-    top: auto;      /* MATIKAN top */
-    bottom: 20px;   /* Pakai bottom */
+    top: auto;       
+    bottom: 20px;    
   }
 
   .hero-overlay h2{

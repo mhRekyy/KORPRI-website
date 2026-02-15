@@ -55,7 +55,7 @@
   align-items: flex-start;
 }
 
-/* Kalau kamu punya watermark png */
+ 
 .vm-watermark{
   width: 250px;
 }
@@ -142,7 +142,7 @@
   color: #2c2c2c;
 }
 
-/* CARD NILAI (BIRU) - gradient seperti desain */
+/* CARD NILAI  */
 .vm-card--nilai{
   border: none;
   color: #fff;

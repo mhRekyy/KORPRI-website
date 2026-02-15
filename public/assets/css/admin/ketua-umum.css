@@ -3,9 +3,9 @@
    =============================== */
 
 .ketua-umum-wrapper {
-    max-width: 1100px;        /* kunci lebar seperti Sekjen */
-    margin: 0 auto;           /* bikin konten di tengah */
-    padding: 10px 20px 0;     /* napas kiri-kanan */
+    max-width: 1100px;        
+    margin: 0 auto;         
+    padding: 10px 20px 0;     
 }
 
 
@@ -17,7 +17,6 @@
     margin-bottom: 18px;
 }
 
-/* optional: kecilkan tombol biar halus */
 .ketua-umum-header .btn {
     padding: 6px 14px;
     font-size: 14px;

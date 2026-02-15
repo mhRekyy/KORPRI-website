@@ -26,9 +26,9 @@
   inset: 0;
   background-image: url("../../img/korpri-watermark.png");
   background-repeat: no-repeat;
-  background-position: center 82%;      /* turun ke bawah, dekat grid card */
-  background-size: 600px auto;          /* lebih kecil, proporsional */
-  opacity: .35;                         /* subtle seperti desain */
+  background-position: center 82%;     
+  background-size: 600px auto;           
+  opacity: .35;                         
   pointer-events: none;
   z-index: 0;
 }
@@ -85,9 +85,9 @@
   box-shadow: var(--prog-shadow);
   padding: 15px;
   position: relative;
-  display: flex;              /* tambahan 1 baris */
+  display: flex;             
   flex-direction: column;
-  height: 100%;               /* tambahan 1 baris */
+  height: 100%;               
 }
 
 /* Lapisan dalam (inner card) */
@@ -96,13 +96,13 @@
   border-radius: 10px;
   box-shadow: 0 10px 16px rgba(17,39,89,.06);
   padding: 22px 18px 20px;
-  height: 100%;               /* ubah min-height jadi height */
+  height: 100%;              
   position: relative;
-  display: flex;              /* ubah grid jadi flex */
+  display: flex;             
   flex-direction: column;
-  justify-content: center;    /* tambahan */
+  justify-content: center;   
   gap: 20px;
-  align-items: center;        /* ubah align-content jadi align-items */
+  align-items: center;      
   text-align: center;
 }
 

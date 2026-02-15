@@ -17,7 +17,7 @@
   font-family: "Poppins";
 }
 
-/* filter (tetap, sudah bagus) */
+/* filter */
 .artikel-filter{
   display: grid;
   grid-template-columns: 280px 1fr 88px;
@@ -497,7 +497,7 @@
 
   /* SELECT */
   .bf-select{
-    flex: 0 0 120px; /* FIX kecil tapi stabil */
+    flex: 0 0 120px; 
     height: 40px;
     font-size: 14px;
     padding-right: 34px;
@@ -506,8 +506,8 @@
 
   /* INPUT SEARCH */
   .bf-input{
-    flex: 1;               /* AMBIL SISA RUANG */
-    min-width: 0;          /* PENTING biar bisa mengecil */
+    flex: 1;               
+    min-width: 0;          
     height: 42px;
     font-size: 13px;
     border-radius: 8px;

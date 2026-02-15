@@ -9,7 +9,6 @@
   --dash:#d7d7d7;
 }
 
-/* page */
 .berita-wrap{ padding: 26px 0 56px; background: var(--bg); }
 .berita-container{
   width: min(1300px, calc(100% - 36px));
@@ -17,7 +16,6 @@
   font-family: "Poppins";
 }
 
-/* filter (tetap, sudah bagus) */
 .berita-filter{
   display: grid;
   grid-template-columns: 280px 1fr 88px;
@@ -78,7 +76,6 @@
   filter: brightness(1.15);
 }
 
-/* LIST + TIMELINE */
 .berita-list--timeline{
   position: relative;
   display: grid;
@@ -96,12 +93,10 @@
   border-radius: 2px;
 }
 
-/* Hilangkan garis timeline saat empty state */
 .berita-list--timeline.is-empty::before{
   display: none;
 }
 
-/* GRID LUAR: 2 kolom, rapi dan stabil */
 .berita-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -109,13 +104,11 @@
   align-items: start;
 }
 
-/* biar item grid boleh mengecil tanpa overflow teks */
 .berita-grid > .brow,
 .berita-item{
   min-width: 0;
 }
 
-/* ITEM: layout 3 kolom (kiri - tanggal - kanan) */
 .brow{
   width: 100%;
   box-sizing: border-box;
@@ -130,7 +123,6 @@
   align-items: start;
 }
 
-/* KOLOM TANGGAL (tengah) */
 .bmid{
   width: 20px;               /* SAMAKAN dengan kolom grid tengah */
   display: flex;
@@ -154,7 +146,6 @@
   z-index: 2;
 }
 
-/* KIRI: CARD MEDIA */
 .media-card{
   display: flex;
   flex-direction: column;
@@ -204,16 +195,14 @@
   box-shadow: 0 10px 16px rgba(199, 165, 97, .6);
 }
 
-/* KANAN: card judul + card deskripsi */
 .b-right{
   display: flex;
   flex-direction: column;
-  gap: 12px;                 /* dari 30px -> lebih rapi dan konsisten */
+  gap: 12px;                  
   height: 100%;
-  overflow: visible;             /* penting untuk clamp & overflow */
+  overflow: visible;             
 }
 
-/* CONTAINER JUDUL PUTIH */
 .title-card {
   background: var(--card);
   border-radius: 10px;
@@ -221,7 +210,6 @@
 }
 
 
-/* CONTAINER DESC PUTIH + BORDER EMAS KIRI */
 .desc-card {
   background: var(--card);
   border-radius: 10px;
@@ -312,30 +300,26 @@
   color: #fff;
 }
 
-/* WRAPPER pagination */
 .pager-wrap{
   display: flex;
   justify-content: center;
   margin-top: 28px;
 }
 
-/* Default CI4 pager biasanya pakai <ul class="pagination"> */
 .pager-wrap .pagination{
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 10px;          /* jarak antar item */
+  gap: 10px;           
   padding: 0;
   margin: 0;
   flex-wrap: wrap;
 }
 
-/* Item */
 .pager-wrap .pagination li{
   margin: 0;
 }
 
-/* Link tombol */
 .pager-wrap .pagination a,
 .pager-wrap .pagination span{
   display: inline-flex;
@@ -360,14 +344,12 @@
   transition: transform .15s, box-shadow .15s, background-color .15s, border-color .15s;
 }
 
-/* Hover */
 .pager-wrap .pagination a:hover{
   transform: translateY(-1px);
   box-shadow: 0 12px 24px rgba(0,0,0,.12);
   border-color: rgba(17, 24, 39, .18);
 }
 
-/* Active page (CI4 biasanya pakai class active di <li>) */
 .pager-wrap .pagination li.active span,
 .pager-wrap .pagination li.active a{
   background: var(--gold);
@@ -376,18 +358,16 @@
   box-shadow: 0 12px 26px rgba(199, 165, 97, .45);
 }
 
-/* Disabled (prev/next) */
 .pager-wrap .pagination li.disabled span{
   opacity: .55;
   box-shadow: none;
   cursor: not-allowed;
 }
 
-/* FIX layout filter setelah pakai form */
 .berita-filter {
   display: flex;
   align-items: center;
-  gap: 16px; /* atur jarak antar elemen */
+  gap: 16px; 
 }
 
 .berita-filter form {
@@ -425,7 +405,6 @@
   flex-shrink: 0;
 }
 
-/* ================= MOBILE 1 ITEM SEPAKET ================= */
 @media (max-width: 991px){
 
   body{

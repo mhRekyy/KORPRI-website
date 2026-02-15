@@ -7,10 +7,10 @@
   --radius:10px;
 }
 
-/* Atas lebih sempit (container bawaan Bootstrap), ini hanya spacing */
+ 
 .kontak-page{
   margin-top: -20px;
-  position: relative;    /* wajib supaya z-index aktif */
+  position: relative;     
   z-index: 5;
   font-family: 'Poppins';
 }
@@ -83,7 +83,7 @@
 
 .kontak-item{
   display: flex;
-  align-items: flex-start; /* atau center sesuai desain */
+  align-items: flex-start;  
   gap: 15px;
 }
 
@@ -96,10 +96,10 @@
   display: grid;
   place-items: center;
 
-  flex: 0 0 55px;   /* WAJIB sama dengan width */
-  padding: 0;       /* pastikan tidak ada padding yang bikin oval */
+  flex: 0 0 55px;   
+  padding: 0;       
   box-sizing: border-box;
-  overflow: hidden; /* jaga-jaga kalau ada isi keluar */
+  overflow: hidden;  
 }
 
 .kontak-ic svg{ width: 20px; height: 20px; }
@@ -197,15 +197,14 @@ textarea.form-controlx{
 
 /* Map full-width */
 .kontak-map-fluid{
-  margin-top: 30px;  /* jarak dari form */
+  margin-top: 30px;   
 }
-
 .map-wrap--fluid{
-  border-radius: 0;  /* karena full layar (opsional) */
+  border-radius: 0;   
 }
 
 .map-wrap--fluid .map-embed{
-  height: 400px;     /* sesuaikan */
+  height: 400px;    
 }
 
 .map-wrap--fluid iframe{
@@ -216,7 +215,7 @@ textarea.form-controlx{
 }
 
 /* Responsive */
-@media (max-width: 991px){
+@media (max-width: 991px) {
   .kontak-grid{ grid-template-columns: 1fr; justify-content: center; }
   .kontak-left{ border-right: 0; border-bottom: 1px solid #e8edf3; }
   .form-row.two{ grid-template-columns: 1fr; }

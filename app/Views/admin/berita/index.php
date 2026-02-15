@@ -141,7 +141,7 @@
 </div>
 <?php endif ?>
 
-<!-- MODAL (SAMA DENGAN ARTIKEL) -->
+<!-- MODAL -->
 <div class="modal-overlay" id="confirmModal">
     <div class="modal">
         <h3 id="modalTitle">Konfirmasi</h3>

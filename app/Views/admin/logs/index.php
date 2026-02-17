@@ -77,10 +77,9 @@
         </tbody>
     </table>
 
+    <!-- PAGINATION CLEAN -->
     <div class="log-pagination">
-        <?php $queryString = $_GET ? '?' . http_build_query($_GET) : '';?>
-        <?= str_replace('/admin/logs?', '/admin/logs' . $queryString . '&', $pager->links('logs')) ?>
-
+        <?= $pager->links('logs') ?>
     </div>
 
 </div>

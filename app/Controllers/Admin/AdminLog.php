@@ -17,7 +17,6 @@ class AdminLog extends BaseController
         $this->adminModel = new AdminModel();
     }
 
-    
     private function mustLogin()
     {
         if (! session()->get('admin_logged_in')) {
@@ -47,14 +46,15 @@ class AdminLog extends BaseController
                 ->groupEnd();
         }
 
+        // PAGINATION CLEAN (CI4 native)
         $logs = $builder
             ->orderBy('admin_logs.created_at', 'DESC')
             ->paginate(10, 'logs');
 
         return view('admin/logs/index', [
-            'logs'   => $logs,
-            'pager'  => $this->logModel->pager,
-            'keyword'=> $keyword
+            'logs'    => $logs,
+            'pager'   => $this->logModel->pager,
+            'keyword' => $keyword
         ]);
     }
 }

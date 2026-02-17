@@ -13,7 +13,6 @@ class Files extends BaseController
             return $this->response->setStatusCode(404);
         }
 
-        // Paksa content benar-benar dikirim dan tidak di-cache jadi aneh
         return $this->response
             ->setHeader('Content-Type', 'application/pdf')
             ->setHeader('Content-Disposition', 'inline; filename="'.$name.'"')

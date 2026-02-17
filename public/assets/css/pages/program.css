@@ -1,11 +1,11 @@
 :root{
   --prog-bg: #FAF8F2;
-  --prog-ink: #112759;         /* navy */
-  --prog-soft: #f3ece2;        /* krem */
-  --prog-card: #FAF8F2;        /* card */
+  --prog-ink: #112759;         
+  --prog-soft: #f3ece2;        
+  --prog-card: #FAF8F2;        
   --prog-border: rgba(31, 42, 68, .18);
   --prog-shadow: 0 16px 26px rgba(17, 39, 89, .10);
-  --prog-accent: #c7a25a;      /* emas */
+  --prog-accent: #c7a25a;      
 }
 
 /* =========================

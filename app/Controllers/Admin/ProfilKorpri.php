@@ -42,7 +42,7 @@ class ProfilKorpri extends BaseController
 
     $data = [
         'title'    => 'Profil KORPRI',
-        'profil'   => $model->findAll(), // ⬅️ AMBIL SEMUA (AKTIF + NONAKTIF)
+        'profil'   => $model->findAll(),
         'kategori' => $kategori,
         'q'        => $keyword,
     ];

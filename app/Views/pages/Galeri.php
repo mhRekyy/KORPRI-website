@@ -46,7 +46,7 @@ const totalSlides = slides.length;
 const counter = document.getElementById('counter');
 const dotsContainer = document.getElementById('dots');
 
-let autoSlide; // ⬅️ TAMBAHAN
+let autoSlide;
 
 // buat dot indikator
 slides.forEach((_, i) => {
@@ -55,7 +55,7 @@ slides.forEach((_, i) => {
     if (i === 0) dot.classList.add('active');
     dot.onclick = () => {
         goToSlide(i);
-        resetAutoSlide(); // ⬅️ TAMBAHAN
+        resetAutoSlide();
     };
     dotsContainer.appendChild(dot);
 });

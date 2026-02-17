@@ -222,7 +222,6 @@
                             <!-- Icon Overlay -->
                             <div class="gallery-overlay">
                                 <div class="text-center text-white">
-                                    <!-- <i class="fas fa-plus-circle mb-2" style="font-size: 2.5rem;"></i> -->
                                     <!-- Tampilkan Judul Saat Hover -->
                                     <h6 class="m-0 px-2"><?= esc($g['title']) ?></h6>
                                 </div>

@@ -423,14 +423,13 @@ body {
 
   /* saat dibuka */
   .korpri-menu .nav-item.dropdown.open > .dropdown-menu {
-    max-height: 100%; /* cukup besar untuk isi */
+    max-height: 100%; 
     opacity: 1;
   }
 
   /* =====================================================
      BUTTON KONTAK DI SIDEBAR
   ===================================================== */
-  /* kontak kami jadi item paling bawah */
   .btn-kontak {
     order: 999;
     margin: 20px;

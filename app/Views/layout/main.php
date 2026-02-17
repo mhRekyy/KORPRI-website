@@ -25,7 +25,7 @@
 
 <body>
   
-  <!-- Navbar kamu -->
+  <!-- Navbar -->
   <?= $this->include('layout/navbar') ?>
   
 
@@ -38,7 +38,7 @@
 
   <script src="<?= base_url('assets/js/landing.js') ?>"></script>
 
-    <!-- Footer kamu -->
+    <!-- Footer -->
   <?= view('layout/footer') ?>
   
 </body>

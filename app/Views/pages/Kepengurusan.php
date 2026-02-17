@@ -6,7 +6,7 @@
 
 <div class="doc-container">
     
-    <!-- Header Bagian Atas -->
+    <!-- Header -->
     <div class="doc-header">
         <h1>KEPUTUSAN DEWAN PENGURUS KORPRI</h1>
         <h2><?= $dokumen['judul'] ?></h2>
@@ -99,7 +99,7 @@ function openFullscreen() {
 
     try {
       iframe.contentWindow.focus();
-      iframe.contentWindow.print(); // dialog print [web:242]
+      iframe.contentWindow.print();
     } catch (e) {
       // fallback terakhir: buka viewer di tab baru lalu print
       const w = window.open("<?= esc($dokumen['pdf_viewer_url']) ?>", "_blank");

@@ -1,7 +1,7 @@
 :root{
-  --tf-ink: #112759;     /* navy */
-  --tf-soft: #FAF8F2;    /* krem card */
-  --tf-gold: #c7a25a;    /* aksen emas */
+  --tf-ink: #112759;     
+  --tf-soft: #FAF8F2;    
+  --tf-gold: #c7a25a;    
   --tf-border: rgba(31, 42, 68, .18);
   --tf-shadow: 0 8px 15px rgba(17, 39, 89, .12);
 }

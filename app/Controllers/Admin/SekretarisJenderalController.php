@@ -47,10 +47,6 @@ class SekretarisJenderalController extends BaseController
      * ===============================
      */
 
-//     public function store()
-// {
-//     dd('STORE TERPANGGIL');
-
     public function store()
 {
     $file = $this->request->getFile('foto');

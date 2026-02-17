@@ -25,7 +25,7 @@
   <!-- Navbar (fixed) -->
   <?= $this->include('layout/navbar') ?>
 
-  <!-- Hero/title untuk semua halaman dalam (kecuali landing) -->
+  <!-- Hero/title untuk semua halaman dalam -->
   <?= $this->include('layout/title_pages') ?>
 
   <!-- Konten halaman -->

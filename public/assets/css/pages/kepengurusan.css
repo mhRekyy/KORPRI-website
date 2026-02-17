@@ -74,8 +74,8 @@ body {
 /* Layout Grid: Sidebar Kiri & PDF Kanan */
 .content-grid {
   display: grid;
-  grid-template-columns: 320px 1fr; /* dari 350px */
-  gap: 24px;                        /* dari 30px */
+  grid-template-columns: 320px 1fr; 
+  gap: 24px;                        
   align-items: stretch;
   height: 80vh;
 }

@@ -173,7 +173,7 @@ h1 {
   height: 100vh;
   overflow-y: auto;
 
-  background: #1e293b; /* slate-800 */
+  background: #1e293b; 
   color: #e5e7eb;
   padding: 16px 12px;
 }
@@ -223,7 +223,7 @@ h1 {
 
 /* Active main menu */
 .menu-item.active > a {
-  background: #2563eb; /* blue-600 */
+  background: #2563eb;
   color: #ffffff;
   font-weight: 600;
 }
@@ -232,7 +232,6 @@ h1 {
    SUBMENU - HOVER MODE (FIXED)
 ================================ */
 
-/* parent harus relative supaya hover tidak putus */
 .menu-item.has-submenu {
   position: relative;
 }
@@ -279,7 +278,7 @@ h1 {
 }
 
 .menu-logout a {
-  background: #dc2626; /* red-600 */
+  background: #dc2626;
   color: #ffffff;
   text-align: center;
   font-weight: 600;
@@ -419,8 +418,6 @@ h1 {
   margin-left: 290px; 
   box-sizing: border-box;
 }
-
-
 
 
 /* USER ADMIN */

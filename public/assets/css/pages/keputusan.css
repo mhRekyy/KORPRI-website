@@ -221,7 +221,7 @@ html,body{
   }
 
   .peraturan-filter .pf-search{
-    grid-column: 1 / -1; /* FULL BARIS */
+    grid-column: 1 / -1; 
     width: 100%;
   }
 

@@ -8,8 +8,6 @@
         + Tambah Peraturan
     </a>
 </div>
-
-<!-- SEARCH -->
 <!-- SEARCH + FILTER -->
 <form action="<?= base_url('admin/peraturan') ?>" method="get" class="filter-bar">
 

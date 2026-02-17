@@ -63,7 +63,7 @@ h2 {
 .photo-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* ⬅️ INI KUNCINYA */
+    justify-content: center; 
     gap: 20px;
 }
 

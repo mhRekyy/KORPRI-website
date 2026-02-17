@@ -100,7 +100,7 @@
 .berita-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px; /* dari 24px -> sedikit lebih lega */
+  gap: 40px; 
   align-items: start;
 }
 
@@ -119,21 +119,21 @@
   grid-template-columns: minmax(320px, 1fr) 20px minmax(0, 1fr);
 
   column-gap: 5px;
-  row-gap: 5px; /* kalau suatu saat ada wrap/tinggi beda, tetap rapi */
+  row-gap: 5px; 
   align-items: start;
 }
 
 .bmid{
-  width: 20px;               /* SAMAKAN dengan kolom grid tengah */
+  width: 20px;               
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  pointer-events: none;      /* opsional: biar tidak ganggu klik area lain */
+  pointer-events: none;      
 }
 
 .bdate{
-  margin-top: 60px;          /* dari 40px -> lebih seimbang */
-  width: 120px;              /* dari 140px -> lebih pas di 2 kolom */
+  margin-top: 60px;          
+  width: 120px;              
   padding: 5px 5px;
   border-radius: 10px;
   background: var(--gold);
@@ -486,7 +486,7 @@
 
   /* SELECT */
   .bf-select{
-    flex: 0 0 120px; /* FIX kecil tapi stabil */
+    flex: 0 0 120px; 
     height: 40px;
     font-size: 14px;
     padding-right: 34px;
@@ -495,8 +495,8 @@
 
   /* INPUT SEARCH */
   .bf-input{
-    flex: 1;               /* AMBIL SISA RUANG */
-    min-width: 0;          /* PENTING biar bisa mengecil */
+    flex: 1;         
+    min-width: 0;    
     height: 42px;
     font-size: 13px;
     border-radius: 8px;

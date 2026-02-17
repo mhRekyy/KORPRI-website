@@ -10,9 +10,9 @@
   <div class="watermark-bg"></div>
 
 <?php
-/* =====================================================
-   HELPER CARD (DIMODIF: tambah nodeId & parentId)
-===================================================== */
+/* ===================
+   HELPER CARD 
+====================== */
 function renderCard($title, $subtitle, $image, $variant = 'small', $nodeId = null, $parentId = null) {
   $titleEsc = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
   $subEsc   = htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8');
@@ -36,9 +36,9 @@ function renderCard($title, $subtitle, $image, $variant = 'small', $nodeId = nul
 <?php } ?>
 
 <?php
-/* =====================================================
-   HELPER ICON (TETAP – TIDAK DIUBAH)
-===================================================== */
+/* ===================
+   HELPER ICON 
+====================== */
 function getIconByJabatan(string $jabatan): string
 {
   $map = [
@@ -179,7 +179,7 @@ function getIconByJabatan(string $jabatan): string
     dropToWakil: 5,      // jarak bar ke top wakil
 
     // Wakil biasa (1,3,4) -> anak level-3
-    gapToChildTop: 0,     // kalau mau stop sebelum card anak, isi mis: 6
+    gapToChildTop: 0,   
 
     // Wakil II (keluar dari kanan)
     wk2SideOut: 20,       // seberapa jauh keluar dari sisi kanan wakil II

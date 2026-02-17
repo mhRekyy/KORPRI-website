@@ -40,7 +40,7 @@ class Home extends BaseController
                 $slides[] = [
                     'image'       => base_url('uploads/hero/' . $row['image']),
                     'caption'     => $row['title'],
-                    'description' => $row['description'], // ✅ TAMBAHAN
+                    'description' => $row['description'],
                 ];
             }
         } else {

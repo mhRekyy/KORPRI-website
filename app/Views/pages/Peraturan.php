@@ -165,8 +165,8 @@
   // MANUAL SEARCH (klik tombol Cari)
   if (btn) {
     btn.addEventListener('click', function (e) {
-      e.preventDefault(); // cegah submit form default
-      applyFilter(true);  // keyword DIKOSONGKAN
+      e.preventDefault(); 
+      applyFilter(true); 
     });
   }
 </script>

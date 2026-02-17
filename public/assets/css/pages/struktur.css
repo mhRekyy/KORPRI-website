@@ -142,8 +142,7 @@
 }
 
 /* =====================================================
-   RESPONSIVE STRUKTUR KORPRI — MOBILE
-   (tetap layout, hanya diperkecil)
+   RESPONSIVE STRUKTUR KORPRI
 ===================================================== */
 @media (max-width: 991px){
 
@@ -213,7 +212,6 @@
     font-size:8px;
   }
 
-  /* WATERMARK DIKECILKAN */
   .watermark-bg{
     display: none;
   }

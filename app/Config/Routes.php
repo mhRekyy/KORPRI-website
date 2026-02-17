@@ -199,9 +199,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('sekretaris-jenderal/delete/(:num)', 'Admin\SekretarisJenderalController::delete/$1');
     $routes->get('sekretaris-jenderal/toggle/(:num)', 'Admin\SekretarisJenderalController::toggle/$1');
 
-    // ==================================================
-    // GALERI FOTO (ADMIN)  ✅ INI YANG BARU
-    // ==================================================
+    // ===============================
+    // GALERI FOTO (ADMIN)
+    // ===============================
     $routes->get('galeri/foto', 'Admin\GaleriFotoController::index');
     $routes->get('galeri/foto/create', 'Admin\GaleriFotoController::create');
     $routes->post('galeri/foto/store', 'Admin\GaleriFotoController::store');
@@ -213,9 +213,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('galeri/foto/upload/(:num)', 'Admin\GaleriFotoController::uploadFoto/$1');
     $routes->post('galeri/foto/hapus-foto/(:num)', 'Admin\GaleriFotoController::hapusFoto/$1');
 
-    // ==================================================
+    // ===============================
     // GALERI VIDEO (ADMIN)
-    // ==================================================
+    // ===============================
     $routes->get('galeri/video', 'Admin\GaleriVideoController::index');
     $routes->get('galeri/video/create', 'Admin\GaleriVideoController::create');
     $routes->post('galeri/video/store', 'Admin\GaleriVideoController::store');
@@ -224,7 +224,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('galeri/video/delete/(:num)', 'Admin\GaleriVideoController::delete/$1');
 
 
-    // HERO IMAGE
+    // ===============================
+    // Hero image (ADMIN)
+    // ===============================
     $routes->get('hero', 'Admin\Hero::index');
     $routes->get('hero/create', 'Admin\Hero::create');
     $routes->post('hero/store', 'Admin\Hero::store');

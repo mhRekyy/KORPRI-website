@@ -55,22 +55,22 @@ document.addEventListener("DOMContentLoaded", function() {
         effect: "coverflow",
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: "auto", // Biarkan CSS width 300px yang atur
+        slidesPerView: "auto", 
         
         // Loop Setting
         loop: true,
-        loopedSlides: 6, // Buffer slide duplikat
+        loopedSlides: 6, 
         
         // PENTING: Aktifkan ini untuk deteksi posisi slide
         watchSlidesProgress: true, 
         
         // Setting Efek 3D
         coverflowEffect: {
-            rotate: 20,      // Tidak miring
-            stretch: 10,    // Jarak tarik antar slide
-            depth: 300,     // Efek jauh
+            rotate: 20,      
+            stretch: 10,    
+            depth: 300,    
             modifier: 1,
-            slideShadows: false, // Matikan shadow hitam default
+            slideShadows: false, 
         },
 
         // Autoplay
@@ -80,8 +80,6 @@ document.addEventListener("DOMContentLoaded", function() {
         },
         
 
-        
-        // LOGIKA FIX: Hanya Tampilkan 5 Slide (2 Kiri, 1 Tengah, 2 Kanan)
         // Slide yang lebih jauh akan di-hide total
         on: {
             progress: function(s) {

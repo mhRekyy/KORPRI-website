@@ -94,7 +94,7 @@ class StrukturDpk extends BaseController
     $this->strukturModel->update($id, [
         'parent_id' => $parentId ?: null,
         'jabatan'   => $jabatan,
-        'nama'      => $nama, // SIMPAN APA ADANYA (MULTI BARIS)
+        'nama'      => $nama, 
         'level'     => $level,
         'urutan'    => $urutan,
     ]);

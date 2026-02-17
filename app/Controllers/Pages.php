@@ -411,7 +411,7 @@ class Pages extends BaseController
             ->where('is_active', 1)
             ->find();
 
-        // Berita terkait (kategori sama, selain dirinya)
+        // Berita terkait
         $beritaTerkait = $beritaModel
             ->where('kategori', $berita['kategori'])
             ->where('id !=', $berita['id'])
@@ -443,17 +443,14 @@ public function Artikel()
     // Search
     if ($keyword !== '') {
         $builder->groupStart()
-                ->like('title', $keyword)     // sesuaikan nama kolom jika 'judul'
-                ->orLike('content', $keyword)  // sesuaikan jika kolomnya berbeda
+                ->like('title', $keyword)     
+                ->orLike('content', $keyword)
                 ->groupEnd();
     }
 
     // Pagination 6 per halaman, group 'artikel'
     $artikel = $builder->paginate(6, 'artikel');
     $pager   = $model->pager;
-
-    // Jangan pakai current_url() dulu (biar tidak dobel)
-    // Kalau butuh: $pager->setPath(site_url('artikel'), 'artikel');
 
     return view('pages/Artikel', [
         'pageTitle' => 'ARTIKEL KORPRI ACEH',

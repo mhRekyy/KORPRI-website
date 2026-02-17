@@ -86,20 +86,19 @@
   border-radius: 2px;
 }
 
-/* Hilangkan garis timeline saat empty state */
 .artikel-list--timeline.is-empty::before{
   display: none;
 }
 
-/* GRID LUAR: 2 kolom, rapi dan stabil */
+/* GRID LUAR: 2 kolom */
 .artikel-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px; /* dari 24px -> sedikit lebih lega */
+  gap: 40px; 
   align-items: start;
 }
 
-/* biar item grid boleh mengecil tanpa overflow teks */
+/* item grid mengecil tanpa overflow teks */
 .artikel-grid > .brow,
 .artikel-item{
   min-width: 0;
@@ -116,22 +115,22 @@
   grid-template-columns: minmax(320px, 1fr) 20px minmax(0, 1fr);
 
   column-gap: 5px;
-  row-gap: 5px; /* kalau suatu saat ada wrap/tinggi beda, tetap rapi */
+  row-gap: 5px; 
   align-items: start;
 }
 
 /* KOLOM TANGGAL (tengah) */
 .bmid{
-  width: 20px;               /* SAMAKAN dengan kolom grid tengah */
+  width: 20px;             
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  pointer-events: none;      /* opsional: biar tidak ganggu klik area lain */
+  pointer-events: none;      
 }
 
 .bdate{
-  margin-top: 60px;          /* dari 40px -> lebih seimbang */
-  width: 120px;              /* dari 140px -> lebih pas di 2 kolom */
+  margin-top: 60px;          
+  width: 120px;              
   padding: 5px 5px;
   border-radius: 10px;
   background: var(--gold);
@@ -198,9 +197,9 @@
 .b-right{
   display: flex;
   flex-direction: column;
-  gap: 12px;                 /* dari 30px -> lebih rapi dan konsisten */
+  gap: 12px;                 
   height: 100%;
-  overflow: visible;             /* penting untuk clamp & overflow */
+  overflow: visible;         
 }
 
 /* CONTAINER JUDUL PUTIH */
@@ -314,7 +313,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 10px;          /* jarak antar item */
+  gap: 10px;          
   padding: 0;
   margin: 0;
   flex-wrap: wrap;
@@ -377,7 +376,7 @@
 .artikel-filter {
   display: flex;
   align-items: center;
-  gap: 16px; /* atur jarak antar elemen */
+  gap: 16px; 
 }
 
 .artikel-filter form {
